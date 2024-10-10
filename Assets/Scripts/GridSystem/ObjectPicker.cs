@@ -1,20 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ObjectPicker : MonoBehaviour
 {
-    [SerializeField] private Transform gridCursor;
-    
+    private ObjectPlacer _placer;
+
+    private GameObject previousObject;
+
+    private void Start()
+    {
+        _placer = FindFirstObjectByType<ObjectPlacer>();
+        _placer.ObjectPlaced += RemovePreviousObject;
+    }
+
     public void PickSpecificObject(GameObject obj)
     {
-        var previousObject = gridCursor.GetComponentInChildren<StoreObject>();
         if (previousObject)
         {
             Destroy(previousObject.gameObject);
         }
-        var temp = Instantiate(obj, gridCursor.transform.position, gridCursor.transform.rotation, gridCursor);
-        var col = temp.GetComponentInChildren<BoxCollider2D>();
-        col.isTrigger = true;
+
+        previousObject = Instantiate(obj);
+        _placer.AssignObject(previousObject);
+    }
+
+    private void RemovePreviousObject()
+    {
+        previousObject = null;
     }
 }
