@@ -6,16 +6,24 @@ using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
+
+    private NPCAI target;
+    public float timeToNextTarget;
     [field: SerializeField] public ItemTypeSo AssignedItem { get; private set; }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        var target = other.GetComponent<NPCAI>();
+        target = other.GetComponent<NPCAI>();
         if (target)
         {
             Debug.Log(target);
-            target.ChooseTarget();
+            Invoke("TargetChange", timeToNextTarget);
         }
     }
 
+
+    private void TargetChange()
+    {
+        target.ChooseTarget();
+    }
 }

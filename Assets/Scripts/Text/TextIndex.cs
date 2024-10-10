@@ -15,6 +15,8 @@ public class TextIndex : MonoBehaviour
     [SerializeField] private float timeBetweenChar;
 
     private WaitForSeconds _waitBetweenCharacters;
+
+    public float TimeTillTextDisapear;
     
     
     
@@ -33,5 +35,17 @@ public class TextIndex : MonoBehaviour
             textMeshPro.text = _currentString;
             yield return _waitBetweenCharacters;
         }
+
+        Invoke("DisableText", TimeTillTextDisapear);
+    }
+
+    private void DisableText()
+    {
+        textMeshPro.enabled = false;
+    }
+
+    public void EnableText()
+    {
+        textMeshPro.enabled = true;
     }
 }
