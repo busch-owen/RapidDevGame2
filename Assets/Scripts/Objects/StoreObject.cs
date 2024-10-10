@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StoreObject : MonoBehaviour
 {
     public bool ObjectPlaced { get; private set; }
 
-    private bool _placeable = true;
+    public bool Placeable { get; private set; } = true;
 
     private Transform _gridCursor;
 
@@ -37,7 +38,7 @@ public class StoreObject : MonoBehaviour
 
     public void PlaceObject()
     {
-        if (!_placeable) return;
+        if (!Placeable) return;
         objectCollider.isTrigger = false;
         ObjectPlaced = true;
     }
@@ -45,17 +46,15 @@ public class StoreObject : MonoBehaviour
     public void OnTriggerStay2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        Debug.Log("intersecting " + other.name);
         _renderer.color = Color.red;
-        _placeable = false;
+        Placeable = false;
     }
     
     public void OnTriggerExit2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        Debug.Log("no longer intersecting " + other.name);
         _renderer.color = Color.white;
-        _placeable = true;
+        Placeable = true;
     }
 }
     

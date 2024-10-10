@@ -13,8 +13,9 @@ public class ObjectPlacer : MonoBehaviour
     public void PlaceObject()
     {
         if(!_assignedObject) return;
-        Debug.Log("placing object");
-        _assignedObject.GetComponent<StoreObject>().PlaceObject();
+        var storeObject = _assignedObject.GetComponent<StoreObject>();
+        if(!storeObject.Placeable) return;
+        storeObject.PlaceObject();
         _assignedObject = null;
         ObjectPlaced?.Invoke();
     }
