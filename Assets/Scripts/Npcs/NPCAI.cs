@@ -4,15 +4,22 @@ using System.Collections.Generic;
 using NavMeshPlus.Components;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 
-public class NavGoal : MonoBehaviour
+public class NPCAI : MonoBehaviour
 {
     public NavMeshAgent Agent;
 
     public Transform target;
 
+    public Transform[] targets;
+
     public List<ItemTypeSo> items;
+    
+    [field: SerializeField] public bool hasFoundItems  { get; private set; }
+    private int randomTarget;
+    private int lastRandom;
     
     
     // Start is called before the first frame update
@@ -21,12 +28,8 @@ public class NavGoal : MonoBehaviour
         Agent = GetComponent<NavMeshAgent>();
         if (target == null)
         {
-            
-        }
-        else
-        {
             Agent.updateRotation = false;
-            Agent.SetDestination(target.position);
+            ChooseTarget();
         }
     }
 
@@ -39,9 +42,29 @@ public class NavGoal : MonoBehaviour
             {
                 if (itemType == shelf.AssignedItem)
                 {
-                    SetTarget(shelf.transform);
+                    SetTarget(shelf.transform);// set to check out when all items found.
+                    //set has found items to true when all found
                     break;
                 }
+            }
+        }
+    }
+
+    public void ChooseTarget()
+    {
+        if (!hasFoundItems)
+        {
+            lastRandom = randomTarget;
+            randomTarget = Random.Range(0, targets.Length);
+
+            if (lastRandom != randomTarget)
+            {
+                target = targets[randomTarget];
+                Agent.SetDestination(target.position);
+            }
+            else
+            {
+                ChooseTarget();
             }
         }
     }

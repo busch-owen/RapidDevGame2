@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class KarenTarget : MonoBehaviour
 {
 
-    public NavGoal navGoal;
+    [FormerlySerializedAs("navGoal")] public NPCAI npcai;
     // Start is called before the first frame update
     void Start()
     {
-        navGoal = GetComponent<NavGoal>();
+        npcai = GetComponent<NPCAI>();
     }
 
     // Update is called once per frame
