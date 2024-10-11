@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shelf : MonoBehaviour
+public class Shelf : StoreObject
 {
 
     private NPCAI target;
