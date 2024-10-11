@@ -4,4 +4,15 @@
 PresetManager:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_DefaultPresets: {}
+  m_DefaultPresets:
+  - first:
+      m_NativeTypeID: 1006
+      m_ManagedTypePPtr: {fileID: 0}
+      m_ManagedTypeFallback: 
+    second:
+    - m_Preset: {fileID: 2655988077585873504, guid: 172475e6c241e054bb268cf215b82b63, type: 2}
+      m_Filter: glob:"*.png"
+      m_Disabled: 0
+    - m_Preset: {fileID: 2655988077585873504, guid: 5773563152fccc04ba7101c715c0013f, type: 2}
+      m_Filter: glob:"*Sheet.png"
+      m_Disabled: 0
