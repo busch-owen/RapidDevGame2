@@ -19,7 +19,7 @@ public class GridSystemInput : MonoBehaviour
         _gridInput = new GridInput();
         
         _gridInput.GridActions.MousePosition.performed += i => _gridPointer.ChangePointerPosition(i.ReadValue<Vector2>());
-        _gridInput.GridActions.MouseClick.started += i => _objectPlacer.PlaceObject();
+        _gridInput.GridActions.MouseClick.performed += i => _objectPlacer.PlaceObject();
         
         SetActiveState(true);
     }

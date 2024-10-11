@@ -15,10 +15,7 @@ public class ObjectPicker : MonoBehaviour
 
     public void PickSpecificObject(GameObject obj)
     {
-        if (previousObject)
-        {
-            Destroy(previousObject.gameObject);
-        }
+        CancelSelection();
 
         previousObject = Instantiate(obj);
         _placer.AssignObject(previousObject);
@@ -27,5 +24,13 @@ public class ObjectPicker : MonoBehaviour
     private void RemovePreviousObject()
     {
         previousObject = null;
+    }
+
+    public void CancelSelection()
+    {
+        if (previousObject)
+        {
+            Destroy(previousObject.gameObject);
+        }
     }
 }

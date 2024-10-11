@@ -15,6 +15,8 @@ public class GridPointer : MonoBehaviour
     
     [SerializeField] private GameObject gridPointer;
     
+    public bool CursorOnGrid { get; private set; }
+    
     public Vector3Int CurrentCellPos { get; private set; }
 
     private void Start()
@@ -26,18 +28,21 @@ public class GridPointer : MonoBehaviour
     public void ChangePointerPosition(Vector2 position)
     {
         _mousePos = position;
-        RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(_mousePos), _camera.transform.forward, _gridLayer);
+        var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(_mousePos), _camera.transform.forward, Mathf.Infinity ,_gridLayer);
         if (hit)
         {
             if (!gridPointer.activeSelf)
             {
                 gridPointer.SetActive(true);
             }
+
+            CursorOnGrid = true;
             CurrentCellPos = grid.WorldToCell(hit.point);
             gridPointer.transform.position = CurrentCellPos;
         }
         else
         {
+            CursorOnGrid = false;
             if (gridPointer.activeSelf)
             {
                 gridPointer.SetActive(false);

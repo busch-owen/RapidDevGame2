@@ -1,9 +1,20 @@
 using System;
 using UnityEngine;
+
 public class ObjectPlacer : MonoBehaviour
 {
     private GameObject _assignedObject;
     public event Action ObjectPlaced;
+
+    private ObjectPicker _picker;
+
+    private GridPointer _pointer;
+
+    private void Start()
+    {
+        _picker = FindFirstObjectByType<ObjectPicker>();
+        _pointer = FindFirstObjectByType<GridPointer>();
+    }
 
     public void AssignObject(GameObject obj)
     {
@@ -12,11 +23,11 @@ public class ObjectPlacer : MonoBehaviour
     
     public void PlaceObject()
     {
-        if(!_assignedObject) return;
+        if(!_assignedObject || !_pointer.CursorOnGrid) return;
         var storeObject = _assignedObject.GetComponent<StoreObject>();
         if(!storeObject.Placeable) return;
         storeObject.PlaceObject();
-        _assignedObject = null;
         ObjectPlaced?.Invoke();
+        _picker.PickSpecificObject(_assignedObject);
     }
 }

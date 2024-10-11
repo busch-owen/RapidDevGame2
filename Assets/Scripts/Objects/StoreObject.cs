@@ -25,7 +25,7 @@ public class StoreObject : MonoBehaviour
         };
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         _gridCursor = FindFirstObjectByType<ObjectPicker>()?.transform;
         
@@ -49,7 +49,7 @@ public class StoreObject : MonoBehaviour
         _renderer.color = Color.red;
         Placeable = false;
     }
-    
+
     public void OnTriggerExit2D(Collider2D other)
     {
         if (ObjectPlaced) return;
