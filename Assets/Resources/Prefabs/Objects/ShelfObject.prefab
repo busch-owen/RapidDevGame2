@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286463606481808625}
   - component: {fileID: 3557907577244428869}
-  - component: {fileID: 4305114118912562370}
+  - component: {fileID: 7179263212853317641}
   m_Layer: 0
   m_Name: ShelfObject
   m_TagString: Untagged
@@ -305,7 +305,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4305114118912562370
+--- !u!114 &7179263212853317641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,7 +314,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6575979153740146991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2fc50b27763b82439239fc403d2af02, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ca39483fc4d36f4f85c1bc9847b3b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectCollider: {fileID: 6987936391734353315}
+  timeToNextTarget: 2
+  <AssignedItem>k__BackingField: {fileID: 0}

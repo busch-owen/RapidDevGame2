@@ -44,7 +44,7 @@ public class NPCAI : MonoBehaviour
     void Start()
     {
         Invoke("Exit",timeToExit);
-        checkOut = FindFirstObjectByType<CheckOut>().transform;
+        checkOut = FindFirstObjectByType<Register>().transform;
         Agent = GetComponent<NavMeshAgent>();
         _textIndex = GetComponentInChildren<TextIndex>();
         if (target == null)
@@ -89,7 +89,7 @@ public class NPCAI : MonoBehaviour
             }
         }
 
-        if (other.GetComponent<CheckOut>())
+        if (other.GetComponent<Register>())
         {
             checkOutReached = true;
             Invoke("Exit", timeToExitFromCheckOut);
