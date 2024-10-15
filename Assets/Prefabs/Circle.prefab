@@ -375,7 +375,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &282859050928806048
 MonoBehaviour:
@@ -432,7 +432,7 @@ MonoBehaviour:
   fullString: I am looking for GTA and Untitled game for my 5yr old :)
   textMeshPro: {fileID: 8237757020827762712}
   timeBetweenChar: 0.05
-  TimeTillTextDisapear: 2
+  TimeTillTextDisapear: 0.05
 --- !u!1 &6502881207188248044
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ Transform:
   m_GameObject: {fileID: 6502881207188248044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4162617, y: 10.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -477,8 +477,8 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6502881207188248044}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 1
+  m_AgentTypeID: -334000983
+  m_Radius: 0.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -488,7 +488,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.5
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7632698048816296006
@@ -505,9 +505,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Agent: {fileID: 0}
   target: {fileID: 0}
-  shelves: []
   Shelves: []
   items:
+  - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
   - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
   _textIndex: {fileID: 0}
   Registers: []
@@ -515,7 +515,8 @@ MonoBehaviour:
   foundText: YIPEE! I found it
   notFoundText: Not this one
   timeToExit: 30
-  timeToExitFromCheckOut: 1
+  timeToExitFromCheckOut: 3
+  _timeToMove: 2
   <hasFoundItems>k__BackingField: 0
 --- !u!58 &6491023297166732245
 CircleCollider2D:
@@ -588,4 +589,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.4

@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -16,8 +17,11 @@ public class TextIndex : MonoBehaviour
 
     private WaitForSeconds _waitBetweenCharacters;
 
-    public float TimeTillTextDisapear;
-    
+    public float TimeTillTextDisapear = 0.5f;
+
+    public event Action TextFinished;
+
+    private bool _coroutineRunning;
     
     
     void Start()
@@ -29,16 +33,22 @@ public class TextIndex : MonoBehaviour
 
     public IEnumerator TextVisible(string message)
     {
-        for (var i = 0; i <= message.Length; i++)
+        Debug.LogFormat("Window Opened");
+        if (!_coroutineRunning)
         {
-            _currentString = message.Substring(0, i);
-            textMeshPro.text = _currentString;
-            yield return _waitBetweenCharacters;
-        }
+            _coroutineRunning = true;
+            for (var i = 0; i <= message.Length; i++)
+            {
+                _currentString = message.Substring(0, i);
+                textMeshPro.text = _currentString;
+                yield return _waitBetweenCharacters;
+            }
 
+            _coroutineRunning = false;
+        }
         Invoke("DisableText", TimeTillTextDisapear);
     }
-
+    
     private void DisableText()
     {
         textMeshPro.enabled = false;

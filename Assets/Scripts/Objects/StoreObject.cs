@@ -50,7 +50,6 @@ public class StoreObject : MonoBehaviour
         {
             _renderer.color = Color.red;
         }
-        Debug.Log(other);
         Placeable = false;
     }
 

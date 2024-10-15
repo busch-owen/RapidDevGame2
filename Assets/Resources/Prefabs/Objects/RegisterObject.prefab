@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5858641040268237020}
   - component: {fileID: 3844457900588405462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ClearanceCollision (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7251834609871768655}
   - component: {fileID: 3030727060887356180}
   - component: {fileID: 6710475481783512424}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: RegisterObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2628023077472417523}
   - component: {fileID: 2873051287028352631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ClearanceCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,9 @@ GameObject:
   - component: {fileID: 815168326067778879}
   - component: {fileID: 1970697473409424624}
   - component: {fileID: 3697782516759958322}
-  m_Layer: 0
+  - component: {fileID: 2577615424415256301}
+  - component: {fileID: 7345087133883015246}
+  m_Layer: 7
   m_Name: ResgisterTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,3 +399,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &2577615424415256301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442998340492479751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &7345087133883015246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442998340492479751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8fab0c841f1194383dc03bffb01f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Surface: {fileID: 0}
