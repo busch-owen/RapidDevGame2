@@ -429,10 +429,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8505cb7f26ae5bb42a35289cec7edf24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullString: Hello my name is Ayden Wilkins and your mom is gay
+  fullString: I am looking for GTA and Untitled game for my 5yr old :)
   textMeshPro: {fileID: 8237757020827762712}
   timeBetweenChar: 0.05
-  TimeTillTextDisapear: 0
+  TimeTillTextDisapear: 2
 --- !u!1 &6502881207188248044
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +445,8 @@ GameObject:
   - component: {fileID: 4806395704206272866}
   - component: {fileID: 7632698048816296006}
   - component: {fileID: 6491023297166732245}
-  m_Layer: 0
+  - component: {fileID: 145187555536971132}
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,13 +505,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Agent: {fileID: 0}
   target: {fileID: 0}
-  targets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  shelves: []
+  Shelves: []
   items:
   - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
+  _textIndex: {fileID: 0}
+  Registers: []
+  exit: {fileID: 0}
+  foundText: YIPEE! I found it
+  notFoundText: Not this one
+  timeToExit: 30
+  timeToExitFromCheckOut: 1
   <hasFoundItems>k__BackingField: 0
 --- !u!58 &6491023297166732245
 CircleCollider2D:
@@ -548,3 +553,39 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1.0669955
+--- !u!58 &145187555536971132
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502881207188248044}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5

@@ -29,5 +29,6 @@ public class ObjectPlacer : MonoBehaviour
         storeObject.PlaceObject();
         ObjectPlaced?.Invoke();
         _picker.PickSpecificObject(_assignedObject);
+        
     }
 }

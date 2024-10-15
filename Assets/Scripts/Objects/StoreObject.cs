@@ -46,14 +46,21 @@ public class StoreObject : MonoBehaviour
     public void OnTriggerStay2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        _renderer.color = Color.red;
+        if (_renderer != null)
+        {
+            _renderer.color = Color.red;
+        }
+        Debug.Log(other);
         Placeable = false;
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        _renderer.color = Color.white;
+        if (_renderer != null)
+        {
+            _renderer.color = Color.white;
+        }
         Placeable = true;
     }
 }

@@ -13,7 +13,9 @@ public class NPCAI : MonoBehaviour
 
     public Transform target;
 
-    public Transform[] targets;
+    public List<Shelf> shelves = new List<Shelf>();
+
+    public Shelf[] Shelves;
 
     public List<ItemTypeSo> items;
 
@@ -21,7 +23,7 @@ public class NPCAI : MonoBehaviour
 
     [SerializeField]private TextIndex _textIndex;
 
-    public Transform checkOut;
+    public Register[] Registers;
 
     public Transform exit;
 
@@ -31,6 +33,8 @@ public class NPCAI : MonoBehaviour
 
     public string  notFoundText;
 
+    private bool isExiting;
+
     [SerializeField] private int timeToExit;
 
     [SerializeField] private int timeToExitFromCheckOut;
@@ -38,24 +42,32 @@ public class NPCAI : MonoBehaviour
     [field: SerializeField] public bool hasFoundItems  { get; private set; }
     private int randomTarget;
     private int lastRandom;
+
+    private ObjectPlacer _objectPlacer;
     
     
     // Start is called before the first frame update
     void Start()
     {
+        AssignShelves();
+        AssignRegisters();
+        target = FindFirstObjectByType<Shelf>().transform;
+        exit = FindFirstObjectByType<Exit>().transform;
         Invoke("Exit",timeToExit);
-        checkOut = FindFirstObjectByType<Register>().transform;
         Agent = GetComponent<NavMeshAgent>();
         _textIndex = GetComponentInChildren<TextIndex>();
+        Agent.updateRotation = false;
+        Agent.SetDestination(target.position);
+
         if (target == null)
         {
-            Agent.updateRotation = false;
             ChooseTarget();
         }
     }
 
     private void Exit()
     {
+        isExiting = true;
         SetTarget(exit);
     }
 
@@ -85,14 +97,20 @@ public class NPCAI : MonoBehaviour
             if (itemsCollected >= items.Count )
             {
                 hasFoundItems = true;
-                SetTarget(checkOut);
+                var targettoset = Random.Range(0, Registers.Length);
+                SetTarget(Registers[targettoset].transform);
             }
         }
 
-        if (other.GetComponent<Register>())
+        if (other.GetComponent<Register>() && hasFoundItems)
         {
             checkOutReached = true;
             Invoke("Exit", timeToExitFromCheckOut);
+        }
+
+        if (other.GetComponent<Exit>() && isExiting)
+        {
+            Destroy(this.gameObject);
         }
     }
 
@@ -101,11 +119,11 @@ public class NPCAI : MonoBehaviour
         if (!hasFoundItems)
         {
             lastRandom = randomTarget;
-            randomTarget = Random.Range(0, targets.Length);
+            randomTarget = Random.Range(0, Shelves.Length);
 
             if (lastRandom != randomTarget)
             {
-                target = targets[randomTarget];
+                target = Shelves[randomTarget].transform;
                 Agent.SetDestination(target.position);
             }
             else
@@ -113,6 +131,18 @@ public class NPCAI : MonoBehaviour
                 ChooseTarget();
             }
         }
+    }
+
+    public void AssignShelves()
+    {
+        Shelves = Resources.FindObjectsOfTypeAll<Shelf>();
+        
+        //shelves.Add(shelf);
+    }
+
+    public void AssignRegisters()
+    {
+        Registers = Resources.FindObjectsOfTypeAll<Register>();
     }
 
     public void SetTarget(Transform Target)
