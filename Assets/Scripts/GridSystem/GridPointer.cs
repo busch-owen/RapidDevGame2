@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GridPointer : MonoBehaviour
 {
@@ -10,6 +6,8 @@ public class GridPointer : MonoBehaviour
     private Camera _camera;
 
     private LayerMask _gridLayer;
+    
+    [Header("Grid References"), Space(10f)]
 
     [SerializeField] private Grid grid;
     
@@ -19,11 +17,17 @@ public class GridPointer : MonoBehaviour
     
     public Vector3Int CurrentCellPos { get; private set; }
 
+    #region Unity Runtime Functions
+    
     private void Start()
     {
         _camera = Camera.main;
         _gridLayer = LayerMask.GetMask("Grid");
     }
+    
+    #endregion
+
+    #region Pointer Position Functions
 
     public void ChangePointerPosition(Vector2 position)
     {
@@ -49,4 +53,6 @@ public class GridPointer : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }
