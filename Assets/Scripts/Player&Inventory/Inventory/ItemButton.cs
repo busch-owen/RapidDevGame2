@@ -11,7 +11,7 @@ public class ItemButton : MonoBehaviour
 
     public void SetButton(ItemSO itemData)
     {
-        itemImage.sprite = itemData.icon;
+        
         itemName.text = itemData.itemName;
     }
 

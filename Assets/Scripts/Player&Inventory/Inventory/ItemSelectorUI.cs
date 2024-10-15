@@ -7,8 +7,6 @@ using TMPro;
 public class ItemSelectorUI : MonoBehaviour
 {
     [SerializeField] ItemSelector itemSelector;
-    [SerializeField] GameObject Holder;
-    [SerializeField] GameObject player;
     [SerializeField] ItemButton itemButtonPrefab;
     [SerializeField] public Transform itemButtonPanel;
     [SerializeField] public GameObject itemButtonPanelGameObject;
@@ -16,7 +14,6 @@ public class ItemSelectorUI : MonoBehaviour
     [Header("Item Info Box")]
     [SerializeField] TMP_Text txtName;
     [SerializeField] TMP_Text txtDescription;
-    [SerializeField] TMP_Text txtStats;
     [SerializeField] Image itemIcon;
 
     private void OnEnable()
@@ -38,7 +35,7 @@ public class ItemSelectorUI : MonoBehaviour
         // set event listener to button for item
         Button button = newButton.GetComponent<Button>();
         button.onClick.AddListener( () => {
-             Instantiate(itemData.worldItem,player.transform.position,player.transform.rotation, Holder.transform); itemSelector.allItems.Remove(itemData); itemSelector.reLoadItems();
+              itemSelector.allItems.Remove(itemData); itemSelector.reLoadItems();
         } );//lambda function
 
     }
@@ -46,8 +43,7 @@ public class ItemSelectorUI : MonoBehaviour
     {
         txtName.text = itemData.itemName;
         txtDescription.text = itemData.itemDescription;
-        txtStats.text = itemData.Stats.ToString();
-        itemIcon.sprite = itemData.icon;
+        itemIcon.sprite = itemData.bigIcon;
     }
 
 }
