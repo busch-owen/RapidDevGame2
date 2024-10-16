@@ -10,8 +10,9 @@ public class NpcEnterState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChangeState(this);
         _stateMachine.ChooseTarget();
+        _stateMachine.ChangeState(NpcStateName.Wander);
+        
     }
     
     

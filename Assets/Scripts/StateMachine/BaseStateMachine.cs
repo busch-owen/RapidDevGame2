@@ -19,5 +19,10 @@ namespace Code.Scripts.StateMachine
         {
             CurrentState?.Update();
         }
+        
+        public void FixedUpdate()
+        {
+            CurrentState?.FixedUpdate();
+        }
     }
 }

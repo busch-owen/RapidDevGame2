@@ -5,5 +5,7 @@ namespace Code.Scripts.StateMachine
         void Enter();
         void Update();
         void Exit();
+
+        void FixedUpdate();
     }
 }

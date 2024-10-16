@@ -70,12 +70,27 @@ public class NpcStateMachine : BaseStateMachine
         }
         
     }
-
-    public void DistanceCheck()
+    
+    private bool ArrivedAtTarget()
     {
         if (Vector2.Distance(transform.position, Agent.destination) <= 0.25f)
         {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void DistanceCheck()
+    {
+        if (ArrivedAtTarget())
+        {
+            Debug.Log("arrived");
             ChangeState(_npcShelfCheckState);
+        }
+        else
+        {
+            Debug.Log("notArrived");
         }
     }
 
@@ -99,9 +114,11 @@ public class NpcStateMachine : BaseStateMachine
                 break;
             case NpcStateName.CheckShelf:
                 base.ChangeState(_npcShelfCheckState);
+                Debug.Log("ShelfCheck");
                 break;
             case NpcStateName.Wander:
                 base.ChangeState(_npcWanderState);
+                Debug.Log("wander");
                 break;
                 
                 
