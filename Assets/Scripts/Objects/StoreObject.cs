@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class StoreObject : MonoBehaviour
 {
     [field: SerializeField] public bool ObjectPlaced { get; private set; }
-    public bool Placeable { get; private set; } = true;
+    [field: SerializeField] public Transform RotationPoint { get; private set; }
 
     private Transform _gridCursor;
 

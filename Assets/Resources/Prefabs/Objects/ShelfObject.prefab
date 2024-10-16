@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ObjectPlaced>k__BackingField: 1
+  <RotationPoint>k__BackingField: {fileID: 3705631453387692294}
   objectCollider: {fileID: 6987936391734353315}
   timeToNextTarget: 2
   <AssignedItem>k__BackingField: {fileID: 0}

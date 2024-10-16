@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f246d1984cd1c442a7ce9c6c913c97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ObjectPlaced>k__BackingField: 0
+  <RotationPoint>k__BackingField: {fileID: 5422035175426611283}
   objectCollider: {fileID: 3697782516759958322}
 --- !u!1 &2735105834716976975
 GameObject:

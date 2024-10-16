@@ -44,6 +44,15 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5134a9c-0849-4934-95f2-a0f776ebc838"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2511efb-d763-4d56-8ed1-8bc0e863743f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
         m_GridActions = asset.FindActionMap("GridActions", throwIfNotFound: true);
         m_GridActions_MousePosition = m_GridActions.FindAction("MousePosition", throwIfNotFound: true);
         m_GridActions_MouseClick = m_GridActions.FindAction("MouseClick", throwIfNotFound: true);
+        m_GridActions_Rotate = m_GridActions.FindAction("Rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
     private List<IGridActionsActions> m_GridActionsActionsCallbackInterfaces = new List<IGridActionsActions>();
     private readonly InputAction m_GridActions_MousePosition;
     private readonly InputAction m_GridActions_MouseClick;
+    private readonly InputAction m_GridActions_Rotate;
     public struct GridActionsActions
     {
         private @GridInput m_Wrapper;
         public GridActionsActions(@GridInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @MousePosition => m_Wrapper.m_GridActions_MousePosition;
         public InputAction @MouseClick => m_Wrapper.m_GridActions_MouseClick;
+        public InputAction @Rotate => m_Wrapper.m_GridActions_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_GridActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
             @MouseClick.started += instance.OnMouseClick;
             @MouseClick.performed += instance.OnMouseClick;
             @MouseClick.canceled += instance.OnMouseClick;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
         }
 
         private void UnregisterCallbacks(IGridActionsActions instance)
@@ -172,6 +198,9 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
             @MouseClick.started -= instance.OnMouseClick;
             @MouseClick.performed -= instance.OnMouseClick;
             @MouseClick.canceled -= instance.OnMouseClick;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
         }
 
         public void RemoveCallbacks(IGridActionsActions instance)
@@ -193,5 +222,6 @@ public partial class @GridInput: IInputActionCollection2, IDisposable
     {
         void OnMousePosition(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

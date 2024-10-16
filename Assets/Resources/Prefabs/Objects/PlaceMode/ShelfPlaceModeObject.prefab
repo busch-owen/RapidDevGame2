@@ -372,6 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca39483fc4d36f4f85c1bc9847b3b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ObjectPlaced>k__BackingField: 0
+  <RotationPoint>k__BackingField: {fileID: 3705631453387692294}
   objectCollider: {fileID: 6987936391734353315}
   timeToNextTarget: 2
   <AssignedItem>k__BackingField: {fileID: 0}

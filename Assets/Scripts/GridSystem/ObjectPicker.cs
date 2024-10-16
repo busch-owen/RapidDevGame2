@@ -9,7 +9,6 @@ public class ObjectPicker : MonoBehaviour
     private void Start()
     {
         _placer = FindFirstObjectByType<ObjectPlacer>();
-        _placer.ObjectPlaced += RemovePreviousObject;
     }
 
     public void PickSpecificObject(StoreObjectSO obj)
@@ -17,13 +16,9 @@ public class ObjectPicker : MonoBehaviour
         CancelSelection();
 
         previousObject = Instantiate(obj.PlaceModeObject);
-        _placer.AssignObject(obj);
+        _placer.AssignObject(obj, previousObject);
     }
-
-    private void RemovePreviousObject()
-    {
-        previousObject = null;
-    }
+    
 
     public void CancelSelection()
     {
