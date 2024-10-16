@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Code.Scripts.StateMachine;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class NPCBaseState : MonoBehaviour
+public class NPCBaseState : IState
 {
-    // Start is called before the first frame update
-    void Start()
+
+    protected NpcStateMachine _stateMachine;
+
+    public NPCBaseState(NpcStateMachine stateMachine)
     {
-        
+        _stateMachine = stateMachine;
+    }
+    public virtual void Enter()
+    {
+        _stateMachine.ChangeState(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public virtual void Exit()
+    {
+        throw new System.NotImplementedException();
     }
 }
