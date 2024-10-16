@@ -575,6 +575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43347b0fd7ce9384486853f96dfeddf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TextIndex>k__BackingField: {fileID: 0}
+  <FoundText>k__BackingField: YEAHHH
+  <NotFoundText>k__BackingField: :(
   <Items>k__BackingField:
   - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
   <ItemsCollected>k__BackingField: []

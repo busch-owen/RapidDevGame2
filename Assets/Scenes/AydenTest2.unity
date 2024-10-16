@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d89a4f237adfc45a0a78598185385a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 6502881207188248044, guid: 66b640831f036704fbbe15d792476b63, type: 3}
+  npc: {fileID: 6502881207188248044, guid: c05595fc49965a649867f91971add0e7, type: 3}
   entrance: {fileID: 1760072453}
 --- !u!1 &533500311
 GameObject:

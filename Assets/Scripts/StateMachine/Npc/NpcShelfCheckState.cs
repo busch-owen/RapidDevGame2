@@ -16,15 +16,21 @@ public class NpcShelfCheckState : NPCBaseState
         var shelf = _stateMachine.Target.GetComponent<Shelf>();
         foreach (ItemTypeSo item in _stateMachine.Items)
         {
-            if (shelf.AssignedItem != item)
-            {
-                Debug.Log(item);
-            }
-            else
-            {
-                Debug.Log(shelf.AssignedItem);
-            }
+            if (shelf.AssignedItem != item) continue;
+            
+            Debug.Log(shelf.AssignedItem);
+            _stateMachine.TextIndex.StopAllCoroutines();
+            _stateMachine.TextIndex.EnableText();
+            _stateMachine.StartCoroutine(_stateMachine.TextIndex.TextVisible(_stateMachine.FoundText));
+            _stateMachine.Invoke("ChooseTarget", 2.0f);
+            _shelfChecked = false;
+
         }
+        _stateMachine.TextIndex.StopAllCoroutines();
+        _stateMachine.TextIndex.EnableText();
+        _stateMachine.StartCoroutine(_stateMachine.TextIndex.TextVisible(_stateMachine.NotFoundText));
+        _stateMachine.Invoke("ChooseTarget", 2.0f);
+        _shelfChecked = false;
     }
 
     public override void FixedUpdate()

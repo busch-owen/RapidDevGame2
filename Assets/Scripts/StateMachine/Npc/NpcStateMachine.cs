@@ -22,6 +22,12 @@ public class NpcStateMachine : BaseStateMachine
     private NPCBaseState _baseState;
     private NpcEnterState _npcEnterState;
     
+    [field:SerializeField]public TextIndex TextIndex{ get; set; }
+    
+    [field:SerializeField]public String FoundText{ get; set; }
+    
+    [field:SerializeField]public String NotFoundText{ get; set; }
+    
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new(); 
@@ -38,7 +44,7 @@ public class NpcStateMachine : BaseStateMachine
     // Start is called before the first frame update
     void Start()
     {
-        
+        TextIndex = GetComponentInChildren<TextIndex>();
     }
 
     private void Awake()
