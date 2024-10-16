@@ -4,8 +4,7 @@ using UnityEngine.Serialization;
 
 public class StoreObject : MonoBehaviour
 {
-    public bool ObjectPlaced { get; private set; }
-
+    [field: SerializeField] public bool ObjectPlaced { get; private set; }
     public bool Placeable { get; private set; } = true;
 
     private Transform _gridCursor;
@@ -35,14 +34,8 @@ public class StoreObject : MonoBehaviour
             transform.position = _gridCursor.position;
         }
     }
-
-    public void PlaceObject()
-    {
-        if (!Placeable) return;
-        objectCollider.isTrigger = false;
-        ObjectPlaced = true;
-    }
     
+    /*
     public void OnTriggerStay2D(Collider2D other)
     {
         if (ObjectPlaced) return;
@@ -56,5 +49,6 @@ public class StoreObject : MonoBehaviour
         _renderer.color = Color.white;
         Placeable = true;
     }
+    */
 }
     

@@ -793,8 +793,8 @@ MonoBehaviour:
         m_MethodName: PickSpecificObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 943665201147448517, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 5994c5f5097a1b44a8c703d10d6fedf7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: StoreObjectSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -926,8 +926,8 @@ MonoBehaviour:
         m_MethodName: PickSpecificObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6575979153740146991, guid: 83c3d6d593b2b884ab118fd4b54f34f8, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: e5acd6ba01de72a459ceed39bb0df288, type: 2}
+          m_ObjectArgumentAssemblyTypeName: StoreObjectSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

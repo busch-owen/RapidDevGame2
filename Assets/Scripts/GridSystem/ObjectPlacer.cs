@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
 {
-    private GameObject _assignedObject;
+    private StoreObjectSO _assignedObject;
     public event Action ObjectPlaced;
 
     private ObjectPicker _picker;
@@ -16,7 +16,7 @@ public class ObjectPlacer : MonoBehaviour
         _pointer = FindFirstObjectByType<GridPointer>();
     }
 
-    public void AssignObject(GameObject obj)
+    public void AssignObject(StoreObjectSO obj)
     {
         _assignedObject = obj;
     }
@@ -24,10 +24,8 @@ public class ObjectPlacer : MonoBehaviour
     public void PlaceObject()
     {
         if(!_assignedObject || !_pointer.CursorOnGrid) return;
-        var storeObject = _assignedObject.GetComponent<StoreObject>();
-        if(!storeObject.Placeable) return;
-        storeObject.PlaceObject();
+        var storeObject = _assignedObject.ObjectToPlace;
+        Instantiate(storeObject, _pointer.CurrentCellPos, Quaternion.identity);
         ObjectPlaced?.Invoke();
-        _picker.PickSpecificObject(_assignedObject);
     }
 }

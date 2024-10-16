@@ -12,12 +12,12 @@ public class ObjectPicker : MonoBehaviour
         _placer.ObjectPlaced += RemovePreviousObject;
     }
 
-    public void PickSpecificObject(GameObject obj)
+    public void PickSpecificObject(StoreObjectSO obj)
     {
         CancelSelection();
 
-        previousObject = Instantiate(obj);
-        _placer.AssignObject(previousObject);
+        previousObject = Instantiate(obj.PlaceModeObject);
+        _placer.AssignObject(obj);
     }
 
     private void RemovePreviousObject()
