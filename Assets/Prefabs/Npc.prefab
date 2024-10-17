@@ -443,7 +443,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8488549015361713248}
   - component: {fileID: 4806395704206272866}
-  - component: {fileID: 6491023297166732245}
   - component: {fileID: 145187555536971132}
   - component: {fileID: -4191481315797229124}
   m_Layer: 9
@@ -463,8 +462,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3194262986665606623}
   m_Father: {fileID: 0}
@@ -478,55 +477,19 @@ NavMeshAgent:
   m_GameObject: {fileID: 6502881207188248044}
   m_Enabled: 1
   m_AgentTypeID: -334000983
-  m_Radius: 0.25
+  m_Radius: 0.5
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 1000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 0.25
-  m_BaseOffset: 0.13
+  m_Height: 0.5
+  m_BaseOffset: 0.4
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!58 &6491023297166732245
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6502881207188248044}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.64784014
+  m_ObstacleAvoidanceType: 0
 --- !u!58 &145187555536971132
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -534,10 +497,10 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6502881207188248044}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e75a406cc4423764ea786eb4778d5260, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -562,7 +525,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.2520628
+  m_Radius: 0.5
 --- !u!114 &-4191481315797229124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,9 +539,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Current>k__BackingField: 
+  <FoundItems>k__BackingField: 0
   <TextIndex>k__BackingField: {fileID: 0}
   <FoundText>k__BackingField: YEAHHH BABYYY
   <NotFoundText>k__BackingField: :( no games here
+  <PositiveText>k__BackingField:
+  - wow
+  - games unlimited games
+  - bacon
+  <NegativeText>k__BackingField:
+  - no games
+  - FUUUUUU
+  - GAWD damit
   <Items>k__BackingField:
   - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
   - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
@@ -590,4 +562,6 @@ MonoBehaviour:
   <ItemTypeSo>k__BackingField: {fileID: 0}
   <LastRandom>k__BackingField: 0
   <RandomTarget>k__BackingField: 0
+  <RandomMessage>k__BackingField: 0
+  <LastRandomMessage>k__BackingField: 0
   <Exit>k__BackingField: {fileID: 0}

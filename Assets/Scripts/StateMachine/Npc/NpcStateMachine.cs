@@ -33,6 +33,10 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public String NotFoundText{ get; private set; }
     
+    [field:SerializeField]public List<String> PositiveText{ get; private set; }
+    
+    [field:SerializeField]public List<String> NegativeText{ get; private set; }
+    
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
@@ -43,6 +47,10 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField]public ItemTypeSo ItemTypeSo { get; set; }
     [field:SerializeField]public int LastRandom { get; set; }
     [field:SerializeField]public int RandomTarget { get; set; }
+    
+    [field:SerializeField] public int RandomMessage{ get; set; }
+    
+    [field:SerializeField] public int LastRandomMessage{ get; set; }
     
     [field:SerializeField]public Transform Exit { get; set; }
     
@@ -93,6 +101,36 @@ public class NpcStateMachine : BaseStateMachine
         }
         
     }
+
+    public void ChoosePositiveDialog()
+    {
+        LastRandomMessage = RandomMessage;
+        RandomMessage = Random.Range(0, PositiveText.Count);
+
+        if (LastRandomMessage != RandomMessage)
+        {
+            FoundText = PositiveText[RandomMessage];
+        }
+        else
+        {
+            ChoosePositiveDialog();
+        }
+    }
+
+    public void ChooseNegativeDialog()
+    {
+        LastRandomMessage = RandomMessage;
+        RandomMessage = Random.Range(0, NegativeText.Count);
+
+        if (LastRandomMessage != RandomMessage)
+        {
+            NotFoundText = NegativeText[RandomMessage];
+        }
+        else
+        {
+            ChooseNegativeDialog();
+        }
+    }
     
     public bool ArrivedAtTarget()
     {
@@ -131,6 +169,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public void ChangeTextPositive()
     {
+        ChoosePositiveDialog();
         TextIndex.StopAllCoroutines();
         TextIndex.EnableText();
         TextIndex.StartCoroutine(TextIndex.TextVisible(FoundText));
@@ -138,6 +177,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public void ChangeTextNegative()
     {
+        ChooseNegativeDialog();
         TextIndex.StopAllCoroutines();
         TextIndex.EnableText();
         TextIndex.StartCoroutine(TextIndex.TextVisible(NotFoundText));
