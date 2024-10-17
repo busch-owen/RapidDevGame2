@@ -34,21 +34,5 @@ public class StoreObject : MonoBehaviour
             transform.position = _gridCursor.position;
         }
     }
-    
-    /*
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        if (ObjectPlaced) return;
-        _renderer.color = Color.red;
-        Placeable = false;
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (ObjectPlaced) return;
-        _renderer.color = Color.white;
-        Placeable = true;
-    }
-    */
 }
     

@@ -1,40 +1,74 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
 {
-    private StoreObjectSO _assignedObject;
-    private GameObject _displayObject;
-    public event Action ObjectPlaced;
-
-    private ObjectPicker _picker;
-
     private GridPointer _pointer;
+    [SerializeField] private ObjectDatabaseSO database;
+    private int _selectedObjectIndex = -1;
+
+    [SerializeField] private GameObject gridVisualization;
+    [SerializeField] private GameObject cellIndicator;
+
+    private GridData objectsData;
+
+    private Renderer previewRenderer;
+
+    private List<GameObject> placedGameObjects = new();
 
     private void Start()
     {
-        _picker = FindFirstObjectByType<ObjectPicker>();
         _pointer = FindFirstObjectByType<GridPointer>();
+        objectsData = new();
     }
-
-    public void AssignObject(StoreObjectSO obj, GameObject displayObject)
+    
+    public void StartPlacement(int ID)
     {
-        _assignedObject = obj;
-        _displayObject = displayObject;
+        StopPlacement();
+        _selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
+        if (_selectedObjectIndex < 0)
+        {
+            Debug.LogError($"No ID found {ID}");
+            return;
+        }
+        gridVisualization.SetActive(true);
+        cellIndicator.SetActive(true);
+        _pointer.OnClicked += PlaceObject;
+        _pointer.OnExit += Cancel;
     }
-
-    public void RotateObject()
+    
+    private void StopPlacement()
     {
-        var tempObj = _displayObject.GetComponent<StoreObject>();
-        tempObj.RotationPoint.Rotate(Vector3.forward, 90f);
+        _selectedObjectIndex = -1;
+        gridVisualization.SetActive(false);
+        cellIndicator.SetActive(false);
+        _pointer.OnClicked -= PlaceObject;
+        _pointer.OnExit -= Cancel;
     }
-
+    
     public void PlaceObject()
     {
-        if(!_assignedObject || !_pointer.CursorOnGrid) return;
-        var storeObject = _assignedObject.ObjectToPlace;
-        var newObject = Instantiate(storeObject, _pointer.CurrentCellPos, Quaternion.identity);
-        newObject.GetComponent<StoreObject>().RotationPoint.rotation = _displayObject.GetComponent<StoreObject>().RotationPoint.rotation;
-        ObjectPlaced?.Invoke();
+        if (_pointer.IsPointerOverUI() || !_pointer.CursorOnGrid) return;
+
+        var placementValidity = CheckPlacementValidity(_pointer.CurrentCellPos, _selectedObjectIndex);
+        if (!placementValidity) return;
+        var objToPlace = Instantiate(database.objectsData[_selectedObjectIndex].ObjectToPlace);
+        objToPlace.transform.position = _pointer.CurrentCellPos;
+        placedGameObjects.Add(objToPlace);
+        objectsData.AddObjectsAt(_pointer.CurrentCellPos, 
+            database.objectsData[_selectedObjectIndex].Size, 
+            database.objectsData[_selectedObjectIndex].ID, 
+            placedGameObjects.Count - 1);
+    }
+
+    private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
+    {
+        return objectsData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+    }
+
+    public void Cancel()
+    {
+        
     }
 }

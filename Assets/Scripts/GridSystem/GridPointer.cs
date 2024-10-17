@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GridPointer : MonoBehaviour
 {
@@ -14,8 +16,9 @@ public class GridPointer : MonoBehaviour
     [SerializeField] private GameObject gridPointer;
     
     public bool CursorOnGrid { get; private set; }
-    
     public Vector3Int CurrentCellPos { get; private set; }
+    
+    public event Action OnClicked, OnExit;
 
     #region Unity Runtime Functions
     
@@ -28,6 +31,8 @@ public class GridPointer : MonoBehaviour
     #endregion
 
     #region Pointer Position Functions
+
+    public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
 
     public void ChangePointerPosition(Vector2 position)
     {
@@ -55,4 +60,9 @@ public class GridPointer : MonoBehaviour
     }
 
     #endregion
+
+    public void MouseClicked()
+    {
+        OnClicked?.Invoke();
+    }
 }
