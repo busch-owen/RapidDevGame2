@@ -13,7 +13,6 @@ public class NpcShelfCheckState : NPCBaseState
 
     public override void Enter()
     {
-        base.Enter();
         ShelfCheck();
     }
 
@@ -24,7 +23,6 @@ public class NpcShelfCheckState : NPCBaseState
         {
             if (shelf.AssignedItem != item) continue;
             _stateMachine.ItemsCollected.Add(item);
-            _stateMachine.CheckItems();
             Debug.Log(shelf.AssignedItem);
             _stateMachine.ChangeState(NpcStateName.PositiveDialog);
         }

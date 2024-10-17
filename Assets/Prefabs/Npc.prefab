@@ -254,8 +254,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9128543558246456439}
   m_Father: {fileID: 8488549015361713248}
@@ -487,8 +487,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.5
-  m_BaseOffset: 0.25
+  m_Height: 0.25
+  m_BaseOffset: 0.13
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!58 &6491023297166732245
@@ -526,7 +526,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.0669955
+  m_Radius: 0.64784014
 --- !u!58 &145187555536971132
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.4
+  m_Radius: 0.2520628
 --- !u!114 &-4191481315797229124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,14 +575,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43347b0fd7ce9384486853f96dfeddf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Current>k__BackingField: 
   <TextIndex>k__BackingField: {fileID: 0}
-  <FoundText>k__BackingField: YEAHHH
-  <NotFoundText>k__BackingField: :(
+  <FoundText>k__BackingField: YEAHHH BABYYY
+  <NotFoundText>k__BackingField: :( no games here
   <Items>k__BackingField:
   - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
+  - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
   <ItemsCollected>k__BackingField: []
   <Shelves>k__BackingField: []
   <Registers>k__BackingField: []
   <Agent>k__BackingField: {fileID: 4806395704206272866}
   <Target>k__BackingField: {fileID: 0}
   <ItemTypeSo>k__BackingField: {fileID: 0}
+  <LastRandom>k__BackingField: 0
+  <RandomTarget>k__BackingField: 0
+  <Exit>k__BackingField: {fileID: 0}

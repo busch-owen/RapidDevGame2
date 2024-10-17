@@ -23,6 +23,8 @@ public class NpcStateMachine : BaseStateMachine
     private NpcEnterState _npcEnterState;
     private NpcNegativeDialogState _npcNegativeDialogState;
     
+    
+    [field:SerializeField]public string Current{ get; private set; }
     [field:SerializeField]public TextIndex TextIndex{ get; private set; }
     
     [field:SerializeField]public String FoundText{ get; private set; }
@@ -37,8 +39,12 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField]public NavMeshAgent Agent { get; private set; }
     [field:SerializeField]public Transform Target { get; set; }
     [field:SerializeField]public ItemTypeSo ItemTypeSo { get; set; }
-    private int _lastRandom;
-    private int _randomTarget;
+    [field:SerializeField]public int LastRandom { get; set; }
+    [field:SerializeField]public int RandomTarget { get; set; }
+    
+    [field:SerializeField]public Transform Exit { get; set; }
+    
+    
 
     
     
@@ -46,6 +52,7 @@ public class NpcStateMachine : BaseStateMachine
     void Start()
     {
         TextIndex = GetComponentInChildren<TextIndex>();
+        Exit = FindFirstObjectByType<Exit>().transform;
     }
 
     private void Awake()
@@ -56,19 +63,25 @@ public class NpcStateMachine : BaseStateMachine
         _npcExitState = new NpcExitState(this);
         _npcShelfCheckState = new NpcShelfCheckState(this);
         _npcEnterState = new NpcEnterState(this);
+        _npcNegativeDialogState = new NpcNegativeDialogState(this);
         AssignShelves();
         AssignRegisters();
 
         ChangeState(_npcEnterState);
     }
 
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
+
     public void ChooseTarget()
     {
-        _lastRandom = _randomTarget;
-        _randomTarget = Random.Range(0, Shelves.Length);
-        if (_lastRandom != _randomTarget)
+        LastRandom = RandomTarget;
+        RandomTarget = Random.Range(0, Shelves.Length);
+        if (LastRandom != RandomTarget)
         {
-            Target = Shelves[_randomTarget].transform;
+            Target = Shelves[RandomTarget].transform;
             Agent.SetDestination(Target.position);
         }
         else
@@ -78,7 +91,7 @@ public class NpcStateMachine : BaseStateMachine
         
     }
     
-    private bool ArrivedAtTarget()
+    public bool ArrivedAtTarget()
     {
         if (Vector2.Distance(transform.position, Agent.destination) <= 0.25f)
         {
@@ -95,10 +108,6 @@ public class NpcStateMachine : BaseStateMachine
             Debug.Log("arrived");
             ChangeState(_npcShelfCheckState);
         }
-        else
-        {
-            Debug.Log("notArrived");
-        }
     }
 
 
@@ -107,6 +116,7 @@ public class NpcStateMachine : BaseStateMachine
         if (ItemsCollected.Count >= Items.Count)
         {
             ChangeState(_npcCheckoutState);
+            Debug.Log("Checkout");
         }
     }
 
@@ -118,26 +128,31 @@ public class NpcStateMachine : BaseStateMachine
         {
             case NpcStateName.Checkout:
                 base.ChangeState(_npcCheckoutState);
+                Current = _npcCheckoutState.ToString();
                 break;
             case NpcStateName.PositiveDialog:
                 base.ChangeState(_npcPositiveDialogState);
+                Current = _npcPositiveDialogState.ToString();
                 break;
             case NpcStateName.Enter:
                 base.ChangeState(_npcEnterState);
+                Current = _npcEnterState.ToString();
                 break;
             case NpcStateName.Exit:
                 base.ChangeState(_npcExitState);
+                Current = _npcExitState.ToString();
                 break;
             case NpcStateName.CheckShelf:
                 base.ChangeState(_npcShelfCheckState);
-                Debug.Log("ShelfCheck");
+                Current = _npcShelfCheckState.ToString();
                 break;
             case NpcStateName.Wander:
                 base.ChangeState(_npcWanderState);
-                Debug.Log("wander");
+                Current = _npcWanderState.ToString();
                 break;
             case NpcStateName.NegativeDialog:
                 base.ChangeState(_npcNegativeDialogState);
+                Current = _npcNegativeDialogState.ToString();
                 break;
                 
                 

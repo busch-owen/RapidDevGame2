@@ -12,6 +12,7 @@ public class NpcWanderState : NPCBaseState
     public override void Enter()
     {
         base.Enter();
+        _stateMachine.ChooseTarget();
     }
 
     public override void FixedUpdate()

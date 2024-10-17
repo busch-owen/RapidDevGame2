@@ -14,6 +14,30 @@ public class NpcPositiveDialogState : NPCBaseState
         _stateMachine.TextIndex.StopAllCoroutines();
         _stateMachine.TextIndex.EnableText();
         _stateMachine.StartCoroutine(_stateMachine.TextIndex.TextVisible(_stateMachine.FoundText));
-        _stateMachine.Invoke("ChooseTarget", 2.0f);
+        if (_stateMachine.ItemsCollected.Count < _stateMachine.Items.Count)
+        {
+            _stateMachine.StartCoroutine(Switch());
+        }
+        else
+        {
+            _stateMachine.StartCoroutine(SwitchToCheckout());
+            Debug.Log("Checkout");
+        }
+        
+        
+    }
+    
+    private IEnumerator Switch()
+    {
+        yield return new WaitForSeconds(2.0f);
+        _stateMachine.ChangeState(NpcStateName.Wander);
+        yield return null;
+    }
+    
+    private IEnumerator SwitchToCheckout()
+    {
+        yield return new WaitForSeconds(2.0f);
+        _stateMachine.ChangeState(NpcStateName.Checkout);
+        yield return null;
     }
 }
