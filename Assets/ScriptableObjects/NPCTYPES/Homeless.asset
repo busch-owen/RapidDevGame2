@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a03c7396778a438f78d7d3d1479fa, type: 3}
   m_Name: Homeless
   m_EditorClassIdentifier: 
-  <PositiveText>k__BackingField: []
-  <NegativeText>k__BackingField: []
-  <OpeningText>k__BackingField: []
+  <PositiveText>k__BackingField:
+  - Hell yeah
+  - Been looking for this one a long time
+  <NegativeText>k__BackingField:
+  - F*&% this man
+  - For Real?!
+  <OpeningText>k__BackingField:
+  - Can I use the washroom?
+  - Got any crack?
   <Items>k__BackingField: []
-  <Speed>k__BackingField: 0
+  <Speed>k__BackingField: 2
   <Budget>k__BackingField: 0
+  <Color>k__BackingField: {r: 0.24528301, g: 0.06398825, b: 0, a: 1}

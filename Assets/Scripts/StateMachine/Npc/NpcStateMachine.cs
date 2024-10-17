@@ -38,6 +38,8 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
+    
+    [field: SerializeField] public List<NpcTypeSo> NpcTypeSoOptions{ get; private set; } = new();
     [field: SerializeField] public List<Shelf> Shelves { get; private set; } = new ();
     [field:SerializeField]public Register[] Registers{ get; private set; }
     [field:SerializeField]public NavMeshAgent Agent { get; private set; }
@@ -57,6 +59,8 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public int Budget { get; private set; }
     
+    [field:SerializeField]public SpriteRenderer SpriteRenderer { get; private set; }
+    
     
 
     
@@ -68,6 +72,7 @@ public class NpcStateMachine : BaseStateMachine
         Agent.updateRotation = false;
         Agent.speed = NpcType.Speed;
         Budget = NpcType.Budget;
+        SpriteRenderer.color = NpcType.Color;
     }
 
     private void Awake()
@@ -81,7 +86,9 @@ public class NpcStateMachine : BaseStateMachine
         _npcNegativeDialogState = new NpcNegativeDialogState(this);
         AssignShelves();
         AssignRegisters();
+        ChooseNpc();
         TextIndex = GetComponentInChildren<TextIndex>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         ChangeState(_npcEnterState);
     }
@@ -98,6 +105,13 @@ public class NpcStateMachine : BaseStateMachine
 
         OpeningLine = NpcType.OpeningText[RandomMessage];
         TextIndex.StartCoroutine(TextIndex.TextVisible(OpeningLine));
+    }
+
+    private void ChooseNpc()
+    {
+        int _randomNpc = Random.Range(0, NpcTypeSoOptions.Count);
+
+        NpcType = NpcTypeSoOptions[_randomNpc];
     }
 
     public void StartText()

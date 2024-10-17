@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a03c7396778a438f78d7d3d1479fa, type: 3}
   m_Name: HighRoller
   m_EditorClassIdentifier: 
-  <PositiveText>k__BackingField: []
-  <NegativeText>k__BackingField: []
-  <OpeningText>k__BackingField: []
+  <PositiveText>k__BackingField:
+  - This right here is It!
+  - I'll take your entire stock
+  <NegativeText>k__BackingField:
+  - You guys don't have it!?
+  - Your loss buddy
+  <OpeningText>k__BackingField:
+  - I'm looking for your most expensive item
+  - Cost don't matter Show me the goodstuff baby!
   <Items>k__BackingField: []
-  <Speed>k__BackingField: 0
-  <Budget>k__BackingField: 0
+  <Speed>k__BackingField: 3
+  <Budget>k__BackingField: 100
+  <Color>k__BackingField: {r: 0.4693546, g: 0, b: 0.6037736, a: 1}

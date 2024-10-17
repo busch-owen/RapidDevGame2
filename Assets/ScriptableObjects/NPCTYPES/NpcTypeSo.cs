@@ -18,4 +18,6 @@ public class NpcTypeSo : ScriptableObject
     [field:SerializeField]public int Speed{ get; private set; }
     
     [field:SerializeField]public int Budget{ get; private set; }
+    
+    [field:SerializeField]public Color Color{ get; private set; }
 }
