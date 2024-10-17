@@ -27,7 +27,6 @@ public class TextIndex : MonoBehaviour
     void Start()
     {
         _waitBetweenCharacters = new WaitForSeconds(timeBetweenChar);
-        StartCoroutine(TextVisible(fullString));
     }
 
 
@@ -40,7 +39,7 @@ public class TextIndex : MonoBehaviour
                 textMeshPro.text = _currentString;
                 yield return _waitBetweenCharacters;
             }
-        Invoke("DisableText", TimeTillTextDisapear);
+            Invoke("DisableText", TimeTillTextDisapear);
     }
     
     private void DisableText()

@@ -6,5 +6,5 @@ using UnityEngine;
 
 public class ItemTypeSo : ScriptableObject
 {
-    //[SerializeField] private int number;
+    [field:SerializeField]public int Cost{ get; private set; }
 }

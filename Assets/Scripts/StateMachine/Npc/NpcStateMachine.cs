@@ -31,11 +31,9 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public String FoundText{ get; private set; }
     
+    [field:SerializeField]public String OpeningLine{ get; private set; }
+    
     [field:SerializeField]public String NotFoundText{ get; private set; }
-    
-    [field:SerializeField]public List<String> PositiveText{ get; private set; }
-    
-    [field:SerializeField]public List<String> NegativeText{ get; private set; }
     
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
@@ -44,15 +42,20 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField]public Register[] Registers{ get; private set; }
     [field:SerializeField]public NavMeshAgent Agent { get; private set; }
     [field:SerializeField]public Transform Target { get; set; }
+    
     [field:SerializeField]public ItemTypeSo ItemTypeSo { get; set; }
-    [field:SerializeField]public int LastRandom { get; set; }
+    [field: SerializeField] public int LastRandom { get; private set; } = 0;
     [field:SerializeField]public int RandomTarget { get; set; }
     
     [field:SerializeField] public int RandomMessage{ get; set; }
-    
-    [field:SerializeField] public int LastRandomMessage{ get; set; }
+
+    [field: SerializeField] public int LastRandomMessage { get; private set; } = 0;
     
     [field:SerializeField]public Transform Exit { get; set; }
+    
+    [field:SerializeField]public NpcTypeSo NpcType { get; set; }
+    
+    [field:SerializeField]public int Budget { get; private set; }
     
     
 
@@ -61,9 +64,10 @@ public class NpcStateMachine : BaseStateMachine
     // Start is called before the first frame update
     void Start()
     {
-        TextIndex = GetComponentInChildren<TextIndex>();
         Exit = FindFirstObjectByType<Exit>().transform;
         Agent.updateRotation = false;
+        Agent.speed = NpcType.Speed;
+        Budget = NpcType.Budget;
     }
 
     private void Awake()
@@ -77,6 +81,7 @@ public class NpcStateMachine : BaseStateMachine
         _npcNegativeDialogState = new NpcNegativeDialogState(this);
         AssignShelves();
         AssignRegisters();
+        TextIndex = GetComponentInChildren<TextIndex>();
 
         ChangeState(_npcEnterState);
     }
@@ -84,6 +89,22 @@ public class NpcStateMachine : BaseStateMachine
     public void Destroy()
     {
         Destroy(this.gameObject);
+    }
+
+    public void IntroText()
+    {
+        LastRandomMessage = RandomMessage;
+        RandomMessage = Random.Range(0, NpcType.OpeningText.Count);
+
+        OpeningLine = NpcType.OpeningText[RandomMessage];
+        TextIndex.StartCoroutine(TextIndex.TextVisible(OpeningLine));
+    }
+
+    public void StartText()
+    {
+        IntroText();
+        //TextIndex.StopAllCoroutines();
+        TextIndex.EnableText();
     }
 
     public void ChooseTarget()
@@ -105,11 +126,11 @@ public class NpcStateMachine : BaseStateMachine
     public void ChoosePositiveDialog()
     {
         LastRandomMessage = RandomMessage;
-        RandomMessage = Random.Range(0, PositiveText.Count);
+        RandomMessage = Random.Range(0, NpcType.PositiveText.Count);
 
         if (LastRandomMessage != RandomMessage)
         {
-            FoundText = PositiveText[RandomMessage];
+            FoundText = NpcType.PositiveText[RandomMessage];
         }
         else
         {
@@ -120,11 +141,11 @@ public class NpcStateMachine : BaseStateMachine
     public void ChooseNegativeDialog()
     {
         LastRandomMessage = RandomMessage;
-        RandomMessage = Random.Range(0, NegativeText.Count);
+        RandomMessage = Random.Range(0, NpcType.NegativeText.Count);
 
         if (LastRandomMessage != RandomMessage)
         {
-            NotFoundText = NegativeText[RandomMessage];
+            NotFoundText = NpcType.NegativeText[RandomMessage];
         }
         else
         {

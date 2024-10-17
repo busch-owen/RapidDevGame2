@@ -12,6 +12,7 @@ public class NpcEnterState : NPCBaseState
     {
         _stateMachine.ChooseTarget();
         _stateMachine.ChangeState(NpcStateName.Wander);
+        _stateMachine.StartText();
         
     }
     
