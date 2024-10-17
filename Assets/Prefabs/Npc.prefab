@@ -432,7 +432,7 @@ MonoBehaviour:
   fullString: I am looking for GTA and Untitled game for my 5yr old :)
   textMeshPro: {fileID: 8237757020827762712}
   timeBetweenChar: 0.05
-  TimeTillTextDisapear: 0.05
+  TimeTillTextDisapear: 1
 --- !u!1 &6502881207188248044
 GameObject:
   m_ObjectHideFlags: 0

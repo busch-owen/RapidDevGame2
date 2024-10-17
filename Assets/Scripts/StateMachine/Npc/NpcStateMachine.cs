@@ -9,24 +9,25 @@ using Random = UnityEngine.Random;
 
 public enum NpcStateName
 {
-    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,Dialog,Checkout,Exit
+    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog
 }
 public class NpcStateMachine : BaseStateMachine
 {
 
     private NpcCheckoutState _npcCheckoutState;
-    private NpcDialogState _npcDialogState;
+    private NpcPositiveDialogState _npcPositiveDialogState;
     private NpcWanderState _npcWanderState;
     private NpcExitState _npcExitState;
     private NpcShelfCheckState _npcShelfCheckState;
     private NPCBaseState _baseState;
     private NpcEnterState _npcEnterState;
+    private NpcNegativeDialogState _npcNegativeDialogState;
     
-    [field:SerializeField]public TextIndex TextIndex{ get; set; }
+    [field:SerializeField]public TextIndex TextIndex{ get; private set; }
     
-    [field:SerializeField]public String FoundText{ get; set; }
+    [field:SerializeField]public String FoundText{ get; private set; }
     
-    [field:SerializeField]public String NotFoundText{ get; set; }
+    [field:SerializeField]public String NotFoundText{ get; private set; }
     
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
@@ -50,7 +51,7 @@ public class NpcStateMachine : BaseStateMachine
     private void Awake()
     {
         _npcCheckoutState = new NpcCheckoutState(this);
-        _npcDialogState = new NpcDialogState(this);
+        _npcPositiveDialogState = new NpcPositiveDialogState(this);
         _npcWanderState = new NpcWanderState(this);
         _npcExitState = new NpcExitState(this);
         _npcShelfCheckState = new NpcShelfCheckState(this);
@@ -100,6 +101,15 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
 
+
+    public void CheckItems()
+    {
+        if (ItemsCollected.Count >= Items.Count)
+        {
+            ChangeState(_npcCheckoutState);
+        }
+    }
+
     // Update is called once per frame
 
     public void ChangeState(NpcStateName stateName)
@@ -109,8 +119,8 @@ public class NpcStateMachine : BaseStateMachine
             case NpcStateName.Checkout:
                 base.ChangeState(_npcCheckoutState);
                 break;
-            case NpcStateName.Dialog:
-                base.ChangeState(_npcDialogState);
+            case NpcStateName.PositiveDialog:
+                base.ChangeState(_npcPositiveDialogState);
                 break;
             case NpcStateName.Enter:
                 base.ChangeState(_npcEnterState);
@@ -125,6 +135,9 @@ public class NpcStateMachine : BaseStateMachine
             case NpcStateName.Wander:
                 base.ChangeState(_npcWanderState);
                 Debug.Log("wander");
+                break;
+            case NpcStateName.NegativeDialog:
+                base.ChangeState(_npcNegativeDialogState);
                 break;
                 
                 
