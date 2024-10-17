@@ -25,6 +25,8 @@ public class NpcStateMachine : BaseStateMachine
     
     
     [field:SerializeField]public string Current{ get; private set; }
+    
+    [field:SerializeField]public bool FoundItems{ get; private set; }
     [field:SerializeField]public TextIndex TextIndex{ get; private set; }
     
     [field:SerializeField]public String FoundText{ get; private set; }
@@ -100,7 +102,22 @@ public class NpcStateMachine : BaseStateMachine
 
         return false;
     }
+    
+    
+    public void ShelfCheck()
+    {
+        var shelf = Target.GetComponent<Shelf>();
 
+        foreach (ItemTypeSo item in Items)
+        {
+            if(shelf.AssignedItem != item) continue;
+            FoundItems = true;
+            ItemsCollected.Add(item);
+            return;
+        }
+
+        FoundItems = false;
+    }
     public void DistanceCheck()
     {
         if (ArrivedAtTarget())
@@ -110,14 +127,18 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
 
-
-    public void CheckItems()
+    public void ChangeTextPositive()
     {
-        if (ItemsCollected.Count >= Items.Count)
-        {
-            ChangeState(_npcCheckoutState);
-            Debug.Log("Checkout");
-        }
+        TextIndex.StopAllCoroutines();
+        TextIndex.EnableText();
+        TextIndex.StartCoroutine(TextIndex.TextVisible(FoundText));
+    }
+
+    public void ChangeTextNegative()
+    {
+        TextIndex.StopAllCoroutines();
+        TextIndex.EnableText();
+        TextIndex.StartCoroutine(TextIndex.TextVisible(NotFoundText));
     }
 
     // Update is called once per frame

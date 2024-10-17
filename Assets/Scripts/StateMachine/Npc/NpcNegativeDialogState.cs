@@ -10,13 +10,8 @@ public class NpcNegativeDialogState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.TextIndex.StopAllCoroutines();
-        _stateMachine.TextIndex.EnableText();
-        _stateMachine.StartCoroutine(_stateMachine.TextIndex.TextVisible(_stateMachine.NotFoundText));
-        if (_stateMachine.ItemsCollected.Count < _stateMachine.Items.Count)
-        {
-            _stateMachine.StartCoroutine(Switch());
-        }
+        _stateMachine.ChangeTextNegative();
+        _stateMachine.StartCoroutine(Switch());
     }
 
     private IEnumerator Switch()

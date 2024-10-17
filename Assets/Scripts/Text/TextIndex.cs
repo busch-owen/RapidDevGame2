@@ -33,19 +33,13 @@ public class TextIndex : MonoBehaviour
 
     public IEnumerator TextVisible(string message)
     {
-        Debug.LogFormat("Window Opened");
-        if (!_coroutineRunning)
-        {
-            _coroutineRunning = true;
+            Debug.LogFormat("Window Opened");
             for (var i = 0; i <= message.Length; i++)
             {
                 _currentString = message.Substring(0, i);
                 textMeshPro.text = _currentString;
                 yield return _waitBetweenCharacters;
             }
-
-            _coroutineRunning = false;
-        }
         Invoke("DisableText", TimeTillTextDisapear);
     }
     

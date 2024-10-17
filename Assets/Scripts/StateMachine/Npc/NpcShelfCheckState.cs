@@ -13,20 +13,29 @@ public class NpcShelfCheckState : NPCBaseState
 
     public override void Enter()
     {
-        ShelfCheck();
+        CheckShelf();
     }
 
-    private void ShelfCheck()
+    private void CheckShelf()
     {
-        var shelf = _stateMachine.Target.GetComponent<Shelf>();
-        foreach (ItemTypeSo item in _stateMachine.Items)
+        _stateMachine.ShelfCheck();
+    }
+
+    public override void FixedUpdate()
+    {
+        ShowDialog();
+    }
+
+    public void ShowDialog()
+    {
+        if (_stateMachine.FoundItems)
         {
-            if (shelf.AssignedItem != item) continue;
-            _stateMachine.ItemsCollected.Add(item);
-            Debug.Log(shelf.AssignedItem);
             _stateMachine.ChangeState(NpcStateName.PositiveDialog);
         }
-        _stateMachine.ChangeState(NpcStateName.NegativeDialog);
+        else
+        {
+            _stateMachine.ChangeState(NpcStateName.NegativeDialog);
+        }
     }
     
 }
