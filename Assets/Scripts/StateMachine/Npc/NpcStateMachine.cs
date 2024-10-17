@@ -35,8 +35,8 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
-    [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new(); 
-    [field:SerializeField]public Shelf[] Shelves{ get; private set; }
+    [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
+    [field: SerializeField] public List<Shelf> Shelves { get; private set; } = new ();
     [field:SerializeField]public Register[] Registers{ get; private set; }
     [field:SerializeField]public NavMeshAgent Agent { get; private set; }
     [field:SerializeField]public Transform Target { get; set; }
@@ -55,6 +55,7 @@ public class NpcStateMachine : BaseStateMachine
     {
         TextIndex = GetComponentInChildren<TextIndex>();
         Exit = FindFirstObjectByType<Exit>().transform;
+        Agent.updateRotation = false;
     }
 
     private void Awake()
@@ -80,7 +81,7 @@ public class NpcStateMachine : BaseStateMachine
     public void ChooseTarget()
     {
         LastRandom = RandomTarget;
-        RandomTarget = Random.Range(0, Shelves.Length);
+        RandomTarget = Random.Range(0, Shelves.Count);
         if (LastRandom != RandomTarget)
         {
             Target = Shelves[RandomTarget].transform;
@@ -113,6 +114,7 @@ public class NpcStateMachine : BaseStateMachine
             if(shelf.AssignedItem != item) continue;
             FoundItems = true;
             ItemsCollected.Add(item);
+            Shelves.Remove(shelf);
             return;
         }
 
@@ -182,7 +184,11 @@ public class NpcStateMachine : BaseStateMachine
     
     public void AssignShelves()
     {
-        Shelves = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
+        var tempList = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
+        foreach (var shelf in tempList)
+        {
+            Shelves.Add(shelf);
+        }
 
         //shelves.Add(shelf);
     }
