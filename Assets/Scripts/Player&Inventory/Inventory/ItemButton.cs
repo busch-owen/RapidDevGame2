@@ -13,6 +13,7 @@ public class ItemButton : MonoBehaviour
     {
         
         itemName.text = itemData.itemName;
+        itemImage.sprite = itemData.smallIcon;
     }
 
 }

@@ -14,6 +14,8 @@ public class ItemSelectorUI : MonoBehaviour
     [Header("Item Info Box")]
     [SerializeField] TMP_Text txtName;
     [SerializeField] TMP_Text txtDescription;
+    [SerializeField] TMP_Text txtCategory;
+
     [SerializeField] Image itemIcon;
 
     private void OnEnable()
@@ -35,7 +37,7 @@ public class ItemSelectorUI : MonoBehaviour
         // set event listener to button for item
         Button button = newButton.GetComponent<Button>();
         button.onClick.AddListener( () => {
-              itemSelector.allItems.Remove(itemData); itemSelector.reLoadItems();
+            itemSelector.SelectItem(itemData);
         } );//lambda function
 
     }
@@ -43,6 +45,7 @@ public class ItemSelectorUI : MonoBehaviour
     {
         txtName.text = itemData.itemName;
         txtDescription.text = itemData.itemDescription;
+        txtCategory.text = itemData.itemCategory;
         itemIcon.sprite = itemData.bigIcon;
     }
 

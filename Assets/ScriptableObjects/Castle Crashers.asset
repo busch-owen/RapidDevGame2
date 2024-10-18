@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d74185a3ed5d7643a6acb955b49d1d7, type: 3}
+  m_Name: Castle Crashers
+  m_EditorClassIdentifier: 
+  itemName: Castle Crashers
+  itemDescription: Castle Crashers is set in a fictional medieval universe. It begins
+    with four knights attending a party in a king's castle. During the party a dark
+    wizard arrives, stealing a mystical gem and capturing four princesses. The king
+    sends the knights to retrieve the gem, rescue his daughters, and bring the wizard
+    to justice.
+  itemCategory: Fighting
+  bigIcon: {fileID: -267839674454074264, guid: 8976bf3914bb2674299ec76281c6aaf1, type: 3}
+  smallIcon: {fileID: 21300000, guid: d0be186206807fa4f95535c6291e136e, type: 3}

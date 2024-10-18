@@ -9,19 +9,21 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public static event Action OnPlayerDamaged;
-    float horizontal;
-    float vertical;
+    public float horizontal;
+    public float vertical;
     public bool canMove;
     [SerializeField] float speed;
     [SerializeField] Rigidbody2D rB;
     // Start is called before the first frame update
     void Start()
     {
-        
+        canMove = true;
     }
     public void Move(Vector2 context)
     {
         Debug.Log("MoveCalled");
+        Debug.Log(context.x);
+
         if (canMove)
         {
             horizontal = context.x;
