@@ -41,6 +41,11 @@ public class NpcCheckoutState : NPCBaseState
 
     public void GoToExit()
     {
-        if(ArrivedAtCheckout()) _stateMachine.ChangeState(NpcStateName.Exit);
+        if (ArrivedAtCheckout())
+        {
+            _stateMachine.MoneyManager.IncrementProfit(_stateMachine.MoneySpent);
+            _stateMachine.MoneyManager.DecrementQuota(_stateMachine.MoneySpent);
+            _stateMachine.ChangeState(NpcStateName.Exit);
+        }
     }
 }

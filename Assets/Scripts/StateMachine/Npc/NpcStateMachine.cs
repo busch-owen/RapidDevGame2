@@ -61,6 +61,14 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public SpriteRenderer SpriteRenderer { get; private set; }
     
+    [field:SerializeField]public int ShelvesBeforeLeave { get; private set; }
+    
+    [field:SerializeField]public float Reputation { get; set; }
+
+    [field:SerializeField] public MoneyManager MoneyManager{ get; set; }
+    
+    [field:SerializeField] public int MoneySpent { get; private set; }
+    
     
 
     
@@ -72,7 +80,9 @@ public class NpcStateMachine : BaseStateMachine
         Agent.updateRotation = false;
         Agent.speed = NpcType.Speed;
         Budget = NpcType.Budget;
+        ShelvesBeforeLeave = NpcType.ShelvesTillExit;
         SpriteRenderer.color = NpcType.Color;
+        MoneyManager = FindFirstObjectByType<MoneyManager>();
     }
 
     private void Awake()
@@ -184,13 +194,20 @@ public class NpcStateMachine : BaseStateMachine
 
         foreach (ItemTypeSo item in Items)
         {
-            if(shelf.AssignedItem != item) continue;
-            FoundItems = true;
-            ItemsCollected.Add(item);
-            Shelves.Remove(shelf);
-            return;
+            if (shelf.AssignedItem != item||Budget < shelf.AssignedItem.Cost)
+            {
+                ShelvesBeforeLeave--;
+                return;
+            }
+            else
+            {
+                ItemsCollected.Add(item);
+                MoneySpent += shelf.AssignedItem.Cost;
+                FoundItems = true;
+                return;
+            }
         }
-
+        Shelves.Remove(shelf);
         FoundItems = false;
     }
     public void DistanceCheck()

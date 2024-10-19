@@ -11,7 +11,7 @@ public class NpcNegativeDialogState : NPCBaseState
     public override void Enter()
     {
         _stateMachine.ChangeTextNegative();
-        _stateMachine.StartCoroutine(Switch());
+        ChooseToLeave();
     }
 
     private IEnumerator Switch()
@@ -19,6 +19,19 @@ public class NpcNegativeDialogState : NPCBaseState
         yield return new WaitForSeconds(2.0f);
         _stateMachine.ChangeState(NpcStateName.Wander);
         yield return null;
+    }
+
+    public void ChooseToLeave()
+    {
+        if (_stateMachine.ShelvesBeforeLeave <= 0)
+        {
+            _stateMachine.Reputation -= 0.1f;
+            _stateMachine.ChangeState(NpcStateName.Exit);
+        }
+        else
+        {
+            _stateMachine.StartCoroutine(Switch());
+        }
     }
     
 
