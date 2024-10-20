@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Castle crashers_0: -267839674454074264
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
