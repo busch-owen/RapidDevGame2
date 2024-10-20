@@ -16,6 +16,7 @@ public class ObjectPicker : MonoBehaviour
         CancelSelection();
         previousObject = Instantiate(obj.PlaceModeObject);
         _placer.AssignObject(obj, previousObject);
+        Debug.Log(obj);
         _placer.PlaceMultiple(true);
     }
     

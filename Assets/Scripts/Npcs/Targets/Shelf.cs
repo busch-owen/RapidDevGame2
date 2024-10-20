@@ -12,7 +12,7 @@ public class Shelf : StoreObject
     
     [field: SerializeField] public ItemTypeSo AssignedItem { get; private set; }
 
-    [SerializeField] public List<ItemTypeSo> possibleItems = new List<ItemTypeSo>();
+    [SerializeField] public List<ItemTypeSo> possibleItems = new();
 
     public void OnTriggerEnter2D(Collider2D other)
     {
