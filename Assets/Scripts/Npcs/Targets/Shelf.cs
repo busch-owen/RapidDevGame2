@@ -27,7 +27,8 @@ public class Shelf : StoreObject
     private void Start()
     {
         var itemToSet = Random.Range(0, possibleItems.Count);
-        AssignedItem = possibleItems[itemToSet];
+        if(possibleItems.Count < 0)
+            AssignedItem = possibleItems[itemToSet];
     }
     
     private void TargetChange()

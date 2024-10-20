@@ -21,7 +21,7 @@ public class MousePositionHandler : MonoBehaviour
 
     public StoreObject CheckForObject()
     {
-        var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(_mousePos), _camera.transform.forward, Mathf.Infinity , _objectLayer);
+        var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(_mousePos), _camera.transform.forward, Mathf.Infinity, _objectLayer);
         if (!hit) return null;
         var storeObject = hit.transform.GetComponent<StoreObject>();
         return storeObject;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6987936391734353315}
   - component: {fileID: 4654432132317286033}
   - component: {fileID: 3806925689704413119}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ShelfTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6272680078011884236}
   - component: {fileID: 1436070266651726057}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ClearanceCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 4286463606481808625}
   - component: {fileID: 3557907577244428869}
   - component: {fileID: 7179263212853317641}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ShelfObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
