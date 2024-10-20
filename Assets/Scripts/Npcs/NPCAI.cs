@@ -13,15 +13,17 @@ public class NPCAI : MonoBehaviour
 
     public Transform target;
 
-    public Transform[] targets;
+    public Shelf[] Shelves;
 
-    public List<ItemTypeSo> items;
+    public List<ItemTypeSo> items = new();
 
-    private int itemsCollected;
+    private List<ItemTypeSo> itemsCollected = new();
+
+    private CircleCollider2D _collider2D;
 
     [SerializeField]private TextIndex _textIndex;
 
-    public Transform checkOut;
+    public Register[] Registers;
 
     public Transform exit;
 
@@ -31,81 +33,119 @@ public class NPCAI : MonoBehaviour
 
     public string  notFoundText;
 
+    private bool isExiting;
+
     [SerializeField] private int timeToExit;
 
     [SerializeField] private int timeToExitFromCheckOut;
+
+    [SerializeField] private float _timeToMove = 2.0f;
     
     [field: SerializeField] public bool hasFoundItems  { get; private set; }
     private int randomTarget;
     private int lastRandom;
+
+    private bool isTalking;
+
+    private ObjectPlacer _objectPlacer;
     
     
     // Start is called before the first frame update
     void Start()
     {
+        AssignShelves();
+        AssignRegisters();
+        _collider2D = GetComponent<CircleCollider2D>();
+        target = FindFirstObjectByType<Shelf>().transform;
+        exit = FindFirstObjectByType<Exit>().transform;
         Invoke("Exit",timeToExit);
-        checkOut = FindFirstObjectByType<Register>().transform;
         Agent = GetComponent<NavMeshAgent>();
         _textIndex = GetComponentInChildren<TextIndex>();
+        Agent.updateRotation = false;
+        Agent.SetDestination(target.position);
+        _textIndex.TextFinished += ChooseTarget;
+
         if (target == null)
         {
-            Agent.updateRotation = false;
             ChooseTarget();
         }
     }
 
     private void Exit()
     {
-        SetTarget(exit);
+        isExiting = true;
+        Destroy(this.gameObject);
+        
     }
 
-    private void OnTriggerEnter2D(Collider2D other)// figure out state machines
+    private bool ArrivedAtTarget()
     {
-        var shelf = other.GetComponent<Shelf>();
-        if (shelf)
+        if (Vector2.Distance(transform.position, Agent.destination) <= 0.25f)
         {
-            foreach (var itemType in items)
-            {
-                if (itemType == shelf.AssignedItem)// need to figure out removing from list so that it doesn't go for the same again.
-                {
-                    StartCoroutine(_textIndex.TextVisible(foundText));
-                    _textIndex.EnableText();
-                    itemsCollected++;
-                    SetTarget(shelf.transform);// set to check out when all items found.
-                    //set has found items to true when all found
-                    break;
-                }
-                else
-                {
-                    StartCoroutine(_textIndex.TextVisible(notFoundText));
-                    _textIndex.EnableText();
-                }
-            }
-
-            if (itemsCollected >= items.Count )
-            {
-                hasFoundItems = true;
-                SetTarget(checkOut);
-            }
+            return true;
         }
 
-        if (other.GetComponent<Register>())
+        return false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (itemsCollected.Count >= items.Count && !hasFoundItems)
         {
-            checkOutReached = true;
-            Invoke("Exit", timeToExitFromCheckOut);
+            target = null;
+            Invoke("FoundItems",2.0f);
+        }
+        else
+        {
+            ShelfCheck();
         }
     }
+
+    private void FoundItems()
+    {
+        hasFoundItems = true;
+        randomTarget = Random.Range(0, Registers.Length);
+        Agent.SetDestination(Registers[randomTarget].transform.position);
+    }
+    
+
+    private void ShelfCheck()
+    {
+        if (!ArrivedAtTarget() || hasFoundItems) return;
+        
+        var shelf = target.GetComponent<Shelf>();
+        target = null;
+
+        foreach (ItemTypeSo item in items)
+        {
+            if(shelf.AssignedItem != item) continue;
+            _textIndex.StopAllCoroutines();
+            _textIndex.EnableText();
+            StartCoroutine(_textIndex.TextVisible(foundText));
+            target = null;
+            Invoke(nameof(ChooseTarget), 2f);
+            itemsCollected.Add(item);
+            return;
+        }
+        _textIndex.EnableText();
+        _textIndex.StopAllCoroutines();
+        target = null;
+        Invoke(nameof(ChooseTarget), 2f);
+        StartCoroutine(_textIndex.TextVisible(notFoundText));
+    }
+    
+    
 
     public void ChooseTarget()
     {
         if (!hasFoundItems)
         {
             lastRandom = randomTarget;
-            randomTarget = Random.Range(0, targets.Length);
+            randomTarget = Random.Range(0, Shelves.Length);
 
             if (lastRandom != randomTarget)
             {
-                target = targets[randomTarget];
+                target = Shelves[randomTarget].transform;
                 Agent.SetDestination(target.position);
             }
             else
@@ -115,13 +155,15 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    public void SetTarget(Transform Target)
+    public void AssignShelves()
     {
-        Agent.SetDestination(Target.position);
-    }
-}
+        Shelves = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
 
-public enum NpcType
-{
-    Smelly,Karen,HighRoller,Regular,Child
+        //shelves.Add(shelf);
+    }
+
+    public void AssignRegisters()
+    {
+        Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
+    }
 }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: GTA5
   m_EditorClassIdentifier: 
+  <Cost>k__BackingField: 60

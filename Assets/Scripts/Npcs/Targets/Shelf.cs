@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Shelf : StoreObject
 {
-
     private NPCAI target;
     public float timeToNextTarget;
+    
     [field: SerializeField] public ItemTypeSo AssignedItem { get; private set; }
+
+    [SerializeField] public List<ItemTypeSo> possibleItems = new List<ItemTypeSo>();
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,7 +24,12 @@ public class Shelf : StoreObject
         }
     }
 
-
+    private void Start()
+    {
+        var itemToSet = Random.Range(0, possibleItems.Count);
+        AssignedItem = possibleItems[itemToSet];
+    }
+    
     private void TargetChange()
     {
         target.ChooseTarget();

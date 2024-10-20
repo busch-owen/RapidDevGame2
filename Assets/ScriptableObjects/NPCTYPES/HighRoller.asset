@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11a03c7396778a438f78d7d3d1479fa, type: 3}
+  m_Name: HighRoller
+  m_EditorClassIdentifier: 
+  <PositiveText>k__BackingField:
+  - This right here is It!
+  - I'll take your entire stock
+  <NegativeText>k__BackingField:
+  - You guys don't have it!?
+  - Your loss buddy
+  <OpeningText>k__BackingField:
+  - I'm looking for your most expensive item
+  - Cost don't matter Show me the goodstuff baby!
+  <Items>k__BackingField:
+  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
+  - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
+  <Speed>k__BackingField: 3
+  <Budget>k__BackingField: 100
+  <Color>k__BackingField: {r: 0.4693546, g: 0, b: 0.6037736, a: 1}
+  <ShelvesTillExit>k__BackingField: 4

@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4183054101255972836}
   - component: {fileID: 49176416472323473}
   - component: {fileID: 6987936391734353315}
-  m_Layer: 0
+  - component: {fileID: 4654432132317286033}
+  - component: {fileID: 3806925689704413119}
+  m_Layer: 7
   m_Name: ShelfTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,6 +135,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &4654432132317286033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841004688254586353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8fab0c841f1194383dc03bffb01f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Surface: {fileID: 0}
+--- !u!114 &3806925689704413119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841004688254586353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1418625008797625428
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6272680078011884236}
   - component: {fileID: 1436070266651726057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ClearanceCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +286,7 @@ GameObject:
   - component: {fileID: 4286463606481808625}
   - component: {fileID: 3557907577244428869}
   - component: {fileID: 7179263212853317641}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShelfObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,3 +353,7 @@ MonoBehaviour:
   objectCollider: {fileID: 6987936391734353315}
   timeToNextTarget: 2
   <AssignedItem>k__BackingField: {fileID: 0}
+  possibleItems:
+  - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
+  - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
+  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
