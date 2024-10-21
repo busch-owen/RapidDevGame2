@@ -19,11 +19,19 @@ public class MousePositionHandler : MonoBehaviour
         _mousePos = pos;
     }
 
-    public StoreObject CheckForObject()
+    public StoreObject CheckForObjectMove()
     {
         var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(_mousePos), _camera.transform.forward, Mathf.Infinity, _objectLayer);
         if (!hit) return null;
         var storeObject = hit.transform.GetComponent<StoreObject>();
         return storeObject;
+    }
+    
+    public StoreObject CheckForObjectDelete()
+    {
+        var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(_mousePos), _camera.transform.forward, Mathf.Infinity, _objectLayer);
+        if (!hit) return null;
+        var storeObjectDelete = hit.transform.GetComponent<StoreObject>();
+        return storeObjectDelete;
     }
 }

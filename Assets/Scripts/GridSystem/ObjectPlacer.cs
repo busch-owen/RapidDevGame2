@@ -52,7 +52,7 @@ public class ObjectPlacer : MonoBehaviour
     {
         if(!_assignedObject || !_pointer.CursorOnGrid || _cursorOnUI || !_placeModeEnabled) return;
         var storeObject = _assignedObject.ObjectToPlace;
-        if (!_displayObject.GetComponent<StoreObject>().Placeable)
+        if (_displayObject != null && !_displayObject.GetComponent<StoreObject>().Placeable)
         {
             return;
         }
