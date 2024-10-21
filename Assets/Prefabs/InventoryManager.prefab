@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7477158324437955092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 792445101448067774}
+  - component: {fileID: 4742882623306394273}
+  - component: {fileID: 371268945174434739}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &792445101448067774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477158324437955092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.2777078, y: 0.7752228, z: 0.027699118}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4742882623306394273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477158324437955092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3e7074c35cb344ba4b4fda1476f6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 371268945174434739}
+  allItems:
+  - {fileID: 11400000, guid: a4871059085a15b46ba3d4c74405ba5b, type: 2}
+  - {fileID: 11400000, guid: d87a685a431064942bd0cbb286945984, type: 2}
+--- !u!114 &371268945174434739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477158324437955092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169a15ce196cd7446b6d81934174c9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSelector: {fileID: 4742882623306394273}
+  itemButtonPrefab: {fileID: 3909988561899452631, guid: 253c288c42bae424fa3b369fec0ab22e, type: 3}
+  itemButtonPanel: {fileID: 0}
+  itemButtonPanelGameObject: {fileID: 0}
+  txtName: {fileID: 0}
+  txtDescription: {fileID: 0}
+  txtCategory: {fileID: 0}
+  itemIcon: {fileID: 0}

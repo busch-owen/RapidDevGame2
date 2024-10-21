@@ -31,42 +31,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (canMove)
         {
-
-           
-            
             horizontal = context.x;
             vertical = context.y;
-
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if (camTransform.position.x >= camRange)
-        {
-            horizontal = -1;
-            
-        }
-        if (!isMoving)
-        {
-            horizontal = 0;
-            vertical = 0;
-        }
-        if (camTransform.position.y >= camRange)
-        {
-            vertical = -1;
-        }
-        if (camTransform.position.x <= -camRange)
-        {
-            horizontal = 1;
-        }
-        if (camTransform.position.y <= -camRange)
-        {
-            vertical = 1;
-        }
+        var clampedX = Mathf.Clamp(rB.position.x, -camRange, camRange);
+        var clampedY = Mathf.Clamp(rB.position.y, -camRange, camRange);
         
         rB.velocity = new Vector2(horizontal * speed, rB.velocity.y);
         rB.velocity = new Vector2(rB.velocity.x, vertical * speed);
 
+        rB.position = new Vector2(clampedX, clampedY);
     }
 }
