@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ItemSelector : MonoBehaviour
 {
     
-    [SerializeField] private InventoryContainter[] allItems;
+    [SerializeField] private List<InventoryContainter> allItems;
     
     public ItemSelectorUI UI;
     public event Action<InventoryContainter> OnItemLoad;

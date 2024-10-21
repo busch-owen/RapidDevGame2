@@ -1029,6 +1029,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4742882623306394273, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: 'allItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 915db3d375cd5874dbf3661a8eadc432, type: 2}
+    - target: {fileID: 4742882623306394273, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: allItems.Array.data[0].<ItemName>k__BackingField
+      value: CraftGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742882623306394273, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: allItems.Array.data[0].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
+    - target: {fileID: 4742882623306394273, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: allItems.Array.data[1].<ItemName>k__BackingField
+      value: FortNight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742882623306394273, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: allItems.Array.data[1].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
     - target: {fileID: 7477158324437955092, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
       propertyPath: m_Name
       value: InventoryManager
