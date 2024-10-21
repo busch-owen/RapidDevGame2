@@ -12,7 +12,7 @@ public class Shelf : StoreObject
     
     [field: SerializeField] public ItemTypeSo AssignedItem { get; private set; }
 
-    [SerializeField] public List<ItemTypeSo> possibleItems = new List<ItemTypeSo>();
+    [SerializeField] public List<ItemTypeSo> possibleItems = new();
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,8 +24,9 @@ public class Shelf : StoreObject
         }
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         var itemToSet = Random.Range(0, possibleItems.Count);
         if(possibleItems.Count < 0)
             AssignedItem = possibleItems[itemToSet];

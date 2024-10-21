@@ -10,15 +10,15 @@ public class StoreObject : MonoBehaviour
 
     private Transform _gridCursor;
 
-    private SpriteRenderer _renderer;
+    [field: SerializeField]public SpriteRenderer Renderer { get; set; }
 
     [SerializeField] private BoxCollider2D objectCollider;
     
     public StoreObjectSO AssignedObject { get; private set; }
 
-    private void Start()
+    public virtual void Start()
     {
-        _renderer = GetComponentInChildren<SpriteRenderer>();
+        Renderer = GetComponentInChildren<SpriteRenderer>();
         
         objectCollider.isTrigger = ObjectPlaced switch
         {
@@ -46,20 +46,14 @@ public class StoreObject : MonoBehaviour
     public void OnTriggerStay2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        if (_renderer != null)
-        {
-            _renderer.color = Color.red;
-        }
+        Renderer.color = Color.red;
         Placeable = false;
     }
     
     public void OnTriggerExit2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        if (_renderer != null)
-        {
-            _renderer.color = Color.white;
-        }
+        Renderer.color = Color.white;
         Placeable = true;
     }
 }

@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7251834609871768655}
   - component: {fileID: 3030727060887356180}
-  - component: {fileID: 6710475481783512424}
+  - component: {fileID: 3757094554082435455}
   m_Layer: 0
   m_Name: RegisterPlaceModeObject
   m_TagString: Untagged
@@ -194,7 +194,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6710475481783512424
+--- !u!114 &3757094554082435455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,11 +203,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 943665201147448517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f246d1984cd1c442a7ce9c6c913c97d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d5514a569eb01e4a819748db2602804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <ObjectPlaced>k__BackingField: 0
   <RotationPoint>k__BackingField: {fileID: 5422035175426611283}
+  <Renderer>k__BackingField: {fileID: 0}
   objectCollider: {fileID: 3697782516759958322}
 --- !u!1 &2735105834716976975
 GameObject:

@@ -12,6 +12,7 @@ public class NpcObstacle : MonoBehaviour
     void Start()
     {
         Surface = FindFirstObjectByType<NavMeshSurface>();
+        if(Surface == null ) return;
         Surface.BuildNavMesh();
     }
 
