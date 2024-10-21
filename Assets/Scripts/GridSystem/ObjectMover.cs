@@ -29,7 +29,7 @@ public class ObjectMover : MonoBehaviour
 
     public void ToggleMoveMode(bool newState)
     {
-        _deleter.ToggleDeleteMode();
+        _deleter.DeleteModeEnabled = false;
         MoveModeEnabled = newState;
     }
 }

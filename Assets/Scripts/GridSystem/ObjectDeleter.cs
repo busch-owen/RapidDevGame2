@@ -25,13 +25,6 @@ public class ObjectDeleter : MonoBehaviour
 
     public void ToggleDeleteMode()
     {
-        if (DeleteModeEnabled)
-        {
-            DeleteModeEnabled = false;
-        }
-        else
-        {
-            DeleteModeEnabled = true;
-        }
+        DeleteModeEnabled = !DeleteModeEnabled;
     }
 }
