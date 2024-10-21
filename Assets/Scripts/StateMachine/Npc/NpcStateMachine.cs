@@ -201,10 +201,10 @@ public class NpcStateMachine : BaseStateMachine
             if (Shoplifter)
             {
                 ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                MoneySpent += shelf.AssignedItem.Cost;// spend the money
+                MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
                 ShelvesBeforeLeave--;
             }
-            else if (shelf.AssignedItem != item||Budget < shelf.AssignedItem.Cost)
+            else if (shelf.AssignedItem.ItemType != item||Budget < shelf.AssignedItem.ItemType.Cost)
             {
                 ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
                 return;
@@ -212,7 +212,7 @@ public class NpcStateMachine : BaseStateMachine
             else
             {
                 ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                MoneySpent += shelf.AssignedItem.Cost;// spend the money
+                MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
                 FoundItems = true;
                 return;
             }

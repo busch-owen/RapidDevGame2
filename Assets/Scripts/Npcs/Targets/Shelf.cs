@@ -1,39 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Shelf : StoreObject
 {
-    private NPCAI target;
-    public float timeToNextTarget;
+    [field: SerializeField] public InventoryContainter AssignedItem { get; private set; }
     
-    [field: SerializeField] public ItemTypeSo AssignedItem { get; private set; }
-
-    [SerializeField] public List<ItemTypeSo> possibleItems = new();
-
-    public void OnTriggerEnter2D(Collider2D other)
+    public void StockShelf(int id, ItemSelector selector)
     {
-        target = other.GetComponent<NPCAI>();
-        if (target)
+        AssignedItem = selector.AllItems.Find(container => container.GameID == id);
+        if (AssignedObject.StockAmount < AssignedItem.ItemCount)
         {
-            Debug.Log(target);
-            Invoke("TargetChange", timeToNextTarget);
+            AssignedItem.SetCount(AssignedObject.StockAmount);
+        }
+        else
+        {
+            AssignedItem.SetCount(AssignedItem.ItemCount);
         }
     }
 
-    public override void Start()
+    public void UnstockShelf()
     {
-        base.Start();
-        var itemToSet = Random.Range(0, possibleItems.Count);
-        if(possibleItems.Count < 0)
-            AssignedItem = possibleItems[itemToSet];
-    }
-    
-    private void TargetChange()
-    {
-        target.ChooseTarget();
+        AssignedItem = null;
     }
 }

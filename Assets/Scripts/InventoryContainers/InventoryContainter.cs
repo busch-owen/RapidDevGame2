@@ -9,6 +9,11 @@ public class InventoryContainter
     [field: SerializeField] public ItemTypeSo ItemType { get; private set; }
     [field: SerializeField] public int ItemCount { get; private set; }
 
+    public void SetCount(int amt)
+    {
+        ItemCount = amt;
+    }
+    
     public void ChangeCount(int amt)
     {
         ItemCount += amt;

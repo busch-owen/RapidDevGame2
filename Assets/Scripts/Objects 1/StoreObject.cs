@@ -14,7 +14,7 @@ public class StoreObject : MonoBehaviour
 
     [SerializeField] private BoxCollider2D objectCollider;
     
-    public StoreObjectSO AssignedObject { get; private set; }
+    [field: SerializeField] public StoreObjectSO AssignedObject { get; private set; }
 
     public virtual void Start()
     {

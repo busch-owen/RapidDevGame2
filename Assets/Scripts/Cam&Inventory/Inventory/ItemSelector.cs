@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class ItemSelector : MonoBehaviour
 {
     
-    [SerializeField] private List<InventoryContainter> allItems;
+    [field: SerializeField] public List<InventoryContainter> AllItems { get; private set; }
     
     public ItemSelectorUI UI;
     public event Action<InventoryContainter> OnItemLoad;
@@ -20,7 +21,7 @@ public class ItemSelector : MonoBehaviour
     public void LoadItems()
     {
         
-        foreach (var itemData in allItems)
+        foreach (var itemData in AllItems)
         {
             OnItemLoad?.Invoke(itemData);
         }
@@ -34,7 +35,7 @@ public class ItemSelector : MonoBehaviour
             i++;
             
         }
-        foreach (var itemData in allItems)
+        foreach (var itemData in AllItems)
         {
             OnItemLoad?.Invoke(itemData);
         }
