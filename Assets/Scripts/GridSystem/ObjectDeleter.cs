@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NavMeshPlus.Components;
 using UnityEngine;
 
 public class ObjectDeleter : MonoBehaviour
@@ -10,16 +11,20 @@ public class ObjectDeleter : MonoBehaviour
 
     private ObjectMover _objectMover;
 
+    private NavMeshSurface _surface;
+
     private void Start()
     {
         _positionHandler = GetComponent<MousePositionHandler>();
         _objectMover = FindFirstObjectByType<ObjectMover>();
+        _surface = FindFirstObjectByType<NavMeshSurface>();
     }
 
     public void CheckForObjectToDelete()
     {
         if (_positionHandler.CheckForObjectDelete() == null || !DeleteModeEnabled) return;
         var tempObject = _positionHandler.CheckForObjectDelete();
+        _surface.BuildNavMesh();
         Destroy(tempObject.gameObject);
     }
 

@@ -1,4 +1,5 @@
 using System;
+using NavMeshPlus.Components;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,11 +19,14 @@ public class ObjectPlacer : MonoBehaviour
 
     private bool _placeMultiple = true;
 
+    private NavMeshSurface _surface; 
+
     private void Start()
     {
         _picker = FindFirstObjectByType<ObjectPicker>();
         _pointer = FindFirstObjectByType<GridPointer>();
         _cursorOnUI = EventSystem.current.IsPointerOverGameObject();
+        _surface = FindFirstObjectByType<NavMeshSurface>();
     }
 
     public void AssignObject(StoreObjectSO obj, GameObject displayObject)
@@ -59,6 +63,7 @@ public class ObjectPlacer : MonoBehaviour
         var newObject = Instantiate(storeObject, _pointer.CurrentCellPos, Quaternion.identity);
         newObject.GetComponent<StoreObject>().RotationPoint.rotation = _displayObject.GetComponent<StoreObject>().RotationPoint.rotation;
         newObject.GetComponent<StoreObject>().AssignSO(_assignedObject);
+        _surface.BuildNavMesh();
         ObjectPlaced?.Invoke();
         if (!_placeMultiple)
         {

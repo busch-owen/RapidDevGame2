@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ObjectPlaced>k__BackingField: 1
   <RotationPoint>k__BackingField: {fileID: 5422035175426611283}
+  <Renderer>k__BackingField: {fileID: 0}
   objectCollider: {fileID: 3697782516759958322}
 --- !u!1 &3065098467737101307
 GameObject:
@@ -121,6 +122,8 @@ GameObject:
   - component: {fileID: 815168326067778879}
   - component: {fileID: 1970697473409424624}
   - component: {fileID: 3697782516759958322}
+  - component: {fileID: 8856470049064522585}
+  - component: {fileID: 1599172680174364261}
   m_Layer: 0
   m_Name: ResgisterTemp
   m_TagString: Untagged
@@ -243,6 +246,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &8856470049064522585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442998340492479751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8fab0c841f1194383dc03bffb01f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Surface: {fileID: 0}
+--- !u!114 &1599172680174364261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442998340492479751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6642968477150537815
 GameObject:
   m_ObjectHideFlags: 0
