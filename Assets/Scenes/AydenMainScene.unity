@@ -578,29 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcacaaf236edb77439ec0b886f1b2cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &328044212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328044209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d89a4f237adfc45a0a78598185385a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 6502881207188248044, guid: c05595fc49965a649867f91971add0e7, type: 3}
-  entrance: {fileID: 0}
-  <Entrances>k__BackingField: 0
-  <Cars>k__BackingField:
-  - {fileID: 814765288}
-  - {fileID: 2030749173}
-  - {fileID: 1894088402}
-  - {fileID: 1982655627}
-  - {fileID: 1635586920}
-  - {fileID: 261172175}
-  - {fileID: 729564657}
 --- !u!1 &470864721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1743,7 @@ GameObject:
   - component: {fileID: 675357481}
   - component: {fileID: 675357480}
   - component: {fileID: 675357479}
+  - component: {fileID: 675357482}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -1837,9 +1815,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 328044212}
+      - m_Target: {fileID: 675357482}
         m_TargetAssemblyTypeName: NpcSpawner, Assembly-CSharp
-        m_MethodName: SpawnNpc
+        m_MethodName: StartDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1887,6 +1865,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675357477}
   m_CullTransparentMesh: 1
+--- !u!114 &675357482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675357477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d89a4f237adfc45a0a78598185385a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: {fileID: 6502881207188248044, guid: c05595fc49965a649867f91971add0e7, type: 3}
+  time: 10
+  entrance: {fileID: 0}
+  <Entrances>k__BackingField: 0
+  <Cars>k__BackingField:
+  - {fileID: 814765288}
+  - {fileID: 2030749173}
+  - {fileID: 1894088402}
+  - {fileID: 1982655627}
+  - {fileID: 1635586920}
+  - {fileID: 261172175}
+  - {fileID: 729564657}
+  <Waves>k__BackingField: 000000000000000000000000000000000000000000000000
+  <AmountOfNpcs>k__BackingField: 000000000000000000000000000000000000000000000000
 --- !u!1 &729564657
 GameObject:
   m_ObjectHideFlags: 0
@@ -10947,10 +10951,7 @@ PrefabInstance:
     - {fileID: 6274559604180072126, guid: ccc7d780082d168499a1d6908e9a091c, type: 3}
     - {fileID: 3567108103697384502, guid: ccc7d780082d168499a1d6908e9a091c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7849607330932464023, guid: ccc7d780082d168499a1d6908e9a091c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 328044212}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc7d780082d168499a1d6908e9a091c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
