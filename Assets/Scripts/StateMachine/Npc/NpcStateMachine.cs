@@ -69,6 +69,8 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public int MoneySpent { get; private set; }
     
+    [field:SerializeField] public bool Shoplifter { get; private set; }
+    
     
 
     
@@ -83,6 +85,7 @@ public class NpcStateMachine : BaseStateMachine
         ShelvesBeforeLeave = NpcType.ShelvesTillExit;
         SpriteRenderer.color = NpcType.Color;
         MoneyManager = FindFirstObjectByType<MoneyManager>();
+        Shoplifter = NpcType.ShopLifter;
     }
 
     private void Awake()
@@ -108,7 +111,7 @@ public class NpcStateMachine : BaseStateMachine
         Destroy(this.gameObject);
     }
 
-    public void IntroText()
+    public void IntroText()// randomly select an option for intro text
     {
         LastRandomMessage = RandomMessage;
         RandomMessage = Random.Range(0, NpcType.OpeningText.Count);
@@ -117,21 +120,21 @@ public class NpcStateMachine : BaseStateMachine
         TextIndex.StartCoroutine(TextIndex.TextVisible(OpeningLine));
     }
 
-    private void ChooseNpc()
+    private void ChooseNpc()// randomly select what npc it will be
     {
         int _randomNpc = Random.Range(0, NpcTypeSoOptions.Count);
 
         NpcType = NpcTypeSoOptions[_randomNpc];
     }
 
-    public void StartText()
+    public void StartText()// display an opening piece of dialog
     {
         IntroText();
         //TextIndex.StopAllCoroutines();
         TextIndex.EnableText();
     }
 
-    public void ChooseTarget()
+    public void ChooseTarget()// set the npc target to a random shelf
     {
         LastRandom = RandomTarget;
         RandomTarget = Random.Range(0, Shelves.Count);
@@ -147,7 +150,7 @@ public class NpcStateMachine : BaseStateMachine
         
     }
 
-    public void ChoosePositiveDialog()
+    public void ChoosePositiveDialog()// randomize the positive dialog to be displayed
     {
         LastRandomMessage = RandomMessage;
         RandomMessage = Random.Range(0, NpcType.PositiveText.Count);
@@ -162,7 +165,7 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
 
-    public void ChooseNegativeDialog()
+    public void ChooseNegativeDialog()//randomize the negative dialog to be displayed
     {
         LastRandomMessage = RandomMessage;
         RandomMessage = Random.Range(0, NpcType.NegativeText.Count);
@@ -177,7 +180,7 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
     
-    public bool ArrivedAtTarget()
+    public bool ArrivedAtTarget()//General distance check between target and destination 
     {
         if (Vector2.Distance(transform.position, Agent.destination) <= 0.25f)
         {
@@ -188,29 +191,36 @@ public class NpcStateMachine : BaseStateMachine
     }
     
     
-    public void ShelfCheck()
+    public void ShelfCheck()// check the shelf per item in the npc's list to see if the type matches and it is within their budget
     {
         var shelf = Target.GetComponent<Shelf>();
 
         foreach (ItemTypeSo item in Items)
         {
-            if (shelf.AssignedItem != item||Budget < shelf.AssignedItem.Cost)
+
+            if (Shoplifter)
             {
+                ItemsCollected.Add(item);// add the item to the npcs list of collected items
+                MoneySpent += shelf.AssignedItem.Cost;// spend the money
                 ShelvesBeforeLeave--;
+            }
+            else if (shelf.AssignedItem != item||Budget < shelf.AssignedItem.Cost)
+            {
+                ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
                 return;
             }
             else
             {
-                ItemsCollected.Add(item);
-                MoneySpent += shelf.AssignedItem.Cost;
+                ItemsCollected.Add(item);// add the item to the npcs list of collected items
+                MoneySpent += shelf.AssignedItem.Cost;// spend the money
                 FoundItems = true;
                 return;
             }
         }
-        Shelves.Remove(shelf);
+        Shelves.Remove(shelf);// remove the shelf from the list so the npc does not try to go to it again
         FoundItems = false;
     }
-    public void DistanceCheck()
+    public void DistanceCheck()// check the distance between shelfs and the npc, if within distance switch state
     {
         if (ArrivedAtTarget())
         {
@@ -219,7 +229,7 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
 
-    public void ChangeTextPositive()
+    public void ChangeTextPositive()// show a positive message above npc
     {
         ChoosePositiveDialog();
         TextIndex.StopAllCoroutines();
@@ -227,7 +237,7 @@ public class NpcStateMachine : BaseStateMachine
         TextIndex.StartCoroutine(TextIndex.TextVisible(FoundText));
     }
 
-    public void ChangeTextNegative()
+    public void ChangeTextNegative()// show a negative message above npc
     {
         ChooseNegativeDialog();
         TextIndex.StopAllCoroutines();
@@ -237,7 +247,7 @@ public class NpcStateMachine : BaseStateMachine
 
     // Update is called once per frame
 
-    public void ChangeState(NpcStateName stateName)
+    public void ChangeState(NpcStateName stateName)// outline the case for each state change 
     {
         switch (stateName)
         {
@@ -274,7 +284,7 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
     
-    public void AssignShelves()
+    public void AssignShelves()// find all of the shelves in the scene and add them to a list
     {
         var tempList = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
         foreach (var shelf in tempList)
@@ -285,7 +295,7 @@ public class NpcStateMachine : BaseStateMachine
         //shelves.Add(shelf);
     }
 
-    public void AssignRegisters()
+    public void AssignRegisters()// find all of the registers in the scene and add them to the array
     {
         Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
     }

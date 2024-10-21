@@ -28,6 +28,11 @@ public class MoneyManager : MonoBehaviour
     {
         Profit += money;
     }
+    
+    public void DecrementProfit(int money)
+    {
+        Profit -= money;
+    }
 
     public void DecrementQuota(int money)
     {

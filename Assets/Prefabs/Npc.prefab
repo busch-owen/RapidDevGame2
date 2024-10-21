@@ -552,6 +552,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c4f6f21535057740822a3fd8b7f2e4d, type: 2}
   - {fileID: 11400000, guid: b689f7db56b04b04cbd473f8c417e15d, type: 2}
   - {fileID: 11400000, guid: a80bdec7607d3e2488239ab95230190b, type: 2}
+  - {fileID: 11400000, guid: 17843edd3eb8c9e4db3a1e78aac573ab, type: 2}
   <Shelves>k__BackingField: []
   <Registers>k__BackingField: []
   <Agent>k__BackingField: {fileID: 4806395704206272866}
@@ -564,3 +565,9 @@ MonoBehaviour:
   <Exit>k__BackingField: {fileID: 0}
   <NpcType>k__BackingField: {fileID: 0}
   <Budget>k__BackingField: 0
+  <SpriteRenderer>k__BackingField: {fileID: 0}
+  <ShelvesBeforeLeave>k__BackingField: 0
+  <Reputation>k__BackingField: 0
+  <MoneyManager>k__BackingField: {fileID: 0}
+  <MoneySpent>k__BackingField: 0
+  <Shoplifter>k__BackingField: 0

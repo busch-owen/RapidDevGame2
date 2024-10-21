@@ -34,15 +34,15 @@ public class NpcSpawner : MonoBehaviour
 
     public void SpawnNpc()
     {
-        Entrances = Random.Range(0, Cars.Count);
+        Entrances = Random.Range(0, Cars.Count);// choose cars to spawn npcs at
 
         entrance = Cars[Entrances].transform;
-        var spawnedNpc = Instantiate(npc, entrance.transform.position, quaternion.identity);
+        var spawnedNpc = Instantiate(npc, entrance.transform.position, quaternion.identity);// instantiate the npcs at said cars
     }
 
     public void StartDay()
     {
-        StartCoroutine("RandomizeNpcs");
+        StartCoroutine("RandomizeNpcs");// randomize the number of npcs which when finished will spawn the first wave
     }
 
     public void EndDay()
@@ -53,37 +53,37 @@ public class NpcSpawner : MonoBehaviour
 
     public IEnumerator NpcWaveSpawn()
     {
-        foreach (int amtofWaves in Waves)
+        foreach (int amtofWaves in Waves)// for each wave of npcs spawn the amount of npcs specified then wait until it is time for the next wave to do it again
         {
             
             foreach (int amtofNpcs in AmountOfNpcs)
             {
                 SpawnNpc();
             }
-            Invoke("Randomize", time -1);
+            Invoke("Randomize", time -1);// makes npcs get randomized before the next wave
             yield return _timeToNextWave;
         }
     }
 
-    private void Randomize()
+    private void Randomize()// at the end of every wave re randomize the number of npcs
     {
         StartCoroutine("RandomizeNpcs");
     }
 
     private IEnumerator RandomizeNpcs()
     {
-        _npcsToSpawn = Random.Range(MinNpcs, MaxNpcs);
-        for (int i = 0; AmountOfNpcs.Count <= _npcsToSpawn; i++)
+        _npcsToSpawn = Random.Range(MinNpcs, MaxNpcs);// pick the amount of npcs to add
+        for (int i = 0; AmountOfNpcs.Count <= _npcsToSpawn; i++)// add to a list of npcs so that the foreach loop has data to pull from
         {
             AmountOfNpcs.Add(i);
         }
 
-        if (!_running)
+        if (!_running)// if the first time starting auto run the next wave
         {
             _running = true;
             yield return StartCoroutine("NpcWaveSpawn");
         }
-        else
+        else// otherwise do nothing
         {
             yield return null;
         }
