@@ -47,7 +47,6 @@ public class ItemSelector : MonoBehaviour
         _selectedItem = itemData;
 
         OnItemSelected?.Invoke(_selectedItem);
-
     }
 
     // Start is called before the first frame update

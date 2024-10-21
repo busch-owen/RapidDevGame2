@@ -30,7 +30,6 @@ public class ItemSelectorUI : MonoBehaviour
     }
     private void PopulateItemButton(InventoryContainter itemData)
     {
-        
         var newButton = Instantiate(itemButtonPrefab, itemButtonPanel);
         newButton.SetButton(itemData);
 
@@ -43,9 +42,9 @@ public class ItemSelectorUI : MonoBehaviour
     }
     private void PopulateItemSelection(InventoryContainter itemData)
     {
-        txtName.text = itemData.ItemType.itemName;
-        txtDescription.text = itemData.ItemType.itemDescription;
-        txtCategory.text = itemData.ItemType.itemCategory;
-        itemIcon.sprite = itemData.ItemType.bigIcon;
+        txtName.text = itemData.ItemType.ItemName;
+        txtDescription.text = itemData.ItemType.ItemDescription;
+        txtCategory.text = itemData.ItemType.ItemCategory;
+        itemIcon.sprite = itemData.ItemType.BigIcon;
     }
 }

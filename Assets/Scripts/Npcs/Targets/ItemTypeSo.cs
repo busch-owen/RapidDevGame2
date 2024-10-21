@@ -12,10 +12,9 @@ public enum ProductType
 public class ItemTypeSo : ScriptableObject
 {
     [field: SerializeField] public int Cost { get; private set; }
-    [field: SerializeField] public string itemName { get; private set; }
-    [field: SerializeField] public string itemDescription { get; private set; }
-    [field: SerializeField] public string itemCategory { get; private set; }
-    [field: SerializeField] public int itemPrice { get; private set; }
-    [field: SerializeField] public Sprite bigIcon { get; private set; }
-    [field: SerializeField] public Sprite smallIcon { get; private set; }
+    [field: SerializeField] public string ItemName { get; private set; }
+    [field: SerializeField] public string ItemDescription { get; private set; }
+    [field: SerializeField] public string ItemCategory { get; private set; }
+    [field: SerializeField] public Sprite BigIcon { get; private set; }
+    [field: SerializeField] public Sprite SmallIcon { get; private set; }
 }

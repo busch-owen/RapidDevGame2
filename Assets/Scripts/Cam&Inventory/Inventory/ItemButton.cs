@@ -11,8 +11,8 @@ public class ItemButton : MonoBehaviour
 
     public void SetButton(InventoryContainter itemData)
     {
-        itemName.text = itemData.ItemType.itemName;
-        itemImage.sprite = itemData.ItemType.smallIcon;
+        itemName.text = itemData.ItemType.ItemName;
+        itemImage.sprite = itemData.ItemType.SmallIcon;
     }
 
 }
