@@ -18,6 +18,10 @@ public class NpcExitState : NPCBaseState
     {
         if (ArrivedAtExit())
         {
+            if (_stateMachine.Shoplifter)
+            {
+                _stateMachine.MoneyManager.DecrementProfit(_stateMachine.MoneySpent);
+            }
             _stateMachine.Destroy();
         }
     }
