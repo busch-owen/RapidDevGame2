@@ -6,13 +6,15 @@ using UnityEngine.Events;
 
 public class ItemSelector : MonoBehaviour
 {
+    
+    [SerializeField] private InventoryContainter[] allItems;
+    
     public ItemSelectorUI UI;
-    public event Action<ItemSO> OnItemLoad;
-    public event Action<ItemSO> OnItemSelected;
-    public event Action<ItemSO> OnItemChosen;
-    public List<ItemSO> allItems = new List<ItemSO>();
-    private ItemSO _selectedItem;
-    private ItemSO _chosenItem;
+    public event Action<InventoryContainter> OnItemLoad;
+    public event Action<InventoryContainter> OnItemSelected;
+    public event Action<InventoryContainter> OnItemChosen;
+    private InventoryContainter _selectedItem;
+    private InventoryContainter _chosenItem;
     int i = 0;
 
     public void LoadItems()
@@ -40,7 +42,7 @@ public class ItemSelector : MonoBehaviour
 
 
     //exec on item button press
-    public void SelectItem(ItemSO itemData)
+    public void SelectItem(InventoryContainter itemData)
     {
         _selectedItem = itemData;
 

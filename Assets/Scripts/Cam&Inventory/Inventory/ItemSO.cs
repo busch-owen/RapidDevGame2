@@ -11,5 +11,4 @@ public class ItemSO : ScriptableObject
     [SerializeField] public int itemPrice;
     [SerializeField] public Sprite bigIcon;
     [SerializeField] public Sprite smallIcon;
-
 }
