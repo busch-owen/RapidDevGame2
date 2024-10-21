@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlaceModeObject>k__BackingField: {fileID: 0}
   <ObjectToPlace>k__BackingField: {fileID: 0}
+  <StockAmount>k__BackingField: 15
   <ProductStorage>k__BackingField: 1
   <CompatibleProducts>k__BackingField: 01000000
   <MenuSprite>k__BackingField: {fileID: 0}

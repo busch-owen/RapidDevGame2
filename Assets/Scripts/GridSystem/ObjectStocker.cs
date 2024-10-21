@@ -41,7 +41,7 @@ public class ObjectStocker : MonoBehaviour
     public void CheckForShelfToStock()
     {
         if (!StockModeEnabled || _mouseOverUI) return;
-        if (_positionHandler.CheckForObjectToInteract().GetComponent<Shelf>() == null) return;
+        if (_positionHandler.CheckForObjectToInteract() == null) return;
         _currentShelf = _positionHandler.CheckForObjectToInteract().GetComponent<Shelf>();
         _interface?.gameObject.SetActive(true);
     }
