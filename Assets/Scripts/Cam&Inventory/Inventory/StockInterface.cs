@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class StockInterface : MonoBehaviour
 {
+    [SerializeField] private Transform layout;
     private void OnEnable()
     {
-        var buttons = GetComponentsInChildren<Button>();
+        var buttons = layout.GetComponentsInChildren<Button>();
         foreach (var button in buttons)
         {
             Destroy(button.gameObject);
