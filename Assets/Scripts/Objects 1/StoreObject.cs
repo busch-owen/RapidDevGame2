@@ -14,7 +14,7 @@ public class StoreObject : MonoBehaviour
 
     [SerializeField] private BoxCollider2D objectCollider;
     
-    public StoreObjectSO AssignedObject { get; private set; }
+    [field: SerializeField] public StoreObjectSO AssignedObject { get; private set; }
 
     public virtual void Start()
     {
@@ -53,7 +53,7 @@ public class StoreObject : MonoBehaviour
     public void OnTriggerExit2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        Renderer.color = Color.white;
+        Renderer.color = Color.green;
         Placeable = true;
     }
 }

@@ -118,7 +118,7 @@ public class NPCAI : MonoBehaviour
 
         foreach (ItemTypeSo item in items)
         {
-            if(shelf.AssignedItem != item) continue;
+            if(shelf.AssignedItem.ItemType != item) continue;
             _textIndex.StopAllCoroutines();
             _textIndex.EnableText();
             StartCoroutine(_textIndex.TextVisible(foundText));

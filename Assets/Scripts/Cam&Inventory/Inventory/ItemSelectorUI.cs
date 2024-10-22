@@ -28,9 +28,8 @@ public class ItemSelectorUI : MonoBehaviour
         itemSelector.OnItemLoad -= PopulateItemButton;
         itemSelector.OnItemSelected -= PopulateItemSelection;
     }
-    private void PopulateItemButton(ItemSO itemData)
+    private void PopulateItemButton(GameContainer itemData)
     {
-        
         var newButton = Instantiate(itemButtonPrefab, itemButtonPanel);
         newButton.SetButton(itemData);
 
@@ -41,12 +40,11 @@ public class ItemSelectorUI : MonoBehaviour
         } );//lambda function
 
     }
-    private void PopulateItemSelection(ItemSO itemData)
+    private void PopulateItemSelection(GameContainer itemData)
     {
-        txtName.text = itemData.itemName;
-        txtDescription.text = itemData.itemDescription;
-        txtCategory.text = itemData.itemCategory;
-        itemIcon.sprite = itemData.bigIcon;
+        txtName.text = itemData.ItemType.ItemName;
+        txtDescription.text = itemData.ItemType.ItemDescription;
+        txtCategory.text = itemData.ItemType.ItemCategory;
+        itemIcon.sprite = itemData.ItemType.BigIcon;
     }
-
 }

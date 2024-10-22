@@ -77,6 +77,7 @@ MonoBehaviour:
   <RotationPoint>k__BackingField: {fileID: 5422035175426611283}
   <Renderer>k__BackingField: {fileID: 0}
   objectCollider: {fileID: 3697782516759958322}
+  <AssignedObject>k__BackingField: {fileID: 11400000, guid: 5994c5f5097a1b44a8c703d10d6fedf7, type: 2}
 --- !u!1 &3065098467737101307
 GameObject:
   m_ObjectHideFlags: 0

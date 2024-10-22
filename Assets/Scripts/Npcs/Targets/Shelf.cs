@@ -1,39 +1,43 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Shelf : StoreObject
 {
-    private NPCAI target;
-    public float timeToNextTarget;
+    [field: SerializeField] public GameContainer AssignedItem { get; private set; }
+    private ItemSelector _assignedSelector;
     
-    [field: SerializeField] public ItemTypeSo AssignedItem { get; private set; }
-
-    [SerializeField] public List<ItemTypeSo> possibleItems = new();
-
-    public void OnTriggerEnter2D(Collider2D other)
+    public void StockShelf(int id, ItemSelector selector)
     {
-        target = other.GetComponent<NPCAI>();
-        if (target)
+        _assignedSelector = selector;
+        var tempItem = selector.AllItems.Find(container => container.GameID == id);
+        
+        AssignedItem = new GameContainer
         {
-            Debug.Log(target);
-            Invoke("TargetChange", timeToNextTarget);
+            ItemName = tempItem.ItemName,
+            GameID = tempItem.GameID,
+            ItemType = tempItem.ItemType
+        };
+
+        if(tempItem.ItemCount == 0) return;
+        
+        if (AssignedObject.StockAmount < tempItem.ItemCount)
+        {
+            AssignedItem.SetCount(AssignedObject.StockAmount);
+            Debug.LogFormat($"Space on shelf is less than stock available.");
+            tempItem.ChangeCount(-AssignedObject.StockAmount);
+        }
+        else
+        {
+            AssignedItem.SetCount(tempItem.ItemCount);
+            tempItem.ItemCount = 0;
+            Debug.LogFormat($"Stock available is less than space on shelf.");
         }
     }
 
-    public override void Start()
+    public void UnstockShelf()
     {
-        base.Start();
-        var itemToSet = Random.Range(0, possibleItems.Count);
-        if(possibleItems.Count < 0)
-            AssignedItem = possibleItems[itemToSet];
-    }
-    
-    private void TargetChange()
-    {
-        target.ChooseTarget();
+        _assignedSelector?.AllItems.Find(container => container.GameID == AssignedItem.GameID).ChangeCount(AssignedItem.ItemCount);
+        _assignedSelector = null;
+        AssignedItem = null;
     }
 }

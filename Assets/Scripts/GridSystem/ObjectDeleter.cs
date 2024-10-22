@@ -22,8 +22,8 @@ public class ObjectDeleter : MonoBehaviour
 
     public void CheckForObjectToDelete()
     {
-        if (_positionHandler.CheckForObjectDelete() == null || !DeleteModeEnabled) return;
-        var tempObject = _positionHandler.CheckForObjectDelete();
+        if (_positionHandler.CheckForObjectToInteract() == null || !DeleteModeEnabled) return;
+        var tempObject = _positionHandler.CheckForObjectToInteract();
         _surface.BuildNavMesh();
         Destroy(tempObject.gameObject);
     }

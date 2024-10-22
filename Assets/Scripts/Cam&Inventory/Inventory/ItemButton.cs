@@ -9,11 +9,10 @@ public class ItemButton : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] TMP_Text itemName;
 
-    public void SetButton(ItemSO itemData)
+    public void SetButton(GameContainer itemData)
     {
-        
-        itemName.text = itemData.itemName;
-        itemImage.sprite = itemData.smallIcon;
+        itemName.text = itemData.ItemType.ItemName;
+        itemImage.sprite = itemData.ItemType.SmallIcon;
     }
 
 }

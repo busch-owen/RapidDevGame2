@@ -11,20 +11,24 @@ public class NpcExitState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.Agent.SetDestination(_stateMachine.Exit.position);
+        _stateMachine.Invoke("Leave", 2.0f);
     }
 
     private void despawn()
     {
         if (ArrivedAtExit())
         {
+            if (_stateMachine.Shoplifter)
+            {
+                _stateMachine.MoneyManager.DecrementProfit(_stateMachine.MoneySpent);
+            }
             _stateMachine.Destroy();
         }
     }
 
     public bool ArrivedAtExit()
     {
-        if (Vector2.Distance(_stateMachine.transform.position, _stateMachine.Agent.destination) <= 0.25f)
+        if (Vector2.Distance(_stateMachine.transform.position, _stateMachine.Exit.transform.position) <= 0.25f)
         {
             return true;
         }

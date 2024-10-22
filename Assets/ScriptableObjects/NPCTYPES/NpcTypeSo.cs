@@ -22,4 +22,8 @@ public class NpcTypeSo : ScriptableObject
     [field:SerializeField]public Color Color{ get; private set; }
     
     [field:SerializeField]public int ShelvesTillExit{ get; private set; }
+    
+    [field:SerializeField]public bool ShopLifter{ get; private set; }
+    
+    [field:SerializeField]public Sprite NpcSprite{ get; private set; }
 }

@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: MineCraft
   m_EditorClassIdentifier: 
   <Cost>k__BackingField: 25
+  <ItemName>k__BackingField: CraftGame
+  <ItemDescription>k__BackingField: A game where you craft, that's it
+  <ItemCategory>k__BackingField: Sandbox
+  <ProductType>k__BackingField: 1
+  <BigIcon>k__BackingField: {fileID: 21300000, guid: c8dad42c8b8bcea4aa1439b4080a432f, type: 3}
+  <SmallIcon>k__BackingField: {fileID: 21300000, guid: 6637cca8fa3093d4584858ead45e02e7, type: 3}

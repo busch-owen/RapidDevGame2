@@ -12,6 +12,7 @@ public class GridSystemInput : MonoBehaviour
     private MousePositionHandler _positionHandler;
     private ObjectMover _mover;
     private ObjectDeleter _deleter;
+    private ObjectStocker _stocker;
     private void OnEnable()
     {
         _gridPointer ??= FindFirstObjectByType<GridPointer>();
@@ -19,6 +20,7 @@ public class GridSystemInput : MonoBehaviour
         _positionHandler ??= FindFirstObjectByType<MousePositionHandler>();
         _mover ??= FindFirstObjectByType<ObjectMover>();
         _deleter ??= FindFirstObjectByType<ObjectDeleter>();
+        _stocker ??= FindFirstObjectByType<ObjectStocker>();
         
         if (_gridInput != null) return;
 
@@ -29,6 +31,7 @@ public class GridSystemInput : MonoBehaviour
         _gridInput.GridActions.MouseClick.performed += i => _objectPlacer.PlaceObject();
         _gridInput.GridActions.MouseClick.performed += i => _mover.CheckForObjectToMove();
         _gridInput.GridActions.MouseClick.performed += i => _deleter.CheckForObjectToDelete();
+        _gridInput.GridActions.MouseClick.performed += i => _stocker.CheckForShelfToStock();
         _gridInput.GridActions.Rotate.performed += i => _objectPlacer.RotateObject();
         
         SetActiveState(true);

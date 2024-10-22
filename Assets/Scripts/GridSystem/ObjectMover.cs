@@ -19,8 +19,8 @@ public class ObjectMover : MonoBehaviour
 
     public void CheckForObjectToMove()
     {
-        if (_positionHandler.CheckForObjectMove() == null || !MoveModeEnabled) return;
-        var tempObject = _positionHandler.CheckForObjectMove();
+        if (_positionHandler.CheckForObjectToInteract() == null || !MoveModeEnabled) return;
+        var tempObject = _positionHandler.CheckForObjectToInteract();
         _picker.PickSpecificObject(tempObject.AssignedObject);
         _placer.PlaceMultiple(false);
         MoveModeEnabled = false;

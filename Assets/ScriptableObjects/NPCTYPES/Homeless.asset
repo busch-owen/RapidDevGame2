@@ -22,9 +22,10 @@ MonoBehaviour:
   - Can I use the washroom?
   - Got any crack?
   <Items>k__BackingField:
-  - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
-  - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
+  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   <Speed>k__BackingField: 2
   <Budget>k__BackingField: 25
-  <Color>k__BackingField: {r: 0.24528301, g: 0.06398825, b: 0, a: 1}
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ShelvesTillExit>k__BackingField: 6
+  <ShopLifter>k__BackingField: 0
+  <NpcSprite>k__BackingField: {fileID: 21300000, guid: eb932f02972ac2e41b90cb29ae1949e3, type: 3}

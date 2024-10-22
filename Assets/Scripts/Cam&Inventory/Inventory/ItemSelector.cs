@@ -3,22 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class ItemSelector : MonoBehaviour
 {
+    
+    [field: SerializeField] public List<GameContainer> AllItems { get; private set; }
+    
     public ItemSelectorUI UI;
-    public event Action<ItemSO> OnItemLoad;
-    public event Action<ItemSO> OnItemSelected;
-    public event Action<ItemSO> OnItemChosen;
-    public List<ItemSO> allItems = new List<ItemSO>();
-    private ItemSO _selectedItem;
-    private ItemSO _chosenItem;
+    public event Action<GameContainer> OnItemLoad;
+    public event Action<GameContainer> OnItemSelected;
+    public event Action<GameContainer> OnItemChosen;
+    private GameContainer _selectedItem;
+    private GameContainer _chosenItem;
     int i = 0;
 
     public void LoadItems()
     {
         
-        foreach (var itemData in allItems)
+        foreach (var itemData in AllItems)
         {
             OnItemLoad?.Invoke(itemData);
         }
@@ -32,7 +35,7 @@ public class ItemSelector : MonoBehaviour
             i++;
             
         }
-        foreach (var itemData in allItems)
+        foreach (var itemData in AllItems)
         {
             OnItemLoad?.Invoke(itemData);
         }
@@ -40,12 +43,11 @@ public class ItemSelector : MonoBehaviour
 
 
     //exec on item button press
-    public void SelectItem(ItemSO itemData)
+    public void SelectItem(GameContainer itemData)
     {
         _selectedItem = itemData;
 
         OnItemSelected?.Invoke(_selectedItem);
-
     }
 
     // Start is called before the first frame update

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29620d5d8f1875148928294d2a079d67, type: 3}
   m_Name: GameShelfSO
   m_EditorClassIdentifier: 
-  <PlaceModeObject>k__BackingField: {fileID: 0}
-  <ObjectToPlace>k__BackingField: {fileID: 0}
+  <PlaceModeObject>k__BackingField: {fileID: 6575979153740146991, guid: 3eab8e618747344469ef71230b839916, type: 3}
+  <ObjectToPlace>k__BackingField: {fileID: 6575979153740146991, guid: ea653d6cadcdbfd4a95f1ec6961bc1c7, type: 3}
+  <StockAmount>k__BackingField: 60
   <ProductStorage>k__BackingField: 1
   <CompatibleProducts>k__BackingField: 01000000
   <MenuSprite>k__BackingField: {fileID: 0}

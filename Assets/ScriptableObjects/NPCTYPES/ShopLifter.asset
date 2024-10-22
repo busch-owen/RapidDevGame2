@@ -12,9 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a03c7396778a438f78d7d3d1479fa, type: 3}
   m_Name: ShopLifter
   m_EditorClassIdentifier: 
-  <PositiveText>k__BackingField: []
-  <NegativeText>k__BackingField: []
-  <OpeningText>k__BackingField: []
-  <Items>k__BackingField: []
-  <Speed>k__BackingField: 0
+  <PositiveText>k__BackingField:
+  - YIPEE!
+  - THAT's what I'm talking about
+  <NegativeText>k__BackingField:
+  - '#@$%'
+  - Are you @#$%ing kidding?
+  <OpeningText>k__BackingField:
+  - Wuzzup foo
+  - What's poppin g
+  <Items>k__BackingField:
+  - {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
+  - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
+  <Speed>k__BackingField: 3
   <Budget>k__BackingField: 0
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ShelvesTillExit>k__BackingField: 3
+  <ShopLifter>k__BackingField: 1
+  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 1fee544c34983004bb91e4c76d140b55, type: 3}
