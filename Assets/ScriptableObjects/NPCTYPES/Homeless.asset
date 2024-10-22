@@ -25,6 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   <Speed>k__BackingField: 2
   <Budget>k__BackingField: 25
-  <Color>k__BackingField: {r: 0.24528301, g: 0.06398825, b: 0, a: 1}
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ShelvesTillExit>k__BackingField: 6
   <ShopLifter>k__BackingField: 0
+  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 7c18e4ff102609b4488165bc63918e87, type: 3}

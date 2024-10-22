@@ -71,7 +71,7 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public bool Shoplifter { get; private set; }
     
-    
+    [field:SerializeField] public SpriteRenderer Renderer { get; private set; }
 
     
     
@@ -87,6 +87,8 @@ public class NpcStateMachine : BaseStateMachine
         MoneyManager = FindFirstObjectByType<MoneyManager>();
         Shoplifter = NpcType.ShopLifter;
         Items = NpcType.Items;
+        Renderer = GetComponentInChildren<SpriteRenderer>();
+        Renderer.sprite = NpcType.NpcSprite;
     }
 
     private void Awake()
