@@ -53,7 +53,7 @@ public class StoreObject : MonoBehaviour
     public void OnTriggerExit2D(Collider2D other)
     {
         if (ObjectPlaced) return;
-        Renderer.color = Color.white;
+        Renderer.color = Color.green;
         Placeable = true;
     }
 }
