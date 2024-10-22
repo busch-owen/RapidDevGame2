@@ -9,7 +9,7 @@ public class ItemButton : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] TMP_Text itemName;
 
-    public void SetButton(InventoryContainter itemData)
+    public void SetButton(GameContainer itemData)
     {
         itemName.text = itemData.ItemType.ItemName;
         itemImage.sprite = itemData.ItemType.SmallIcon;

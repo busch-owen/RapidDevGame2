@@ -48,12 +48,29 @@ MonoBehaviour:
   <AllItems>k__BackingField:
   - <ItemName>k__BackingField: Minecraft
     <GameID>k__BackingField: 1
+    <ItemUnlocked>k__BackingField: 1
     <ItemType>k__BackingField: {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
-    <ItemCount>k__BackingField: 10
+    <ItemCount>k__BackingField: 30
   - <ItemName>k__BackingField: Fortnite
     <GameID>k__BackingField: 2
+    <ItemUnlocked>k__BackingField: 1
     <ItemType>k__BackingField: {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
+    <ItemCount>k__BackingField: 30
+  - <ItemName>k__BackingField: Console
+    <GameID>k__BackingField: 3
+    <ItemUnlocked>k__BackingField: 1
+    <ItemType>k__BackingField: {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
     <ItemCount>k__BackingField: 10
+  - <ItemName>k__BackingField: Controller
+    <GameID>k__BackingField: 4
+    <ItemUnlocked>k__BackingField: 1
+    <ItemType>k__BackingField: {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
+    <ItemCount>k__BackingField: 10
+  - <ItemName>k__BackingField: Collectable
+    <GameID>k__BackingField: 4
+    <ItemUnlocked>k__BackingField: 1
+    <ItemType>k__BackingField: {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
+    <ItemCount>k__BackingField: 20
   UI: {fileID: 371268945174434739}
 --- !u!114 &371268945174434739
 MonoBehaviour:

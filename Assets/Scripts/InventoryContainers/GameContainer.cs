@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class InventoryContainter
+public class GameContainer
 {
     [field: SerializeField] public string ItemName { get; set; }
     [field: SerializeField] public int GameID { get; set; }
+    [field: SerializeField] public bool ItemUnlocked { get; set; }
     [field: SerializeField] public ItemTypeSo ItemType { get; set; }
     [field: SerializeField] public int ItemCount { get; set; }
 

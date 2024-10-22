@@ -16,5 +16,6 @@ MonoBehaviour:
   <ItemName>k__BackingField: Grand Transit Automation 5
   <ItemDescription>k__BackingField: NOT Train sim, Transit Automation
   <ItemCategory>k__BackingField: Simulator
+  <ProductType>k__BackingField: 1
   <BigIcon>k__BackingField: {fileID: 967013853695462571, guid: 6704c0dfb3a82184c92ec5b7b2b6d89e, type: 3}
   <SmallIcon>k__BackingField: {fileID: -1525249201, guid: bf6053f41ba890940ae47cd7ce23338b, type: 3}

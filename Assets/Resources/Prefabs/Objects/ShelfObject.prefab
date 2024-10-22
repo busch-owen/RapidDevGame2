@@ -356,5 +356,6 @@ MonoBehaviour:
   <AssignedItem>k__BackingField:
     <ItemName>k__BackingField: 
     <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0

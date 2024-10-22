@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
-  m_Name: Game
+  m_Name: GameCollectable
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 10
-  <ItemName>k__BackingField: Fortnight
-  <ItemDescription>k__BackingField: fortnite fortnite lets go we get it all night
-    all night fo sho
-  <ItemCategory>k__BackingField: Shooter
-  <ProductType>k__BackingField: 1
+  <Cost>k__BackingField: 90
+  <ItemName>k__BackingField: Collectable
+  <ItemDescription>k__BackingField: A game collectable
+  <ItemCategory>k__BackingField: Collectable
+  <ProductType>k__BackingField: 3
   <BigIcon>k__BackingField: {fileID: 21300000, guid: d37dcc69b0c877040946889f0599fb72, type: 3}
   <SmallIcon>k__BackingField: {fileID: 21300000, guid: 22a414e31990ad140a4557c91f97b282, type: 3}

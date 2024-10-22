@@ -8,14 +8,14 @@ using UnityEngine.Serialization;
 public class ItemSelector : MonoBehaviour
 {
     
-    [field: SerializeField] public List<InventoryContainter> AllItems { get; private set; }
+    [field: SerializeField] public List<GameContainer> AllItems { get; private set; }
     
     public ItemSelectorUI UI;
-    public event Action<InventoryContainter> OnItemLoad;
-    public event Action<InventoryContainter> OnItemSelected;
-    public event Action<InventoryContainter> OnItemChosen;
-    private InventoryContainter _selectedItem;
-    private InventoryContainter _chosenItem;
+    public event Action<GameContainer> OnItemLoad;
+    public event Action<GameContainer> OnItemSelected;
+    public event Action<GameContainer> OnItemChosen;
+    private GameContainer _selectedItem;
+    private GameContainer _chosenItem;
     int i = 0;
 
     public void LoadItems()
@@ -43,7 +43,7 @@ public class ItemSelector : MonoBehaviour
 
 
     //exec on item button press
-    public void SelectItem(InventoryContainter itemData)
+    public void SelectItem(GameContainer itemData)
     {
         _selectedItem = itemData;
 

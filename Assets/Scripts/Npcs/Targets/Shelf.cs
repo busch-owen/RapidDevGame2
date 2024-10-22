@@ -1,15 +1,17 @@
+using System.Linq;
 using UnityEngine;
 
 public class Shelf : StoreObject
 {
-    [field: SerializeField] public InventoryContainter AssignedItem { get; private set; }
+    [field: SerializeField] public GameContainer AssignedItem { get; private set; }
     private ItemSelector _assignedSelector;
     
     public void StockShelf(int id, ItemSelector selector)
     {
         _assignedSelector = selector;
         var tempItem = selector.AllItems.Find(container => container.GameID == id);
-        AssignedItem = new InventoryContainter
+        
+        AssignedItem = new GameContainer
         {
             ItemName = tempItem.ItemName,
             GameID = tempItem.GameID,
