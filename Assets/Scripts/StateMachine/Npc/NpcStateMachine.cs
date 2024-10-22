@@ -83,7 +83,6 @@ public class NpcStateMachine : BaseStateMachine
         Agent.speed = NpcType.Speed;
         Budget = NpcType.Budget;
         ShelvesBeforeLeave = Shelves.Count;
-        SpriteRenderer.color = NpcType.Color;
         MoneyManager = FindFirstObjectByType<MoneyManager>();
         Shoplifter = NpcType.ShopLifter;
         Items = NpcType.Items;
