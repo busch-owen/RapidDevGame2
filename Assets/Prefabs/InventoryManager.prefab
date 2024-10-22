@@ -60,14 +60,14 @@ MonoBehaviour:
     <GameID>k__BackingField: 3
     <ItemUnlocked>k__BackingField: 1
     <ItemType>k__BackingField: {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
-    <ItemCount>k__BackingField: 10
+    <ItemCount>k__BackingField: 30
   - <ItemName>k__BackingField: Controller
     <GameID>k__BackingField: 4
     <ItemUnlocked>k__BackingField: 1
     <ItemType>k__BackingField: {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
     <ItemCount>k__BackingField: 10
   - <ItemName>k__BackingField: Collectable
-    <GameID>k__BackingField: 4
+    <GameID>k__BackingField: 5
     <ItemUnlocked>k__BackingField: 1
     <ItemType>k__BackingField: {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
     <ItemCount>k__BackingField: 20

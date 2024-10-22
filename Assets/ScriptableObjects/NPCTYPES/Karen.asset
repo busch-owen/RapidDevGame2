@@ -22,8 +22,9 @@ MonoBehaviour:
   - No I don't need your help
   - Ughh Out of my way
   <Items>k__BackingField:
-  - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
+  - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 25
   <Color>k__BackingField: {r: 1, g: 0, b: 0.08541489, a: 1}
-  <ShelvesTillExit>k__BackingField: 2
+  <ShelvesTillExit>k__BackingField: 6
+  <ShopLifter>k__BackingField: 0

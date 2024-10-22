@@ -544,9 +544,7 @@ MonoBehaviour:
   <FoundText>k__BackingField: YEAHHH BABYYY
   <OpeningLine>k__BackingField: 
   <NotFoundText>k__BackingField: :( no games here
-  <Items>k__BackingField:
-  - {fileID: 11400000, guid: 6d89196e8f8d15e44b905139e39f9cf4, type: 2}
-  - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
+  <Items>k__BackingField: []
   <ItemsCollected>k__BackingField: []
   <NpcTypeSoOptions>k__BackingField:
   - {fileID: 11400000, guid: 1c4f6f21535057740822a3fd8b7f2e4d, type: 2}

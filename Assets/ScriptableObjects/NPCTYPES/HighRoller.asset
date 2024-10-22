@@ -22,9 +22,9 @@ MonoBehaviour:
   - I'm looking for your most expensive item
   - Cost don't matter Show me the goodstuff baby!
   <Items>k__BackingField:
-  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
-  - {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
+  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 100
   <Color>k__BackingField: {r: 0.4693546, g: 0, b: 0.6037736, a: 1}
   <ShelvesTillExit>k__BackingField: 4
+  <ShopLifter>k__BackingField: 0
