@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Shelf : StoreObject
 {
     [field: SerializeField] public GameContainer AssignedItem { get; private set; }
     private ItemSelector _assignedSelector;
-    private NpcStateMachine _stateMachine;
+    [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
     public bool IsFlashing;
+    private ShelfClick _shelfClick;
     
     public void StockShelf(int id, ItemSelector selector)
     {
@@ -35,6 +37,18 @@ public class Shelf : StoreObject
             tempItem.ItemCount = 0;
             Debug.LogFormat($"Stock available is less than space on shelf.");
         }
+    }
+
+    public override void Start()
+    {
+        _shelfClick = GetComponentInChildren<ShelfClick>();
+        _shelfClick.image.enabled = false;
+        Renderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    public void EnableClick()
+    {
+        _shelfClick.image.enabled = true;
     }
 
     public void FlashColor()
@@ -76,7 +90,7 @@ public class Shelf : StoreObject
 
     public void AssignNpc(NpcStateMachine stateMachine)
     {
-        _stateMachine = stateMachine;
-        _stateMachine.SelectedEvent += FlashColor;
+        StateMachine = stateMachine;
+        StateMachine.SelectedEvent += FlashColor;
     }
 }

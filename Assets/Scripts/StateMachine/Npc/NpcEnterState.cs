@@ -13,7 +13,7 @@ public class NpcEnterState : NPCBaseState
         _stateMachine.ShowOpening();
         // wait for player or npc to interact for set amount of time
         // if no interaction after certain amount of time, exclaim about it and move to wander state
-        _stateMachine.Invoke(nameof(_stateMachine.FirstWander), 2.0f);
+        _stateMachine.Invoke(nameof(_stateMachine.FirstWander), _stateMachine.TimeForFirstWander);
     }
 
     

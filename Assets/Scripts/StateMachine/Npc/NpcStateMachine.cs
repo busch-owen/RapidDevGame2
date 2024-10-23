@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 public enum NpcStateName
 {
-    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog,Spawn
+    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog,Spawn,Talking
 }
 
 public delegate void Selected();
@@ -28,6 +28,7 @@ public class NpcStateMachine : BaseStateMachine
     private NpcEnterState _npcEnterState;
     private NpcNegativeDialogState _npcNegativeDialogState;
     private NpcSpawnState _npcSpawnState;
+    private NpcTalkingState _npcTalkingState;
 
     public event Selected SelectedEvent;
     
@@ -77,6 +78,10 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public int MoneySpent { get; private set; }
     
+    [field:SerializeField] public int TimeForFirstWander { get; private set; }
+    
+    [field:SerializeField] public int TimeToLeave { get; private set; }
+    
     [field:SerializeField] public bool Shoplifter { get; private set; }
     
     [field:SerializeField] public SpriteRenderer Renderer { get; private set; }
@@ -85,9 +90,13 @@ public class NpcStateMachine : BaseStateMachine
 
     [field:SerializeField] public List<Image> PreviousImages{ get; private set; }
     
+    [field:SerializeField] public Shelf CurrentShelf{ get; set; }
+    
     private bool _ranBefore;
 
     private bool _clicked;
+
+    private bool _interacted;
 
     
     
@@ -117,6 +126,7 @@ public class NpcStateMachine : BaseStateMachine
         _npcEnterState = new NpcEnterState(this);
         _npcNegativeDialogState = new NpcNegativeDialogState(this);
         _npcSpawnState = new NpcSpawnState(this);
+        _npcTalkingState = new NpcTalkingState(this);
         Exit = FindFirstObjectByType<Exit>().transform;
         AssignShelves();
         AssignRegisters();
@@ -134,6 +144,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public void FirstWander()
     {
+        if(_interacted)return;
         ChangeState(_npcWanderState);
     }
 
@@ -307,6 +318,11 @@ public class NpcStateMachine : BaseStateMachine
                 base.ChangeState(_npcSpawnState);
                 Current = _npcSpawnState.ToString();
                 break;
+            case NpcStateName.Talking:
+                base.ChangeState(_npcTalkingState);
+                Current = _npcTalkingState.ToString();
+                break;
+            
                 
                 
         }
@@ -335,9 +351,11 @@ public class NpcStateMachine : BaseStateMachine
 
     public void OpenWindow()
     {
+        _interacted = true;
         foreach (var shelf in Shelves)
         {
             shelf.AssignNpc(this);
+            shelf.EnableClick();
         }
         SelectedEvent?.Invoke();
     }

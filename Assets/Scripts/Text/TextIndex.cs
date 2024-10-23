@@ -50,7 +50,7 @@ public class TextIndex : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             image.transform.SetParent(ImageContainer.transform, false);
             image.rectTransform.anchoredPosition = Vector3.zero;
             CurentEmotes.Remove(image);
-            Destroy(image.gameObject, 3.0f);
+            Destroy(image.gameObject, _stateMachine.TimeForFirstWander);
             yield return _waitBetweenCharacters;
         }
     }

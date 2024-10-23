@@ -367,6 +367,8 @@ MonoBehaviour:
   <Reputation>k__BackingField: 0
   <MoneyManager>k__BackingField: {fileID: 0}
   <MoneySpent>k__BackingField: 0
+  <TimeForFirstWander>k__BackingField: 5
+  <TimeToLeave>k__BackingField: 0
   <Shoplifter>k__BackingField: 0
   <Renderer>k__BackingField: {fileID: 0}
   <PossibleImages>k__BackingField: []
