@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TextIndex : MonoBehaviour
+public class TextIndex : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     // Start is called before the first frame update
 
@@ -20,10 +21,6 @@ public class TextIndex : MonoBehaviour
 
     public float TimeTillTextDisapear = 0.5f;
 
-    public event Action<Image> ISpawn; 
-
-    public event Action TextFinished;
-
     private bool _coroutineRunning;
 
     [field: SerializeField] public List<Image> Emotes { get; set; } = new();
@@ -33,12 +30,16 @@ public class TextIndex : MonoBehaviour
     [field: SerializeField] public GameObject ImageContainer { get; set; }
 
     private Image _currentImage;
+
+    private NpcStateMachine _stateMachine;
     
     
     void Start()
     {
         _waitBetweenCharacters = new WaitForSeconds(timeBetweenChar);
+        _stateMachine = GetComponentInParent<NpcStateMachine>();
     }
+    
 
     public IEnumerator ImageVisible()
     {
@@ -49,7 +50,7 @@ public class TextIndex : MonoBehaviour
             image.transform.SetParent(ImageContainer.transform, false);
             image.rectTransform.anchoredPosition = Vector3.zero;
             CurentEmotes.Remove(image);
-            Destroy(image.gameObject, 2.0f);
+            Destroy(image.gameObject, 3.0f);
             yield return _waitBetweenCharacters;
         }
     }
@@ -72,5 +73,20 @@ public class TextIndex : MonoBehaviour
     public void RemoveEmotes(Image npcImages)
     {
         CurentEmotes.Remove(npcImages);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        _stateMachine.OpenWindow();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        this.transform.localScale = new Vector3(2,2,2);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        this.transform.localScale = new Vector3(1,1,1);
     }
 }

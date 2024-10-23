@@ -11,10 +11,12 @@ using Random = UnityEngine.Random;
 
 public enum NpcStateName
 {
-    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog
+    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog,Spawn
 }
 
-public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public delegate void Selected();
+
+public class NpcStateMachine : BaseStateMachine
 {
 
     private NpcCheckoutState _npcCheckoutState;
@@ -25,6 +27,9 @@ public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerE
     private NPCBaseState _baseState;
     private NpcEnterState _npcEnterState;
     private NpcNegativeDialogState _npcNegativeDialogState;
+    private NpcSpawnState _npcSpawnState;
+
+    public event Selected SelectedEvent;
     
     
     [field:SerializeField]public string Current{ get; private set; }
@@ -82,12 +87,13 @@ public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerE
     
     private bool _ranBefore;
 
+    private bool _clicked;
+
     
     
     // Start is called before the first frame update
     void Start()
     {
-        Exit = FindFirstObjectByType<Exit>().transform;
         Agent.updateRotation = false;
         Agent.speed = NpcType.Speed;
         Budget = NpcType.Budget;
@@ -110,18 +116,30 @@ public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerE
         _npcShelfCheckState = new NpcShelfCheckState(this);
         _npcEnterState = new NpcEnterState(this);
         _npcNegativeDialogState = new NpcNegativeDialogState(this);
+        _npcSpawnState = new NpcSpawnState(this);
+        Exit = FindFirstObjectByType<Exit>().transform;
         AssignShelves();
         AssignRegisters();
         ChooseNpc();
         TextIndex = GetComponentInChildren<TextIndex>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        ChangeState(_npcEnterState);
+        ChangeState(_npcSpawnState);
     }
 
     public void Leave()
     {
         Agent.destination = Exit.transform.position;
+    }
+
+    public void FirstWander()
+    {
+        ChangeState(_npcWanderState);
+    }
+
+    public void Spawn()
+    {
+        Agent.SetDestination(Exit.transform.position);
     }
 
     public void Destroy()
@@ -285,6 +303,10 @@ public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerE
                 base.ChangeState(_npcNegativeDialogState);
                 Current = _npcNegativeDialogState.ToString();
                 break;
+            case NpcStateName.Spawn:
+                base.ChangeState(_npcSpawnState);
+                Current = _npcSpawnState.ToString();
+                break;
                 
                 
         }
@@ -313,21 +335,10 @@ public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerE
 
     public void OpenWindow()
     {
-        
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        //throw new NotImplementedException();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //throw new NotImplementedException();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //throw new NotImplementedException();
+        foreach (var shelf in Shelves)
+        {
+            shelf.AssignNpc(this);
+        }
+        SelectedEvent?.Invoke();
     }
 }
