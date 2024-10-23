@@ -25,7 +25,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   <Speed>k__BackingField: 2
   <Budget>k__BackingField: 25
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ShelvesTillExit>k__BackingField: 6
   <ShopLifter>k__BackingField: 0
   <NpcSprite>k__BackingField: {fileID: 21300000, guid: eb932f02972ac2e41b90cb29ae1949e3, type: 3}
+  <Bad>k__BackingField:
+  - {fileID: 2844627434596013490, guid: 1710d67e581b3624197eb2f7a0764082, type: 3}
+  - {fileID: 2844627434596013490, guid: 2893c4c95016eb44fad3ff0346da4fa2, type: 3}
+  <Good>k__BackingField:
+  - {fileID: 2844627434596013490, guid: 8969df1377529ac439f77fd27a4138e4, type: 3}
+  - {fileID: 2844627434596013490, guid: d8d1c4a9b60bdee43906620223079b93, type: 3}
+  <Opening>k__BackingField:
+  - {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
+  - {fileID: 2844627434596013490, guid: 0c31c0077cab4614f871fde8af85b2c9, type: 3}

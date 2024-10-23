@@ -11,8 +11,8 @@ public class NpcWanderState : NPCBaseState
 
     public override void Enter()
     {
-        base.Enter();
         _stateMachine.ChooseTarget();
+        // wander until found shelf with desired item on it
     }
 
     public override void FixedUpdate()

@@ -10,7 +10,7 @@ public class NpcNegativeDialogState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChangeTextNegative();
+        _stateMachine.ChangeToNegative();
         ChooseToLeave();
     }
 

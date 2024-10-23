@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "My Assets/NpcTypeSO")]
 
@@ -24,4 +25,12 @@ public class NpcTypeSo : ScriptableObject
     [field:SerializeField]public bool ShopLifter{ get; private set; }
     
     [field:SerializeField]public Sprite NpcSprite{ get; private set; }
+    
+    [field:SerializeField]public List<Image> Bad{ get; private set; }
+    
+    [field:SerializeField]public List<Image> Good{ get; private set; }
+    
+    [field:SerializeField]public List<Image> Opening{ get; private set; }
+    
+    
 }

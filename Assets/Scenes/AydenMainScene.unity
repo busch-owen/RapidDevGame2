@@ -197,6 +197,26 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1755474012}
+    - target: {fileID: 3917624821499341624, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 118.363525
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917624821499341624, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 114.582275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698349093230778990, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <MaxNpcs>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698349093230778990, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <MinNpcs>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698349093230778990, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <Waves>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4698349093230778990, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
       propertyPath: '<Cars>k__BackingField.Array.data[0]'
       value: 
@@ -225,6 +245,10 @@ PrefabInstance:
       propertyPath: '<Cars>k__BackingField.Array.data[6]'
       value: 
       objectReference: {fileID: 261172175}
+    - target: {fileID: 4814223590328090449, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -96.69531
+      objectReference: {fileID: 0}
     - target: {fileID: 6382177212338517774, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
       propertyPath: m_LocalPosition.x
       value: 525.51154

@@ -19,6 +19,11 @@ public class NpcShelfCheckState : NPCBaseState
     private void CheckShelf()
     {
         _stateMachine.ShelfCheck();
+        // check to see if item on shelf matches with budget
+        // if the item is out of budget check for next item on list
+        // if no items on list on shelf in budget move back to wander state
+        
+        //if out of shelves which match item type have percent chance to look for shelves with adjacent item types
     }
 
     public override void FixedUpdate()

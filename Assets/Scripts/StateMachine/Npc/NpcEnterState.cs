@@ -10,11 +10,14 @@ public class NpcEnterState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChooseTarget();
-        _stateMachine.ChangeState(NpcStateName.Wander);
-        _stateMachine.StartText();
+        _stateMachine.ShowOpening();
+        _stateMachine.Invoke("Wander", 2.0f);
+        // wait for player or npc to interact for set amount of time
+        // if no interaction after certain amount of time, exclaim about it and move to wander state
         
     }
+    
+    
     
     
 }

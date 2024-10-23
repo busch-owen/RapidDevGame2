@@ -11,7 +11,7 @@ public class NpcPositiveDialogState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChangeTextPositive();
+        _stateMachine.ChangeToPositive();
         if (_stateMachine.ItemsCollected.Count >= _stateMachine.Items.Count)
         {
             _stateMachine.StartCoroutine(SwitchToCheckout());
@@ -34,7 +34,14 @@ public class NpcPositiveDialogState : NPCBaseState
     private IEnumerator Switch()
     {
         yield return new WaitForSeconds(2.0f);
-        _stateMachine.ChangeState(NpcStateName.Wander);
+        if (_stateMachine.ShelvesBeforeLeave <= 0)
+        {
+            _stateMachine.ChangeState(NpcStateName.Exit); 
+        }
+        else
+        {
+            _stateMachine.ChangeState(NpcStateName.Wander); 
+        }
         yield return null;
     }
     

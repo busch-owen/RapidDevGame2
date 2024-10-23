@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Code.Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
@@ -11,7 +13,8 @@ public enum NpcStateName
 {
     Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog
 }
-public class NpcStateMachine : BaseStateMachine
+
+public class NpcStateMachine : BaseStateMachine, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     private NpcCheckoutState _npcCheckoutState;
@@ -72,6 +75,12 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField] public bool Shoplifter { get; private set; }
     
     [field:SerializeField] public SpriteRenderer Renderer { get; private set; }
+    
+    [field:SerializeField] public List<Image> PossibleImages{ get; private set; }
+
+    [field:SerializeField] public List<Image> PreviousImages{ get; private set; }
+    
+    private bool _ranBefore;
 
     
     
@@ -88,6 +97,8 @@ public class NpcStateMachine : BaseStateMachine
         Items = NpcType.Items;
         Renderer = GetComponentInChildren<SpriteRenderer>();
         Renderer.sprite = NpcType.NpcSprite;
+        Renderer.color = Color.white;
+        Renderer.transform.rotation = Quaternion.Euler(90,0,0);
     }
 
     private void Awake()
@@ -118,15 +129,6 @@ public class NpcStateMachine : BaseStateMachine
         Destroy(this.gameObject);
     }
 
-    public void IntroText()// randomly select an option for intro text
-    {
-        LastRandomMessage = RandomMessage;
-        RandomMessage = Random.Range(0, NpcType.OpeningText.Count);
-
-        OpeningLine = NpcType.OpeningText[RandomMessage];
-        TextIndex.StartCoroutine(TextIndex.TextVisible(OpeningLine));
-    }
-
     private void ChooseNpc()// randomly select what npc it will be
     {
         int _randomNpc = Random.Range(0, NpcTypeSoOptions.Count);
@@ -134,48 +136,67 @@ public class NpcStateMachine : BaseStateMachine
         NpcType = NpcTypeSoOptions[_randomNpc];
     }
 
-    public void StartText()// display an opening piece of dialog
-    {
-        IntroText();
-        //TextIndex.StopAllCoroutines();
-        TextIndex.EnableText();
-    }
-
     public void ChooseTarget()// set the npc target to a random shelf
     {
-        RandomTarget = Random.Range(0, Shelves.Count);
-        Target = Shelves[RandomTarget].transform;
-        Agent.SetDestination(Target.position);
-    }
-
-    public void ChoosePositiveDialog()// randomize the positive dialog to be displayed
-    {
-        LastRandomMessage = RandomMessage;
-        RandomMessage = Random.Range(0, NpcType.PositiveText.Count);
-
-        if (LastRandomMessage != RandomMessage)
+        if (Shelves.Count <= 0)
         {
-            FoundText = NpcType.PositiveText[RandomMessage];
+            ChangeState(NpcStateName.Exit);
         }
         else
         {
-            ChoosePositiveDialog();
+            RandomTarget = Random.Range(0, Shelves.Count);
+            Target = Shelves[RandomTarget].transform;
+            Agent.SetDestination(Target.position);
         }
     }
 
-    public void ChooseNegativeDialog()//randomize the negative dialog to be displayed
+    public void ShowImages()
     {
-        LastRandomMessage = RandomMessage;
-        RandomMessage = Random.Range(0, NpcType.NegativeText.Count);
-
-        if (LastRandomMessage != RandomMessage)
+        if (!_ranBefore)
         {
-            NotFoundText = NpcType.NegativeText[RandomMessage];
+            foreach (var image in PossibleImages)
+            {
+                TextIndex.AddEmotes(image);
+                PreviousImages.Add(image);
+            }
+
+            _ranBefore = true;
         }
         else
         {
-            ChooseNegativeDialog();
+            foreach (var image in PreviousImages)
+            {
+                TextIndex.RemoveEmotes(image);
+            }
+            PreviousImages.Clear();
+            foreach (var image in PossibleImages)
+            {
+                TextIndex.AddEmotes(image);
+                PreviousImages.Add(image);
+            }
         }
+    }
+
+    public void ChangeToNegative()
+    {
+        PossibleImages = NpcType.Bad;
+        ShowImages();
+        TextIndex.StartCoroutine("ImageVisible");
+    }
+
+    public void ChangeToPositive()
+    {
+        PossibleImages = NpcType.Good;
+        ShowImages();
+        TextIndex.StartCoroutine("ImageVisible");
+    }
+
+    public void ShowOpening()
+    {
+        PossibleImages = NpcType.Opening;
+        ShowImages();
+        TextIndex.StartCoroutine("ImageVisible");
+        
     }
     
     public bool ArrivedAtTarget()//General distance check between target and destination 
@@ -230,23 +251,6 @@ public class NpcStateMachine : BaseStateMachine
             ChangeState(_npcShelfCheckState);
         }
     }
-
-    public void ChangeTextPositive()// show a positive message above npc
-    {
-        ChoosePositiveDialog();
-        TextIndex.StopAllCoroutines();
-        TextIndex.EnableText();
-        TextIndex.StartCoroutine(TextIndex.TextVisible(FoundText));
-    }
-
-    public void ChangeTextNegative()// show a negative message above npc
-    {
-        ChooseNegativeDialog();
-        TextIndex.StopAllCoroutines();
-        TextIndex.EnableText();
-        TextIndex.StartCoroutine(TextIndex.TextVisible(NotFoundText));
-    }
-
     // Update is called once per frame
 
     public void ChangeState(NpcStateName stateName)// outline the case for each state change 
@@ -286,6 +290,11 @@ public class NpcStateMachine : BaseStateMachine
         }
     }
     
+    public void Wander()
+    {
+        ChangeState(NpcStateName.Wander);
+    }
+    
     public void AssignShelves()// find all of the shelves in the scene and add them to a list
     {
         var tempList = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
@@ -300,5 +309,25 @@ public class NpcStateMachine : BaseStateMachine
     public void AssignRegisters()// find all of the registers in the scene and add them to the array
     {
         Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
+    }
+
+    public void OpenWindow()
+    {
+        
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //throw new NotImplementedException();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        //throw new NotImplementedException();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        //throw new NotImplementedException();
     }
 }
