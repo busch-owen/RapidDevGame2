@@ -463,6 +463,101 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1077901047984618142, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
   m_PrefabInstance: {fileID: 661108177}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5528701828994245767
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1817993747500428275, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: Obstacle
+      value: 
+      objectReference: {fileID: 5054795722097559565, guid: 7396278554fe8c842b689c2b2558cc38, type: 3}
+    - target: {fileID: 2125617073159031989, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_Name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858196661004306878, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: <Agent>k__BackingField
+      value: 
+      objectReference: {fileID: 5528701828994245769}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2125617073159031989, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5528701828994245769}
+  m_SourcePrefab: {fileID: 100100000, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+--- !u!1 &5528701828994245768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2125617073159031989, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+  m_PrefabInstance: {fileID: 5528701828994245767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &5528701828994245769
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528701828994245768}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.4226667
+  m_BaseOffset: 0.71133333
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -470,3 +565,4 @@ SceneRoots:
   - {fileID: 1929242339}
   - {fileID: 617832698}
   - {fileID: 661108177}
+  - {fileID: 5528701828994245767}

@@ -27,6 +27,8 @@ public class EmployeeStateMachine : BaseStateMachine
     [field:SerializeField] public bool IsWalking { get; set; }
     [field:SerializeField] public NpcStateMachine npcStateMachine{ get; set; }
 
+    private SpriteRenderer _renderer;
+
     public void Awake()
     {
         _employeeExitState = new EmployeeExitState(this);
@@ -37,7 +39,10 @@ public class EmployeeStateMachine : BaseStateMachine
         _employeeIdleState = new EmployeeIdleState(this);
         _employeeCheckingOutState = new EmployeeCheckingOutState(this);
         _employeeWalkingState = new EmployeeWalkingState(this);
-        
+        _renderer = GetComponentInChildren<SpriteRenderer>();
+        _renderer.transform.rotation = Quaternion.Euler(90,0,0);
+        Agent.updateRotation = false;
+
     }
 
     public void ChangeState(EmployeeStates stateName)
@@ -99,6 +104,7 @@ public class EmployeeStateMachine : BaseStateMachine
 
     public void SetDestination()
     {
+        Debug.Log("dest");
         Agent.SetDestination(Target.position);
     }
 }
