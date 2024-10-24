@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 4806395704206272866}
   - component: {fileID: 145187555536971132}
   - component: {fileID: -4191481315797229124}
+  - component: {fileID: 4934430403219305814}
   m_Layer: 9
   m_Name: Npc
   m_TagString: Untagged
@@ -299,7 +300,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6502881207188248044}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 6200000, guid: e75a406cc4423764ea786eb4778d5260, type: 2}
@@ -322,12 +323,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!114 &-4191481315797229124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +371,35 @@ MonoBehaviour:
   <TimeForFirstWander>k__BackingField: 5
   <TimeToLeave>k__BackingField: 0
   <Shoplifter>k__BackingField: 0
+  <CanTalk>k__BackingField: 0
   <Renderer>k__BackingField: {fileID: 0}
   <PossibleImages>k__BackingField: []
   <PreviousImages>k__BackingField: []
   <CurrentShelf>k__BackingField: {fileID: 0}
+--- !u!50 &4934430403219305814
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502881207188248044}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

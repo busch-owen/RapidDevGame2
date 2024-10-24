@@ -351,6 +351,18 @@ public class NpcStateMachine : BaseStateMachine
         Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
     }
 
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("fuck");
+        if (other.GetComponentInParent<EmployeeStateMachine>())
+        {
+            CanTalk = true;
+            var Emp = other.GetComponentInParent<EmployeeStateMachine>();
+            Emp.npcStateMachine = this;
+        }
+    }
+
+
     public void OpenWindow()
     {
         if(!CanTalk) return;

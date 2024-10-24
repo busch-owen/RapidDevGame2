@@ -90,27 +90,19 @@ public class EmployeeStateMachine : BaseStateMachine
         npcStateMachine = stateMachine;
     }
 
-    public void ManualOverride()
+    public void ManualOverrideOn()
     {
-        if (IsWalking)
-        {
-            ChangeState(EmployeeStates.Idle);
-        }
-        else
+        if (!IsWalking)
         {
             ChangeState(EmployeeStates.Walking);
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void ManualOverrideOff()
     {
-        if(!IsWalking)return;
-        if (other.GetComponent<NpcStateMachine>())
+        if (IsWalking)
         {
-            var Npc = other.GetComponent<NpcStateMachine>();
-            npcStateMachine = Npc;
-            npcStateMachine.CanTalk = true;
-            Target = npcStateMachine.transform;
+            ChangeState(EmployeeStates.Idle);
         }
     }
 

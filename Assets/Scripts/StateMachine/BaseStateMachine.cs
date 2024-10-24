@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Code.Scripts.StateMachine
@@ -20,9 +21,14 @@ namespace Code.Scripts.StateMachine
             CurrentState?.Update();
         }
         
-        public void FixedUpdate()
+        public virtual void FixedUpdate()
         {
             CurrentState?.FixedUpdate();
+        }
+
+        public virtual void OnTriggerEnter2D(Collider2D other)
+        {
+            
         }
     }
 }
