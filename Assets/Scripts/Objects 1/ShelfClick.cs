@@ -10,6 +10,7 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     private NpcStateMachine _stateMachine;
     private Shelf _shelf;
     public Image image;
+    public EmployeeStateMachine employeeStateMachine;
     private void Start()
     {
         _shelf = GetComponentInParent<Shelf>();

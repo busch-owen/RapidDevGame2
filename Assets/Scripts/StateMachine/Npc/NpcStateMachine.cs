@@ -84,6 +84,8 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public bool Shoplifter { get; private set; }
     
+    [field:SerializeField] public bool CanTalk { get; set; }
+    
     [field:SerializeField] public SpriteRenderer Renderer { get; private set; }
     
     [field:SerializeField] public List<Image> PossibleImages{ get; private set; }
@@ -351,6 +353,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public void OpenWindow()
     {
+        if(!CanTalk) return;
         _interacted = true;
         foreach (var shelf in Shelves)
         {
