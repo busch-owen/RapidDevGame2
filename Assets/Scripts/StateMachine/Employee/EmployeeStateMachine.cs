@@ -90,6 +90,18 @@ public class EmployeeStateMachine : BaseStateMachine
         npcStateMachine = stateMachine;
     }
 
+    public void ManualOverride()
+    {
+        if (IsWalking)
+        {
+            ChangeState(EmployeeStates.Idle);
+        }
+        else
+        {
+            ChangeState(EmployeeStates.Walking);
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(!IsWalking)return;

@@ -18,6 +18,7 @@ public class EmployeeTargetPlacer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!employeeStateMachine.IsWalking)return;
         if (Input.GetMouseButtonDown(0) && !Exists)
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
