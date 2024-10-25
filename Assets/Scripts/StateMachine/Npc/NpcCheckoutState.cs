@@ -17,7 +17,7 @@ public class NpcCheckoutState : NPCBaseState
 
     public override void FixedUpdate()
     {
-        GoToExit();
+        //GoToExit();
     }
     
     public bool ArrivedAtCheckout()
