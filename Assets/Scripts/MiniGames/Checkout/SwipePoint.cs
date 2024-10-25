@@ -20,6 +20,10 @@ public class SwipePoint : MonoBehaviour
         {
             var Item = other.GetComponent<ItemToSwipe>();
             itemToSwipe = Item;
+            if (_swipeTask.Correct)
+            {
+                Destroy(Item.gameObject);
+            }
         }
         //Debug.Log("contact");
     }

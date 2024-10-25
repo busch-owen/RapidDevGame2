@@ -24,6 +24,7 @@ public class SwipeTask : MonoBehaviour
     [SerializeField] private AudioClip _goodClip;
     [SerializeField] private AudioClip _badClip;
     [SerializeField] private AudioSource _source;
+    public bool Correct;
 
     public Transform ItemSpawn;
     // Update is called once per frame
@@ -73,17 +74,20 @@ public class SwipeTask : MonoBehaviour
         if (Successful)
         {
             Green.SetActive(true);
+            Correct = true;
             _source.PlayOneShot(_goodClip);
         }
         else
         {
             Red.SetActive(true);
+            Correct = false;
             _source.PlayOneShot(_badClip);
         }
 
         yield return new WaitForSeconds(1.0f);
         Red.SetActive(false);
         Green.SetActive(false);
+        Correct = false;
     }
     public void SwipePointTrigger(SwipePoint swipePoint)
     {
