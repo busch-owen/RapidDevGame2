@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class SwipeTask : MonoBehaviour
 {
@@ -16,7 +19,13 @@ public class SwipeTask : MonoBehaviour
     private int _itemIndex = 0;
     [SerializeField] private List<ItemTypeSo> items = new();
     [SerializeField] private GameObject _canvas;
+    [SerializeField] private ItemToSwipe _toSwipe;
+    private bool _alreadySpawned;
+    [SerializeField] private AudioClip _goodClip;
+    [SerializeField] private AudioClip _badClip;
+    [SerializeField] private AudioSource _source;
 
+    public Transform ItemSpawn;
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +46,15 @@ public class SwipeTask : MonoBehaviour
             Npc = npc;
             _canvas.SetActive(true);
             items = Npc.ItemsCollected;
+            if(_alreadySpawned)return;
+            foreach (var item in items)
+            {
+                var Spawned = Instantiate(_toSwipe, transform.position, quaternion.identity);
+                Spawned.transform.SetParent(ItemSpawn, false);
+                Spawned.Item = item;
+            }
+
+            _alreadySpawned = true;
 
         }
     }
@@ -47,6 +65,7 @@ public class SwipeTask : MonoBehaviour
         Green.SetActive(false);
         Money = FindFirstObjectByType<MoneyManager>();
         _canvas.SetActive(false);
+        _source = FindFirstObjectByType<AudioSource>();
     }
 
     private IEnumerator FinishTask(bool Successful)
@@ -54,10 +73,12 @@ public class SwipeTask : MonoBehaviour
         if (Successful)
         {
             Green.SetActive(true);
+            _source.PlayOneShot(_goodClip);
         }
         else
         {
             Red.SetActive(true);
+            _source.PlayOneShot(_badClip);
         }
 
         yield return new WaitForSeconds(1.0f);
@@ -82,8 +103,14 @@ public class SwipeTask : MonoBehaviour
             Debug.Log("Yipee");
             if (_itemIndex >= items.Count)
             {
-                Npc.ChangeState(NpcStateName.Exit);
+                Invoke("Disable", 1.0f);
             }
         }
+    }
+
+    private void Disable()
+    {
+        Npc.ChangeState(NpcStateName.Exit);
+        _canvas.SetActive(false);
     }
 }

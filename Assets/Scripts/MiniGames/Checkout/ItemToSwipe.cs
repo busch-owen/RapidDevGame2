@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemToSwipe : MonoBehaviour, IDragHandler
 {
     private Canvas _canvas;
 
     public ItemTypeSo Item;
+
+    public Image Image;
     
     public void OnDrag(PointerEventData eventData)
     {
@@ -19,9 +22,10 @@ public class ItemToSwipe : MonoBehaviour, IDragHandler
         transform.position = _canvas.transform.TransformPoint(pos);
     }
 
-    private void Awake()
+    private void Start()
     {
+        Image = GetComponent<Image>();
         _canvas = GetComponentInParent<Canvas>();
-        _canvas.worldCamera = FindFirstObjectByType<Camera>();
+        Image.sprite = Item.SmallIcon;
     }
 }

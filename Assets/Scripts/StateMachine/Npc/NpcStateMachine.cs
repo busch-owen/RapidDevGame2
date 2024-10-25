@@ -100,6 +100,8 @@ public class NpcStateMachine : BaseStateMachine
 
     private bool _interacted;
 
+    private int _numberOfItems = 0;
+
     
     
     // Start is called before the first frame update
@@ -245,34 +247,51 @@ public class NpcStateMachine : BaseStateMachine
     {
         var shelf = Target.GetComponent<Shelf>();
         Shelves.Remove(shelf);
-        foreach (ItemTypeSo item in Items)
+        
+        
+        foreach (var item in Items)
         {
-            if (shelf.AssignedItem == null ) continue;
-            if(shelf.AssignedItem.ItemCount <= 0) continue;
-            if (Shoplifter)
+            _numberOfItems = Items.Count;
+            for (int i = 0; i <= _numberOfItems -1; i++)
             {
-                shelf.AssignedItem.ItemCount--;
-                ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
-                ShelvesBeforeLeave--;
+                if (shelf.AssignedItem == null ) continue;
+                if(shelf.AssignedItem.ItemCount <= 0) continue;
+                if (Shoplifter)
+                {
+                    shelf.AssignedItem.ItemCount--;
+                    ItemsCollected.Add(item);// add the item to the npcs list of collected items
+                    MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
+                    ShelvesBeforeLeave--;
                 
+                }
+                else if (shelf.AssignedItem.ItemType != item||Budget < shelf.AssignedItem.ItemType.Cost|| shelf.AssignedItem.ItemCount <= 0)
+                {
+                    ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
+                    return;
+                }
+                else
+                {
+                    ItemsCollected.Add(item);// add the item to the npcs list of collected items
+                    shelf.AssignedItem.ItemCount--;
+                    MoneySpent += shelf.AssignedItem.ItemType.Cost; // spend the money
+                }
             }
-            else if (shelf.AssignedItem.ItemType != item||Budget < shelf.AssignedItem.ItemType.Cost|| shelf.AssignedItem.ItemCount <= 0)
+            
+            if (ItemsCollected.Count >= _numberOfItems)
             {
-                ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
+                FoundItems = true;
+                ChangeState(_npcPositiveDialogState);
                 return;
             }
             else
             {
-                ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                shelf.AssignedItem.ItemCount--;
-                MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
-                FoundItems = true;
+                FoundItems = false;
+                ChangeState(_npcNegativeDialogState);
                 return;
             }
         }
+        
         // remove the shelf from the list so the npc does not try to go to it again
-        FoundItems = false;
     }
     public void DistanceCheck()// check the distance between shelfs and the npc, if within distance switch state
     {
