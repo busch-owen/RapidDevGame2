@@ -32,7 +32,6 @@ public class GridSystemInput : MonoBehaviour
         _gridInput.GridActions.MouseClick.performed += i => _mover.CheckForObjectToMove();
         _gridInput.GridActions.MouseClick.performed += i => _deleter.CheckForObjectToDelete();
         _gridInput.GridActions.MouseClick.performed += i => _stocker.CheckForShelfToStock();
-        _gridInput.GridActions.Rotate.performed += i => _objectPlacer.RotateObject();
         
         SetActiveState(true);
     }

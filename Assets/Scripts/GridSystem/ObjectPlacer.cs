@@ -36,12 +36,6 @@ public class ObjectPlacer : MonoBehaviour
         _placeModeEnabled = true;
     }
 
-    public void RotateObject()
-    {
-        var tempObj = _displayObject.GetComponent<StoreObject>();
-        tempObj.RotationPoint.Rotate(Vector3.forward, 90f);
-    }
-
     public void ChangePlaceMode(bool newState)
     {
         _placeModeEnabled = newState;
