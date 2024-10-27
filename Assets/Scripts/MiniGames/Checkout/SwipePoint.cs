@@ -22,7 +22,7 @@ public class SwipePoint : MonoBehaviour
             itemToSwipe = Item;
             if (_swipeTask.Correct)
             {
-                Destroy(Item.gameObject);
+                Destroy(Item.gameObject, 0.5f);
             }
         }
         //Debug.Log("contact");

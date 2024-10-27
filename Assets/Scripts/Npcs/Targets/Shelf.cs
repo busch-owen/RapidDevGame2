@@ -10,6 +10,7 @@ public class Shelf : StoreObject
     [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
     public bool IsFlashing;
     private ShelfClick _shelfClick;
+    private EventManager _eventManager;
     
     public void StockShelf(int id, ItemSelector selector)
     {
@@ -44,6 +45,7 @@ public class Shelf : StoreObject
         _shelfClick = GetComponentInChildren<ShelfClick>();
         _shelfClick.image.enabled = false;
         Renderer = GetComponentInChildren<SpriteRenderer>();
+        _eventManager = FindFirstObjectByType<EventManager>();
     }
 
     public void EnableClick()
@@ -51,18 +53,28 @@ public class Shelf : StoreObject
         _shelfClick.image.enabled = true;
     }
 
+    public void DisableClick()
+    {
+        //Renderer = GetComponentInChildren<SpriteRenderer>();
+        IsFlashing = false;
+        //Renderer.color = Color.white;
+        StopCoroutine("Flash");
+    }
+
     public void FlashColor()
     {
         if (!IsFlashing)
         {
+            _eventManager._clicked += DisableClick;
             IsFlashing = true;
             StartCoroutine("Flash");
         }
         else
         {
+            _eventManager._clicked += DisableClick;
             IsFlashing = false;
             Renderer.color = Color.white;
-            StopCoroutine("Flash");
+            StopAllCoroutines();
         }
 
     }
