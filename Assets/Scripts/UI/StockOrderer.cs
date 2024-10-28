@@ -56,7 +56,7 @@ public class StockOrderer : MonoBehaviour
         _cartBalance = 0;
         if (itemsInCart.Count <= 0)
         {
-            balanceText.text = $"${_cartBalance}";
+            balanceText.text = $"${_cartBalance:N}";
             return;
         }
             
@@ -66,7 +66,7 @@ public class StockOrderer : MonoBehaviour
             {
                 _cartBalance += item.AssignedContainer.ItemType.Cost;
             }
-            balanceText.text = $"${_cartBalance}";
+            balanceText.text = $"${_cartBalance:N}";
         }
     }
 

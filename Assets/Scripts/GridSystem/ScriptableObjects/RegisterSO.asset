@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlaceModeObject>k__BackingField: {fileID: 943665201147448517, guid: 80c57495b2ad174439cf32742d272ef7, type: 3}
   <ObjectToPlace>k__BackingField: {fileID: 943665201147448517, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+  <ObjectName>k__BackingField: Cash Register
+  <StockAmount>k__BackingField: 0
   <ProductStorage>k__BackingField: 0
   <CompatibleProducts>k__BackingField: 
   <MenuSprite>k__BackingField: {fileID: 21300000, guid: 381014aebfbd46b4084a5183041b98c2, type: 3}
-  <ObjectPrice>k__BackingField: 0
+  <ObjectPrice>k__BackingField: 250

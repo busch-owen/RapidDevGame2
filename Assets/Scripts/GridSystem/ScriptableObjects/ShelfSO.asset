@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlaceModeObject>k__BackingField: {fileID: 6575979153740146991, guid: 20541eee38a69fb41b3f1b43d08f66b0, type: 3}
   <ObjectToPlace>k__BackingField: {fileID: 6575979153740146991, guid: 83c3d6d593b2b884ab118fd4b54f34f8, type: 3}
+  <ObjectName>k__BackingField: Shelf
   <StockAmount>k__BackingField: 15
   <ProductStorage>k__BackingField: 1
   <CompatibleProducts>k__BackingField: 000000000300000002000000

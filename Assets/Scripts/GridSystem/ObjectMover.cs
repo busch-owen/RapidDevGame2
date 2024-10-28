@@ -23,13 +23,18 @@ public class ObjectMover : MonoBehaviour
         var tempObject = _positionHandler.CheckForObjectToInteract();
         _picker.PickSpecificObject(tempObject.AssignedObject);
         _placer.PlaceMultiple(false);
-        MoveModeEnabled = false;
-        _picker.Desstroy(tempObject.gameObject);
+        _placer.ChangePlaceMode(true);
+        Destroy(tempObject.gameObject);
     }
 
     public void ToggleMoveMode(bool newState)
     {
         _deleter.DeleteModeEnabled = false;
         MoveModeEnabled = newState;
+    }
+
+    public void EnableMoveMode()
+    {
+        MoveModeEnabled = true;
     }
 }
