@@ -80,7 +80,7 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public int MoneySpent { get; private set; }
     
-    [field:SerializeField] public int TimeForFirstWander { get; private set; }
+    [field:SerializeField] public int TimeForFirstWander { get; set; }
     
     [field:SerializeField] public int TimeToLeave { get; private set; }
     
@@ -115,6 +115,8 @@ public class NpcStateMachine : BaseStateMachine
     private int _numberOfItems = 0;
 
     private EventManager _eventManager;
+
+    [SerializeField]private Image _placeHolder;
 
     
     
@@ -229,7 +231,6 @@ public class NpcStateMachine : BaseStateMachine
             foreach (var image in PossibleImages)
             {
                 TextIndex.AddEmotes(image);
-                PreviousImages.Add(image);
             }
 
             _ranBefore = true;
@@ -239,6 +240,7 @@ public class NpcStateMachine : BaseStateMachine
             foreach (var image in PreviousImages)
             {
                 TextIndex.RemoveEmotes(image);
+                PossibleImages.Remove(image);
             }
             PreviousImages.Clear();
             foreach (var image in PossibleImages)
@@ -251,21 +253,18 @@ public class NpcStateMachine : BaseStateMachine
 
     public void ChangeToNegative()
     {
-        PossibleImages = NpcType.Bad;
         ShowImages();
         TextIndex.StartCoroutine("ImageVisible");
     }
 
     public void ChangeToPositive()
     {
-        PossibleImages = NpcType.Good;
         ShowImages();
         TextIndex.StartCoroutine("ImageVisible");
     }
 
     public void ShowOpening()
     {
-        PossibleImages = NpcType.Opening;
         ShowImages();
         TextIndex.StartCoroutine("ImageVisible");
         
@@ -410,26 +409,21 @@ public class NpcStateMachine : BaseStateMachine
         Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
     }
 
-    public virtual void RandomizeImage(List<Sprite> sprites)
+    public virtual void RandomizeImage(Sprite sprite)
     {
         int i = 0;
-        foreach (var sprite in sprites)
-        {
-            i++;
-            if (PossibleImages[i].sprite == sprite || PossibleImages.Count < sprites.Count) return;
-
-            if (PossibleImages.Count < sprites.Count)
+            
+            if (PossibleImages.Count < PossibleOpening.Count)
             {
-                PossibleImages.Add(null);
+                PossibleImages[i].sprite = sprite;
+                PossibleImages.Add(_placeHolder);
                 PossibleImages[i].sprite = sprite;
             }
-            else if (PossibleImages.Count >= sprites.Count)
+            else if (PossibleImages.Count == PossibleOpening.Count)
             {
                 PossibleImages[i].sprite = sprite;
             }
-        }
-        var randSprite = Random.Range(0, PossibleOpening.Count);
-        Target = Shelves[RandomTarget].transform;
+        
         
     }
 

@@ -32,12 +32,12 @@ public class NpcTypeSo : ScriptableObject
     
     [field:SerializeField]public List<Image> Opening{ get; private set; }
     
-    [field:SerializeField]public List<Sprite> PossibleBad{ get;  set; }
+    [field:SerializeField]public List<Sprite> PossibleBad{ get; private set; }
     
-    [field:SerializeField]public List<Sprite> PossibleGood{ get;  set; }
+    [field:SerializeField]public List<Sprite> PossibleGood{ get;  private set; }
     
     
-    [field:SerializeField]public List<Sprite> PossibleOpening{ get;  set; }
+    [field:SerializeField]public List<Sprite> PossibleOpening{ get; private set; }
     
     
     

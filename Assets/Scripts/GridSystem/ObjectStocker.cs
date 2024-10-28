@@ -29,7 +29,7 @@ public class ObjectStocker : MonoBehaviour
         _interface = FindFirstObjectByType<StockInterface>();
         
         
-        _interface.gameObject.SetActive(false);
+        //_interface.gameObject.SetActive(false);
     }
 
     private void Update()

@@ -374,13 +374,17 @@ MonoBehaviour:
   <Shoplifter>k__BackingField: 0
   <CanTalk>k__BackingField: 0
   <Renderer>k__BackingField: {fileID: 0}
-  <PossibleImages>k__BackingField: []
+  <PossibleImages>k__BackingField:
+  - {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
+  - {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
   <PreviousImages>k__BackingField: []
   <CurrentShelf>k__BackingField: {fileID: 0}
+  <UiHide>k__BackingField: {fileID: 0}
   <PossibleBad>k__BackingField: []
   <PossibleGood>k__BackingField: []
   <PossibleOpening>k__BackingField: []
   <CurrentSprite>k__BackingField: {fileID: 0}
+  _placeHolder: {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4
