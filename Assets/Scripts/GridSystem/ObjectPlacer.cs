@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NavMeshPlus.Components;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,14 +20,18 @@ public class ObjectPlacer : MonoBehaviour
 
     private bool _placeMultiple = true;
 
-    private NavMeshSurface _surface; 
+    private NavMeshSurface _surface;
+
+    private MoneyManager _moneyManager;
+    private ObjectMover _mover;
 
     private void Start()
     {
         _picker = FindFirstObjectByType<ObjectPicker>();
         _pointer = FindFirstObjectByType<GridPointer>();
-        _cursorOnUI = EventSystem.current.IsPointerOverGameObject();
         _surface = FindFirstObjectByType<NavMeshSurface>();
+        _mover = GetComponent<ObjectMover>();
+        _moneyManager = FindFirstObjectByType<MoneyManager>();
     }
 
     public void AssignObject(StoreObjectSO obj, GameObject displayObject)
@@ -36,10 +41,9 @@ public class ObjectPlacer : MonoBehaviour
         _placeModeEnabled = true;
     }
 
-    public void RotateObject()
+    private void Update()
     {
-        var tempObj = _displayObject.GetComponent<StoreObject>();
-        tempObj.RotationPoint.Rotate(Vector3.forward, 90f);
+        _cursorOnUI = EventSystem.current.IsPointerOverGameObject();
     }
 
     public void ChangePlaceMode(bool newState)
@@ -55,11 +59,24 @@ public class ObjectPlacer : MonoBehaviour
     public void PlaceObject()
     {
         if(!_assignedObject || !_pointer.CursorOnGrid || _cursorOnUI || !_placeModeEnabled) return;
+        
         var storeObject = _assignedObject.ObjectToPlace;
         if (_displayObject != null && !_displayObject.GetComponent<StoreObject>().Placeable)
         {
             return;
         }
+        
+        if (!_mover.MoveModeEnabled)
+        {
+            if (_moneyManager.Profit < _assignedObject.ObjectPrice) return;
+            _moneyManager.DecrementProfit(_assignedObject.ObjectPrice);
+        }
+        else
+        {
+            _mover.ToggleMoveMode(false);
+            _mover.Invoke(nameof(_mover.EnableMoveMode), 0.1f);
+        }
+        
         var newObject = Instantiate(storeObject, _pointer.CurrentCellPos, Quaternion.identity);
         newObject.GetComponent<StoreObject>().RotationPoint.rotation = _displayObject.GetComponent<StoreObject>().RotationPoint.rotation;
         newObject.GetComponent<StoreObject>().AssignSO(_assignedObject);

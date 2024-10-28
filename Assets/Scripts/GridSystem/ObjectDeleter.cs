@@ -12,11 +12,13 @@ public class ObjectDeleter : MonoBehaviour
     private ObjectMover _objectMover;
 
     private NavMeshSurface _surface;
+    private MoneyManager _moneyManager;
 
     private void Start()
     {
         _positionHandler = GetComponent<MousePositionHandler>();
-        _objectMover = FindFirstObjectByType<ObjectMover>();
+        _objectMover = GetComponent<ObjectMover>();
+        _moneyManager = FindFirstObjectByType<MoneyManager>();
         _surface = FindFirstObjectByType<NavMeshSurface>();
     }
 
@@ -25,6 +27,7 @@ public class ObjectDeleter : MonoBehaviour
         if (_positionHandler.CheckForObjectToInteract() == null || !DeleteModeEnabled) return;
         var tempObject = _positionHandler.CheckForObjectToInteract();
         _surface.BuildNavMesh();
+        _moneyManager.IncrementProfit(tempObject.AssignedObject.ObjectPrice / 3);
         Destroy(tempObject.gameObject);
     }
 

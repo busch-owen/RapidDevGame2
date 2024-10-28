@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,11 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     
-    [field:SerializeField]public int Profit { get; set; }
+    [field:SerializeField]public float Profit { get; set; }
     
     [field:SerializeField]public int Quota { get; set; }
+
+    public event Action MoneyChanged;
     
     [field:SerializeField]public bool DayFinished { get; private set; }
     
@@ -24,14 +27,16 @@ public class MoneyManager : MonoBehaviour
         
     }
 
-    public void IncrementProfit(int money)
+    public void IncrementProfit(float money)
     {
         Profit += money;
+        MoneyChanged?.Invoke();
     }
     
-    public void DecrementProfit(int money)
+    public void DecrementProfit(float money)
     {
         Profit -= money;
+        MoneyChanged?.Invoke();
     }
 
     public void DecrementQuota(int money)
