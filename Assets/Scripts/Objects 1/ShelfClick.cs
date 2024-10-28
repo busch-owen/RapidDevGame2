@@ -37,7 +37,8 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        _stateMachine = _shelf.StateMachine;
+        if(!_stateMachine.CanTarget) return;
         if (_shelf.IsFlashing)
         {
             _stateMachine = _shelf.StateMachine;

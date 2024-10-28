@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void Clicked();
+public delegate void DayEnd();
 
 public class EventManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class EventManager : MonoBehaviour
 
     public event Clicked _clicked;
 
+    public event DayEnd _Ended;
+
     public List<ItemTypeSo> items;
 
     public void InvokeArrived(List<ItemTypeSo> ItemList)
@@ -41,5 +44,10 @@ public class EventManager : MonoBehaviour
     public void InvokeClicked()
     {
         _clicked?.Invoke();
+    }
+
+    public void InvokeEndDay()
+    {
+        _Ended?.Invoke();
     }
 }

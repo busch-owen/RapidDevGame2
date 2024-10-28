@@ -88,6 +88,9 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public bool CanTalk { get; set; }
     
+    [field:SerializeField] public bool CanTarget { get; set; }
+
+    
     [field:SerializeField] public SpriteRenderer Renderer { get; private set; }
     
     [field:SerializeField] public List<Image> PossibleImages{ get; private set; }
@@ -349,38 +352,47 @@ public class NpcStateMachine : BaseStateMachine
             case NpcStateName.Checkout:
                 base.ChangeState(_npcCheckoutState);
                 Current = _npcCheckoutState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.PositiveDialog:
                 base.ChangeState(_npcPositiveDialogState);
                 Current = _npcPositiveDialogState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.Enter:
                 base.ChangeState(_npcEnterState);
                 Current = _npcEnterState.ToString();
+                CanTarget = true;
                 break;
             case NpcStateName.Exit:
                 base.ChangeState(_npcExitState);
                 Current = _npcExitState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.CheckShelf:
                 base.ChangeState(_npcShelfCheckState);
                 Current = _npcShelfCheckState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.Wander:
                 base.ChangeState(_npcWanderState);
                 Current = _npcWanderState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.NegativeDialog:
                 base.ChangeState(_npcNegativeDialogState);
                 Current = _npcNegativeDialogState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.Spawn:
                 base.ChangeState(_npcSpawnState);
                 Current = _npcSpawnState.ToString();
+                CanTarget = false;
                 break;
             case NpcStateName.Talking:
                 base.ChangeState(_npcTalkingState);
                 Current = _npcTalkingState.ToString();
+                CanTarget = true;
                 break;
             
                 

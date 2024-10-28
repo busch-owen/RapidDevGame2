@@ -23,13 +23,17 @@ public class NpcSpawner : MonoBehaviour
     
     [field: SerializeField] public List<int> AmountOfNpcs{ get; private set; } = new();
     
-    [field: SerializeField] public int MaxNpcs { get;  set; }
+    [field: SerializeField] public int MaxTimeBetweenNpcs { get;  set; }
     
-    [field: SerializeField] public int MinNpcs { get;  set; }
+    [field: SerializeField] public int MinTimeBetweenNpcs { get;  set; }
     
     private int _npcsToSpawn;
 
     private bool _running;
+
+    private EventManager _eventManager;
+
+    private int TotalWaves = 0;
 
 
     public void SpawnNpc()
@@ -53,6 +57,8 @@ public class NpcSpawner : MonoBehaviour
 
     public IEnumerator NpcWaveSpawn()
     {
+        time = Random.Range(MinTimeBetweenNpcs, MaxTimeBetweenNpcs);
+        _timeToNextWave = new WaitForSeconds(time);
         foreach (int amtofWaves in Waves)// for each wave of npcs spawn the amount of npcs specified then wait until it is time for the next wave to do it again
         {
             
@@ -61,8 +67,15 @@ public class NpcSpawner : MonoBehaviour
                 SpawnNpc();
             }
             Invoke("Randomize", time -1);// makes npcs get randomized before the next wave
+            TotalWaves++;
             yield return _timeToNextWave;
         }
+
+        if (TotalWaves >= Waves.Count)
+        {
+            _eventManager.InvokeEndDay();
+        }
+        
     }
 
     private void Randomize()// at the end of every wave re randomize the number of npcs
@@ -72,7 +85,6 @@ public class NpcSpawner : MonoBehaviour
 
     private IEnumerator RandomizeNpcs()
     {
-        _npcsToSpawn = Random.Range(MinNpcs, MaxNpcs);// pick the amount of npcs to add
         for (int i = 0; AmountOfNpcs.Count <= _npcsToSpawn; i++)// add to a list of npcs so that the foreach loop has data to pull from
         {
             AmountOfNpcs.Add(i);
@@ -93,5 +105,6 @@ public class NpcSpawner : MonoBehaviour
     private void Start()
     {
         _timeToNextWave = new WaitForSeconds(time);
+        _eventManager = FindFirstObjectByType<EventManager>();
     }
 }

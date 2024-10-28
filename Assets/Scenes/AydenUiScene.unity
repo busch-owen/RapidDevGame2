@@ -529,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693693703977148604, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SpawnNpc
+      value: StartDay
       objectReference: {fileID: 0}
     - target: {fileID: 6693693703977148604, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -667,10 +667,10 @@ MonoBehaviour:
   - {fileID: 4068059075801848193}
   - {fileID: 4068059075801848192}
   - {fileID: 4068059075801848191}
-  <Waves>k__BackingField: 
+  <Waves>k__BackingField: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   <AmountOfNpcs>k__BackingField: 
-  <MaxNpcs>k__BackingField: 0
-  <MinNpcs>k__BackingField: 0
+  <MaxTimeBetweenNpcs>k__BackingField: 45
+  <MinTimeBetweenNpcs>k__BackingField: 15
 --- !u!1001 &5528701828994245767
 PrefabInstance:
   m_ObjectHideFlags: 0
