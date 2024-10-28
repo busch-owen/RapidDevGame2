@@ -94,6 +94,14 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public Shelf CurrentShelf{ get; set; }
     
+    [field:SerializeField]public List<Sprite> PossibleBad{ get;  set; }
+    
+    [field:SerializeField]public List<Sprite> PossibleGood{ get;  set; }
+    
+    [field:SerializeField]public List<Sprite> PossibleOpening{ get;  set; }
+    
+    [field:SerializeField]public Sprite CurrentSprite{ get;  set; }
+    
     private bool _ranBefore;
 
     private bool _clicked;
@@ -116,6 +124,9 @@ public class NpcStateMachine : BaseStateMachine
         Renderer.sprite = NpcType.NpcSprite;
         Renderer.color = Color.white;
         Renderer.transform.rotation = Quaternion.Euler(90,0,0);
+        PossibleBad = NpcType.PossibleBad;
+        PossibleGood = NpcType.PossibleGood;
+        PossibleOpening = NpcType.PossibleOpening;
     }
 
     private void Awake()
@@ -349,6 +360,29 @@ public class NpcStateMachine : BaseStateMachine
     public void AssignRegisters()// find all of the registers in the scene and add them to the array
     {
         Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
+    }
+
+    public virtual void RandomizeImage(List<Sprite> sprites)
+    {
+        int i = 0;
+        foreach (var sprite in sprites)
+        {
+            i++;
+            if (PossibleImages[i].sprite == sprite || PossibleImages.Count < sprites.Count) return;
+
+            if (PossibleImages.Count < sprites.Count)
+            {
+                PossibleImages.Add(null);
+                PossibleImages[i].sprite = sprite;
+            }
+            else if (PossibleImages.Count >= sprites.Count)
+            {
+                PossibleImages[i].sprite = sprite;
+            }
+        }
+        var randSprite = Random.Range(0, PossibleOpening.Count);
+        Target = Shelves[RandomTarget].transform;
+        
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
