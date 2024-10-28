@@ -25,9 +25,11 @@ public class SwipeTask : MonoBehaviour
     [SerializeField] private AudioClip _badClip;
     [SerializeField] private AudioSource _source;
     public bool Correct;
+    private EventManager _eventManager;
 
     public Transform ItemSpawn;
     // Update is called once per frame
+    
     void Update()
     {
         _countDown -= Time.deltaTime;
@@ -39,25 +41,30 @@ public class SwipeTask : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void AssignItems(List<ItemTypeSo> Items)
     {
-        if (other.GetComponentInParent<NpcStateMachine>())
+        items = Items;
+        Debug.Log("assigned");
+        Invoke("EnableCheckout",2.0f);
+    }
+
+    private void AssignNpc(NpcStateMachine npc)
+    {
+        Npc = npc;
+    }
+
+    private void EnableCheckout()
+    {
+        _canvas.SetActive(true);
+        if(_alreadySpawned)return;
+        foreach (var item in items)
         {
-            var npc = other.GetComponentInParent<NpcStateMachine>();
-            Npc = npc;
-            _canvas.SetActive(true);
-            items = Npc.ItemsCollected;
-            if(_alreadySpawned)return;
-            foreach (var item in items)
-            {
-                var Spawned = Instantiate(_toSwipe, transform.position, quaternion.identity);
-                Spawned.transform.SetParent(ItemSpawn, false);
-                Spawned.Item = item;
-            }
-
-            _alreadySpawned = true;
-
+            var Spawned = Instantiate(_toSwipe, transform.position, quaternion.identity);
+            Spawned.transform.SetParent(ItemSpawn, false);
+            Spawned.Item = item;
         }
+
+        _alreadySpawned = true;
     }
 
     private void Start()
@@ -67,6 +74,11 @@ public class SwipeTask : MonoBehaviour
         Money = FindFirstObjectByType<MoneyManager>();
         _canvas.SetActive(false);
         _source = FindFirstObjectByType<AudioSource>();
+        _eventManager = FindFirstObjectByType<EventManager>();
+        
+        _eventManager.Arrived += AssignItems;
+        _eventManager.Npc += AssignNpc;
+
     }
 
     private IEnumerator FinishTask(bool Successful)

@@ -47,6 +47,8 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
+
+    public event Action<List<ItemTypeSo>> ArrivedAtCheckout;
     
     [field: SerializeField] public List<NpcTypeSo> NpcTypeSoOptions{ get; private set; } = new();
     [field: SerializeField] public List<Shelf> Shelves { get; private set; } = new ();
@@ -94,6 +96,8 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public Shelf CurrentShelf{ get; set; }
     
+    [field:SerializeField] public UiHide UiHide{ get; set; }
+    
     [field:SerializeField]public List<Sprite> PossibleBad{ get;  set; }
     
     [field:SerializeField]public List<Sprite> PossibleGood{ get;  set; }
@@ -109,6 +113,8 @@ public class NpcStateMachine : BaseStateMachine
     private bool _interacted;
 
     private int _numberOfItems = 0;
+
+    private EventManager _eventManager;
 
     
     
@@ -126,6 +132,7 @@ public class NpcStateMachine : BaseStateMachine
         Renderer.sprite = NpcType.NpcSprite;
         Renderer.color = Color.white;
         Renderer.transform.rotation = Quaternion.Euler(90,0,0);
+        _eventManager = FindFirstObjectByType<EventManager>();
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
         PossibleOpening = NpcType.PossibleOpening;
@@ -152,6 +159,12 @@ public class NpcStateMachine : BaseStateMachine
         ChangeState(_npcSpawnState);
     }
 
+    public void ArrivedEvent()
+    {
+        _eventManager.InvokeArrived(ItemsCollected);
+        _eventManager.AssignNpc(this);
+    }
+
     public void Leave()
     {
         Agent.destination = Exit.transform.position;
@@ -161,6 +174,21 @@ public class NpcStateMachine : BaseStateMachine
     {
         if(_interacted)return;
         ChangeState(_npcWanderState);
+    }
+
+    public void GiveUp()
+    {
+        if (ShelvesBeforeLeave >= 0)return;
+
+        if (ItemsCollected.Count >= 1)
+        {
+            ChangeState(NpcStateName.Checkout);
+        }
+        else if (ItemsCollected.Count <= 0)
+        {
+            ChangeState(NpcStateName.Exit);
+        }
+
     }
 
     public void Spawn()
@@ -278,12 +306,13 @@ public class NpcStateMachine : BaseStateMachine
                 else if (shelf.AssignedItem.ItemType != item||Budget < shelf.AssignedItem.ItemType.Cost|| shelf.AssignedItem.ItemCount <= 0)
                 {
                     ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
-                    return;
+                    continue;
                 }
                 else
                 {
                     ItemsCollected.Add(item);// add the item to the npcs list of collected items
                     shelf.AssignedItem.ItemCount--;
+                    ShelvesBeforeLeave--;
                     MoneySpent += shelf.AssignedItem.ItemType.Cost; // spend the money
                 }
             }

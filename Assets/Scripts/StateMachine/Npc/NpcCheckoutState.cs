@@ -10,6 +10,8 @@ public class NpcCheckoutState : NPCBaseState
     {
     }
 
+    private bool _arrived;
+
     public override void Enter()
     {
         Checkout();
@@ -17,7 +19,7 @@ public class NpcCheckoutState : NPCBaseState
 
     public override void FixedUpdate()
     {
-        //GoToExit();
+        GoToExit();
     }
     
     public bool ArrivedAtCheckout()
@@ -41,11 +43,10 @@ public class NpcCheckoutState : NPCBaseState
 
     public void GoToExit()
     {
-        if (ArrivedAtCheckout())
+        if (ArrivedAtCheckout() && !_arrived)
         {
-            _stateMachine.MoneyManager.IncrementProfit(_stateMachine.MoneySpent);
-            _stateMachine.MoneyManager.DecrementQuota(_stateMachine.MoneySpent);
-            _stateMachine.ChangeState(NpcStateName.Exit);
+            _stateMachine.ArrivedEvent();
+            _arrived = true;
         }
     }
 }

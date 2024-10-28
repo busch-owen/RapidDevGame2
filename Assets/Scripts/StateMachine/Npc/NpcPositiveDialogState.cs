@@ -11,6 +11,8 @@ public class NpcPositiveDialogState : NPCBaseState
 
     public override void Enter()
     {
+        
+        _stateMachine.GiveUp();
         _stateMachine.ChangeToPositive();
         if (_stateMachine.ItemsCollected.Count >= _stateMachine.Items.Count)
         {
