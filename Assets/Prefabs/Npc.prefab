@@ -351,6 +351,7 @@ MonoBehaviour:
   <ItemsCollected>k__BackingField: []
   <NpcTypeSoOptions>k__BackingField:
   - {fileID: 11400000, guid: 1c4f6f21535057740822a3fd8b7f2e4d, type: 2}
+  - {fileID: 11400000, guid: b689f7db56b04b04cbd473f8c417e15d, type: 2}
   <Shelves>k__BackingField: []
   <Registers>k__BackingField: []
   <Agent>k__BackingField: {fileID: 4806395704206272866}
@@ -376,6 +377,10 @@ MonoBehaviour:
   <PossibleImages>k__BackingField: []
   <PreviousImages>k__BackingField: []
   <CurrentShelf>k__BackingField: {fileID: 0}
+  <PossibleBad>k__BackingField: []
+  <PossibleGood>k__BackingField: []
+  <PossibleOpening>k__BackingField: []
+  <CurrentSprite>k__BackingField: {fileID: 0}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4
