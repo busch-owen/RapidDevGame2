@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     
-    [field:SerializeField]public int Profit { get; set; }
+    [field:SerializeField]public float Profit { get; set; }
     
     [field:SerializeField]public int Quota { get; set; }
 
@@ -27,13 +27,13 @@ public class MoneyManager : MonoBehaviour
         
     }
 
-    public void IncrementProfit(int money)
+    public void IncrementProfit(float money)
     {
         Profit += money;
         MoneyChanged?.Invoke();
     }
     
-    public void DecrementProfit(int money)
+    public void DecrementProfit(float money)
     {
         Profit -= money;
         MoneyChanged?.Invoke();

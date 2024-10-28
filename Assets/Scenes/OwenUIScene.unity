@@ -637,6 +637,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4509241943552218496, guid: 3bdbd09d27ff10d4bb5ffb55bec8935d, type: 3}
+      propertyPath: <Profit>k__BackingField
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7434957377550192826, guid: 3bdbd09d27ff10d4bb5ffb55bec8935d, type: 3}
       propertyPath: m_Name
       value: MoneyManager
@@ -3891,7 +3895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3418081161989940426, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00003671646
+      value: -0.000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 3443630803923587566, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5064,6 +5068,18 @@ PrefabInstance:
     - target: {fileID: 5388081746987772816, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434017134082688160, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434017134082688160, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434017134082688160, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5491778001030670058, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6459,7 +6475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993546563823726463, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000009059906
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 9075060649991590022, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchorMax.y
