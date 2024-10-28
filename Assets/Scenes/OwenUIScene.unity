@@ -438,6 +438,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6693693703977148604, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693693703977148604, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7983391047692252562, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 525.51154
