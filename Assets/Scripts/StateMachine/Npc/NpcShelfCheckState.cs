@@ -37,10 +37,6 @@ public class NpcShelfCheckState : NPCBaseState
         {
             _stateMachine.ChangeState(NpcStateName.PositiveDialog);
         }
-        else
-        {
-            _stateMachine.ChangeState(NpcStateName.NegativeDialog);
-        }
     }
     
     

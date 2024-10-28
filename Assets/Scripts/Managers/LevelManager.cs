@@ -16,17 +16,12 @@ public class LevelManager : MonoBehaviour
     //Call this function where ever you see fit for XP progression
     public void IncreaseLevelProgression(float progressionGained)
     {
-        //The current system for this is very wrong mathematically, and so I'll revisit it soon
-        
         LevelChanged?.Invoke();
         CurrentLevelProgression += progressionGained;
-        if (!(CurrentLevelProgression <= _amtTillNextLevel)) return;
+        if (!(CurrentLevelProgression >= 1)) return;
+        float valueToAddBackToProgression = CurrentLevel -= 1;
+
+        CurrentLevelProgression = valueToAddBackToProgression;
         CurrentLevel++;
-        var remainder = progressionGained - CurrentLevelProgression;
-        CurrentLevelProgression = remainder;
-        if (CurrentLevelProgression <= _amtTillNextLevel)
-        {
-            IncreaseLevelProgression(remainder);
-        }
     }
 }

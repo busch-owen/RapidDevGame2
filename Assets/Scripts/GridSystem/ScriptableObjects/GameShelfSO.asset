@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlaceModeObject>k__BackingField: {fileID: 6575979153740146991, guid: 3eab8e618747344469ef71230b839916, type: 3}
   <ObjectToPlace>k__BackingField: {fileID: 6575979153740146991, guid: ea653d6cadcdbfd4a95f1ec6961bc1c7, type: 3}
+  <ObjectName>k__BackingField: Game Shelf
   <StockAmount>k__BackingField: 60
   <ProductStorage>k__BackingField: 1
   <CompatibleProducts>k__BackingField: 01000000
-  <MenuSprite>k__BackingField: {fileID: 0}
-  <ObjectPrice>k__BackingField: 0
+  <MenuSprite>k__BackingField: {fileID: 21300000, guid: 75969b710ad2299438e86603839424fc, type: 3}
+  <ObjectPrice>k__BackingField: 120

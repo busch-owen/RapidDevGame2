@@ -17,6 +17,6 @@ public class StoreItemButton : MonoBehaviour
         _assignedContainer = container;
         buttonImage.sprite = _assignedContainer.ItemType.BigIcon;
         itemName.text = _assignedContainer.ItemType.ItemName;
-        itemCost.text = $"${_assignedContainer.ItemType.Cost}";
+        itemCost.text = $"${_assignedContainer.ItemType.Cost:N}";
     }
 }
