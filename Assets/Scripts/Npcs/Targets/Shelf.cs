@@ -77,7 +77,8 @@ public class Shelf : StoreObject
             Img.transform.parent = trans;
             if (CurrentContainer.ItemCount >= 20)
             {
-                IncrementShelf();
+                ShelfUI.transform.localScale = new Vector3(0,0,0);
+                return;
             }
         }
         else
