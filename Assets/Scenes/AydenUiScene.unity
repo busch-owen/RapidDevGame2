@@ -440,7 +440,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -882,6 +882,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemName>k__BackingField
+      value: GTA
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
     - target: {fileID: 8615382804491686595, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1000,6 +1008,14 @@ PrefabInstance:
     - target: {fileID: -6799537194589448719, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069541278478255273, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 14480ded95c8bfe4ca4b1b5fda427b9b, type: 3}
+    - target: {fileID: 1069541278478255273, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1817993747500428275, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: Exists

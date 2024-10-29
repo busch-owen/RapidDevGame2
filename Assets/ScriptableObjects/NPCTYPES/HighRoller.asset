@@ -27,7 +27,7 @@ MonoBehaviour:
   <Budget>k__BackingField: 100
   <ShelvesTillExit>k__BackingField: 4
   <ShopLifter>k__BackingField: 0
-  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 0564a109ae409c64baa187d6a20d2464, type: 3}
+  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 03c08588b64f9db48b551d658da3e06f, type: 3}
   <Bad>k__BackingField:
   - {fileID: 0}
   - {fileID: 0}
