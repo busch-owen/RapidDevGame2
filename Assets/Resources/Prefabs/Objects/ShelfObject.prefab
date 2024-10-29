@@ -511,6 +511,7 @@ MonoBehaviour:
     <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
+  <Image>k__BackingField: {fileID: 2844627434596013490, guid: 10ff5e13911a5354d93b4af8fd9fb72a, type: 3}
   <RowsOfShelves>k__BackingField:
   - <ItemName>k__BackingField: 
     <GameID>k__BackingField: 0
@@ -527,12 +528,18 @@ MonoBehaviour:
     <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
+  <Rows>k__BackingField: []
+  <rows>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   <StateMachine>k__BackingField: {fileID: 0}
   <EmpStateMachine>k__BackingField: {fileID: 0}
   IsFlashing: 0
   ShelfSelected: 0
   Target: {fileID: 0}
   ShelfUI: {fileID: 0}
+  ItemSelector: {fileID: 0}
 --- !u!1 &9023871392349896469
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,18 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Shelf : StoreObject
 {
     [field: SerializeField] public GameContainer AssignedItem { get; private set; }
+    
+    [field: SerializeField] public Image Image { get; private set; }
     [field: SerializeField] public GameContainer[] RowsOfShelves { get; private set; }
+    
+    [field: SerializeField] public Rows[] Rows { get; private set; }
+    
+    [field: SerializeField] public Transform[] rows { get; private set; }
     private ItemSelector _assignedSelector;
     [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
     [field: SerializeField] public EmployeeStateMachine EmpStateMachine { get; private set; }
@@ -35,11 +42,20 @@ public class Shelf : StoreObject
         Target = EmpStateMachine.transform;
         ShelfUI = FindFirstObjectByType<ShelfUi>().gameObject;
         ItemSelector = FindFirstObjectByType<ItemSelector>();
+        Rows = FindObjectsByType<Rows>(FindObjectsSortMode.None);
+        
+        for (int i = 0; i <= 2; i++ )
+        {
+            rows[i] = Rows[i].transform;
+            Debug.Log("added");
+        }
+
     }
     
     public void StockShelf(ItemTypeSo item)
     {
         var CurrentContainer = RowsOfShelves[ShelfSelected];
+        var trans = rows[ShelfSelected];
 
         if (!_firstPress)
         {
@@ -49,12 +65,20 @@ public class Shelf : StoreObject
             CurrentContainer.GameID = item.GameID;
             CurrentContainer.ItemCount++;
             ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
+            var Img = Instantiate(Image, trans);
+            Img.transform.parent = trans;
             _firstPress = true;
         }
         else if(_itemTypeSo == item)
         {
             CurrentContainer.ItemCount++;
             ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
+            var Img = Instantiate(Image, trans);
+            Img.transform.parent = trans;
+            if (CurrentContainer.ItemCount >= 20)
+            {
+                IncrementShelf();
+            }
         }
         else
         {
