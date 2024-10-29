@@ -11,7 +11,17 @@ public class NpcPositiveDialogState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChangeToPositive();
+        
+        
+        foreach (var sprite in _stateMachine.PossibleGood)
+        {
+            var random = Random.Range(0, _stateMachine.PossibleGood.Count);
+            var RandSpite = _stateMachine.PossibleGood[random];
+            _stateMachine.RandomizeImage(RandSpite);
+        }
+        _stateMachine.TimeForFirstWander = 1;
+        _stateMachine.Invoke(nameof(_stateMachine.ChangeToPositive), 0.5f);
+        _stateMachine.GiveUp();
         if (_stateMachine.ItemsCollected.Count >= _stateMachine.Items.Count)
         {
             _stateMachine.StartCoroutine(SwitchToCheckout());

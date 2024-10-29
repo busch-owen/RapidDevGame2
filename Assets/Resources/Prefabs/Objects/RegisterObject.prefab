@@ -200,7 +200,7 @@ MonoBehaviour:
   - {fileID: 2047722414255939262}
   - {fileID: 1348845780774926747}
   - {fileID: 4161152156606830500}
-  CountDownMax: 0.5
+  CountDownMax: 0.75
   Green: {fileID: 1166198978190169846}
   Red: {fileID: 8546732912343028321}
   Money: {fileID: 0}
@@ -210,6 +210,7 @@ MonoBehaviour:
   _goodClip: {fileID: 8300000, guid: c0f467b5d8104754e821269f0019b35a, type: 3}
   _badClip: {fileID: 8300000, guid: 7659bc7120d76e043bbefc3637320089, type: 3}
   _source: {fileID: 0}
+  Correct: 0
   ItemSpawn: {fileID: 7608711167884612185}
 --- !u!61 &8922948990859401839
 BoxCollider2D:
@@ -701,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.015686275}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -980,7 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.015686275}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1151,7 +1152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.015686275}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

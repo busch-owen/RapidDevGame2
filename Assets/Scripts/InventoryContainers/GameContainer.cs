@@ -21,4 +21,10 @@ public class GameContainer
         ItemCount += amt;
         Debug.LogFormat($"New amount is {ItemCount}");
     }
+
+    public void DecrementCount(int amt)
+    {
+        ItemCount -= amt;
+        Debug.LogFormat($"New amount is {ItemCount}");
+    }
 }

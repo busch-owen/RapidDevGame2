@@ -32,8 +32,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public event Selected SelectedEvent;
     
-    
-    [field:SerializeField]public string Current{ get; private set; }
+    [field:SerializeField]public NPCBaseState currentState{ get; private set; }
     
     [field:SerializeField]public bool FoundItems{ get; private set; }
     [field:SerializeField]public TextIndex TextIndex{ get; private set; }
@@ -47,6 +46,8 @@ public class NpcStateMachine : BaseStateMachine
     [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
+
+    public event Action<List<ItemTypeSo>> ArrivedAtCheckout;
     
     [field: SerializeField] public List<NpcTypeSo> NpcTypeSoOptions{ get; private set; } = new();
     [field: SerializeField] public List<Shelf> Shelves { get; private set; } = new ();
@@ -78,13 +79,16 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public int MoneySpent { get; private set; }
     
-    [field:SerializeField] public int TimeForFirstWander { get; private set; }
+    [field:SerializeField] public int TimeForFirstWander { get; set; }
     
     [field:SerializeField] public int TimeToLeave { get; private set; }
     
     [field:SerializeField] public bool Shoplifter { get; private set; }
     
     [field:SerializeField] public bool CanTalk { get; set; }
+    
+    [field:SerializeField] public bool CanTarget { get; set; }
+
     
     [field:SerializeField] public SpriteRenderer Renderer { get; private set; }
     
@@ -94,6 +98,16 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField] public Shelf CurrentShelf{ get; set; }
     
+    [field:SerializeField] public UiHide UiHide{ get; set; }
+    
+    [field:SerializeField]public List<Sprite> PossibleBad{ get;  set; }
+    
+    [field:SerializeField]public List<Sprite> PossibleGood{ get;  set; }
+    
+    [field:SerializeField]public List<Sprite> PossibleOpening{ get;  set; }
+    
+    [field:SerializeField]public Sprite CurrentSprite{ get;  set; }
+    
     private bool _ranBefore;
 
     private bool _clicked;
@@ -101,6 +115,10 @@ public class NpcStateMachine : BaseStateMachine
     private bool _interacted;
 
     private int _numberOfItems = 0;
+
+    private EventManager _eventManager;
+
+    [SerializeField]private Image _placeHolder;
 
     
     
@@ -118,6 +136,10 @@ public class NpcStateMachine : BaseStateMachine
         Renderer.sprite = NpcType.NpcSprite;
         Renderer.color = Color.white;
         Renderer.transform.rotation = Quaternion.Euler(90,0,0);
+        _eventManager = FindFirstObjectByType<EventManager>();
+        PossibleBad = NpcType.PossibleBad;
+        PossibleGood = NpcType.PossibleGood;
+        PossibleOpening = NpcType.PossibleOpening;
     }
 
     private void Awake()
@@ -141,6 +163,12 @@ public class NpcStateMachine : BaseStateMachine
         ChangeState(_npcSpawnState);
     }
 
+    public void ArrivedEvent()
+    {
+        _eventManager.InvokeArrived(ItemsCollected);
+        _eventManager.AssignNpc(this);
+    }
+
     public void Leave()
     {
         Agent.destination = Exit.transform.position;
@@ -150,6 +178,21 @@ public class NpcStateMachine : BaseStateMachine
     {
         if(_interacted)return;
         ChangeState(_npcWanderState);
+    }
+
+    public void GiveUp()
+    {
+        if (ShelvesBeforeLeave >= 0)return;
+
+        if (ItemsCollected.Count >= 1)
+        {
+            ChangeState(NpcStateName.Checkout);
+        }
+        else if (ItemsCollected.Count <= 0)
+        {
+            ChangeState(NpcStateName.Exit);
+        }
+
     }
 
     public void Spawn()
@@ -190,7 +233,6 @@ public class NpcStateMachine : BaseStateMachine
             foreach (var image in PossibleImages)
             {
                 TextIndex.AddEmotes(image);
-                PreviousImages.Add(image);
             }
 
             _ranBefore = true;
@@ -199,7 +241,7 @@ public class NpcStateMachine : BaseStateMachine
         {
             foreach (var image in PreviousImages)
             {
-                TextIndex.RemoveEmotes(image);
+                TextIndex.RemoveEmotes(image); 
             }
             PreviousImages.Clear();
             foreach (var image in PossibleImages)
@@ -212,21 +254,18 @@ public class NpcStateMachine : BaseStateMachine
 
     public void ChangeToNegative()
     {
-        PossibleImages = NpcType.Bad;
         ShowImages();
         TextIndex.StartCoroutine("ImageVisible");
     }
 
     public void ChangeToPositive()
     {
-        PossibleImages = NpcType.Good;
         ShowImages();
         TextIndex.StartCoroutine("ImageVisible");
     }
 
     public void ShowOpening()
     {
-        PossibleImages = NpcType.Opening;
         ShowImages();
         TextIndex.StartCoroutine("ImageVisible");
         
@@ -254,28 +293,32 @@ public class NpcStateMachine : BaseStateMachine
             _numberOfItems = Items.Count;
             for (int i = 0; i <= _numberOfItems -1; i++)
             {
-                if (shelf.AssignedItem == null ) continue;
-                if(shelf.AssignedItem.ItemCount <= 0) continue;
+                if (shelf.RowsOfShelves[shelf.ShelfSelected] == null ) continue;
+                if(shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0) continue;
                 if (Shoplifter)
                 {
-                    shelf.AssignedItem.ItemCount--;
                     ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
+                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
+                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
                     ShelvesBeforeLeave--;
                 
                 }
-                else if (shelf.AssignedItem.ItemType != item||Budget < shelf.AssignedItem.ItemType.Cost|| shelf.AssignedItem.ItemCount <= 0)
+                else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost|| shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0)
                 {
                     ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
-                    return;
+                    continue;
                 }
                 else
                 {
                     ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    shelf.AssignedItem.ItemCount--;
-                    MoneySpent += shelf.AssignedItem.ItemType.Cost; // spend the money
+                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
+                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
+                    ShelvesBeforeLeave--;
                 }
+                shelf.ShelfSelected++;
             }
+
+            shelf.ShelfSelected = 0;
             
             if (ItemsCollected.Count >= _numberOfItems)
             {
@@ -297,7 +340,6 @@ public class NpcStateMachine : BaseStateMachine
     {
         if (ArrivedAtTarget())
         {
-            Debug.Log("arrived");
             ChangeState(_npcShelfCheckState);
         }
     }
@@ -309,39 +351,48 @@ public class NpcStateMachine : BaseStateMachine
         {
             case NpcStateName.Checkout:
                 base.ChangeState(_npcCheckoutState);
-                Current = _npcCheckoutState.ToString();
+                currentState = _npcCheckoutState;
+                CanTarget = false;
                 break;
             case NpcStateName.PositiveDialog:
                 base.ChangeState(_npcPositiveDialogState);
-                Current = _npcPositiveDialogState.ToString();
+                currentState = _npcPositiveDialogState;
+                CanTarget = false;
                 break;
             case NpcStateName.Enter:
                 base.ChangeState(_npcEnterState);
-                Current = _npcEnterState.ToString();
+                currentState = _npcEnterState;
+                CanTarget = true;
                 break;
             case NpcStateName.Exit:
                 base.ChangeState(_npcExitState);
-                Current = _npcExitState.ToString();
+                currentState = _npcExitState;
+                CanTarget = false;
                 break;
             case NpcStateName.CheckShelf:
                 base.ChangeState(_npcShelfCheckState);
-                Current = _npcShelfCheckState.ToString();
+                currentState = _npcShelfCheckState;
+                CanTarget = false;
                 break;
             case NpcStateName.Wander:
                 base.ChangeState(_npcWanderState);
-                Current = _npcWanderState.ToString();
+                currentState = _npcWanderState;
+                CanTarget = false;
                 break;
             case NpcStateName.NegativeDialog:
                 base.ChangeState(_npcNegativeDialogState);
-                Current = _npcNegativeDialogState.ToString();
+                currentState = _npcNegativeDialogState;
+                CanTarget = false;
                 break;
             case NpcStateName.Spawn:
                 base.ChangeState(_npcSpawnState);
-                Current = _npcSpawnState.ToString();
+                currentState = _npcSpawnState;
+                CanTarget = false;
                 break;
             case NpcStateName.Talking:
                 base.ChangeState(_npcTalkingState);
-                Current = _npcTalkingState.ToString();
+                currentState = _npcTalkingState;
+                CanTarget = true;
                 break;
             
                 
@@ -370,9 +421,26 @@ public class NpcStateMachine : BaseStateMachine
         Registers = FindObjectsByType<Register>(FindObjectsSortMode.None);
     }
 
+    public virtual void RandomizeImage(Sprite sprite)
+    {
+        int i = 0;
+        if (PossibleImages.Count < PossibleOpening.Count)
+        {
+            PossibleImages[i].sprite = sprite;
+            PossibleImages.Add(_placeHolder);
+            PossibleImages[i].sprite = sprite;
+        }
+        else if (PossibleImages.Count >= PossibleOpening.Count)
+        {
+            PossibleImages.Clear();
+            PossibleImages.Add(_placeHolder);
+            PossibleImages[i].sprite = sprite;
+        }
+
+    }
+
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("fuck");
         if (other.GetComponentInParent<EmployeeStateMachine>())
         {
             CanTalk = true;
