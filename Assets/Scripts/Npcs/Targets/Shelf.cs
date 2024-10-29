@@ -18,6 +18,9 @@ public class Shelf : StoreObject
     private bool _firstPress;
     public Transform Target;
     public GameObject ShelfUI;
+    public ItemSelector ItemSelector;
+
+    private ItemTypeSo _itemTypeSo;
     
    
 
@@ -31,6 +34,7 @@ public class Shelf : StoreObject
         EmpStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
         Target = EmpStateMachine.transform;
         ShelfUI = FindFirstObjectByType<ShelfUi>().gameObject;
+        ItemSelector = FindFirstObjectByType<ItemSelector>();
         ShelfUI.transform.localScale = new Vector3(0,0,0);
     }
     
@@ -41,17 +45,30 @@ public class Shelf : StoreObject
         if (!_firstPress)
         {
             CurrentContainer.ItemType = item;
+            _itemTypeSo = CurrentContainer.ItemType;
             CurrentContainer.ItemName = item.ItemName;
             CurrentContainer.GameID = item.GameID;
             CurrentContainer.ItemCount++;
+            ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
             _firstPress = true;
+        }
+        else if(_itemTypeSo == item)
+        {
+            CurrentContainer.ItemCount++;
+            ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
         }
         else
         {
-            CurrentContainer.ItemCount++;
+            Debug.Log("nope");
         }
+    }
 
+    public void RemoveStock(ItemTypeSo item)
+    {
+        var CurrentContainer = RowsOfShelves[ShelfSelected];
         
+        if(item != CurrentContainer.ItemType)return;
+        CurrentContainer.ItemCount--;
     }
     
     public bool DistanceCheck()
@@ -89,6 +106,7 @@ public class Shelf : StoreObject
         IsFlashing = false;
         if(_flashRoutine == null) return;
         StopCoroutine(_flashRoutine);
+        Renderer.color = Color.white;
     }
 
     public void FlashColor()

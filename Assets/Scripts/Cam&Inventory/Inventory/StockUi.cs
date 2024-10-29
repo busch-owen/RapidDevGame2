@@ -17,6 +17,7 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         _eventManager = FindFirstObjectByType<EventManager>();
+        _shelf = GetComponentInParent<Shelf>();
     }
 
     // Update is called once per frame

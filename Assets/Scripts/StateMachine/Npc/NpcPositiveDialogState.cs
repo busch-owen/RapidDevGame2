@@ -13,10 +13,10 @@ public class NpcPositiveDialogState : NPCBaseState
     {
         
         
-        foreach (var sprite in _stateMachine.PossibleBad)
+        foreach (var sprite in _stateMachine.PossibleGood)
         {
             var random = Random.Range(0, _stateMachine.PossibleGood.Count);
-            var RandSpite = _stateMachine.PossibleBad[random];
+            var RandSpite = _stateMachine.PossibleGood[random];
             _stateMachine.RandomizeImage(RandSpite);
         }
         _stateMachine.TimeForFirstWander = 1;

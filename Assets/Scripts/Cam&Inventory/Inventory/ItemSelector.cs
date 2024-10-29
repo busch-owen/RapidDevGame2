@@ -14,9 +14,9 @@ public class ItemSelector : MonoBehaviour
     public event Action<GameContainer> OnItemLoad;
     public event Action<GameContainer> OnItemSelected;
     public event Action<GameContainer> OnItemChosen;
-    private GameContainer _selectedItem;
-    private GameContainer _chosenItem;
-    int i = 0;
+     public GameContainer SelectedItem { get;  private set; }
+     private GameContainer _chosenItem;
+     int i = 0;
 
     public void LoadItems()
     {
@@ -45,9 +45,9 @@ public class ItemSelector : MonoBehaviour
     //exec on item button press
     public void SelectItem(GameContainer itemData)
     {
-        _selectedItem = itemData;
+        SelectedItem = itemData;
 
-        OnItemSelected?.Invoke(_selectedItem);
+        OnItemSelected?.Invoke(SelectedItem);
     }
 
     // Start is called before the first frame update

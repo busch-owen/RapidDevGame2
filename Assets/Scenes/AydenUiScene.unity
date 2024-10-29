@@ -174,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522784716}
   - component: {fileID: 522784717}
+  - component: {fileID: 522784718}
   m_Layer: 5
   m_Name: StockingPanel
   m_TagString: Untagged
@@ -209,6 +210,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522784715}
   m_CullTransparentMesh: 1
+--- !u!114 &522784718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522784715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3e51608a4f5d9458038a9846209c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &739927062 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5853372699367991802, guid: e19c880108e992043b1d50959c77043b, type: 3}
@@ -533,6 +546,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1893651827770113543, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: stockButton
+      value: 
+      objectReference: {fileID: 4524303644661858909, guid: 62887ad873168a0408dfa577d1ed5e4b, type: 3}
     - target: {fileID: 1893651827770113543, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: inventoryButtonGrid
       value: 

@@ -293,17 +293,17 @@ public class NpcStateMachine : BaseStateMachine
             _numberOfItems = Items.Count;
             for (int i = 0; i <= _numberOfItems -1; i++)
             {
-                if (shelf.AssignedItem == null ) continue;
-                if(shelf.AssignedItem.ItemCount <= 0) continue;
+                if (shelf.RowsOfShelves[shelf.ShelfSelected] == null ) continue;
+                if(shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0) continue;
                 if (Shoplifter)
                 {
-                    shelf.AssignedItem.ItemCount--;
                     ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    MoneySpent += shelf.AssignedItem.ItemType.Cost;// spend the money
+                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
+                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
                     ShelvesBeforeLeave--;
                 
                 }
-                else if (shelf.AssignedItem.ItemType != item||Budget < shelf.AssignedItem.ItemType.Cost|| shelf.AssignedItem.ItemCount <= 0)
+                else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost|| shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0)
                 {
                     ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
                     continue;
@@ -311,11 +311,14 @@ public class NpcStateMachine : BaseStateMachine
                 else
                 {
                     ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    shelf.AssignedItem.ItemCount--;
+                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
+                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
                     ShelvesBeforeLeave--;
-                    MoneySpent += shelf.AssignedItem.ItemType.Cost; // spend the money
                 }
+                shelf.ShelfSelected++;
             }
+
+            shelf.ShelfSelected = 0;
             
             if (ItemsCollected.Count >= _numberOfItems)
             {

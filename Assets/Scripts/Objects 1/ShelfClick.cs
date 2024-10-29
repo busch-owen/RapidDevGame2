@@ -48,6 +48,7 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             _stateMachine.ChangeState(NpcStateName.Talking);
             _shelf.FlashColor();
             _hasBeenClicked = true;
+            image.enabled = false;
             _eventManager.InvokeClicked();
         }
         else
