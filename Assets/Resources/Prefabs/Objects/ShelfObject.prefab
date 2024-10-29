@@ -128,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 1.5}
+    oldSize: {x: 2, y: 1}
     newSize: {x: 4, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -511,6 +511,7 @@ MonoBehaviour:
     <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
+  <Image>k__BackingField: {fileID: 0}
   <RowsOfShelves>k__BackingField:
   - <ItemName>k__BackingField: 
     <GameID>k__BackingField: 0
@@ -527,6 +528,11 @@ MonoBehaviour:
     <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
+  <Rows>k__BackingField: []
+  <rows>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   <StateMachine>k__BackingField: {fileID: 0}
   <EmpStateMachine>k__BackingField: {fileID: 0}
   IsFlashing: 0
