@@ -6,39 +6,20 @@ using UnityEngine.EventSystems;
 public class Shelf : StoreObject
 {
     [field: SerializeField] public GameContainer AssignedItem { get; private set; }
+    [field: SerializeField] public GameContainer[] RowsOfShelves { get; private set; }
     private ItemSelector _assignedSelector;
     [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
+    [field: SerializeField] public EmployeeStateMachine EmpStateMachine { get; private set; }
     public bool IsFlashing;
     private ShelfClick _shelfClick;
     private EventManager _eventManager;
+    private Coroutine _flashRoutine;
+    public int ShelfSelected = 0;
+    private bool _firstPress;
+    public Transform Target;
+    public GameObject ShelfUI;
     
-    public void StockShelf(int id, ItemSelector selector)
-    {
-        _assignedSelector = selector;
-        var tempItem = selector.AllItems.Find(container => container.GameID == id);
-        
-        AssignedItem = new GameContainer
-        {
-            ItemName = tempItem.ItemName,
-            GameID = tempItem.GameID,
-            ItemType = tempItem.ItemType
-        };
-
-        if(tempItem.ItemCount == 0) return;
-        
-        if (AssignedObject.StockAmount < tempItem.ItemCount)
-        {
-            AssignedItem.SetCount(AssignedObject.StockAmount);
-            Debug.LogFormat($"Space on shelf is less than stock available.");
-            tempItem.ChangeCount(-AssignedObject.StockAmount);
-        }
-        else
-        {
-            AssignedItem.SetCount(tempItem.ItemCount);
-            tempItem.ItemCount = 0;
-            Debug.LogFormat($"Stock available is less than space on shelf.");
-        }
-    }
+   
 
     public override void Start()
     {
@@ -46,6 +27,56 @@ public class Shelf : StoreObject
         _shelfClick.image.enabled = false;
         Renderer = GetComponentInChildren<SpriteRenderer>();
         _eventManager = FindFirstObjectByType<EventManager>();
+        _eventManager._clicked += DisableClick;
+        EmpStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
+        Target = EmpStateMachine.transform;
+        ShelfUI = FindFirstObjectByType<ShelfUi>().gameObject;
+        ShelfUI.transform.localScale = new Vector3(0,0,0);
+    }
+    
+    public void StockShelf(ItemTypeSo item)
+    {
+        var CurrentContainer = RowsOfShelves[ShelfSelected];
+
+        if (!_firstPress)
+        {
+            CurrentContainer.ItemType = item;
+            CurrentContainer.ItemName = item.ItemName;
+            CurrentContainer.GameID = item.GameID;
+            CurrentContainer.ItemCount++;
+            _firstPress = true;
+        }
+        else
+        {
+            CurrentContainer.ItemCount++;
+        }
+
+        
+    }
+    
+    public bool DistanceCheck()
+    {
+        if (Vector2.Distance(transform.position, Target.position) <= 2.0f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SelectShelf()
+    {
+        ShelfUI.transform.localScale = new Vector3(1,1,1);
+    }
+
+    public void DeselectShelf()
+    {
+        ShelfUI.transform.localScale = new Vector3(0,0,0);
+    }
+
+    public void IncrementShelf()
+    {
+        if(ShelfSelected >= RowsOfShelves.Length) ShelfSelected = 0;
+        ShelfSelected++;
     }
 
     public void EnableClick()
@@ -55,26 +86,23 @@ public class Shelf : StoreObject
 
     public void DisableClick()
     {
-        //Renderer = GetComponentInChildren<SpriteRenderer>();
         IsFlashing = false;
-        //Renderer.color = Color.white;
-        StopCoroutine("Flash");
+        if(_flashRoutine == null) return;
+        StopCoroutine(_flashRoutine);
     }
 
     public void FlashColor()
     {
         if (!IsFlashing)
         {
-            _eventManager._clicked += DisableClick;
             IsFlashing = true;
-            StartCoroutine("Flash");
+            _flashRoutine = StartCoroutine(Flash());
         }
         else
         {
-            _eventManager._clicked += DisableClick;
             IsFlashing = false;
             Renderer.color = Color.white;
-            StopAllCoroutines();
+            StopCoroutine(_flashRoutine);
         }
 
     }

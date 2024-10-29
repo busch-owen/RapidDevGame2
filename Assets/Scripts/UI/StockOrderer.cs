@@ -11,8 +11,10 @@ public class StockOrderer : MonoBehaviour
     private MoneyManager _moneyManager;
 
     [SerializeField] private Transform buttonGrid;
+    [SerializeField] private Transform inventoryButtonGrid;
     [SerializeField] private Transform cartLayout;
     [SerializeField] private GameObject purchaseButton;
+    [SerializeField] private GameObject stockButton;
     [SerializeField] private GameObject cartItem;
     [SerializeField] private TMP_Text balanceText;
 
@@ -34,6 +36,16 @@ public class StockOrderer : MonoBehaviour
             var newButton = Instantiate(purchaseButton, buttonGrid);
             newButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { AddItemsToCart(newItem); });
             newButton.GetComponent<StoreItemButton>().AssignContainer(item);
+        }
+    }
+
+    private void LoadItemsToStock()
+    {
+        foreach (var item in _itemSelector.AllItems)
+        {
+            var newItem = item;
+            var newButton = Instantiate(stockButton, inventoryButtonGrid);
+            newButton.GetComponent<StockItemButton>().AssignInventoryContainer(newItem);
         }
     }
 
@@ -78,12 +90,15 @@ public class StockOrderer : MonoBehaviour
             foreach (var inventoryItems in _itemSelector.AllItems.Where(inventoryItems => inventoryItems.ItemType == cartItems.AssignedContainer.ItemType))
             {
                 inventoryItems.ChangeCount(cartItems.AssignedContainer.ItemCount);
+                var newButton = Instantiate(stockButton, inventoryButtonGrid);
+                newButton.GetComponent<StockItemButton>().AssignInventoryContainer(cartItems.AssignedContainer);
             }
         }
         foreach (var item in itemsInCart)
         {
             Destroy(item.gameObject);
         }
+        
         _moneyManager.DecrementProfit(_cartBalance);
         itemsInCart.Clear();
         CalculateCartBalance();

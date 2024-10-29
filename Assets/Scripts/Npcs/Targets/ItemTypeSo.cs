@@ -18,4 +18,7 @@ public class ItemTypeSo : ScriptableObject
     [field: SerializeField] public ProductType ProductType { get; private set; }
     [field: SerializeField] public Sprite BigIcon { get; private set; }
     [field: SerializeField] public Sprite SmallIcon { get; private set; }
+    
+    [field: SerializeField] public int GameID { get; set; }
 }
+

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obstacle: {fileID: 5054795722097559565, guid: 7396278554fe8c842b689c2b2558cc38, type: 3}
   employeeStateMachine: {fileID: 0}
-  Exists: 0
+  Exists: 1
 --- !u!195 &6166381184766354289
 NavMeshAgent:
   m_ObjectHideFlags: 0

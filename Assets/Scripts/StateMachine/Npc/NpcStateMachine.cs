@@ -32,8 +32,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public event Selected SelectedEvent;
     
-    
-    [field:SerializeField]public string Current{ get; private set; }
+    [field:SerializeField]public NPCBaseState currentState{ get; private set; }
     
     [field:SerializeField]public bool FoundItems{ get; private set; }
     [field:SerializeField]public TextIndex TextIndex{ get; private set; }
@@ -242,8 +241,7 @@ public class NpcStateMachine : BaseStateMachine
         {
             foreach (var image in PreviousImages)
             {
-                TextIndex.RemoveEmotes(image);
-                PossibleImages.Remove(image);
+                TextIndex.RemoveEmotes(image); 
             }
             PreviousImages.Clear();
             foreach (var image in PossibleImages)
@@ -339,7 +337,6 @@ public class NpcStateMachine : BaseStateMachine
     {
         if (ArrivedAtTarget())
         {
-            Debug.Log("arrived");
             ChangeState(_npcShelfCheckState);
         }
     }
@@ -351,47 +348,47 @@ public class NpcStateMachine : BaseStateMachine
         {
             case NpcStateName.Checkout:
                 base.ChangeState(_npcCheckoutState);
-                Current = _npcCheckoutState.ToString();
+                currentState = _npcCheckoutState;
                 CanTarget = false;
                 break;
             case NpcStateName.PositiveDialog:
                 base.ChangeState(_npcPositiveDialogState);
-                Current = _npcPositiveDialogState.ToString();
+                currentState = _npcPositiveDialogState;
                 CanTarget = false;
                 break;
             case NpcStateName.Enter:
                 base.ChangeState(_npcEnterState);
-                Current = _npcEnterState.ToString();
+                currentState = _npcEnterState;
                 CanTarget = true;
                 break;
             case NpcStateName.Exit:
                 base.ChangeState(_npcExitState);
-                Current = _npcExitState.ToString();
+                currentState = _npcExitState;
                 CanTarget = false;
                 break;
             case NpcStateName.CheckShelf:
                 base.ChangeState(_npcShelfCheckState);
-                Current = _npcShelfCheckState.ToString();
+                currentState = _npcShelfCheckState;
                 CanTarget = false;
                 break;
             case NpcStateName.Wander:
                 base.ChangeState(_npcWanderState);
-                Current = _npcWanderState.ToString();
+                currentState = _npcWanderState;
                 CanTarget = false;
                 break;
             case NpcStateName.NegativeDialog:
                 base.ChangeState(_npcNegativeDialogState);
-                Current = _npcNegativeDialogState.ToString();
+                currentState = _npcNegativeDialogState;
                 CanTarget = false;
                 break;
             case NpcStateName.Spawn:
                 base.ChangeState(_npcSpawnState);
-                Current = _npcSpawnState.ToString();
+                currentState = _npcSpawnState;
                 CanTarget = false;
                 break;
             case NpcStateName.Talking:
                 base.ChangeState(_npcTalkingState);
-                Current = _npcTalkingState.ToString();
+                currentState = _npcTalkingState;
                 CanTarget = true;
                 break;
             
@@ -424,24 +421,23 @@ public class NpcStateMachine : BaseStateMachine
     public virtual void RandomizeImage(Sprite sprite)
     {
         int i = 0;
-            
-            if (PossibleImages.Count < PossibleOpening.Count)
-            {
-                PossibleImages[i].sprite = sprite;
-                PossibleImages.Add(_placeHolder);
-                PossibleImages[i].sprite = sprite;
-            }
-            else if (PossibleImages.Count == PossibleOpening.Count)
-            {
-                PossibleImages[i].sprite = sprite;
-            }
-        
-        
+        if (PossibleImages.Count < PossibleOpening.Count)
+        {
+            PossibleImages[i].sprite = sprite;
+            PossibleImages.Add(_placeHolder);
+            PossibleImages[i].sprite = sprite;
+        }
+        else if (PossibleImages.Count >= PossibleOpening.Count)
+        {
+            PossibleImages.Clear();
+            PossibleImages.Add(_placeHolder);
+            PossibleImages[i].sprite = sprite;
+        }
+
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("fuck");
         if (other.GetComponentInParent<EmployeeStateMachine>())
         {
             CanTalk = true;

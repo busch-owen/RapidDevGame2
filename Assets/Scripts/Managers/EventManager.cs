@@ -24,6 +24,8 @@ public class EventManager : MonoBehaviour
 
     public event Action<NpcStateMachine> Npc;
 
+    public event Action<Shelf> ShelfAssigned;
+
     public event Clicked _clicked;
 
     public event DayEnd _Ended;
@@ -35,6 +37,13 @@ public class EventManager : MonoBehaviour
         Arrived?.Invoke(ItemList);
         items = ItemList;
     }
+
+    public void InvokeShelfAssigned(Shelf shelf)
+    {
+        ShelfAssigned?.Invoke(shelf);
+    }
+    
+    
 
     public void AssignNpc(NpcStateMachine npc)
     {
