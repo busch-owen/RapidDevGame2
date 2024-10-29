@@ -965,7 +965,7 @@ MonoBehaviour:
   - {fileID: 4068059075801848191}
   - {fileID: 127231847}
   - {fileID: 841013800}
-  <Waves>k__BackingField: 00000000000000000000000000000000
+  <Waves>k__BackingField: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   <AmountOfNpcs>k__BackingField: 
   <MaxTimeBetweenNpcs>k__BackingField: 15
   <MinTimeBetweenNpcs>k__BackingField: 30
