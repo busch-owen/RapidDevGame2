@@ -501,8 +501,35 @@ MonoBehaviour:
     <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
+  <Image>k__BackingField: {fileID: 0}
+  <RowsOfShelves>k__BackingField:
+  - <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  - <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  - <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  <Rows>k__BackingField: []
+  <rows>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   <StateMachine>k__BackingField: {fileID: 0}
+  <EmpStateMachine>k__BackingField: {fileID: 0}
   IsFlashing: 0
+  ShelfSelected: 0
+  Target: {fileID: 0}
+  ShelfUI: {fileID: 0}
+  ItemSelector: {fileID: 0}
 --- !u!1 &6799848080699951321
 GameObject:
   m_ObjectHideFlags: 0
