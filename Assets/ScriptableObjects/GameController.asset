@@ -17,6 +17,6 @@ MonoBehaviour:
   <ItemDescription>k__BackingField: A game controller
   <ItemCategory>k__BackingField: Controller
   <ProductType>k__BackingField: 2
-  <BigIcon>k__BackingField: {fileID: 21300000, guid: c530ccc8af9ba0649b37d381abd96a44, type: 3}
-  <SmallIcon>k__BackingField: {fileID: 200608100, guid: 2de433190ff8f214eb99647312b82142, type: 3}
+  <BigIcon>k__BackingField: {fileID: -1769178436, guid: f8ff27f399680c140801c710202431a0, type: 3}
+  <SmallIcon>k__BackingField: {fileID: -1769178436, guid: f8ff27f399680c140801c710202431a0, type: 3}
   <GameID>k__BackingField: 4

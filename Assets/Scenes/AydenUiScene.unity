@@ -694,6 +694,18 @@ PrefabInstance:
       propertyPath: m_ShowMaskGraphic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3902529434699966887, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902529434699966887, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902529434699966887, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.45882356
+      objectReference: {fileID: 0}
     - target: {fileID: 3982173241780492951, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -883,13 +895,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[0].<ItemName>k__BackingField
+      value: BlockCraft
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemName>k__BackingField
-      value: GTA
+      value: CallOfDan
       objectReference: {fileID: 0}
     - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemType>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: deb336895727ea845b55fc96ae985aa6, type: 2}
+      objectReference: {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
     - target: {fileID: 8615382804491686595, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

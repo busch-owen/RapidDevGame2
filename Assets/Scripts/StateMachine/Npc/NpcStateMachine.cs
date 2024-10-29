@@ -305,7 +305,7 @@ public class NpcStateMachine : BaseStateMachine
                     ItemsCollected.Add(item);// add the item to the npcs list of collected items
                     MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
                     shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
-                    ShelvesBeforeLeave--;
+                    ChangeState(NpcStateName.Exit);
                 
                 }
                 else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost)
