@@ -351,6 +351,7 @@ MonoBehaviour:
   <ItemsCollected>k__BackingField: []
   <NpcTypeSoOptions>k__BackingField:
   - {fileID: 11400000, guid: 1c4f6f21535057740822a3fd8b7f2e4d, type: 2}
+  - {fileID: 11400000, guid: b689f7db56b04b04cbd473f8c417e15d, type: 2}
   <Shelves>k__BackingField: []
   <Registers>k__BackingField: []
   <Agent>k__BackingField: {fileID: 4806395704206272866}
@@ -373,9 +374,17 @@ MonoBehaviour:
   <Shoplifter>k__BackingField: 0
   <CanTalk>k__BackingField: 0
   <Renderer>k__BackingField: {fileID: 0}
-  <PossibleImages>k__BackingField: []
+  <PossibleImages>k__BackingField:
+  - {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
+  - {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
   <PreviousImages>k__BackingField: []
   <CurrentShelf>k__BackingField: {fileID: 0}
+  <UiHide>k__BackingField: {fileID: 0}
+  <PossibleBad>k__BackingField: []
+  <PossibleGood>k__BackingField: []
+  <PossibleOpening>k__BackingField: []
+  <CurrentSprite>k__BackingField: {fileID: 0}
+  _placeHolder: {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4

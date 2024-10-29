@@ -15,7 +15,7 @@ public class EmployeeStateMachine : BaseStateMachine
     private EmployeeHelpingState _employeeHelpingState;
     private EmployeeEnterState _employeeEnterState;
     private EmployeeOrderingState _employeeOrderingState;
-    private EmployeeStockingState _employeeStockingState;
+    public EmployeeStockingState _employeeStockingState;
     private EmployeeIdleState _employeeIdleState;
     private EmployeeCheckingOutState _employeeCheckingOutState;
     private EmployeeWalkingState _employeeWalkingState;
@@ -26,6 +26,8 @@ public class EmployeeStateMachine : BaseStateMachine
     [field:SerializeField] public int AmountOfItems{ get; set; }
     [field:SerializeField] public bool IsWalking { get; set; }
     [field:SerializeField] public NpcStateMachine npcStateMachine{ get; set; }
+    
+    [field:SerializeField]public EmployeeBaseState currentState{ get; private set; }
 
     private SpriteRenderer _renderer;
 
@@ -51,27 +53,35 @@ public class EmployeeStateMachine : BaseStateMachine
         {
             case EmployeeStates.Enter:
                 base.ChangeState(_employeeEnterState);
+                currentState = _employeeEnterState;
                 break;
             case EmployeeStates.Exit:
                 base.ChangeState(_employeeExitState);
+                currentState = _employeeExitState;
                 break;
             case EmployeeStates.Helping:
                 base.ChangeState(_employeeHelpingState);
+                currentState = _employeeHelpingState;
                 break;
             case EmployeeStates.Ordering:
                 base.ChangeState(_employeeOrderingState);
+                currentState = _employeeOrderingState;
                 break;
             case EmployeeStates.Stocking:
                 base.ChangeState(_employeeStockingState);
+                currentState = _employeeStockingState;
                 break;
             case EmployeeStates.Idle:
                 base.ChangeState(_employeeIdleState);
+                currentState = _employeeIdleState;
                 break;
             case EmployeeStates.CheckingOut:
                 base.ChangeState(_employeeCheckingOutState);
+                currentState = _employeeCheckingOutState;
                 break;
             case EmployeeStates.Walking:
                 base.ChangeState(_employeeWalkingState);
+                currentState = _employeeWalkingState;
                 break;
         }
     }
@@ -85,6 +95,18 @@ public class EmployeeStateMachine : BaseStateMachine
         return false;
     }
 
+    public void EnableStocking()
+    {
+        Debug.Log("stocking");
+        ChangeState(EmployeeStates.Stocking);
+    }
+
+    public void DisableStocking()
+    {
+        Debug.Log("not");
+        ChangeState(EmployeeStates.Idle);
+    }
+
     public void SetNpcReference(NpcStateMachine stateMachine)
     {
         npcStateMachine = stateMachine;
@@ -95,6 +117,7 @@ public class EmployeeStateMachine : BaseStateMachine
         if (!IsWalking)
         {
             ChangeState(EmployeeStates.Walking);
+            IsWalking = true;
         }
     }
 
@@ -108,7 +131,6 @@ public class EmployeeStateMachine : BaseStateMachine
 
     public void SetDestination()
     {
-        Debug.Log("dest");
         Agent.SetDestination(Target.position);
     }
 }

@@ -10,7 +10,20 @@ public class NpcNegativeDialogState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChangeToNegative();
+        
+        foreach (var sprite in _stateMachine.PossibleBad)
+        {
+            var random = Random.Range(0, _stateMachine.PossibleBad.Count);
+            var RandSpite = _stateMachine.PossibleBad[random];
+            _stateMachine.RandomizeImage(RandSpite);
+        }
+
+        _stateMachine.TimeForFirstWander = 1;
+
+        _stateMachine.Invoke(nameof(_stateMachine.ChangeToNegative), 0.5f);
+        _stateMachine.GiveUp();
+        
+        
         ChooseToLeave();
     }
 
