@@ -53,6 +53,15 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ada4c4d-6404-4e11-b713-b7e19c4178dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
                     ""action"": ""Not"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9145f937-6694-458c-a73b-3ffb2d13c244"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
         m_Actions_Move = m_Actions.FindAction("Move", throwIfNotFound: true);
         m_Actions_Stock = m_Actions.FindAction("Stock", throwIfNotFound: true);
         m_Actions_Not = m_Actions.FindAction("Not", throwIfNotFound: true);
+        m_Actions_Esc = m_Actions.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +228,7 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_Move;
     private readonly InputAction m_Actions_Stock;
     private readonly InputAction m_Actions_Not;
+    private readonly InputAction m_Actions_Esc;
     public struct ActionsActions
     {
         private @PlayerInputControls m_Wrapper;
@@ -214,6 +236,7 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Actions_Move;
         public InputAction @Stock => m_Wrapper.m_Actions_Stock;
         public InputAction @Not => m_Wrapper.m_Actions_Not;
+        public InputAction @Esc => m_Wrapper.m_Actions_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +255,9 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
             @Not.started += instance.OnNot;
             @Not.performed += instance.OnNot;
             @Not.canceled += instance.OnNot;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -245,6 +271,9 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
             @Not.started -= instance.OnNot;
             @Not.performed -= instance.OnNot;
             @Not.canceled -= instance.OnNot;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -267,5 +296,6 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnStock(InputAction.CallbackContext context);
         void OnNot(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

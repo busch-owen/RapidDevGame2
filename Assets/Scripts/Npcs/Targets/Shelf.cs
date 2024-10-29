@@ -35,7 +35,6 @@ public class Shelf : StoreObject
         Target = EmpStateMachine.transform;
         ShelfUI = FindFirstObjectByType<ShelfUi>().gameObject;
         ItemSelector = FindFirstObjectByType<ItemSelector>();
-        ShelfUI.transform.localScale = new Vector3(0,0,0);
     }
     
     public void StockShelf(ItemTypeSo item)

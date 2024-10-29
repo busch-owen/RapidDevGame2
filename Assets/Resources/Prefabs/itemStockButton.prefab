@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 4524303644661858909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 307978670533936815}
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 7990074534291220320}
   itemName: {fileID: 5376945368983310063}
-  itemCount: {fileID: 0}
+  itemCount: {fileID: 8675726653651369829}
   Item: {fileID: 0}
 --- !u!1 &5702160058647795963
 GameObject:
