@@ -15,6 +15,8 @@ public class NpcCheckoutState : NPCBaseState
     public override void Enter()
     {
         Checkout();
+        _stateMachine.ArrivedEvent();
+        _stateMachine.SwipeTask.CheckingOut = true;
     }
 
     public override void FixedUpdate()
@@ -45,7 +47,6 @@ public class NpcCheckoutState : NPCBaseState
     {
         if (ArrivedAtCheckout() && !_arrived)
         {
-            _stateMachine.ArrivedEvent();
             _arrived = true;
         }
     }

@@ -5,6 +5,7 @@ using Code.Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -120,6 +121,8 @@ public class NpcStateMachine : BaseStateMachine
 
     [SerializeField]private Image _placeHolder;
 
+    public SwipeTask SwipeTask;
+
     
     
     // Start is called before the first frame update
@@ -140,6 +143,7 @@ public class NpcStateMachine : BaseStateMachine
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
         PossibleOpening = NpcType.PossibleOpening;
+        SwipeTask = FindFirstObjectByType<SwipeTask>();
     }
 
     private void Awake()
@@ -165,6 +169,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public void ArrivedEvent()
     {
+        if(SwipeTask.CheckingOut)return;
         _eventManager.InvokeArrived(ItemsCollected);
         _eventManager.AssignNpc(this);
     }
@@ -303,7 +308,7 @@ public class NpcStateMachine : BaseStateMachine
                     ShelvesBeforeLeave--;
                 
                 }
-                else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost|| shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0)
+                else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost)
                 {
                     ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
                     continue;

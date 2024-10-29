@@ -23,8 +23,6 @@ MonoBehaviour:
   - Got any crack?
   <Items>k__BackingField:
   - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
-  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
-  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   <Speed>k__BackingField: 2
   <Budget>k__BackingField: 30
   <ShelvesTillExit>k__BackingField: 3
@@ -35,10 +33,10 @@ MonoBehaviour:
   <Opening>k__BackingField: []
   <PossibleBad>k__BackingField:
   - {fileID: 21300000, guid: e40da2d211fd21d49b18131bd9d5c9ca, type: 3}
-  - {fileID: 21300000, guid: 7d510c6e88e08154192582a76d378dc1, type: 3}
+  - {fileID: 21300000, guid: 064b6441cb46cd24abfdc59fdc3e8395, type: 3}
   <PossibleGood>k__BackingField:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
   <PossibleOpening>k__BackingField:
-  - {fileID: 21300000, guid: b38cb12207244bf499718c2acd898492, type: 3}
-  - {fileID: 21300000, guid: 16a566f17a3f0c84eb22b1bbfa805eee, type: 3}
+  - {fileID: 21300000, guid: c9044513fc87c824f88dcaacbe96eaec, type: 3}
+  - {fileID: 21300000, guid: 97b723677637c2d428f952a5b63d4673, type: 3}

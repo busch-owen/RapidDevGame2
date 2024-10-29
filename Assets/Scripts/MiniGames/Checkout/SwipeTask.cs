@@ -17,7 +17,7 @@ public class SwipeTask : MonoBehaviour
     public MoneyManager Money;
     private NpcStateMachine Npc;
     private int _itemIndex = 0;
-    [SerializeField] private List<ItemTypeSo> items = new();
+    [SerializeField] public List<ItemTypeSo> items = new();
     [SerializeField] private GameObject _canvas;
     [SerializeField] private ItemToSwipe _toSwipe;
     private bool _alreadySpawned;
@@ -26,6 +26,8 @@ public class SwipeTask : MonoBehaviour
     [SerializeField] private AudioSource _source;
     public bool Correct;
     private EventManager _eventManager;
+    public bool CheckingOut;
+    private ItemToSwipe _itemToSwipe;
 
     public Transform ItemSpawn;
     // Update is called once per frame
@@ -62,6 +64,8 @@ public class SwipeTask : MonoBehaviour
             var Spawned = Instantiate(_toSwipe, transform.position, quaternion.identity);
             Spawned.transform.SetParent(ItemSpawn, false);
             Spawned.Item = item;
+            _itemToSwipe = Spawned;
+            _itemToSwipe.Item = item;
         }
 
         _alreadySpawned = true;
@@ -113,8 +117,7 @@ public class SwipeTask : MonoBehaviour
         {
             _currentSwipePointIndex = 0;
             StartCoroutine(FinishTask(true));
-            swipePoint.itemToSwipe.Item = Npc.ItemsCollected[_itemIndex];
-            Money.IncrementProfit(swipePoint.itemToSwipe.Item.Cost);
+            Money.IncrementProfit(_itemToSwipe.Item.Cost);
             _itemIndex++;
             Debug.Log("Yipee");
             if (_itemIndex >= items.Count)
