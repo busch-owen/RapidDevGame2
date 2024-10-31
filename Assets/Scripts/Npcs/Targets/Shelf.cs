@@ -13,7 +13,7 @@ public class Shelf : StoreObject
     
     [field: SerializeField] public List<Rows> Rows { get; private set; }
     
-    [field: SerializeField] public Rows AssignedRow { get; private set; }
+    [field: SerializeField] public Rows AssignedRow { get;  set; }
     
     [field: SerializeField] public Transform[] rows { get; private set; }
 

@@ -123,6 +123,8 @@ public class NpcStateMachine : BaseStateMachine
     [SerializeField]private Image _placeHolder;
 
     public SwipeTask SwipeTask;
+    
+    int i = 0;
 
     
     
@@ -294,9 +296,11 @@ public class NpcStateMachine : BaseStateMachine
         Shelves.Remove(shelf);
 
         _shelfToCheck = shelf;
+        i = 0;
 
         foreach (var row in _shelfToCheck.Rows)
         {
+            Debug.Log(row);
             if(_shelfToCheck.AssignedRow == null) continue;
             if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
             foreach (var item in Items)
@@ -310,6 +314,9 @@ public class NpcStateMachine : BaseStateMachine
                     MoneySpent += item.Cost;
                 }
             }
+
+            i++;
+            _shelfToCheck.AssignedRow = _shelfToCheck.Rows[i];
         }
 
         if (ItemsCollected.Count >= Items.Count)

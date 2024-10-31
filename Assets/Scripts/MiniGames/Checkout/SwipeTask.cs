@@ -28,6 +28,7 @@ public class SwipeTask : MonoBehaviour
     private EventManager _eventManager;
     public bool CheckingOut;
     private ItemToSwipe _itemToSwipe;
+    public bool Done;
 
     public Transform ItemSpawn;
     // Update is called once per frame
@@ -73,7 +74,6 @@ public class SwipeTask : MonoBehaviour
             else
             {
                 Scan.Item = item;
-                Scan.Image.sprite = item.SmallIcon;
             }
         }
 
@@ -97,7 +97,6 @@ public class SwipeTask : MonoBehaviour
     {
         if (Successful)
         {
-            Green.SetActive(true);
             Correct = true;
             _source.PlayOneShot(_goodClip);
         }
@@ -127,6 +126,7 @@ public class SwipeTask : MonoBehaviour
             StartCoroutine(FinishTask(true));
             Money.IncrementProfit(_toSwipe.Item.Cost);
             _itemIndex++;
+            Green.SetActive(true);
             Debug.Log("Yipee");
             if (_itemIndex >= items.Count)
             {
@@ -137,6 +137,9 @@ public class SwipeTask : MonoBehaviour
 
     private void Disable()
     {
+        Done = true;
+        Red.SetActive(false);
+        Green.SetActive(false);
         Npc.ChangeState(NpcStateName.Exit);
         _canvas.SetActive(false);
     }
