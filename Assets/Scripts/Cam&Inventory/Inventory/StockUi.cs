@@ -12,15 +12,20 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
 
     private EventManager _eventManager;
 
+    private PlayerInputActions _inputActions;
+
     [SerializeField] private Image image;
 
     public InvGrid grid;
+
+    [SerializeField] private ShelfUi _ui;
     // Start is called before the first frame update
     void Start()
     {
         _eventManager = FindFirstObjectByType<EventManager>();
-        _shelf = GetComponentInParent<Shelf>();
+        _shelf = GetComponent<Shelf>();
         grid = FindFirstObjectByType<InvGrid>();
+        _inputActions = FindFirstObjectByType<PlayerInputActions>();
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
             _eventManager.InvokeShelfAssigned(_shelf);
             _shelf.SelectShelf();
             grid.EnableImage();
+            _inputActions.AssignUi(_ui);
         }
         else
         {

@@ -66,7 +66,7 @@ public class Shelf : StoreObject
             CurrentContainer.ItemName = item.ItemName;
             CurrentContainer.GameID = item.GameID;
             CurrentContainer.ItemCount++;
-            Image.sprite = CurrentContainer.ItemType.SmallIcon;
+            Image.sprite = CurrentContainer.ItemType.BigIcon;
             ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
             var Img = Instantiate(Image, trans);
             Img.transform.parent = trans;
@@ -81,14 +81,14 @@ public class Shelf : StoreObject
             CurrentContainer.ItemName = item.ItemName;
             CurrentContainer.GameID = item.GameID;
             CurrentContainer.ItemCount++;
-            Image.sprite = CurrentContainer.ItemType.SmallIcon;
+            Image.sprite = CurrentContainer.ItemType.BigIcon;
             var Img = Instantiate(Image, trans);
             Img.transform.parent = trans;
         }
         else if (_itemTypeSo == item)
         {
             CurrentContainer.ItemCount++;
-            Image.sprite = CurrentContainer.ItemType.SmallIcon;
+            Image.sprite = CurrentContainer.ItemType.BigIcon;
             ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
             var Img = Instantiate(Image, trans);
             Img.transform.parent = trans;

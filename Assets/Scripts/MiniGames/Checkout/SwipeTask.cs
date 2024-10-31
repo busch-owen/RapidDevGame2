@@ -59,6 +59,7 @@ public class SwipeTask : MonoBehaviour
     private void EnableCheckout()
     {
         _canvas.SetActive(true);
+        Done = false;
 
         foreach (var item in items)
         {

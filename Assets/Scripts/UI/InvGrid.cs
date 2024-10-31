@@ -20,4 +20,9 @@ public class InvGrid : MonoBehaviour
     {
         transform.localScale = new Vector3(5.495245f,10.74701f,1);
     }
+
+    public void DisableImage()
+    {
+        transform.localScale = new Vector3(0,0,0);
+    }
 }

@@ -293,20 +293,20 @@ public class NpcStateMachine : BaseStateMachine
     public void ShelfCheck()// check the shelf per item in the npc's list to see if the type matches and it is within their budget
     {
         var shelf = Target.GetComponent<Shelf>();
-        Shelves.Remove(shelf);
 
         _shelfToCheck = shelf;
-        i = 0;
+        i = -1;
 
         foreach (var row in _shelfToCheck.Rows)
         {
+            i++;
+            _shelfToCheck.AssignedRow = _shelfToCheck.Rows[i];
             Debug.Log(row);
-            if(_shelfToCheck.AssignedRow == null) continue;
+            if(_shelfToCheck.AssignedRow == null) return;
             if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
             foreach (var item in Items)
             {
                 if(Budget < _shelfToCheck.AssignedRow.Container.ItemType.Cost) continue;
-                if(item != _shelfToCheck.AssignedRow.Container.ItemType) continue;
                 if (item == _shelfToCheck.AssignedRow.Container.ItemType)
                 {
                     ItemsCollected.Add(item);
@@ -314,20 +314,20 @@ public class NpcStateMachine : BaseStateMachine
                     MoneySpent += item.Cost;
                 }
             }
-
-            i++;
-            _shelfToCheck.AssignedRow = _shelfToCheck.Rows[i];
         }
+        Shelves.Remove(shelf);
 
-        if (ItemsCollected.Count >= Items.Count)
+        if (ItemsCollected.Count >= 1)
         {
             FoundItems = true;
+            i = 0;
             ChangeState(_npcPositiveDialogState);
             return;
         }
         else
         {
             FoundItems = false;
+            i = 0;
             ChangeState(_npcNegativeDialogState);
             ShelvesBeforeLeave--;
             return;

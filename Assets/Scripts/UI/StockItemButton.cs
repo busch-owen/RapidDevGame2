@@ -27,6 +27,7 @@ public class StockItemButton : MonoBehaviour
 
     public void Stock()
     {
+        if(_assignedContainer.ItemCount <= 0) return;
         _shelf.AssignedRow.Container = this._assignedContainer;
         _shelf.StockShelf(Item);
     }

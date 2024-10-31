@@ -9,6 +9,7 @@ public class PlayerInputActions : MonoBehaviour
     public PlayerMovement pM;// MovementScript\
     private EmployeeStateMachine employeeStateMachine;
     private ShelfUi _shelfUi;
+    private InvGrid _invGrid;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -18,11 +19,13 @@ public class PlayerInputActions : MonoBehaviour
         {
             employeeStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
             _shelfUi = FindFirstObjectByType<ShelfUi>();
+            _invGrid = FindFirstObjectByType<InvGrid>();
             playerInput = new PlayerInputControls();
             playerInput.Actions.Move.performed += i => pM.Move(i.ReadValue<Vector2>());
             playerInput.Actions.Stock.performed += i => employeeStateMachine.EnableStocking();
             playerInput.Actions.Not.performed += i => employeeStateMachine.DisableStocking();
             playerInput.Actions.Esc.performed += i => _shelfUi.Show();
+            playerInput.Actions.Esc.performed += i => _invGrid.DisableImage();
 
 
         }
@@ -34,5 +37,10 @@ public class PlayerInputActions : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void AssignUi(ShelfUi shelf)
+    {
+        _shelfUi = shelf;
     }
 }
