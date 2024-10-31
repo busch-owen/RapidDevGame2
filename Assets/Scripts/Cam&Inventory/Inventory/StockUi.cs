@@ -13,11 +13,14 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
     private EventManager _eventManager;
 
     [SerializeField] private Image image;
+
+    public InvGrid grid;
     // Start is called before the first frame update
     void Start()
     {
         _eventManager = FindFirstObjectByType<EventManager>();
         _shelf = GetComponentInParent<Shelf>();
+        grid = FindFirstObjectByType<InvGrid>();
     }
 
     // Update is called once per frame
@@ -36,10 +39,12 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
         {
             _eventManager.InvokeShelfAssigned(_shelf);
             _shelf.SelectShelf();
+            grid.EnableImage();
         }
         else
         {
             _shelf.DeselectShelf();
+            grid.transform.localScale = new Vector3(0, 0, 0);
         }
     }
 }

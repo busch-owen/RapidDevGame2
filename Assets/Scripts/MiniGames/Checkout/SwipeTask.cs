@@ -58,17 +58,25 @@ public class SwipeTask : MonoBehaviour
     private void EnableCheckout()
     {
         _canvas.SetActive(true);
-        if(_alreadySpawned)return;
+
         foreach (var item in items)
         {
-            var Spawned = Instantiate(_toSwipe, transform.position, quaternion.identity);
-            Spawned.transform.SetParent(ItemSpawn, false);
-            Spawned.Item = item;
-            _itemToSwipe = Spawned;
-            _itemToSwipe.Item = item;
+            var Scan = _toSwipe;
+            if (!_alreadySpawned)
+            {
+                _toSwipe.Item = item;
+                
+                Scan = Instantiate(_toSwipe, ItemSpawn);
+                Scan.transform.SetParent(ItemSpawn);
+                _alreadySpawned = true;
+            }
+            else
+            {
+                Scan.Item = item;
+                Scan.Image.sprite = item.SmallIcon;
+            }
         }
 
-        _alreadySpawned = true;
     }
 
     private void Start()
@@ -117,7 +125,7 @@ public class SwipeTask : MonoBehaviour
         {
             _currentSwipePointIndex = 0;
             StartCoroutine(FinishTask(true));
-            Money.IncrementProfit(_itemToSwipe.Item.Cost);
+            Money.IncrementProfit(_toSwipe.Item.Cost);
             _itemIndex++;
             Debug.Log("Yipee");
             if (_itemIndex >= items.Count)

@@ -460,27 +460,14 @@ MonoBehaviour:
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
   <Image>k__BackingField: {fileID: 0}
-  <RowsOfShelves>k__BackingField:
-  - <ItemName>k__BackingField: 
-    <GameID>k__BackingField: 0
-    <ItemUnlocked>k__BackingField: 0
-    <ItemType>k__BackingField: {fileID: 0}
-    <ItemCount>k__BackingField: 0
-  - <ItemName>k__BackingField: 
-    <GameID>k__BackingField: 0
-    <ItemUnlocked>k__BackingField: 0
-    <ItemType>k__BackingField: {fileID: 0}
-    <ItemCount>k__BackingField: 0
-  - <ItemName>k__BackingField: 
-    <GameID>k__BackingField: 0
-    <ItemUnlocked>k__BackingField: 0
-    <ItemType>k__BackingField: {fileID: 0}
-    <ItemCount>k__BackingField: 0
   <Rows>k__BackingField: []
+  <AssignedRow>k__BackingField: {fileID: 0}
   <rows>k__BackingField:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _row: {fileID: 0}
+  _rowToIns: {fileID: 0}
   <StateMachine>k__BackingField: {fileID: 0}
   <EmpStateMachine>k__BackingField: {fileID: 0}
   IsFlashing: 0

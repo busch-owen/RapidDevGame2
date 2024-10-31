@@ -22,6 +22,8 @@ public class NpcPositiveDialogState : NPCBaseState
         _stateMachine.TimeForFirstWander = 1;
         _stateMachine.Invoke(nameof(_stateMachine.ChangeToPositive), 0.5f);
         _stateMachine.GiveUp();
+        
+        
         if (_stateMachine.ItemsCollected.Count >= _stateMachine.Items.Count)
         {
             _stateMachine.StartCoroutine(SwitchToCheckout());

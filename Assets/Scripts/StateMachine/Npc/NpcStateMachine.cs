@@ -30,6 +30,7 @@ public class NpcStateMachine : BaseStateMachine
     private NpcNegativeDialogState _npcNegativeDialogState;
     private NpcSpawnState _npcSpawnState;
     private NpcTalkingState _npcTalkingState;
+    private Shelf _shelfToCheck;
 
     public event Selected SelectedEvent;
     
@@ -291,52 +292,38 @@ public class NpcStateMachine : BaseStateMachine
     {
         var shelf = Target.GetComponent<Shelf>();
         Shelves.Remove(shelf);
-        
-        
-        foreach (var item in Items)
-        {
-            _numberOfItems = Items.Count;
-            for (int i = 0; i <= _numberOfItems -1; i++)
-            {
-                if (shelf.RowsOfShelves[shelf.ShelfSelected] == null ) continue;
-                if(shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0) continue;
-                if (Shoplifter)
-                {
-                    ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
-                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
-                    ChangeState(NpcStateName.Exit);
-                
-                }
-                else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost)
-                {
-                    ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
-                    continue;
-                }
-                else
-                {
-                    ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
-                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
-                    ShelvesBeforeLeave--;
-                }
-                shelf.ShelfSelected++;
-            }
 
-            shelf.ShelfSelected = 0;
-            
-            if (ItemsCollected.Count >= _numberOfItems)
+        _shelfToCheck = shelf;
+
+        foreach (var row in _shelfToCheck.Rows)
+        {
+            if(_shelfToCheck.AssignedRow == null) continue;
+            if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
+            foreach (var item in Items)
             {
-                FoundItems = true;
-                ChangeState(_npcPositiveDialogState);
-                return;
+                if(Budget < _shelfToCheck.AssignedRow.Container.ItemType.Cost) continue;
+                if(item != _shelfToCheck.AssignedRow.Container.ItemType) continue;
+                if (item == _shelfToCheck.AssignedRow.Container.ItemType)
+                {
+                    ItemsCollected.Add(item);
+                    _shelfToCheck.AssignedRow.Container.ItemCount--;
+                    MoneySpent += item.Cost;
+                }
             }
-            else
-            {
-                FoundItems = false;
-                ChangeState(_npcNegativeDialogState);
-                return;
-            }
+        }
+
+        if (ItemsCollected.Count >= Items.Count)
+        {
+            FoundItems = true;
+            ChangeState(_npcPositiveDialogState);
+            return;
+        }
+        else
+        {
+            FoundItems = false;
+            ChangeState(_npcNegativeDialogState);
+            ShelvesBeforeLeave--;
+            return;
         }
         
         // remove the shelf from the list so the npc does not try to go to it again
