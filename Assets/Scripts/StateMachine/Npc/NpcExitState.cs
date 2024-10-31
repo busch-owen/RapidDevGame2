@@ -12,6 +12,7 @@ public class NpcExitState : NPCBaseState
     public override void Enter()
     {
         _stateMachine.Invoke("Leave", 2.0f);
+        _stateMachine.SwipeTask.CheckingOut = false;
     }
 
     private void despawn()

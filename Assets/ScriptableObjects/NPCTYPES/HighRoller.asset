@@ -22,12 +22,12 @@ MonoBehaviour:
   - I'm looking for your most expensive item
   - Cost don't matter Show me the goodstuff baby!
   <Items>k__BackingField:
-  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
+  - {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 100
   <ShelvesTillExit>k__BackingField: 4
   <ShopLifter>k__BackingField: 0
-  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 0564a109ae409c64baa187d6a20d2464, type: 3}
+  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 03c08588b64f9db48b551d658da3e06f, type: 3}
   <Bad>k__BackingField:
   - {fileID: 0}
   - {fileID: 0}
@@ -35,6 +35,12 @@ MonoBehaviour:
   <Opening>k__BackingField:
   - {fileID: 0}
   - {fileID: 0}
-  <PossibleBad>k__BackingField: []
-  <PossibleGood>k__BackingField: []
-  <PossibleOpening>k__BackingField: []
+  <PossibleBad>k__BackingField:
+  - {fileID: 21300000, guid: e40da2d211fd21d49b18131bd9d5c9ca, type: 3}
+  - {fileID: 21300000, guid: 064b6441cb46cd24abfdc59fdc3e8395, type: 3}
+  <PossibleGood>k__BackingField:
+  - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
+  - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
+  <PossibleOpening>k__BackingField:
+  - {fileID: -705762789, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  - {fileID: 21300000, guid: 16a566f17a3f0c84eb22b1bbfa805eee, type: 3}

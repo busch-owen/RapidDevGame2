@@ -11,7 +11,7 @@ public class StockOrderer : MonoBehaviour
     private MoneyManager _moneyManager;
 
     [SerializeField] private Transform buttonGrid;
-    [SerializeField] private Transform inventoryButtonGrid;
+    [SerializeField] public Transform inventoryButtonGrid;
     [SerializeField] private Transform cartLayout;
     [SerializeField] private GameObject purchaseButton;
     [SerializeField] private GameObject stockButton;

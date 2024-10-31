@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43347b0fd7ce9384486853f96dfeddf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Current>k__BackingField: 
   <FoundItems>k__BackingField: 0
   <TextIndex>k__BackingField: {fileID: 0}
   <FoundText>k__BackingField: YEAHHH BABYYY
@@ -352,6 +351,7 @@ MonoBehaviour:
   <NpcTypeSoOptions>k__BackingField:
   - {fileID: 11400000, guid: 1c4f6f21535057740822a3fd8b7f2e4d, type: 2}
   - {fileID: 11400000, guid: b689f7db56b04b04cbd473f8c417e15d, type: 2}
+  - {fileID: 11400000, guid: a80bdec7607d3e2488239ab95230190b, type: 2}
   <Shelves>k__BackingField: []
   <Registers>k__BackingField: []
   <Agent>k__BackingField: {fileID: 4806395704206272866}
@@ -373,6 +373,7 @@ MonoBehaviour:
   <TimeToLeave>k__BackingField: 0
   <Shoplifter>k__BackingField: 0
   <CanTalk>k__BackingField: 0
+  <CanTarget>k__BackingField: 0
   <Renderer>k__BackingField: {fileID: 0}
   <PossibleImages>k__BackingField:
   - {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
@@ -385,6 +386,7 @@ MonoBehaviour:
   <PossibleOpening>k__BackingField: []
   <CurrentSprite>k__BackingField: {fileID: 0}
   _placeHolder: {fileID: 2844627434596013490, guid: 09ec33c036e05bf4d8a782440bf7ac1e, type: 3}
+  SwipeTask: {fileID: 0}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4

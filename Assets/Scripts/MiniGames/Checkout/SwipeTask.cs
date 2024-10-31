@@ -17,7 +17,7 @@ public class SwipeTask : MonoBehaviour
     public MoneyManager Money;
     private NpcStateMachine Npc;
     private int _itemIndex = 0;
-    [SerializeField] private List<ItemTypeSo> items = new();
+    [SerializeField] public List<ItemTypeSo> items = new();
     [SerializeField] private GameObject _canvas;
     [SerializeField] private ItemToSwipe _toSwipe;
     private bool _alreadySpawned;
@@ -26,6 +26,9 @@ public class SwipeTask : MonoBehaviour
     [SerializeField] private AudioSource _source;
     public bool Correct;
     private EventManager _eventManager;
+    public bool CheckingOut;
+    private ItemToSwipe _itemToSwipe;
+    public bool Done;
 
     public Transform ItemSpawn;
     // Update is called once per frame
@@ -56,15 +59,24 @@ public class SwipeTask : MonoBehaviour
     private void EnableCheckout()
     {
         _canvas.SetActive(true);
-        if(_alreadySpawned)return;
+
         foreach (var item in items)
         {
-            var Spawned = Instantiate(_toSwipe, transform.position, quaternion.identity);
-            Spawned.transform.SetParent(ItemSpawn, false);
-            Spawned.Item = item;
+            var Scan = _toSwipe;
+            if (!_alreadySpawned)
+            {
+                _toSwipe.Item = item;
+                
+                Scan = Instantiate(_toSwipe, ItemSpawn);
+                Scan.transform.SetParent(ItemSpawn);
+                _alreadySpawned = true;
+            }
+            else
+            {
+                Scan.Item = item;
+            }
         }
 
-        _alreadySpawned = true;
     }
 
     private void Start()
@@ -85,7 +97,6 @@ public class SwipeTask : MonoBehaviour
     {
         if (Successful)
         {
-            Green.SetActive(true);
             Correct = true;
             _source.PlayOneShot(_goodClip);
         }
@@ -113,9 +124,9 @@ public class SwipeTask : MonoBehaviour
         {
             _currentSwipePointIndex = 0;
             StartCoroutine(FinishTask(true));
-            swipePoint.itemToSwipe.Item = Npc.ItemsCollected[_itemIndex];
-            Money.IncrementProfit(swipePoint.itemToSwipe.Item.Cost);
+            Money.IncrementProfit(_toSwipe.Item.Cost);
             _itemIndex++;
+            Green.SetActive(true);
             Debug.Log("Yipee");
             if (_itemIndex >= items.Count)
             {
@@ -126,6 +137,9 @@ public class SwipeTask : MonoBehaviour
 
     private void Disable()
     {
+        Done = true;
+        Red.SetActive(false);
+        Green.SetActive(false);
         Npc.ChangeState(NpcStateName.Exit);
         _canvas.SetActive(false);
     }

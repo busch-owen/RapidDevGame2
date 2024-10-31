@@ -22,11 +22,21 @@ MonoBehaviour:
   - Wuzzup foo
   - What's poppin g
   <Items>k__BackingField:
-  - {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
-  - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
+  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 0
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ShelvesTillExit>k__BackingField: 3
   <ShopLifter>k__BackingField: 1
   <NpcSprite>k__BackingField: {fileID: 21300000, guid: 1fee544c34983004bb91e4c76d140b55, type: 3}
+  <Bad>k__BackingField: []
+  <Good>k__BackingField: []
+  <Opening>k__BackingField: []
+  <PossibleBad>k__BackingField:
+  - {fileID: 21300000, guid: 064b6441cb46cd24abfdc59fdc3e8395, type: 3}
+  - {fileID: 203001633, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  <PossibleGood>k__BackingField:
+  - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
+  - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
+  <PossibleOpening>k__BackingField:
+  - {fileID: 1965508524, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  - {fileID: 1965508524, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}

@@ -5,6 +5,7 @@ using Code.Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -29,6 +30,7 @@ public class NpcStateMachine : BaseStateMachine
     private NpcNegativeDialogState _npcNegativeDialogState;
     private NpcSpawnState _npcSpawnState;
     private NpcTalkingState _npcTalkingState;
+    private Shelf _shelfToCheck;
 
     public event Selected SelectedEvent;
     
@@ -120,6 +122,10 @@ public class NpcStateMachine : BaseStateMachine
 
     [SerializeField]private Image _placeHolder;
 
+    public SwipeTask SwipeTask;
+    
+    int i = 0;
+
     
     
     // Start is called before the first frame update
@@ -140,6 +146,7 @@ public class NpcStateMachine : BaseStateMachine
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
         PossibleOpening = NpcType.PossibleOpening;
+        SwipeTask = FindFirstObjectByType<SwipeTask>();
     }
 
     private void Awake()
@@ -165,6 +172,7 @@ public class NpcStateMachine : BaseStateMachine
 
     public void ArrivedEvent()
     {
+        if(SwipeTask.CheckingOut)return;
         _eventManager.InvokeArrived(ItemsCollected);
         _eventManager.AssignNpc(this);
     }
@@ -286,52 +294,43 @@ public class NpcStateMachine : BaseStateMachine
     {
         var shelf = Target.GetComponent<Shelf>();
         Shelves.Remove(shelf);
-        
-        
-        foreach (var item in Items)
+
+        _shelfToCheck = shelf;
+        i = 0;
+
+        foreach (var row in _shelfToCheck.Rows)
         {
-            _numberOfItems = Items.Count;
-            for (int i = 0; i <= _numberOfItems -1; i++)
+            Debug.Log(row);
+            if(_shelfToCheck.AssignedRow == null) continue;
+            if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
+            foreach (var item in Items)
             {
-                if (shelf.RowsOfShelves[shelf.ShelfSelected] == null ) continue;
-                if(shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0) continue;
-                if (Shoplifter)
+                if(Budget < _shelfToCheck.AssignedRow.Container.ItemType.Cost) continue;
+                if(item != _shelfToCheck.AssignedRow.Container.ItemType) continue;
+                if (item == _shelfToCheck.AssignedRow.Container.ItemType)
                 {
-                    ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
-                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
-                    ShelvesBeforeLeave--;
-                
+                    ItemsCollected.Add(item);
+                    _shelfToCheck.AssignedRow.Container.ItemCount--;
+                    MoneySpent += item.Cost;
                 }
-                else if (shelf.RowsOfShelves[shelf.ShelfSelected].ItemType != item||Budget < shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost|| shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount <= 0)
-                {
-                    ShelvesBeforeLeave--;// decrement the amount of shelves it takes before the npc decides to leave empty handed 
-                    continue;
-                }
-                else
-                {
-                    ItemsCollected.Add(item);// add the item to the npcs list of collected items
-                    MoneySpent += shelf.RowsOfShelves[shelf.ShelfSelected].ItemType.Cost;// spend the money
-                    shelf.RowsOfShelves[shelf.ShelfSelected].ItemCount--;
-                    ShelvesBeforeLeave--;
-                }
-                shelf.ShelfSelected++;
             }
 
-            shelf.ShelfSelected = 0;
-            
-            if (ItemsCollected.Count >= _numberOfItems)
-            {
-                FoundItems = true;
-                ChangeState(_npcPositiveDialogState);
-                return;
-            }
-            else
-            {
-                FoundItems = false;
-                ChangeState(_npcNegativeDialogState);
-                return;
-            }
+            i++;
+            _shelfToCheck.AssignedRow = _shelfToCheck.Rows[i];
+        }
+
+        if (ItemsCollected.Count >= Items.Count)
+        {
+            FoundItems = true;
+            ChangeState(_npcPositiveDialogState);
+            return;
+        }
+        else
+        {
+            FoundItems = false;
+            ChangeState(_npcNegativeDialogState);
+            ShelvesBeforeLeave--;
+            return;
         }
         
         // remove the shelf from the list so the npc does not try to go to it again

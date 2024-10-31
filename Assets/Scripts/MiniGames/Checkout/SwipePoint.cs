@@ -16,14 +16,10 @@ public class SwipePoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _swipeTask.SwipePointTrigger(this);
+        
         if (other.GetComponent<ItemToSwipe>())
         {
-            var Item = other.GetComponent<ItemToSwipe>();
-            itemToSwipe = Item;
-            if (_swipeTask.Correct)
-            {
-                Destroy(Item.gameObject, 0.5f);
-            }
+
         }
         //Debug.Log("contact");
     }

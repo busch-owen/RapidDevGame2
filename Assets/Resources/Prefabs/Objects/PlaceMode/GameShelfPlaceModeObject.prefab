@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 1308409669, guid: a93d91089bc7faf45ac99e1f20648843, type: 3}
+  m_Sprite: {fileID: -183450754, guid: f8ff27f399680c140801c710202431a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 0.875}
+    oldSize: {x: 1.6, y: 1.05}
     newSize: {x: 4, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -501,7 +501,28 @@ MonoBehaviour:
     <ItemUnlocked>k__BackingField: 0
     <ItemType>k__BackingField: {fileID: 0}
     <ItemCount>k__BackingField: 0
-  <RowsOfShelves>k__BackingField: []
+  <Image>k__BackingField: {fileID: 0}
+  <RowsOfShelves>k__BackingField:
+  - <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  - <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  - <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  <Rows>k__BackingField: []
+  <rows>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   <StateMachine>k__BackingField: {fileID: 0}
   <EmpStateMachine>k__BackingField: {fileID: 0}
   IsFlashing: 0

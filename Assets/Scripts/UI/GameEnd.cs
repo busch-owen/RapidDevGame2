@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEnd : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class GameEnd : MonoBehaviour
     void Start()
     {
         _eventManager = FindFirstObjectByType<EventManager>();
-        end.SetActive(false);
         _eventManager._Ended += EndDay;
     }
 
@@ -24,6 +24,6 @@ public class GameEnd : MonoBehaviour
 
     public void EndDay()
     {
-        end.SetActive(true);
+        SceneManager.LoadScene("End");
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,12 +10,19 @@ public class Shelf : StoreObject
     [field: SerializeField] public GameContainer AssignedItem { get; private set; }
     
     [field: SerializeField] public Image Image { get; private set; }
-    [field: SerializeField] public GameContainer[] RowsOfShelves { get; private set; }
     
-    [field: SerializeField] public Rows[] Rows { get; private set; }
+    [field: SerializeField] public List<Rows> Rows { get; private set; }
+    
+    [field: SerializeField] public Rows AssignedRow { get;  set; }
     
     [field: SerializeField] public Transform[] rows { get; private set; }
+
+    [SerializeField] private Rows _row;
+
+    [SerializeField] private GameObject _rowToIns;
+    
     private ItemSelector _assignedSelector;
+    private int _index = 0;
     [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
     [field: SerializeField] public EmployeeStateMachine EmpStateMachine { get; private set; }
     public bool IsFlashing;
@@ -28,6 +36,7 @@ public class Shelf : StoreObject
     public ItemSelector ItemSelector;
 
     private ItemTypeSo _itemTypeSo;
+    public StockOrderer stockOrderer;
     
    
 
@@ -40,22 +49,15 @@ public class Shelf : StoreObject
         _eventManager._clicked += DisableClick;
         EmpStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
         Target = EmpStateMachine.transform;
-        ShelfUI = FindFirstObjectByType<ShelfUi>().gameObject;
         ItemSelector = FindFirstObjectByType<ItemSelector>();
-        Rows = FindObjectsByType<Rows>(FindObjectsSortMode.None);
-        
-        for (int i = 0; i <= 2; i++ )
-        {
-            rows[i] = Rows[i].transform;
-            Debug.Log("added");
-        }
-
+        stockOrderer = FindFirstObjectByType<StockOrderer>();
+        InstantiateRows();
     }
     
     public void StockShelf(ItemTypeSo item)
     {
-        var CurrentContainer = RowsOfShelves[ShelfSelected];
-        var trans = rows[ShelfSelected];
+        var CurrentContainer = AssignedRow.Container;
+        var trans = rows[AssignedRow.index];
 
         if (!_firstPress)
         {
@@ -64,14 +66,29 @@ public class Shelf : StoreObject
             CurrentContainer.ItemName = item.ItemName;
             CurrentContainer.GameID = item.GameID;
             CurrentContainer.ItemCount++;
+            Image.sprite = CurrentContainer.ItemType.SmallIcon;
             ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
             var Img = Instantiate(Image, trans);
             Img.transform.parent = trans;
             _firstPress = true;
         }
-        else if(_itemTypeSo == item)
+        if(_itemTypeSo != item )
+        {
+            ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).ChangeCount(CurrentContainer.ItemCount);
+            CurrentContainer.ItemType = item;
+            CurrentContainer.ItemCount = 0;
+            _itemTypeSo = CurrentContainer.ItemType;
+            CurrentContainer.ItemName = item.ItemName;
+            CurrentContainer.GameID = item.GameID;
+            CurrentContainer.ItemCount++;
+            Image.sprite = CurrentContainer.ItemType.SmallIcon;
+            var Img = Instantiate(Image, trans);
+            Img.transform.parent = trans;
+        }
+        else if (_itemTypeSo == item)
         {
             CurrentContainer.ItemCount++;
+            Image.sprite = CurrentContainer.ItemType.SmallIcon;
             ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
             var Img = Instantiate(Image, trans);
             Img.transform.parent = trans;
@@ -87,9 +104,25 @@ public class Shelf : StoreObject
         }
     }
 
+    public void InstantiateRows()
+    {
+        if(_rowToIns == null) return;
+        foreach (var trans in rows)
+        {
+            int i = _index;
+            var RowToInstantiate = Instantiate(_rowToIns, rows[i]);
+            
+            RowToInstantiate.GetComponent<Rows>().index = _index;
+            Rows.Add(RowToInstantiate.GetComponent<Rows>());
+            _index++;
+        }
+
+        AssignedRow = Rows[0];
+    }
+
     public void RemoveStock(ItemTypeSo item)
     {
-        var CurrentContainer = RowsOfShelves[ShelfSelected];
+        var CurrentContainer = AssignedRow.Container;
         
         if(item != CurrentContainer.ItemType)return;
         CurrentContainer.ItemCount--;
@@ -112,12 +145,6 @@ public class Shelf : StoreObject
     public void DeselectShelf()
     {
         ShelfUI.transform.localScale = new Vector3(0,0,0);
-    }
-
-    public void IncrementShelf()
-    {
-        if(ShelfSelected >= RowsOfShelves.Length) ShelfSelected = 0;
-        ShelfSelected++;
     }
 
     public void EnableClick()
@@ -168,6 +195,13 @@ public class Shelf : StoreObject
         _assignedSelector?.AllItems.Find(container => container.GameID == AssignedItem.GameID).ChangeCount(AssignedItem.ItemCount);
         _assignedSelector = null;
         AssignedItem = null;
+    }
+
+    public void AssignRows(int index)
+    {
+        AssignedRow = Rows[index];
+        _index = index;
+        _firstPress = false;
     }
 
     public void AssignNpc(NpcStateMachine stateMachine)

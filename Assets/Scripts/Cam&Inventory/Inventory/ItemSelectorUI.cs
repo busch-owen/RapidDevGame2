@@ -42,7 +42,7 @@ public class ItemSelectorUI : MonoBehaviour
     }
     private void PopulateItemSelection(GameContainer itemData)
     {
-        txtName.text = itemData.ItemType.ItemName;
+        //txtName.text = itemData.ItemType.ItemName;
         txtDescription.text = itemData.ItemType.ItemDescription;
         txtCategory.text = itemData.ItemType.ItemCategory;
         itemIcon.sprite = itemData.ItemType.BigIcon;

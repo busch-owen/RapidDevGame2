@@ -503,6 +503,110 @@ PrefabInstance:
       propertyPath: m_AgentTypeID
       value: -334000983
       objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontSize
+      value: 19.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 219d7861007c48c44a5b0962f1a0e2e5, type: 2}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8082009102846378308, guid: 219d7861007c48c44a5b0962f1a0e2e5, type: 2}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_charWidthMaxAdj
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772653678816432886, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[4].<GameID>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<GameID>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[6].<GameID>k__BackingField
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[4].<ItemName>k__BackingField
+      value: CallOfDan
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[4].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemName>k__BackingField
+      value: Collectable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[6].<ItemName>k__BackingField
+      value: StoneMask
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[6].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c5ccc9b913e64e4ca175248996e90d1, type: 2}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[4].<ItemCount>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemCount>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[6].<ItemCount>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemUnlocked>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857515441756871785, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[6].<ItemUnlocked>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8569179673795194682, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.70723015
@@ -510,6 +614,10 @@ PrefabInstance:
     - target: {fileID: 8569179673795194682, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686460031178955443, guid: 2d1a6eff5e5202f438eb3c5717b6e508, type: 3}
+      propertyPath: m_fontSize
+      value: 27.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
