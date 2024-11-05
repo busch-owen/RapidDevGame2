@@ -20,5 +20,7 @@ public class ItemTypeSo : ScriptableObject
     [field: SerializeField] public Sprite SmallIcon { get; private set; }
     
     [field: SerializeField] public int GameID { get; set; }
+    
+    [field: SerializeField] public int MaxCount { get; set; }
 }
 

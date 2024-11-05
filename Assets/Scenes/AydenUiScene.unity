@@ -385,7 +385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000011444092, y: -46.3}
+  m_AnchoredPosition: {x: -50.6, y: -0.0000038147}
   m_SizeDelta: {x: -6.4000015, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724038153
@@ -1064,18 +1064,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: <AllItems>k__BackingField.Array.data[0].<ItemName>k__BackingField
-      value: BlockCraft
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemName>k__BackingField
-      value: CallOfDan
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemType>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
     - target: {fileID: 8615382804491686595, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1328,6 +1316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fecaf5fd0fef714aacff3657af2393b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemButton: {fileID: 4524303644661858909, guid: 62887ad873168a0408dfa577d1ed5e4b, type: 3}
 --- !u!114 &8225910438369590479
 MonoBehaviour:
   m_ObjectHideFlags: 0

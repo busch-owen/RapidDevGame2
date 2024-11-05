@@ -37,11 +37,7 @@ public class EventManager : MonoBehaviour
         Arrived?.Invoke(ItemList);
         items = ItemList;
     }
-
-    public void InvokeShelfAssigned(Shelf shelf)
-    {
-        ShelfAssigned?.Invoke(shelf);
-    }
+    
     
     
 

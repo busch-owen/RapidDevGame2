@@ -31,8 +31,6 @@ public class Rows : MonoBehaviour
         shelf.AssignRows(index);
         Debug.Log(index);
     }
-    
-    
 
     // Update is called once per frame
     void Update()

@@ -33,23 +33,18 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
     {
         
     }
-
-
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("clicked");
         _shelf = GetComponentInParent<Shelf>();
-        if (_shelf.EmpStateMachine == null || _shelf.EmpStateMachine.currentState != _shelf.EmpStateMachine._employeeStockingState)
-        {
-            Debug.Log("I'm a fat retard"); 
-            return;
-        }
+        if (_shelf.EmpStateMachine == null || _shelf.EmpStateMachine.currentState != _shelf.EmpStateMachine._employeeStockingState) return;
         
         if (_shelf.DistanceCheck())
         {
-            _eventManager.InvokeShelfAssigned(_shelf);
             _shelf.SelectShelf();
-            grid.EnableImage();
+            Debug.Log($"assigned shelf: {_shelf.name}");
+            grid.EnableImage(GetComponentInParent<Shelf>());
             _inputActions.AssignUi(_ui);
         }
         else

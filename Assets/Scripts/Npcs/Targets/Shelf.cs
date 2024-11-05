@@ -37,6 +37,7 @@ public class Shelf : StoreObject
 
     private ItemTypeSo _itemTypeSo;
     public StockOrderer stockOrderer;
+    public InvGrid grid;
     
    
 
@@ -51,6 +52,7 @@ public class Shelf : StoreObject
         Target = EmpStateMachine.transform;
         ItemSelector = FindFirstObjectByType<ItemSelector>();
         stockOrderer = FindFirstObjectByType<StockOrderer>();
+        grid = FindFirstObjectByType<InvGrid>();
         InstantiateRows();
     }
     
@@ -58,6 +60,7 @@ public class Shelf : StoreObject
     {
         var CurrentContainer = AssignedRow.Container;
         var trans = rows[AssignedRow.index];
+        if (CurrentContainer.ItemCount >= CurrentContainer.ItemType.MaxCount)return;
 
         if (!_firstPress)
         {
@@ -65,38 +68,23 @@ public class Shelf : StoreObject
             _itemTypeSo = CurrentContainer.ItemType;
             CurrentContainer.ItemName = item.ItemName;
             CurrentContainer.GameID = item.GameID;
-            CurrentContainer.ItemCount++;
             Image.sprite = CurrentContainer.ItemType.BigIcon;
-            ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
             var Img = Instantiate(Image, trans);
             Img.transform.parent = trans;
             _firstPress = true;
         }
-        if(_itemTypeSo != item )
-        {
-            ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).ChangeCount(CurrentContainer.ItemCount);
-            CurrentContainer.ItemType = item;
-            CurrentContainer.ItemCount = 0;
-            _itemTypeSo = CurrentContainer.ItemType;
-            CurrentContainer.ItemName = item.ItemName;
-            CurrentContainer.GameID = item.GameID;
-            CurrentContainer.ItemCount++;
-            Image.sprite = CurrentContainer.ItemType.BigIcon;
-            var Img = Instantiate(Image, trans);
-            Img.transform.parent = trans;
-        }
         else if (_itemTypeSo == item)
         {
-            CurrentContainer.ItemCount++;
-            Image.sprite = CurrentContainer.ItemType.BigIcon;
-            ItemSelector?.AllItems.Find(container => container.GameID == CurrentContainer.GameID).DecrementCount(1);
-            var Img = Instantiate(Image, trans);
-            Img.transform.parent = trans;
-            if (CurrentContainer.ItemCount >= 20)
+            if (CurrentContainer.ItemCount >= CurrentContainer.ItemType.MaxCount)
             {
+                grid.DisableImage();
                 ShelfUI.transform.localScale = new Vector3(0,0,0);
+                grid.transform.localScale = new Vector3(0, 0, 0);
                 return;
             }
+            Image.sprite = CurrentContainer.ItemType.BigIcon;
+            var Img = Instantiate(Image, trans);
+            Img.transform.parent = trans;
         }
         else
         {

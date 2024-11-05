@@ -39,16 +39,6 @@ public class StockOrderer : MonoBehaviour
         }
     }
 
-    private void LoadItemsToStock()
-    {
-        foreach (var item in _itemSelector.AllItems)
-        {
-            var newItem = item;
-            var newButton = Instantiate(stockButton, inventoryButtonGrid);
-            newButton.GetComponent<StockItemButton>().AssignInventoryContainer(newItem);
-        }
-    }
-
     private void AddItemsToCart(GameContainer item)
     {
         foreach (var cart in itemsInCart.Where(cart => cart.AssignedContainer.ItemType == item.ItemType))
@@ -90,8 +80,6 @@ public class StockOrderer : MonoBehaviour
             foreach (var inventoryItems in _itemSelector.AllItems.Where(inventoryItems => inventoryItems.ItemType == cartItems.AssignedContainer.ItemType))
             {
                 inventoryItems.ChangeCount(cartItems.AssignedContainer.ItemCount);
-                var newButton = Instantiate(stockButton, inventoryButtonGrid);
-                newButton.GetComponent<StockItemButton>().AssignInventoryContainer(cartItems.AssignedContainer);
             }
         }
         foreach (var item in itemsInCart)

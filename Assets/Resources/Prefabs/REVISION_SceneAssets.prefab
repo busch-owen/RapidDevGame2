@@ -8924,6 +8924,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6154719709252280452, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[0].<ItemName>k__BackingField
+      value: BlockCraft
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154719709252280452, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemName>k__BackingField
+      value: CallOfDan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154719709252280452, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
     - target: {fileID: 7477158324437955092, guid: 866f041b291f3cb4dab942fb0620a9e0, type: 3}
       propertyPath: m_Name
       value: InventoryManager

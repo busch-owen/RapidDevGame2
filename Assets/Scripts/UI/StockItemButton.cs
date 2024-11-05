@@ -17,29 +17,43 @@ public class StockItemButton : MonoBehaviour
     private Shelf _shelf;
     private EventManager _eventManager;
 
+    private ItemSelector _itemSelector;
+
     public void AssignInventoryContainer(GameContainer container)
     {
         _assignedContainer = container;
         buttonImage.sprite = _assignedContainer.ItemType.BigIcon;
         itemName.text = _assignedContainer.ItemType.ItemName;
         Item = _assignedContainer.ItemType;
+        
+        _shelf.AssignedRow.Container.ItemCount = 0;
+        
     }
 
     public void Stock()
     {
         if(_assignedContainer.ItemCount <= 0) return;
-        _shelf.AssignedRow.Container = this._assignedContainer;
-        _shelf.StockShelf(Item);
+
+        if ( _shelf.AssignedRow.Container.ItemType == null || _assignedContainer.ItemType == _shelf.AssignedRow.Container.ItemType)
+        {
+            _shelf.AssignedRow.Container.ItemName = _assignedContainer.ItemName;
+            _shelf.AssignedRow.Container.ItemType = _assignedContainer.ItemType;
+            _shelf.AssignedRow.Container.ChangeCount(1);
+            _assignedContainer.ChangeCount(-1);
+            _shelf.StockShelf(Item);
+        }
     }
 
-    public void assignShelf(Shelf shelf)
+    public void AssignShelf(Shelf shelf)
     {
+        Debug.Log("I HAVE A SHELF!");
         _shelf = shelf;
     }
 
     private void Start()
     {
         _eventManager = FindFirstObjectByType<EventManager>();
-        _eventManager.ShelfAssigned += assignShelf;
+        _itemSelector = FindFirstObjectByType<ItemSelector>();
+        
     }
 }

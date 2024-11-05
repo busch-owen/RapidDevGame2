@@ -19,3 +19,5 @@ MonoBehaviour:
   <ProductType>k__BackingField: 1
   <BigIcon>k__BackingField: {fileID: 31519325, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
   <SmallIcon>k__BackingField: {fileID: 203001633, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  <GameID>k__BackingField: 0
+  <MaxCount>k__BackingField: 20
