@@ -732,38 +732,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5528701828994245771}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ManualOverrideOn
-      objectReference: {fileID: 0}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EmployeeStateMachine, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 604866583083657903, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_Name
       value: Inv
@@ -1291,17 +1259,6 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 6166381184766354289, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
   m_PrefabInstance: {fileID: 5528701828994245767}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5528701828994245771 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6858196661004306878, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
-  m_PrefabInstance: {fileID: 5528701828994245767}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1682048c48fa92498b57bb625da3491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6392280500025255675
 GameObject:
   m_ObjectHideFlags: 0

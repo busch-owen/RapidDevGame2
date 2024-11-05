@@ -3317,11 +3317,12 @@ MonoBehaviour:
     where you click!
 
 
-    Press F to enter stock mode and click on shelves to stock
-    them.
+    When Nearby:
 
+    - Click on shelves to stock them
 
-    Click on customers to show them where to go'
+    -
+    Click on customers to guide them'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e35d814744822e44970a49bb09a01c5, type: 2}
   m_sharedMaterial: {fileID: 9191080643611883894, guid: 1e35d814744822e44970a49bb09a01c5, type: 2}
@@ -7423,10 +7424,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Move Mode
+  m_text: Control Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e35d814744822e44970a49bb09a01c5, type: 2}
-  m_sharedMaterial: {fileID: -9121527585308003220, guid: 93ad52dcbfb1bc94a99b3b08f7c38024, type: 2}
+  m_sharedMaterial: {fileID: 9191080643611883894, guid: 1e35d814744822e44970a49bb09a01c5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7491,7 +7492,7 @@ MonoBehaviour:
   m_margin: {x: 13.669586, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5239294863425311443
@@ -9005,6 +9006,7 @@ GameObject:
   - component: {fileID: 8334285609916413252}
   - component: {fileID: 6764140976537038840}
   - component: {fileID: 7787827949440362769}
+  - component: {fileID: 6807275041885562681}
   m_Layer: 5
   m_Name: ControlButton
   m_TagString: Untagged
@@ -9112,7 +9114,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6764140976537038840}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 638682451150627290}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &6807275041885562681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522759827436904922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fe1ce4d7a757d458c72d726ec65945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ControlPanelCancelButton>k__BackingField: {fileID: 8292763497301509399}
 --- !u!1 &6601352794020502633
 GameObject:
   m_ObjectHideFlags: 0

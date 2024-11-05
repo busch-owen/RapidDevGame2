@@ -12214,18 +12214,6 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5490985221417791347, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
-      propertyPath: m_text
-      value: Conrtol Mode
-      objectReference: {fileID: 0}
-    - target: {fileID: 5490985221417791347, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 9191080643611883894, guid: 1e35d814744822e44970a49bb09a01c5, type: 2}
-    - target: {fileID: 5490985221417791347, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5491778001030670058, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13811,9 +13799,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8292763497301509399, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292763497301509399, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7567373231861836535}
+      objectReference: {fileID: 7291120385158019511}
+    - target: {fileID: 8292763497301509399, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292763497301509399, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8397257798551569173, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14546,6 +14546,11 @@ RectTransform:
 --- !u!1 &5929130150678204440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4592208613410572405, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
+  m_PrefabInstance: {fileID: 7922479434385856621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7291120385158019511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 638682451150627290, guid: 32c7e05ba23642745b0d71518fc008e9, type: 3}
   m_PrefabInstance: {fileID: 7922479434385856621}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &9192678594240915443 stripped

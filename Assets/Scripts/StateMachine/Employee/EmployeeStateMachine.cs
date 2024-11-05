@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Code.Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public enum EmployeeStates
 {
@@ -31,6 +32,8 @@ public class EmployeeStateMachine : BaseStateMachine
 
     private SpriteRenderer _renderer;
 
+    private ControlButton _controlButton;
+
     public void Awake()
     {
         _employeeExitState = new EmployeeExitState(this);
@@ -44,7 +47,10 @@ public class EmployeeStateMachine : BaseStateMachine
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.transform.rotation = Quaternion.Euler(90,0,0);
         Agent.updateRotation = false;
-
+        _controlButton = FindFirstObjectByType<ControlButton>();
+        _controlButton.GetComponent<Button>().onClick.AddListener(EnableStocking);
+        _controlButton.GetComponent<Button>().onClick.AddListener(ManualOverrideOn);
+        _controlButton.ControlPanelCancelButton.onClick.AddListener(DisableStocking);
     }
 
     public void ChangeState(EmployeeStates stateName)
