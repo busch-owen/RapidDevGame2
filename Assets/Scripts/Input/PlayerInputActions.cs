@@ -26,8 +26,6 @@ public class PlayerInputActions : MonoBehaviour
             playerInput.Actions.Not.performed += i => employeeStateMachine.DisableStocking();
             playerInput.Actions.Esc.performed += i => _shelfUi.Show();
             playerInput.Actions.Esc.performed += i => _invGrid.DisableImage();
-
-
         }
 
         playerInput.Enable();

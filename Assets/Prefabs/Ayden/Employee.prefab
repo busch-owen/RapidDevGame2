@@ -83,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2125617073159031989
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacle: {fileID: 5054795722097559565, guid: 7396278554fe8c842b689c2b2558cc38, type: 3}
-  employeeStateMachine: {fileID: 0}
-  Exists: 1
+  employeeStateMachine: {fileID: 6858196661004306878}
+  Exists: 0
 --- !u!195 &6166381184766354289
 NavMeshAgent:
   m_ObjectHideFlags: 0
