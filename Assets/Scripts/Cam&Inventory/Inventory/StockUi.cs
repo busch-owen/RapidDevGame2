@@ -23,7 +23,7 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         _eventManager = FindFirstObjectByType<EventManager>();
-        _shelf = GetComponent<Shelf>();
+        _shelf = GetComponentInParent<Shelf>();
         grid = FindFirstObjectByType<InvGrid>();
         _inputActions = FindFirstObjectByType<PlayerInputActions>();
     }
@@ -39,7 +39,12 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("clicked");
         _shelf = GetComponentInParent<Shelf>();
-        if(_shelf.EmpStateMachine == null || _shelf.EmpStateMachine.currentState != _shelf.EmpStateMachine._employeeStockingState) return;
+        if (_shelf.EmpStateMachine == null || _shelf.EmpStateMachine.currentState != _shelf.EmpStateMachine._employeeStockingState)
+        {
+            Debug.Log("I'm a fat retard"); 
+            return;
+        }
+        
         if (_shelf.DistanceCheck())
         {
             _eventManager.InvokeShelfAssigned(_shelf);

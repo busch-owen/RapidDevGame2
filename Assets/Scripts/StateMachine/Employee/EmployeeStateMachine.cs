@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Code.Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum EmployeeStates
@@ -28,7 +29,9 @@ public class EmployeeStateMachine : BaseStateMachine
     [field:SerializeField] public bool IsWalking { get; set; }
     [field:SerializeField] public NpcStateMachine npcStateMachine{ get; set; }
     
-    [field:SerializeField]public EmployeeBaseState currentState{ get; private set; }
+    public EmployeeBaseState currentState{ get; private set; }
+
+    [SerializeField] private string stateName;
 
     private SpriteRenderer _renderer;
 
@@ -48,11 +51,13 @@ public class EmployeeStateMachine : BaseStateMachine
         _renderer.transform.rotation = Quaternion.Euler(90,0,0);
         Agent.updateRotation = false;
         _controlButton = FindFirstObjectByType<ControlButton>();
-        _controlButton.GetComponent<Button>().onClick.AddListener(EnableStocking);
         _controlButton.GetComponent<Button>().onClick.AddListener(ManualOverrideOn);
+        _controlButton.GetComponent<Button>().onClick.AddListener(EnableStocking);
+        _controlButton.ControlPanelCancelButton.onClick.AddListener(ManualOverrideOff);
         _controlButton.ControlPanelCancelButton.onClick.AddListener(DisableStocking);
+        
     }
-
+    
     public void ChangeState(EmployeeStates stateName)
     {
         switch (stateName)
@@ -90,6 +95,8 @@ public class EmployeeStateMachine : BaseStateMachine
                 currentState = _employeeWalkingState;
                 break;
         }
+
+        this.stateName = currentState.ToString();
     }
 
     public bool DistanceCheck()
@@ -137,6 +144,7 @@ public class EmployeeStateMachine : BaseStateMachine
 
     public void SetDestination()
     {
-        Agent.SetDestination(Target.position);
+        if (!Agent) return;
+        Agent?.SetDestination(Target.position);
     }
 }

@@ -17,7 +17,7 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         _shelf = GetComponentInParent<Shelf>();
         _eventManager = FindFirstObjectByType<EventManager>();
-
+        
     }
 
     private void Awake()

@@ -21,13 +21,13 @@ public class EmployeeTargetPlacer : MonoBehaviour
         if(!employeeStateMachine.IsWalking)return;
         if (Input.GetMouseButtonDown(0) && !Exists)
         {
+            Exists = true;
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
             var ob = Instantiate(Obstacle, pos, Quaternion.identity);
             employeeStateMachine.Target = ob.transform;
             employeeStateMachine.SetDestination();
             Current = ob;
-            Exists = true;
         }
         else if (Input.GetMouseButtonDown(0) && Exists)
         {

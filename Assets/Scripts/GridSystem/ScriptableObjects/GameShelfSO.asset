@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameShelfSO
   m_EditorClassIdentifier: 
   <PlaceModeObject>k__BackingField: {fileID: 6575979153740146991, guid: 3eab8e618747344469ef71230b839916, type: 3}
-  <ObjectToPlace>k__BackingField: {fileID: 6575979153740146991, guid: ea653d6cadcdbfd4a95f1ec6961bc1c7, type: 3}
+  <ObjectToPlace>k__BackingField: {fileID: 6575979153740146991, guid: e1215939536d5dc49af0237bab53a7ba, type: 3}
   <ObjectName>k__BackingField: Game Shelf
   <StockAmount>k__BackingField: 60
   <ProductStorage>k__BackingField: 1
