@@ -346,12 +346,15 @@ MonoBehaviour:
   <FoundText>k__BackingField: YEAHHH BABYYY
   <OpeningLine>k__BackingField: 
   <NotFoundText>k__BackingField: :( no games here
-  <Items>k__BackingField: []
+  <Items>k__BackingField: {fileID: 0}
   <ItemsCollected>k__BackingField: []
   <NpcTypeSoOptions>k__BackingField:
   - {fileID: 11400000, guid: 1c4f6f21535057740822a3fd8b7f2e4d, type: 2}
   - {fileID: 11400000, guid: b689f7db56b04b04cbd473f8c417e15d, type: 2}
   - {fileID: 11400000, guid: a80bdec7607d3e2488239ab95230190b, type: 2}
+  - {fileID: 11400000, guid: 0d8d18976fa1cd04584558f0e817694a, type: 2}
+  - {fileID: 11400000, guid: 265d0564548720641ad11dcee6911f4a, type: 2}
+  - {fileID: 11400000, guid: f90c2890cf869df44a4835d69d42da98, type: 2}
   <Shelves>k__BackingField: []
   <Registers>k__BackingField: []
   <Agent>k__BackingField: {fileID: 4806395704206272866}
