@@ -21,8 +21,10 @@ MonoBehaviour:
   <OpeningText>k__BackingField:
   - I'm looking for your most expensive item
   - Cost don't matter Show me the goodstuff baby!
-  <Items>k__BackingField:
+  <PossibleItems>k__BackingField:
   - {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
+  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
+  - {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 100
   <ShelvesTillExit>k__BackingField: 4
@@ -41,6 +43,4 @@ MonoBehaviour:
   <PossibleGood>k__BackingField:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
-  <PossibleOpening>k__BackingField:
-  - {fileID: -705762789, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
-  - {fileID: 21300000, guid: 16a566f17a3f0c84eb22b1bbfa805eee, type: 3}
+  <PossibleOpening>k__BackingField: {fileID: 0}

@@ -24,7 +24,7 @@ public class NpcPositiveDialogState : NPCBaseState
         _stateMachine.GiveUp();
         
         
-        if (_stateMachine.ItemsCollected.Count >= _stateMachine.Items.Count)
+        if (_stateMachine.ItemsCollected.Count >= 1)
         {
             _stateMachine.StartCoroutine(SwitchToCheckout());
             Debug.Log("Checkout");

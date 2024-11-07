@@ -14,7 +14,7 @@ public class NpcTypeSo : ScriptableObject
     
     [field:SerializeField]public List<String> OpeningText{ get; private set; }
     
-    [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; }
+    [field:SerializeField]public List<ItemTypeSo> PossibleItems{ get; private set; }
     
     [field:SerializeField]public int Speed{ get; private set; }
     
@@ -38,6 +38,7 @@ public class NpcTypeSo : ScriptableObject
     
     
     [field:SerializeField]public Sprite PossibleOpening{ get; private set; }
+    
     
     
     

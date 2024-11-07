@@ -45,7 +45,7 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public String NotFoundText{ get; private set; }
     
-    [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
+    [field:SerializeField]public ItemTypeSo Items{ get; private set; }
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
 
@@ -145,7 +145,6 @@ public class NpcStateMachine : BaseStateMachine
         ShelvesBeforeLeave = Shelves.Count;
         MoneyManager = FindFirstObjectByType<MoneyManager>();
         Shoplifter = NpcType.ShopLifter;
-        Items = NpcType.Items;
         Renderer = GetComponentInChildren<SpriteRenderer>();
         Renderer.sprite = NpcType.NpcSprite;
         Renderer.color = Color.white;
@@ -154,9 +153,10 @@ public class NpcStateMachine : BaseStateMachine
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
         SwipeTask = FindFirstObjectByType<SwipeTask>();
-
-        var rand = Random.Range(0, NpcType.Items.Count);
-        _randomSprite = NpcType.Items[rand].GameEmoji;
+        
+        var rand = Random.Range(0, NpcType.PossibleItems.Count);
+        Items = NpcType.PossibleItems[rand];
+        _randomSprite = NpcType.PossibleItems[rand].GameEmoji;
         Opening = _randomSprite;
     }
 
@@ -315,37 +315,35 @@ public class NpcStateMachine : BaseStateMachine
             Debug.Log(row);
             if(_shelfToCheck.AssignedRow == null) return;
             if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
-            
-            foreach (var item in Items)
+
+            if (Items == _shelfToCheck.AssignedRow.Container.ItemType)
             {
-                if(Budget < _shelfToCheck.AssignedRow.Container.ItemType.Cost) continue;
-                if (item == _shelfToCheck.AssignedRow.Container.ItemType)
+                ItemsCollected.Add(Items);
+                MoneySpent += Items.Cost;
+
+                foreach (var rows in _shelfToCheck.Rows)
                 {
-                    ItemsCollected.Add(item);
-                    MoneySpent += item.Cost;
+                    instantiated = new List<GameObject>();
+                    var Images = _shelfToCheck.rows[_shelfToCheck.AssignedRow.index].GetComponentsInChildren<Image>();
 
-                    foreach (var rows in _shelfToCheck.Rows)
+                    foreach (var ImGs in Images)
                     {
-                        instantiated = new List<GameObject>();
-                        var Images = _shelfToCheck.rows[_shelfToCheck.AssignedRow.index].GetComponentsInChildren<Image>();
-
-                        foreach (var ImGs in Images)
-                        {
-                            instantiated.Add(ImGs.gameObject);
-                        }
-                        Debug.Log(Images.Length);
-                        imgs = Images;
-
-                        if (_shelfToCheck.AssignedRow.Container.ItemCount >= imgs.Length - 1)
-                        {
-                            int d = _shelfToCheck.AssignedRow.Container.ItemCount - 1;
-                            Destroy(instantiated[d]);
-                            _shelfToCheck.AssignedRow.Container.ItemCount--;
-                        }
-
+                        instantiated.Add(ImGs.gameObject);
                     }
+
+                    Debug.Log(Images.Length);
+                    imgs = Images;
+
+                    if (_shelfToCheck.AssignedRow.Container.ItemCount >= imgs.Length - 1)
+                    {
+                        int d = _shelfToCheck.AssignedRow.Container.ItemCount - 1;
+                        Destroy(instantiated[d]);
+                        _shelfToCheck.AssignedRow.Container.ItemCount--;
+                    }
+
                 }
             }
+
         }
         Shelves.Remove(shelf);
 
