@@ -21,7 +21,7 @@ public class ObjectMover : MonoBehaviour
 
     public void CheckForObjectToMove()
     {
-        if (_positionHandler.CheckForObjectToInteract() == null || !MoveModeEnabled) return;
+        if (_positionHandler.CheckForObjectToInteract() == null || !MoveModeEnabled || TutorialHandler.InDialogue) return;
         var tempObject = _positionHandler.CheckForObjectToInteract();
         _picker.PickSpecificObject(tempObject.AssignedObject);
         _placer.PlaceMultiple(false);
@@ -33,6 +33,7 @@ public class ObjectMover : MonoBehaviour
     {
         _deleter.DeleteModeEnabled = false;
         MoveModeEnabled = newState;
+        if (!_tutorial) return;
         _placer.ObjectPlaced += _tutorial.ChangeSequenceIndex;
     }
 

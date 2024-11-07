@@ -607,6 +607,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 197318177463164409, guid: e19c880108e992043b1d50959c77043b, type: 3}
   m_PrefabInstance: {fileID: 4068059075801848190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &752203943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5846295874752730953, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752203941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &944910710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6305052534898313642, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &964928311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6953621773184809113, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1030401573
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +708,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7654863914891946237, guid: e19c880108e992043b1d50959c77043b, type: 3}
   m_PrefabInstance: {fileID: 4068059075801848190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1045999289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9206266126084000005, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045999287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1091343468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6238672457922582650, guid: e19c880108e992043b1d50959c77043b, type: 3}
@@ -825,6 +857,11 @@ RectTransform:
   m_AnchoredPosition: {x: -89, y: 28}
   m_SizeDelta: {x: 141.22131, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1221686638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7093625797943762224, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1256359399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1171,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2932634152824872227, guid: e19c880108e992043b1d50959c77043b, type: 3}
   m_PrefabInstance: {fileID: 4068059075801848190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1652740349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 738797268642392676, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652740347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1720525194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4852416699177310637, guid: e19c880108e992043b1d50959c77043b, type: 3}
@@ -1252,6 +1300,17 @@ MonoBehaviour:
   moveButton: {fileID: 1652740347}
   navigateButton: {fileID: 1425469277}
   demolishButton: {fileID: 1045999287}
+  inventoryButton: {fileID: 4068059075801848191}
+  objectsToDisable:
+  - {fileID: 1584508536}
+  - {fileID: 1091343468}
+  - {fileID: 1720525194}
+  - {fileID: 629450017}
+  - {fileID: 752203941}
+  - {fileID: 1652740347}
+  - {fileID: 1425469277}
+  - {fileID: 1045999287}
+  - {fileID: 4068059075801848191}
   tutorialSequences:
   - sequenceName: Introduction
     dialogueInSequence:
@@ -1261,27 +1320,126 @@ MonoBehaviour:
       because you're going to be here a LOT.
     - To begin, let's get you moving around. I can see you by the door on my cameras.
     - Click on the navigate button on your toolbar to go into move mode.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1091343468}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1425469277}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1425469277}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 964928311}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - sequenceName: Move Mode
     dialogueInSequence:
     - You're now in move mode. This is how you navigate the store.
     - I can't believe I'm teaching a grown adult how to walk
     - Now, click somewhere in the store to move to that point. Give it a try.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   - sequenceName: Quit out of move
     dialogueInSequence:
     - Great! Baby's first steps!
     - Now that you know how to walk let's drop you head first into building Swedish
       furniture!
     - Cancel out of the move menu and return to the tool panel.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 964928311}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1425469280}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - sequenceName: Enter Build Mode
     dialogueInSequence:
     - Sufficient. You should now see the build menu button on your tool panel.
     - Do I need to tell you to click it?
     - Click the button...
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1960979154}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - sequenceName: Build Mode
     dialogueInSequence:
     - Right. You should now see a few options of objects to place in the store.
     - Clicking one will make a preview object appear on screen.
     - Pick a place to put this object, and get back to me.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   - sequenceName: Quit out of build
     dialogueInSequence:
     - STOP!!!
@@ -1289,6 +1447,45 @@ MonoBehaviour:
     - That might have been the worst possible place to put that shelf...
     - You're completely throwing off the feng shui of my store!
     - Get out of build mode.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1960979154}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 752203943}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1221686638}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - sequenceName: Enter furniture move mode
     dialogueInSequence:
     - I don't know if you will even see the button with your lack of spacial awareness,
@@ -1296,19 +1493,48 @@ MonoBehaviour:
     - We've gotta fix that object you just placed. It's seriously rubbing me the
       wrong way.
     - Click the button to enter furniture move mode.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   - sequenceName: Furniture Move
     dialogueInSequence:
     - Now that you're in move mode, click on an object in the store to move it.
     - I can't just leave that object where it is
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   - sequenceName: Quit out of furniture move
     dialogueInSequence:
     - How could you have possibly picked a worst spot than the last one!?
     - Like are you genuinely design illiterate?
     - You've lost building priveliges. Quit out of move mode.
-  - sequenceName: Enter demolish mode
-    dialogueInSequence:
-    - We have to outright destroy that shelf, it's beyond saving...
-    - You should now see the demolish button on your tool panel now. Click it.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1221686638}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1652740349}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - sequenceName: Demolish mode
     dialogueInSequence:
     - In demolish mode, simply just click on an object to destroy it.
@@ -1316,6 +1542,9 @@ MonoBehaviour:
     - I don't want you to open a store with no cash register and no money to buy
       one with.
     - Demolish that dastardly object
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   - sequenceName: Exit demolish mode
     dialogueInSequence:
     - Thank god it's gone
@@ -1324,6 +1553,33 @@ MonoBehaviour:
     - Thankfully for you, demolishing objects does give you some money back, and
       so it's never a total loss
     - You can leave demolish mode now
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1045999289}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 944910710}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - sequenceName: Stats and Computer
     dialogueInSequence:
     - You may have noticed a panel appear at the top of your screen. I have to double
@@ -1334,13 +1590,94 @@ MonoBehaviour:
     - Moving swiftly on...
     - In the bottom right of your screen, the computer should now be available to
       you. Open the computer menu.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   - sequenceName: Computer
     dialogueInSequence:
-    - You should now see our glorious machine...
+    - You should now see our magnificent machine...
     - Behold in all of it's glory!
     - Anyways, you should be able to see only one app on the desktop at the moment.
       This is your stock ordering app.
     - Go ahead and open the app.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Adding items to cart
+    dialogueInSequence:
+    - Look at those load times, truly remarkable
+    - Anyhow, welcome to the store. This is where you will be doing all of your stock
+      ordering.
+    - 'On the right there is all of the items you are allowed to order to your store. '
+    - Clicking on one will add one to your cart. You can add as many of one item
+      as you want to your cart, but you need to be able to actually afford all of
+      those items in order to order them.
+    - That's fairly obvious I'd hope...
+    - Regardless, go ahead and add an item to your cart.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Ordering stock
+    dialogueInSequence:
+    - 'Would you look at that! The item has been added to your cart. '
+    - Once you have items in your cart, the total at the bottom of the window is
+      updated to accurately display your cart's total.
+    - You can also see that there is a count next to the item in your cart. This
+      displays how many you have in the cart.
+    - You can also remove an item from your cart by clicking remove.
+    - If you want, add more items to the cart, or just check out by clicking the
+      'ORDER!' button.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Exiting stock order
+    dialogueInSequence:
+    - Now that you've ordered some stock to the store, (thanks for that by the way,
+      it'll be coming out of your paycheck) we can now close out of this window.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Enter inventory
+    dialogueInSequence:
+    - Welcome back to the wonderful home screen!
+    - While you were in the stock ordering, I remotely installed the inventory app
+      to this computer.
+    - You should see it on your desktop now, go ahead and open it up.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Inventory
+    dialogueInSequence:
+    - Wow those load times never get old
+    - This is your inventory view.
+    - In here you can see every avaiable item, and how many of each item you have.
+    - That's all. Return to the store. You can do so by clicking the power button
+      in the bottom left corner of the computer screen.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Closing remarks
+    dialogueInSequence:
+    - Well, I think that's the rundown...
+    - I won't forget what you did to my store...
+    - I digress, let's get you situated in your own store and have you making some
+      big bucks.
+    - I won't be there obviously, after your little stunt earlier I don't wanna know
+      what your store is going to look like.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  - sequenceName: Closing remarks
+    dialogueInSequence:
+    - Well, I think that's the rundown...
+    - I won't forget what you did to my store...
+    - I digress, let's get you situated in your own store and have you making some
+      big bucks.
+    - I won't be there obviously, after your little stunt earlier I don't wanna know
+      what your store is going to look like.
+    SequenceEnded:
+      m_PersistentCalls:
+        m_Calls: []
   tutorialText: {fileID: 650792320}
   tutorialDialogueWindow: {fileID: 1256359399}
   interactionBlocker: {fileID: 1030401573}
@@ -1373,7 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b6b2f6b972f0f49a7d90120946f5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenCharacters: 0.001
+  timeBetweenCharacters: 0
 --- !u!1 &1767776964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,7 +1788,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -1647,6 +1984,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa9eecf9c29f68747990a24041eb1941, type: 3}
+--- !u!1 &1960979154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7962957498059260252, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143706906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +2158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 107953558409120821, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 135566829449408892, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1908,29 +2254,33 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1308363764499114395, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_Name
+      value: CloseButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1377046147618533147, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377046147618533147, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377046147618533147, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377046147618533147, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377046147618533147, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 102
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377046147618533147, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1613291000179166702, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2044,6 +2394,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1735608818}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeSequenceIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TutorialHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3178740524544053437, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2059,6 +2437,30 @@ PrefabInstance:
     - target: {fileID: 3178740524544053437, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187164954023014237, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187164954023014237, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276543171758417535, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276543171758417535, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276543171758417535, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385453880657913602, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_Name
+      value: OpenButton
       objectReference: {fileID: 0}
     - target: {fileID: 3486639889473668990, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_Size
@@ -2170,27 +2572,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 102
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -260
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4262058760689413791, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2480,6 +2882,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1735608818}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeSequenceIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TutorialHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654764577867932669, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6693693703977148604, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2507,6 +2941,26 @@ PrefabInstance:
     - target: {fileID: 6693693703977148604, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733492936232139121, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733492936232139121, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733492936232139121, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973282468257891336, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973282468257891336, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7983391047692252562, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2548,6 +3002,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1735608818}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 4068059075801848191}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeSequenceIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TutorialHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996515295185513998, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8478633189694017273, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2587,6 +3097,10 @@ PrefabInstance:
     - target: {fileID: 8849787135471003213, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_Name
       value: REVISION_SceneAssets
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141558684646690467, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9192678594240915443, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_IsActive
@@ -2629,6 +3143,7 @@ PrefabInstance:
     - {fileID: 922882906301558526, guid: e19c880108e992043b1d50959c77043b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6481699467162139042, guid: e19c880108e992043b1d50959c77043b, type: 3}
+    - {fileID: 5217267159549272416, guid: e19c880108e992043b1d50959c77043b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6498105488058926999, guid: e19c880108e992043b1d50959c77043b, type: 3}
@@ -2638,6 +3153,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4068059075801848195}
   m_SourcePrefab: {fileID: 100100000, guid: e19c880108e992043b1d50959c77043b, type: 3}
+--- !u!1 &4068059075801848191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6989415205774766709, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4068059075801848195
 MonoBehaviour:
   m_ObjectHideFlags: 0

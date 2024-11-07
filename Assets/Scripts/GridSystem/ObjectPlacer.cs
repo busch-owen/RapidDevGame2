@@ -35,7 +35,7 @@ public class ObjectPlacer : MonoBehaviour
         _tutorial = FindFirstObjectByType<TutorialHandler>();
         _mover = GetComponent<ObjectMover>();
         _moneyManager = FindFirstObjectByType<MoneyManager>();
-
+        if (!_tutorial) return;
         ObjectPlaced += _tutorial.ChangeSequenceIndex;
     }
 
@@ -86,11 +86,13 @@ public class ObjectPlacer : MonoBehaviour
         newObject.GetComponent<StoreObject>().RotationPoint.rotation = _displayObject.GetComponent<StoreObject>().RotationPoint.rotation;
         newObject.GetComponent<StoreObject>().AssignSO(_assignedObject);
         _surface.BuildNavMesh();
-        ObjectPlaced?.Invoke();
-        ObjectPlaced -= _tutorial.ChangeSequenceIndex;
         if (!_placeMultiple)
         {
             _picker.CancelSelection();
         }
+
+        if (!_tutorial) return;
+        ObjectPlaced?.Invoke();
+        ObjectPlaced -= _tutorial.ChangeSequenceIndex;
     }
 }

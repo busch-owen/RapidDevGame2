@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TutorialHandler : MonoBehaviour
 {
     [SerializeField] private GameObject startButton, toolPanel, statsPanel, computerPanel;
-    [SerializeField] private GameObject buildButton, moveButton, navigateButton, demolishButton;
+    [SerializeField] private GameObject buildButton, moveButton, navigateButton, demolishButton, inventoryButton;
+
+    [SerializeField] private GameObject[] objectsToDisable;
 
     [SerializeField] private TutorialSequence[] tutorialSequences;
     
@@ -37,9 +40,6 @@ public class TutorialHandler : MonoBehaviour
         _currentDialogueIndex = 0;
         
         EnableAndStartNextSequence();
-        
-        //Sequence Specific Event Assigning
-        tutorialSequences[0].SequenceEnded += delegate { toolPanel.SetActive(true); navigateButton.SetActive(true); };
     }
 
     private void ChangeNextButtonState(bool state)
@@ -80,14 +80,10 @@ public class TutorialHandler : MonoBehaviour
 
     private void DisableAllGameCanvasMenus()
     {
-        startButton.SetActive(false);
-        toolPanel.SetActive(false);
-        statsPanel.SetActive(false);
-        computerPanel.SetActive(false);
-        buildButton.SetActive(false);
-        moveButton.SetActive(false);
-        navigateButton.SetActive(false);
-        demolishButton.SetActive(false);
+        foreach (var obj in objectsToDisable)
+        {
+            obj.SetActive(false);
+        }
     }
 }
 
@@ -97,7 +93,7 @@ public class TutorialSequence
     public string sequenceName;
     [TextArea]
     public string[] dialogueInSequence;
-    public event Action SequenceEnded;
+    public UnityEvent SequenceEnded;
 
     public void InvokeSequenceEnded()
     {
