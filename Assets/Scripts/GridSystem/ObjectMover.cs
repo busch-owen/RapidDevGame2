@@ -8,6 +8,7 @@ public class ObjectMover : MonoBehaviour
     private ObjectPicker _picker;
     private ObjectPlacer _placer;
     private ObjectDeleter _deleter;
+    private TutorialHandler _tutorial;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class ObjectMover : MonoBehaviour
         _picker = FindFirstObjectByType<ObjectPicker>();
         _placer = FindFirstObjectByType<ObjectPlacer>();
         _deleter = FindAnyObjectByType<ObjectDeleter>();
+        _tutorial = FindAnyObjectByType<TutorialHandler>();
     }
 
     public void CheckForObjectToMove()
@@ -31,6 +33,7 @@ public class ObjectMover : MonoBehaviour
     {
         _deleter.DeleteModeEnabled = false;
         MoveModeEnabled = newState;
+        _placer.ObjectPlaced += _tutorial.ChangeSequenceIndex;
     }
 
     public void EnableMoveMode()
