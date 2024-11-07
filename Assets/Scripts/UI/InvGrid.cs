@@ -21,15 +21,21 @@ public class InvGrid : MonoBehaviour
         gridLayout = GetComponentInChildren<GridLayoutGroup>().transform;
         
         transform.localScale = new Vector3(0, 0, 0);
-        
+        InstantiateButtons();
     }
 
-    public void EnableImage()
+    public void EnableImage(Shelf shelf)
     {
         transform.localScale = new Vector3(5.495245f,10.74701f,1);
+        var newButtons = GetComponentsInChildren<StockItemButton>();
+        foreach (var button in newButtons)
+        {
+            button.AssignShelf(shelf);
+            
+        }
     }
 
-    public void InstantiateButtons(Shelf shelf)
+    public void InstantiateButtons()
     {
         _itemSelector = FindFirstObjectByType<ItemSelector>();
 
@@ -37,7 +43,6 @@ public class InvGrid : MonoBehaviour
         {
             if(container.ItemCount <= 0) continue;
             var newObj = Instantiate(_itemButton, gridLayout);
-            newObj.GetComponent<StockItemButton>().AssignShelf(shelf);
             newObj.GetComponent<StockItemButton>().AssignInventoryContainer(container);
         }
     }

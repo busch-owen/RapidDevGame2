@@ -26,9 +26,6 @@ public class StockItemButton : MonoBehaviour
         buttonImage.sprite = _assignedContainer.ItemType.BigIcon;
         itemName.text = _assignedContainer.ItemType.ItemName;
         Item = _assignedContainer.ItemType;
-        
-        _shelf.AssignedRow.Container.ItemCount = 0;
-        
     }
 
     public void Stock()
