@@ -22,7 +22,7 @@ public class Shelf : StoreObject
     [SerializeField] private GameObject _rowToIns;
     
     private ItemSelector _assignedSelector;
-    private int _index = 0;
+    [SerializeField] private int _index = 0;
     [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
     [field: SerializeField] public EmployeeStateMachine EmpStateMachine { get; private set; }
     public bool IsFlashing;
@@ -30,14 +30,19 @@ public class Shelf : StoreObject
     private EventManager _eventManager;
     private Coroutine _flashRoutine;
     public int ShelfSelected = 0;
-    private bool _firstPress;
+    private bool _firstPress = true;
     public Transform Target;
     public GameObject ShelfUI;
     public ItemSelector ItemSelector;
 
     private ItemTypeSo _itemTypeSo;
+    private ItemTypeSo _currentItem;
     public StockOrderer stockOrderer;
     public InvGrid grid;
+    [field: SerializeField] public int stock { get; private set; }
+    [field: SerializeField] public GameContainer CurrentContainer { get; private set; }
+    
+    [field: SerializeField] public int[] StockPerRow { get; private set; }
     
    
 
@@ -55,41 +60,32 @@ public class Shelf : StoreObject
         grid = FindFirstObjectByType<InvGrid>();
         InstantiateRows();
     }
-    
+
     public void StockShelf(ItemTypeSo item)
     {
-        var CurrentContainer = AssignedRow.Container;
+        CurrentContainer = AssignedRow.Container;
         var trans = rows[AssignedRow.index];
-        if (CurrentContainer.ItemCount >= CurrentContainer.ItemType.MaxCount)return;
 
-        if (!_firstPress)
-        {
-            CurrentContainer.ItemType = item;
-            _itemTypeSo = CurrentContainer.ItemType;
-            CurrentContainer.ItemName = item.ItemName;
-            CurrentContainer.GameID = item.GameID;
-            Image.sprite = CurrentContainer.ItemType.BigIcon;
-            var Img = Instantiate(Image, trans);
-            Img.transform.parent = trans;
-            _firstPress = true;
-        }
-        else if (_itemTypeSo == item)
-        {
-            if (CurrentContainer.ItemCount >= CurrentContainer.ItemType.MaxCount)
-            {
-                grid.DisableImage();
-                ShelfUI.transform.localScale = new Vector3(0,0,0);
-                grid.transform.localScale = new Vector3(0, 0, 0);
-                return;
-            }
-            Image.sprite = CurrentContainer.ItemType.BigIcon;
-            var Img = Instantiate(Image, trans);
-            Img.transform.parent = trans;
-        }
-        else
-        {
-            Debug.Log("nope");
-        }
+        if (CurrentContainer.ItemType != null && CurrentContainer.ItemCount >= AssignedRow.Container.ItemType.MaxCount) return;
+
+        if(CurrentContainer.ItemType != item) return;
+        
+        if( StockPerRow[_index] >= CurrentContainer.ItemType.MaxCount) return;   
+        
+        StockPerRow[_index]++;
+                    
+        CurrentContainer.ItemType = item;
+        _itemTypeSo = CurrentContainer.ItemType;
+        CurrentContainer.ItemName = item.ItemName;
+        CurrentContainer.GameID = item.GameID;
+        Image.sprite = CurrentContainer.ItemType.BigIcon;
+        var Img = Instantiate(Image, trans);
+        Img.transform.parent = trans;
+    }
+
+    public void FirstStock()
+    {
+        
     }
 
     public void InstantiateRows()
@@ -178,6 +174,11 @@ public class Shelf : StoreObject
 
     }
 
+    public void SetItem(ItemTypeSo itemSO)
+    {
+        
+    }
+
     public void UnstockShelf()
     {
         _assignedSelector?.AllItems.Find(container => container.GameID == AssignedItem.GameID).ChangeCount(AssignedItem.ItemCount);
@@ -187,9 +188,11 @@ public class Shelf : StoreObject
 
     public void AssignRows(int index)
     {
+        if(AssignedRow.Container.ItemType != null && AssignedRow.Container.ItemCount < AssignedRow.Container.ItemType.MaxCount) return;
         AssignedRow = Rows[index];
         _index = index;
-        _firstPress = false;
+        Debug.Log(index);
+        _firstPress = true;
     }
 
     public void AssignNpc(NpcStateMachine stateMachine)

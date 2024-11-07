@@ -623,6 +623,7 @@ MonoBehaviour:
   - {fileID: 702871090622182820}
   _row: {fileID: 0}
   _rowToIns: {fileID: 1742027598878362897, guid: e253237e66ce58642be4eb63f277244b, type: 3}
+  _index: 0
   <StateMachine>k__BackingField: {fileID: 0}
   <EmpStateMachine>k__BackingField: {fileID: 0}
   IsFlashing: 0
@@ -631,6 +632,15 @@ MonoBehaviour:
   ShelfUI: {fileID: 1056870385805669131}
   ItemSelector: {fileID: 0}
   stockOrderer: {fileID: 0}
+  grid: {fileID: 0}
+  <stock>k__BackingField: 0
+  <CurrentContainer>k__BackingField:
+    <ItemName>k__BackingField: 
+    <GameID>k__BackingField: 0
+    <ItemUnlocked>k__BackingField: 0
+    <ItemType>k__BackingField: {fileID: 0}
+    <ItemCount>k__BackingField: 0
+  <StockPerRow>k__BackingField: 000000000000000000000000
 --- !u!1 &9023871392349896469
 GameObject:
   m_ObjectHideFlags: 0

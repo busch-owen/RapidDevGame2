@@ -13,18 +13,24 @@ public class InvGrid : MonoBehaviour
     [SerializeField] private GameObject _itemButton;
 
     private ItemSelector _itemSelector;
+
+    private GameContainer _container;
     
     private void Start()
     {
         gridLayout = GetComponentInChildren<GridLayoutGroup>().transform;
         
         transform.localScale = new Vector3(0, 0, 0);
+        
     }
 
-    public void EnableImage(Shelf shelf)
+    public void EnableImage()
     {
         transform.localScale = new Vector3(5.495245f,10.74701f,1);
-        
+    }
+
+    public void InstantiateButtons(Shelf shelf)
+    {
         _itemSelector = FindFirstObjectByType<ItemSelector>();
 
         foreach (var container in _itemSelector.AllItems)
@@ -35,14 +41,9 @@ public class InvGrid : MonoBehaviour
             newObj.GetComponent<StockItemButton>().AssignInventoryContainer(container);
         }
     }
-
+    
     public void DisableImage()
     {
         transform.localScale = new Vector3(0,0,0);
-        var spawnedButtons = GetComponentsInChildren<StockItemButton>();
-        foreach (var button in spawnedButtons)
-        {
-            Destroy(button.gameObject);
-        }
     }
 }

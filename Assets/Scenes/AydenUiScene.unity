@@ -1064,6 +1064,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<GameID>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemName>k__BackingField
+      value: Collectable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemType>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: ba16cbf5303e17d4da21d99b2ef3e2aa, type: 2}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemCount>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[5].<ItemUnlocked>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8615382804491686595, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

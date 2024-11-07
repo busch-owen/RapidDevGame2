@@ -18,6 +18,7 @@ public class StockItemButton : MonoBehaviour
     private EventManager _eventManager;
 
     private ItemSelector _itemSelector;
+    
 
     public void AssignInventoryContainer(GameContainer container)
     {
@@ -32,16 +33,27 @@ public class StockItemButton : MonoBehaviour
 
     public void Stock()
     {
-        if(_assignedContainer.ItemCount <= 0) return;
+        if(_assignedContainer.ItemCount <= 0 && _assignedContainer.ItemType.MaxCount >= _shelf.AssignedRow.Container.ItemCount) return;
 
-        if ( _shelf.AssignedRow.Container.ItemType == null || _assignedContainer.ItemType == _shelf.AssignedRow.Container.ItemType)
+        if (_shelf.AssignedRow.Container.ItemType == null)
         {
             _shelf.AssignedRow.Container.ItemName = _assignedContainer.ItemName;
             _shelf.AssignedRow.Container.ItemType = _assignedContainer.ItemType;
+        }
+        
+        if (_assignedContainer.ItemType == _shelf.AssignedRow.Container.ItemType)
+        {
+            Debug.Log(_shelf.AssignedRow.Container.ItemCount);
+            if( _shelf.AssignedRow.Container.ItemCount >= _assignedContainer.ItemType.MaxCount) return;
             _shelf.AssignedRow.Container.ChangeCount(1);
             _assignedContainer.ChangeCount(-1);
             _shelf.StockShelf(Item);
         }
+    }
+
+    public void FirstStock()
+    {
+        
     }
 
     public void AssignShelf(Shelf shelf)

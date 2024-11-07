@@ -26,6 +26,7 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
         _shelf = GetComponentInParent<Shelf>();
         grid = FindFirstObjectByType<InvGrid>();
         _inputActions = FindFirstObjectByType<PlayerInputActions>();
+        grid.InstantiateButtons(GetComponentInParent<Shelf>());
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
         {
             _shelf.SelectShelf();
             Debug.Log($"assigned shelf: {_shelf.name}");
-            grid.EnableImage(GetComponentInParent<Shelf>());
+            grid.EnableImage();
             _inputActions.AssignUi(_ui);
         }
         else
@@ -53,4 +54,5 @@ public class StockUi : MonoBehaviour, IPointerClickHandler
             grid.transform.localScale = new Vector3(0, 0, 0);
         }
     }
+    
 }
