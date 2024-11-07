@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlockCraftGame
   m_EditorClassIdentifier: 
   <Cost>k__BackingField: 25
-  <ItemName>k__BackingField: CraftGame
+  <ItemName>k__BackingField: Block Craft
   <ItemDescription>k__BackingField: A game where you craft, that's it
   <ItemCategory>k__BackingField: Sandbox
   <ProductType>k__BackingField: 1

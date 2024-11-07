@@ -17,8 +17,8 @@ MonoBehaviour:
   <ItemDescription>k__BackingField: A game collectable
   <ItemCategory>k__BackingField: Collectable
   <ProductType>k__BackingField: 3
-  <BigIcon>k__BackingField: {fileID: 203001633, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
-  <SmallIcon>k__BackingField: {fileID: 203001633, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  <BigIcon>k__BackingField: {fileID: 21300000, guid: f8a561d04fa125143a0183b616e195ab, type: 3}
+  <SmallIcon>k__BackingField: {fileID: 21300000, guid: f8a561d04fa125143a0183b616e195ab, type: 3}
   <GameID>k__BackingField: 5
-  <MaxCount>k__BackingField: 5
-  <GameEmoji>k__BackingField: {fileID: 203001633, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  <MaxCount>k__BackingField: 10
+  <GameEmoji>k__BackingField: {fileID: 21300000, guid: f8a561d04fa125143a0183b616e195ab, type: 3}
