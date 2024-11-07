@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
+  m_Name: WhiteHouse
+  m_EditorClassIdentifier: 
+  <Cost>k__BackingField: 80
+  <ItemName>k__BackingField: Defend The White House
+  <ItemDescription>k__BackingField: Obama Prism
+  <ItemCategory>k__BackingField: Fighting
+  <ProductType>k__BackingField: 1
+  <BigIcon>k__BackingField: {fileID: 999896173, guid: 7ef5dca540a2b09438cdd8beb24c8dc1, type: 3}
+  <SmallIcon>k__BackingField: {fileID: -406233729, guid: 7ef5dca540a2b09438cdd8beb24c8dc1, type: 3}
+  <GameID>k__BackingField: 15
+  <MaxCount>k__BackingField: 20
+  <GameEmoji>k__BackingField: {fileID: -406233729, guid: 7ef5dca540a2b09438cdd8beb24c8dc1, type: 3}

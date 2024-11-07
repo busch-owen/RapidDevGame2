@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -131,7 +131,7 @@ TextureImporter:
         width: 64
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,132 @@ TextureImporter:
       bones: []
       spriteID: ad0ebb034f89c0c00800000000000000
       internalID: 868237002732724442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3newgames_0
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 638
+        height: 1280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c01adcaa3e01441ad5ccfb28b3ef98
+      internalID: 1094606119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3newgames_1
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 0
+        width: 640
+        height: 1280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6b744f3aec642459e3827e8cf756f8
+      internalID: 314347031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3newgames_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 641
+        height: 1280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a93a905622895444895f0fd34ce84fc
+      internalID: 457957259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3newgames_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 998
+        width: 242
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9dba1245f96ad442a084b4254ab8d0f
+      internalID: 1524224766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3newgames_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 641
+        width: 320
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 925ff4491fbd21c45870d66e2dcda4ae
+      internalID: 926864655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3newgames_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 320
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780360129f29a9e4395cce6e12c8062e
+      internalID: -1488478924
       vertices: []
       indices: 
       edges: []
@@ -154,6 +280,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      3newgames_0: 1094606119
+      3newgames_1: 314347031
+      3newgames_2: 457957259
+      3newgames_3: 1524224766
+      3newgames_4: 926864655
+      3newgames_5: -1488478924
       ShelfTemp_0: 868237002732724442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
