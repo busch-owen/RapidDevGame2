@@ -118,6 +118,8 @@ public class NpcStateMachine : BaseStateMachine
 
     private int _numberOfItems = 0;
 
+    [SerializeField]private Image[] imgs;
+
     private EventManager _eventManager;
 
     [SerializeField]private Image _placeHolder;
@@ -125,8 +127,12 @@ public class NpcStateMachine : BaseStateMachine
     public SwipeTask SwipeTask;
 
     private Sprite _randomSprite;
+
+    [SerializeField]private Rows[] _rows;
     
     int i = 0;
+    
+    private List<GameObject> instantiated;
 
     
     
@@ -309,14 +315,35 @@ public class NpcStateMachine : BaseStateMachine
             Debug.Log(row);
             if(_shelfToCheck.AssignedRow == null) return;
             if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
+            
             foreach (var item in Items)
             {
                 if(Budget < _shelfToCheck.AssignedRow.Container.ItemType.Cost) continue;
                 if (item == _shelfToCheck.AssignedRow.Container.ItemType)
                 {
                     ItemsCollected.Add(item);
-                    _shelfToCheck.AssignedRow.Container.ItemCount--;
                     MoneySpent += item.Cost;
+
+                    foreach (var rows in _shelfToCheck.Rows)
+                    {
+                        instantiated = new List<GameObject>();
+                        var Images = _shelfToCheck.rows[_shelfToCheck.AssignedRow.index].GetComponentsInChildren<Image>();
+
+                        foreach (var ImGs in Images)
+                        {
+                            instantiated.Add(ImGs.gameObject);
+                        }
+                        Debug.Log(Images.Length);
+                        imgs = Images;
+
+                        if (_shelfToCheck.AssignedRow.Container.ItemCount >= imgs.Length - 1)
+                        {
+                            int d = _shelfToCheck.AssignedRow.Container.ItemCount - 1;
+                            Destroy(instantiated[d]);
+                            _shelfToCheck.AssignedRow.Container.ItemCount--;
+                        }
+
+                    }
                 }
             }
         }
