@@ -188,7 +188,7 @@ public class Shelf : StoreObject
 
     public void AssignRows(int index)
     {
-        if(AssignedRow.Container.ItemType != null && AssignedRow.Container.ItemCount < AssignedRow.Container.ItemType.MaxCount) return;
+        //if(AssignedRow.Container.ItemType != null && AssignedRow.Container.ItemCount < AssignedRow.Container.ItemType.MaxCount) return;
         AssignedRow = Rows[index];
         _index = index;
         Debug.Log(index);
