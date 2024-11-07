@@ -60,8 +60,11 @@ public class EmployeeStateMachine : BaseStateMachine
         _controlButton?.ControlPanelCancelButton.onClick.AddListener(ManualOverrideOff);
         _controlButton?.ControlPanelCancelButton.onClick.AddListener(DisableStocking);
 
-        destinationReached += _tutorial.ChangeSequenceIndex;
+        
         ChangeState(EmployeeStates.Idle);
+        
+        if(!_tutorial) return;
+        destinationReached += _tutorial.ChangeSequenceIndex;
     }
     
     public void ChangeState(EmployeeStates stateName)
