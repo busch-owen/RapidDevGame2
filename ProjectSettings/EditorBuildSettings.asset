@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/OwenTutorialScene.unity
+    guid: c99d0009330ebf2408cc2a42e600b03c
+  - enabled: 1
     path: Assets/Scenes/AydenUiScene.unity
     guid: 9e8c1438c6aa2614daf98ea50e019c5e
   - enabled: 1

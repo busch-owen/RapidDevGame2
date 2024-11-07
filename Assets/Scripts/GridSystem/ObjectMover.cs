@@ -35,6 +35,7 @@ public class ObjectMover : MonoBehaviour
         MoveModeEnabled = newState;
         if (!_tutorial) return;
         _placer.ObjectPlaced += _tutorial.ChangeSequenceIndex;
+        _tutorial = null;
     }
 
     public void EnableMoveMode()
