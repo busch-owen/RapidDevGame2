@@ -106,7 +106,7 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public List<Sprite> PossibleGood{ get;  set; }
     
-    [field:SerializeField]public List<Sprite> PossibleOpening{ get;  set; }
+    [field:SerializeField]public Sprite Opening{ get;  set; }
     
     [field:SerializeField]public Sprite CurrentSprite{ get;  set; }
     
@@ -123,6 +123,8 @@ public class NpcStateMachine : BaseStateMachine
     [SerializeField]private Image _placeHolder;
 
     public SwipeTask SwipeTask;
+
+    private Sprite _randomSprite;
     
     int i = 0;
 
@@ -145,8 +147,11 @@ public class NpcStateMachine : BaseStateMachine
         _eventManager = FindFirstObjectByType<EventManager>();
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
-        PossibleOpening = NpcType.PossibleOpening;
         SwipeTask = FindFirstObjectByType<SwipeTask>();
+
+        var rand = Random.Range(0, NpcType.Items.Count);
+        _randomSprite = NpcType.Items[rand].GameEmoji;
+        Opening = _randomSprite;
     }
 
     private void Awake()
@@ -166,7 +171,7 @@ public class NpcStateMachine : BaseStateMachine
         ChooseNpc();
         TextIndex = GetComponentInChildren<TextIndex>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
+        PossibleImages.Add(_placeHolder);
         ChangeState(_npcSpawnState);
     }
 
@@ -423,19 +428,8 @@ public class NpcStateMachine : BaseStateMachine
     public virtual void RandomizeImage(Sprite sprite)
     {
         int i = 0;
-        if (PossibleImages.Count < PossibleOpening.Count)
-        {
-            PossibleImages[i].sprite = sprite;
-            PossibleImages.Add(_placeHolder);
-            PossibleImages[i].sprite = sprite;
-        }
-        else if (PossibleImages.Count >= PossibleOpening.Count)
-        {
-            PossibleImages.Clear();
-            PossibleImages.Add(_placeHolder);
-            PossibleImages[i].sprite = sprite;
-        }
 
+        PossibleImages[i].sprite = sprite;
     }
 
     public override void OnTriggerEnter2D(Collider2D other)

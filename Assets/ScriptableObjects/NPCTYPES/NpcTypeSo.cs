@@ -37,7 +37,7 @@ public class NpcTypeSo : ScriptableObject
     [field:SerializeField]public List<Sprite> PossibleGood{ get;  private set; }
     
     
-    [field:SerializeField]public List<Sprite> PossibleOpening{ get; private set; }
+    [field:SerializeField]public Sprite PossibleOpening{ get; private set; }
     
     
     
