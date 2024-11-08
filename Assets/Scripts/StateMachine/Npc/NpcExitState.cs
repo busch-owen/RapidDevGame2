@@ -12,10 +12,11 @@ public class NpcExitState : NPCBaseState
     public override void Enter()
     {
         _stateMachine.Invoke("Leave", 2.0f);
+        if(!_stateMachine.SwipeTask) return;
         _stateMachine.SwipeTask.CheckingOut = false;
     }
 
-     void Despawn()
+    void Despawn()
     {
         if (ArrivedAtExit())
         {

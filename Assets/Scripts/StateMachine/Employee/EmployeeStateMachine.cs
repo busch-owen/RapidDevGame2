@@ -44,7 +44,7 @@ public class EmployeeStateMachine : BaseStateMachine
     private TutorialHandler _tutorial;
 
 
-    public void Awake()
+    public void Start()
     {
         _employeeExitState = new EmployeeExitState(this);
         _employeeEnterState = new EmployeeEnterState(this);
