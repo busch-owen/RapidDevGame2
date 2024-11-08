@@ -25,17 +25,11 @@ public class PlayerMovement : MonoBehaviour
     public void Move(Vector2 context)
     {
         isMoving = true;
-        Debug.Log("MoveCalled");
-        Debug.Log(context.x);
 
         if (CanMove)
         {
-
-           
-            
             Horizontal = context.x;
             Vertical = context.y;
-
         }
     }
     // Update is called once per frame

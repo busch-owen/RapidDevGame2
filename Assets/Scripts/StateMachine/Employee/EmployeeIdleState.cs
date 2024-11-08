@@ -10,6 +10,7 @@ public class EmployeeIdleState : EmployeeBaseState
 
     public override void Enter()
     {
+        _stateMachine.Agent.destination = _stateMachine.transform.position;
         _stateMachine.IsWalking = false;
     }
 }
