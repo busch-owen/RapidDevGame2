@@ -215,10 +215,12 @@ public class NpcStateMachine : BaseStateMachine
         if (ItemsCollected.Count >= 1)
         {
             ChangeState(NpcStateName.Checkout);
+            ReputationManager.ChangeReputation(0.005f);
         }
         else if (ItemsCollected.Count <= 0)
         {
             ChangeState(NpcStateName.Exit);
+            ReputationManager.ChangeReputation(-0.01f);
         }
 
     }
@@ -375,6 +377,7 @@ public class NpcStateMachine : BaseStateMachine
             FoundItems = true;
             i = 0;
             ChangeState(_npcPositiveDialogState);
+            ReputationManager.ChangeReputation(0.005f);
             return;
         }
         else
@@ -383,7 +386,7 @@ public class NpcStateMachine : BaseStateMachine
             i = 0;
             ShelvesBeforeLeave--;
             ChangeState(_npcNegativeDialogState);
-            
+            ReputationManager.ChangeReputation(-0.01f);
             return;
         }
         
