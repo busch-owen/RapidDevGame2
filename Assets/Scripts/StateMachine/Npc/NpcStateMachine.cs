@@ -357,10 +357,17 @@ public class NpcStateMachine : BaseStateMachine
 
         if (ItemsCollected.Count >= 1)
         {
-            FoundItems = true;
-            i = 0;
-            ChangeState(_npcPositiveDialogState);
-            return;
+            if (Shoplifter)
+            {
+                ChangeState(NpcStateName.Exit);
+            }
+            else
+            {
+                FoundItems = true;
+                i = 0;
+                ChangeState(_npcPositiveDialogState);
+                return;
+            }
         }
         else
         {
@@ -496,8 +503,9 @@ public class NpcStateMachine : BaseStateMachine
     {
         if (ItemsCollected.Count >= 1 && Shoplifter)
         {
-            _shelfToCheck.AssignedRow.Container.ItemCount++;
+            _shelfToCheck.StockShelf(ItemsCollected[0]);
             Debug.Log(_shelfToCheck.AssignedRow.Container.ItemCount);
+
         }
         Destroy(this.gameObject);
     }
