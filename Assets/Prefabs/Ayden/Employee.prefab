@@ -142,6 +142,7 @@ MonoBehaviour:
   <AmountOfItems>k__BackingField: 0
   <IsWalking>k__BackingField: 0
   <npcStateMachine>k__BackingField: {fileID: 0}
+  stateName: 
 --- !u!114 &1817993747500428275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.05645752, y: -0.009639025}
+  m_Offset: {x: 0.009098411, y: 0.0049329996}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -223,7 +224,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9611516, y: 1.4599204}
+  m_Size: {x: 2.3108804, y: 1.7513611}
   m_EdgeRadius: 0
 --- !u!50 &-6799537194589448719
 Rigidbody2D:

@@ -15,7 +15,7 @@ public class NpcExitState : NPCBaseState
         _stateMachine.SwipeTask.CheckingOut = false;
     }
 
-    private void despawn()
+     void Despawn()
     {
         if (ArrivedAtExit())
         {
@@ -39,6 +39,6 @@ public class NpcExitState : NPCBaseState
 
     public override void FixedUpdate()
     {
-        despawn();
+        Despawn();
     }
 }

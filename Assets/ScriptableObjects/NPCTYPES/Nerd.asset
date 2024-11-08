@@ -26,8 +26,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2dcba5d6c26e6aa4ea82deba2e4146e5, type: 2}
   - {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
   - {fileID: 11400000, guid: dc13ab635ce1dd74392cc0575bea7240, type: 2}
-  <Speed>k__BackingField: 3
-  <Budget>k__BackingField: 0
+  <Speed>k__BackingField: 1
+  <Budget>k__BackingField: 50
   <ShelvesTillExit>k__BackingField: 3
   <ShopLifter>k__BackingField: 1
   <NpcSprite>k__BackingField: {fileID: 21300000, guid: 1fee544c34983004bb91e4c76d140b55, type: 3}
