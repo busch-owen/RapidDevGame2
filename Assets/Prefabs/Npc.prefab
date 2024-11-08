@@ -328,7 +328,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0072609587}
-  m_Radius: 1.636501
+  m_Radius: 1.2
 --- !u!114 &-4191481315797229124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,6 +388,8 @@ MonoBehaviour:
   <PossibleGood>k__BackingField: []
   <Opening>k__BackingField: {fileID: 0}
   <CurrentSprite>k__BackingField: {fileID: 0}
+  EmployeeStateMachine: {fileID: 0}
+  BeingKickedOut: 0
   imgs:
   - {fileID: 0}
   - {fileID: 0}

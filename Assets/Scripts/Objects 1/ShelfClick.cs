@@ -38,7 +38,7 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerClick(PointerEventData eventData)
     {
         _stateMachine = _shelf.StateMachine;
-        if(_stateMachine == null || !_stateMachine.CanTarget) return;
+        if(_stateMachine == null || !_stateMachine.CanTarget || _stateMachine.BeingKickedOut) return;
         if (!_hasBeenClicked)
         {
             _stateMachine = _shelf.StateMachine;

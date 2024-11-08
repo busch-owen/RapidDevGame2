@@ -342,7 +342,7 @@ public class NpcStateMachine : BaseStateMachine
                     Debug.Log(Images.Length);
                     imgs = Images;
 
-                    if (_shelfToCheck.AssignedRow.Container.ItemCount -1 >= imgs.Length)
+                    if (_shelfToCheck.AssignedRow.Container.ItemCount >= imgs.Length -1)
                     {
                         int d = _shelfToCheck.AssignedRow.Container.ItemCount -1;
                         Destroy(instantiated[d]);
@@ -494,6 +494,11 @@ public class NpcStateMachine : BaseStateMachine
 
     public void Die()
     {
+        if (ItemsCollected.Count >= 1 && Shoplifter)
+        {
+            _shelfToCheck.AssignedRow.Container.ItemCount++;
+            Debug.Log(_shelfToCheck.AssignedRow.Container.ItemCount);
+        }
         Destroy(this.gameObject);
     }
 

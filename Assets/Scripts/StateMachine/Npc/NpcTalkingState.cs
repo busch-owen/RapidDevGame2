@@ -11,7 +11,10 @@ public class NpcTalkingState : NPCBaseState
 
     public override void Enter()
     {
-        
+        if (_stateMachine.BeingKickedOut)
+        {
+            _stateMachine.ChangeState(NpcStateName.KickedOut);
+        }
         // wander until found shelf with desired item on it
     }
 

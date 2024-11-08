@@ -60,7 +60,14 @@ public class NpcPositiveDialogState : NPCBaseState
     private IEnumerator SwitchToCheckout()
     {
         yield return new WaitForSeconds(2.0f);
-        _stateMachine.ChangeState(NpcStateName.Checkout);
+        if (_stateMachine.BeingKickedOut)
+        {
+            _stateMachine.ChangeState(NpcStateName.KickedOut);
+        }
+        else
+        {
+            _stateMachine.ChangeState(NpcStateName.Checkout);
+        }
         yield return null;
     }
 }
