@@ -22,8 +22,11 @@ public class PlayerInputActions : MonoBehaviour
             _invGrid = FindFirstObjectByType<InvGrid>();
             playerInput = new PlayerInputControls();
             playerInput.Actions.Move.performed += i => pM.Move(i.ReadValue<Vector2>());
-            //playerInput.Actions.Stock.performed += i => employeeStateMachine.EnableStocking();
-            //playerInput.Actions.Not.performed += i => employeeStateMachine.DisableStocking();
+            
+            playerInput.Actions.Stock.performed += i => employeeStateMachine.ChangeState(EmployeeStates.KickingOut);
+            
+            playerInput.Actions.Not.performed += i => employeeStateMachine.ChangeState(EmployeeStates.Idle);
+            
             playerInput.Actions.Esc.performed += i => _shelfUi.Show();
             playerInput.Actions.Esc.performed += i => _invGrid.DisableImage();
         }

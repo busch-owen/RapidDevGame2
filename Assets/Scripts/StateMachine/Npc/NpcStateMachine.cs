@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 
 public enum NpcStateName
 {
-    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog,Spawn,Talking
+    Enter,Wander,CheckShelf,CorrectItem,IncorrectItem,PositiveDialog,Checkout,Exit,NegativeDialog,Spawn,Talking,KickedOut
 }
 
 public delegate void Selected();
@@ -30,6 +30,7 @@ public class NpcStateMachine : BaseStateMachine
     private NpcNegativeDialogState _npcNegativeDialogState;
     private NpcSpawnState _npcSpawnState;
     private NpcTalkingState _npcTalkingState;
+    private NpcKickedOutState _npcKickedOutState;
     private Shelf _shelfToCheck;
 
     public event Selected SelectedEvent;
@@ -45,7 +46,7 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public String NotFoundText{ get; private set; }
     
-    [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; } = new();
+    [field:SerializeField]public ItemTypeSo Items{ get; private set; }
 
     [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
 
@@ -106,9 +107,13 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public List<Sprite> PossibleGood{ get;  set; }
     
-    [field:SerializeField]public List<Sprite> PossibleOpening{ get;  set; }
+    [field:SerializeField]public Sprite Opening{ get;  set; }
     
     [field:SerializeField]public Sprite CurrentSprite{ get;  set; }
+
+    public EmployeeStateMachine EmployeeStateMachine;
+
+    public bool BeingKickedOut;
     
     private bool _ranBefore;
 
@@ -118,13 +123,23 @@ public class NpcStateMachine : BaseStateMachine
 
     private int _numberOfItems = 0;
 
+    [SerializeField]private Image[] imgs;
+
     private EventManager _eventManager;
 
     [SerializeField]private Image _placeHolder;
 
     public SwipeTask SwipeTask;
+
+    private Sprite _randomSprite;
+
+    [SerializeField]private Rows[] _rows;
     
     int i = 0;
+    
+    private List<GameObject> instantiated;
+
+    private string stateName;
 
     
     
@@ -137,7 +152,6 @@ public class NpcStateMachine : BaseStateMachine
         ShelvesBeforeLeave = Shelves.Count;
         MoneyManager = FindFirstObjectByType<MoneyManager>();
         Shoplifter = NpcType.ShopLifter;
-        Items = NpcType.Items;
         Renderer = GetComponentInChildren<SpriteRenderer>();
         Renderer.sprite = NpcType.NpcSprite;
         Renderer.color = Color.white;
@@ -145,8 +159,12 @@ public class NpcStateMachine : BaseStateMachine
         _eventManager = FindFirstObjectByType<EventManager>();
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
-        PossibleOpening = NpcType.PossibleOpening;
         SwipeTask = FindFirstObjectByType<SwipeTask>();
+        
+        var rand = Random.Range(0, NpcType.PossibleItems.Count);
+        Items = NpcType.PossibleItems[rand];
+        _randomSprite = NpcType.PossibleItems[rand].GameEmoji;
+        Opening = _randomSprite;
     }
 
     private void Awake()
@@ -160,13 +178,14 @@ public class NpcStateMachine : BaseStateMachine
         _npcNegativeDialogState = new NpcNegativeDialogState(this);
         _npcSpawnState = new NpcSpawnState(this);
         _npcTalkingState = new NpcTalkingState(this);
+        _npcKickedOutState = new NpcKickedOutState(this);
         Exit = FindFirstObjectByType<Exit>().transform;
         AssignShelves();
         AssignRegisters();
         ChooseNpc();
         TextIndex = GetComponentInChildren<TextIndex>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
+        PossibleImages.Add(_placeHolder);
         ChangeState(_npcSpawnState);
     }
 
@@ -304,16 +323,35 @@ public class NpcStateMachine : BaseStateMachine
             Debug.Log(row);
             if(_shelfToCheck.AssignedRow == null) return;
             if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
-            foreach (var item in Items)
+
+            if (Items == _shelfToCheck.AssignedRow.Container.ItemType)
             {
-                if(Budget < _shelfToCheck.AssignedRow.Container.ItemType.Cost) continue;
-                if (item == _shelfToCheck.AssignedRow.Container.ItemType)
+                ItemsCollected.Add(Items);
+                MoneySpent += Items.Cost;
+
+                foreach (var rows in _shelfToCheck.Rows)
                 {
-                    ItemsCollected.Add(item);
-                    _shelfToCheck.AssignedRow.Container.ItemCount--;
-                    MoneySpent += item.Cost;
+                    instantiated = new List<GameObject>();
+                    var Images = _shelfToCheck.rows[_shelfToCheck.AssignedRow.index].GetComponentsInChildren<Image>();
+
+                    foreach (var ImGs in Images)
+                    {
+                        instantiated.Add(ImGs.gameObject);
+                    }
+
+                    Debug.Log(Images.Length);
+                    imgs = Images;
+
+                    if (_shelfToCheck.AssignedRow.Container.ItemCount -1 >= imgs.Length)
+                    {
+                        int d = _shelfToCheck.AssignedRow.Container.ItemCount -1;
+                        Destroy(instantiated[d]);
+                        _shelfToCheck.AssignedRow.Container.ItemCount--;
+                    }
+
                 }
             }
+
         }
         Shelves.Remove(shelf);
 
@@ -328,8 +366,9 @@ public class NpcStateMachine : BaseStateMachine
         {
             FoundItems = false;
             i = 0;
-            ChangeState(_npcNegativeDialogState);
             ShelvesBeforeLeave--;
+            ChangeState(_npcNegativeDialogState);
+            
             return;
         }
         
@@ -393,15 +432,24 @@ public class NpcStateMachine : BaseStateMachine
                 currentState = _npcTalkingState;
                 CanTarget = true;
                 break;
-            
-                
-                
+            case NpcStateName.KickedOut:
+                base.ChangeState(_npcKickedOutState);
+                CanTarget = false;
+                currentState = _npcTalkingState;
+                break;
         }
+        
+        this.stateName = currentState.ToString();
     }
     
     public void Wander()
     {
         ChangeState(NpcStateName.Wander);
+    }
+
+    public void Struggle()
+    {
+        Agent.enabled = false;
     }
     
     public void AssignShelves()// find all of the shelves in the scene and add them to a list
@@ -423,19 +471,8 @@ public class NpcStateMachine : BaseStateMachine
     public virtual void RandomizeImage(Sprite sprite)
     {
         int i = 0;
-        if (PossibleImages.Count < PossibleOpening.Count)
-        {
-            PossibleImages[i].sprite = sprite;
-            PossibleImages.Add(_placeHolder);
-            PossibleImages[i].sprite = sprite;
-        }
-        else if (PossibleImages.Count >= PossibleOpening.Count)
-        {
-            PossibleImages.Clear();
-            PossibleImages.Add(_placeHolder);
-            PossibleImages[i].sprite = sprite;
-        }
 
+        PossibleImages[i].sprite = sprite;
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
@@ -445,7 +482,19 @@ public class NpcStateMachine : BaseStateMachine
             CanTalk = true;
             var Emp = other.GetComponentInParent<EmployeeStateMachine>();
             Emp.npcStateMachine = this;
+            EmployeeStateMachine = Emp;
+
+            if (Emp.KickingOut)
+            {
+                ChangeState(NpcStateName.KickedOut);
+            }
         }
+        
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 
 

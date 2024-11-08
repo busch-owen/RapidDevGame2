@@ -21,8 +21,9 @@ MonoBehaviour:
   <OpeningText>k__BackingField:
   - Wuzzup foo
   - What's poppin g
-  <Items>k__BackingField:
-  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
+  <PossibleItems>k__BackingField:
+  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
+  - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 0
   <ShelvesTillExit>k__BackingField: 3
@@ -37,6 +38,4 @@ MonoBehaviour:
   <PossibleGood>k__BackingField:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
-  <PossibleOpening>k__BackingField:
-  - {fileID: 1965508524, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
-  - {fileID: 1965508524, guid: 5109b2c4062242142839dbfee81c12e9, type: 3}
+  <PossibleOpening>k__BackingField: {fileID: 0}

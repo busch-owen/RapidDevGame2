@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11a03c7396778a438f78d7d3d1479fa, type: 3}
+  m_Name: Grandma
+  m_EditorClassIdentifier: 
+  <PositiveText>k__BackingField: []
+  <NegativeText>k__BackingField: []
+  <OpeningText>k__BackingField: []
+  <PossibleItems>k__BackingField:
+  - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
+  - {fileID: 11400000, guid: e71cf4870ee736945b0c93483ccddf6c, type: 2}
+  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
+  <Speed>k__BackingField: 1
+  <Budget>k__BackingField: 100
+  <ShelvesTillExit>k__BackingField: 3
+  <ShopLifter>k__BackingField: 0
+  <NpcSprite>k__BackingField: {fileID: -283664136, guid: f967bfd2c303c764baa6417e0f45e9c5, type: 3}
+  <Bad>k__BackingField: []
+  <Good>k__BackingField: []
+  <Opening>k__BackingField: []
+  <PossibleBad>k__BackingField:
+  - {fileID: 21300000, guid: e40da2d211fd21d49b18131bd9d5c9ca, type: 3}
+  - {fileID: 21300000, guid: fc67fd1208e07d0468aba78b29340093, type: 3}
+  <PossibleGood>k__BackingField:
+  - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
+  - {fileID: 21300000, guid: 0341b329c9b3d0147a6c37a7ada0e82c, type: 3}
+  <PossibleOpening>k__BackingField: {fileID: 0}
