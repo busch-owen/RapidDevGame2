@@ -20,16 +20,28 @@ public class StockOrderer : MonoBehaviour
 
     public List<StoreCartInfo> itemsInCart;
     private float _cartBalance;
+
+    private TutorialHandler _tutorial;
     
     private void Start()
     {
         _moneyManager = FindFirstObjectByType<MoneyManager>();
         _itemSelector = FindFirstObjectByType<ItemSelector>();
+        _tutorial = FindFirstObjectByType<TutorialHandler>();
         LoadItemsToBuy();
     }
 
     private void LoadItemsToBuy()
     {
+        if (_tutorial)
+        {
+            var newItem = _itemSelector.AllItems[0];
+            var newButton = Instantiate(purchaseButton, buttonGrid);
+            newButton.GetComponentInChildren<Button>().onClick.AddListener(_tutorial.ChangeSequenceIndex);
+            newButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { AddItemsToCart(newItem); newButton.GetComponent<StoreItemButton>().RemoveTutorialProgression();});
+            newButton.GetComponent<StoreItemButton>().AssignContainer(newItem);
+            return;
+        }
         foreach (var item in _itemSelector.AllItems)
         {
             var newItem = item;
@@ -90,5 +102,9 @@ public class StockOrderer : MonoBehaviour
         _moneyManager.DecrementProfit(_cartBalance);
         itemsInCart.Clear();
         CalculateCartBalance();
+
+        if (!_tutorial) return;
+        _tutorial.ChangeSequenceIndex();
+        _tutorial = null;
     }
 }

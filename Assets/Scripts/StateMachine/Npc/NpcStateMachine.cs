@@ -217,10 +217,12 @@ public class NpcStateMachine : BaseStateMachine
         if (ItemCollected == ItemWanted)
         {
             ChangeState(NpcStateName.Checkout);
+            ReputationManager.ChangeReputation(0.005f);
         }
         else if (ItemCollected == ItemWanted)
         {
             ChangeState(NpcStateName.Exit);
+            ReputationManager.ChangeReputation(-0.01f);
         }
 
     }
@@ -237,9 +239,23 @@ public class NpcStateMachine : BaseStateMachine
 
     private void ChooseNpc()// randomly select what npc it will be
     {
-        int _randomNpc = Random.Range(0, NpcTypeSoOptions.Count);
+        //Totals the odds of all the critters
+        var totalWeight = NpcTypeSoOptions.Sum(npcType => npcType.OddsToSpawn);
 
-        NpcType = NpcTypeSoOptions[_randomNpc];
+        //Generates a random number from 0 to totalWeight
+        var rand = Random.Range(0, totalWeight);
+        
+        foreach (var randomNpc in NpcTypeSoOptions)
+        {
+            //Checks if the random number is less than the current critter's pull chance
+            if (rand <= randomNpc.OddsToSpawn)
+            {
+                NpcType = randomNpc;
+                return;
+            } 
+            //if the random number is greater than the pull chance, it subtracts the pull chance from the random number and checks the next critter in the list
+            rand -= randomNpc.OddsToSpawn;
+        }
     }
 
     public void ChooseTarget()// set the npc target to a random shelf
@@ -368,9 +384,11 @@ public class NpcStateMachine : BaseStateMachine
             {
                 FoundItems = true;
                 i = 0;
+                ReputationManager.ChangeReputation(0.005f);
                 ChangeState(_npcPositiveDialogState);
                 return;
             }
+
         }
         else
         {
@@ -378,7 +396,7 @@ public class NpcStateMachine : BaseStateMachine
             i = 0;
             ShelvesBeforeLeave--;
             ChangeState(_npcNegativeDialogState);
-            
+            ReputationManager.ChangeReputation(-0.01f);
             return;
         }
         

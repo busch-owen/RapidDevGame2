@@ -31,6 +31,7 @@ public class SwipeTask : MonoBehaviour
     public bool Done;
 
     public GameObject ItemSpawn;
+    private LevelManager _levelManager;
     // Update is called once per frame
     
     void Update()
@@ -75,6 +76,7 @@ public class SwipeTask : MonoBehaviour
         _canvas.SetActive(false);
         _source = FindFirstObjectByType<AudioSource>();
         _eventManager = FindFirstObjectByType<EventManager>();
+        _levelManager = FindFirstObjectByType<LevelManager>();
         
         _eventManager.Arrived += AssignItems;
         _eventManager.Npc += AssignNpc;
@@ -112,7 +114,8 @@ public class SwipeTask : MonoBehaviour
         {
             _currentSwipePointIndex = 0;
             StartCoroutine(FinishTask(true));
-            Money.IncrementProfit(_toSwipe.Item.Cost);
+            Money.IncrementProfit(_toSwipe.Item.Cost * 2f);
+            _levelManager.IncreaseLevelProgression(0.05f);
             _itemIndex++;
             Green.SetActive(true);
             Debug.Log("Yipee");

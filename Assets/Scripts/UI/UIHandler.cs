@@ -28,6 +28,7 @@ public class UIHandler : MonoBehaviour
         UpdateMoneyCount();
         UpdateLevelDisplay();
         OccupyBuildMenu();
+        ReputationManager.reputationChanged += UpdateReputation;
     }
 
     private void UpdateMoneyCount()
@@ -49,5 +50,10 @@ public class UIHandler : MonoBehaviour
             newObj.GetComponentInChildren<Button>().onClick.AddListener(delegate{_picker.PickSpecificObject(obj);});
             newObj.GetComponent<PlaceModeButton>().AssignContainer(obj);
         }
+    }
+
+    private void UpdateReputation()
+    {
+        ratingFill.fillAmount = ReputationManager.CurrentReputation;
     }
 }

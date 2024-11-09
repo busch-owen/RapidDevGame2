@@ -18,7 +18,7 @@ public class NpcExitState : NPCBaseState
         }
     }
 
-     void Despawn()
+    void Despawn()
     {
         if (ArrivedAtExit())
         {

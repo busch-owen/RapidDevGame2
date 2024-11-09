@@ -25,13 +25,18 @@ public class ObjectPlacer : MonoBehaviour
     private MoneyManager _moneyManager;
     private ObjectMover _mover;
 
+    private TutorialHandler _tutorial;
+
     private void Start()
     {
         _picker = FindFirstObjectByType<ObjectPicker>();
         _pointer = FindFirstObjectByType<GridPointer>();
         _surface = FindFirstObjectByType<NavMeshSurface>();
+        _tutorial = FindFirstObjectByType<TutorialHandler>();
         _mover = GetComponent<ObjectMover>();
         _moneyManager = FindFirstObjectByType<MoneyManager>();
+        if (!_tutorial) return;
+        ObjectPlaced += _tutorial.ChangeSequenceIndex;
     }
 
     public void AssignObject(StoreObjectSO obj, GameObject displayObject)
@@ -58,7 +63,7 @@ public class ObjectPlacer : MonoBehaviour
     
     public void PlaceObject()
     {
-        if(!_assignedObject || !_pointer.CursorOnGrid || _cursorOnUI || !_placeModeEnabled) return;
+        if(!_assignedObject || !_pointer.CursorOnGrid || _cursorOnUI || !_placeModeEnabled || TutorialHandler.InDialogue) return;
         
         var storeObject = _assignedObject.ObjectToPlace;
         if (_displayObject != null && !_displayObject.GetComponent<StoreObject>().Placeable)
@@ -81,10 +86,13 @@ public class ObjectPlacer : MonoBehaviour
         newObject.GetComponent<StoreObject>().RotationPoint.rotation = _displayObject.GetComponent<StoreObject>().RotationPoint.rotation;
         newObject.GetComponent<StoreObject>().AssignSO(_assignedObject);
         _surface.BuildNavMesh();
-        ObjectPlaced?.Invoke();
         if (!_placeMultiple)
         {
             _picker.CancelSelection();
         }
+
+        if (!_tutorial) return;
+        ObjectPlaced?.Invoke();
+        ObjectPlaced -= _tutorial.ChangeSequenceIndex;
     }
 }

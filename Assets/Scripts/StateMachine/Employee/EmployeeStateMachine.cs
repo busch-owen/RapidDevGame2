@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum EmployeeStates
 {
@@ -39,8 +40,11 @@ public class EmployeeStateMachine : BaseStateMachine
     private ControlButton _controlButton;
 
     public bool KickingOut;
+    public event Action destinationReached;
+    private TutorialHandler _tutorial;
 
-    public void Awake()
+
+    public void Start()
     {
         _employeeExitState = new EmployeeExitState(this);
         _employeeEnterState = new EmployeeEnterState(this);
@@ -55,11 +59,16 @@ public class EmployeeStateMachine : BaseStateMachine
         _renderer.transform.rotation = Quaternion.Euler(90,0,0);
         Agent.updateRotation = false;
         _controlButton = FindFirstObjectByType<ControlButton>();
-        _controlButton.GetComponent<Button>().onClick.AddListener(ManualOverrideOn);
-        _controlButton.GetComponent<Button>().onClick.AddListener(EnableStocking);
-        _controlButton.ControlPanelCancelButton.onClick.AddListener(ManualOverrideOff);
-        _controlButton.ControlPanelCancelButton.onClick.AddListener(DisableStocking);
+        _tutorial = FindFirstObjectByType<TutorialHandler>();
+        _controlButton.GetComponent<Button>().onClick.AddListener(delegate { ManualOverrideOn(); EnableStocking(); });
+        _controlButton?.ControlPanelCancelButton.onClick.AddListener(ManualOverrideOff);
+        _controlButton?.ControlPanelCancelButton.onClick.AddListener(DisableStocking);
+
         
+        ChangeState(EmployeeStates.Idle);
+        
+        if(!_tutorial) return;
+        destinationReached += _tutorial.ChangeSequenceIndex;
     }
     
     public void ChangeState(EmployeeStates stateName)
@@ -109,8 +118,12 @@ public class EmployeeStateMachine : BaseStateMachine
 
     public bool DistanceCheck()
     {
+        if (!Target) return false;
+        
         if (Vector2.Distance(transform.position, Target.position) <= 0.25f)
         {
+            destinationReached?.Invoke();
+            destinationReached -= _tutorial.ChangeSequenceIndex;
             return true;
         }
         return false;
