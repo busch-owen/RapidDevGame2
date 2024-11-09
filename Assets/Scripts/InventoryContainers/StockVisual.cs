@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StockVisual : MonoBehaviour
@@ -13,13 +14,17 @@ public class StockVisual : MonoBehaviour
     [SerializeField] Sprite fullStockSprite;
     [SerializeField] SpriteRenderer sR;
     [SerializeField] Color gameCategoryColor;
+    private Shelf _shelf;
     void Start()
     {
+        _shelf = GetComponentInParent<Shelf>();
         shelfItems = 0;
         sR.color = gameCategoryColor;
     }
     void Update()
     {
+
+        shelfItems = _shelf.StockPerRow.Sum();
         if (shelfItems>=18)
         {
             sR.sprite= fullStockSprite;

@@ -20,7 +20,7 @@ public class NpcNegativeDialogState : NPCBaseState
 
         _stateMachine.TimeForFirstWander = 1;
 
-        _stateMachine.Invoke(nameof(_stateMachine.ChangeToNegative), 0.5f);
+        _stateMachine.Invoke(nameof(_stateMachine.ChangeToNegative), 2.0f);
         _stateMachine.GiveUp();
         
         
@@ -29,7 +29,7 @@ public class NpcNegativeDialogState : NPCBaseState
 
     private IEnumerator Switch()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
         _stateMachine.ChangeState(NpcStateName.Wander);
         yield return null;
     }

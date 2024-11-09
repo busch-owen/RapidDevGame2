@@ -28,7 +28,7 @@ MonoBehaviour:
   <OddsToSpawn>k__BackingField: 50
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 25
-  <ShelvesTillExit>k__BackingField: 3
+  <ShelvesTillExit>k__BackingField: 2
   <ShopLifter>k__BackingField: 0
   <NpcSprite>k__BackingField: {fileID: 1665622022, guid: a78afe9a7acc1e546abd19e4ea5627e9, type: 3}
   <Bad>k__BackingField:
