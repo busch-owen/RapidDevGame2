@@ -24,6 +24,8 @@ MonoBehaviour:
   <PossibleItems>k__BackingField:
   - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
+  - {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
+  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 0
   <ShelvesTillExit>k__BackingField: 3
