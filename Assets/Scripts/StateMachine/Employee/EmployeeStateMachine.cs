@@ -127,8 +127,8 @@ public class EmployeeStateMachine : BaseStateMachine
         
         if (Vector2.Distance(transform.position, Target.position) <= 0.25f)
         {
-            //destinationReached?.Invoke();
-            //destinationReached -= _tutorial.ChangeSequenceIndex;
+            destinationReached?.Invoke();
+            destinationReached -= _tutorial.ChangeSequenceIndex;
             return true;
         }
         return false;
