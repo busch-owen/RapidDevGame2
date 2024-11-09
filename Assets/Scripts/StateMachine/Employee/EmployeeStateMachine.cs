@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 public enum EmployeeStates
 {
-    Enter,Idle,Exit,Stocking,Helping,CheckingOut,Ordering,Walking
+    Enter,Idle,Exit,Stocking,Helping,CheckingOut,Ordering,Walking,KickingOut
 }
 public class EmployeeStateMachine : BaseStateMachine
 {
@@ -22,9 +22,10 @@ public class EmployeeStateMachine : BaseStateMachine
     private EmployeeIdleState _employeeIdleState;
     private EmployeeCheckingOutState _employeeCheckingOutState;
     private EmployeeWalkingState _employeeWalkingState;
+    public EmployeeKickingOutState _employeeKickingOutState;
     [field:SerializeField] public Transform Target{ get; set; }
     [field:SerializeField] public NavMeshAgent Agent{ get; set; }
-    [field:SerializeField] public Shelf CurrentShelf{ get; set; }
+    [field:SerializeField] public Shelf[] CurrentShelfs{ get; set; }
     [field:SerializeField] public ItemTypeSo CurrentItem{ get; set; }
     [field:SerializeField] public int AmountOfItems{ get; set; }
     [field:SerializeField] public bool IsWalking { get; set; }
@@ -38,10 +39,12 @@ public class EmployeeStateMachine : BaseStateMachine
 
     private ControlButton _controlButton;
 
+    public bool KickingOut;
     public event Action destinationReached;
     private TutorialHandler _tutorial;
 
-    public void Awake()
+
+    public void Start()
     {
         _employeeExitState = new EmployeeExitState(this);
         _employeeEnterState = new EmployeeEnterState(this);
@@ -51,6 +54,7 @@ public class EmployeeStateMachine : BaseStateMachine
         _employeeIdleState = new EmployeeIdleState(this);
         _employeeCheckingOutState = new EmployeeCheckingOutState(this);
         _employeeWalkingState = new EmployeeWalkingState(this);
+        _employeeKickingOutState = new EmployeeKickingOutState(this);
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.transform.rotation = Quaternion.Euler(90,0,0);
         Agent.updateRotation = false;
@@ -103,9 +107,18 @@ public class EmployeeStateMachine : BaseStateMachine
                 base.ChangeState(_employeeWalkingState);
                 currentState = _employeeWalkingState;
                 break;
+            case EmployeeStates.KickingOut:
+                base.ChangeState(_employeeKickingOutState);
+                currentState = _employeeKickingOutState;
+                break;
         }
 
         this.stateName = currentState.ToString();
+    }
+
+    public void AssignShelves()
+    {
+        CurrentShelfs = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
     }
 
     public bool DistanceCheck()

@@ -24,13 +24,13 @@ public class NpcPositiveDialogState : NPCBaseState
         _stateMachine.GiveUp();
         
         
-        if (_stateMachine.ItemsCollected.Count >= _stateMachine.Items.Count)
+        if (_stateMachine.ItemCollected == _stateMachine.ItemWanted)
         {
             _stateMachine.StartCoroutine(SwitchToCheckout());
             Debug.Log("Checkout");
             
         }
-        else if (_stateMachine.ItemsCollected.Count != 0 && _stateMachine.ShelvesBeforeLeave <= 0)
+        else if (_stateMachine.ItemCollected == _stateMachine.ItemWanted && _stateMachine.ShelvesBeforeLeave <= 0)
         {
             _stateMachine.StartCoroutine(SwitchToCheckout());
             Debug.Log("Checkout");
@@ -60,7 +60,14 @@ public class NpcPositiveDialogState : NPCBaseState
     private IEnumerator SwitchToCheckout()
     {
         yield return new WaitForSeconds(2.0f);
-        _stateMachine.ChangeState(NpcStateName.Checkout);
+        if (_stateMachine.BeingKickedOut)
+        {
+            _stateMachine.ChangeState(NpcStateName.KickedOut);
+        }
+        else
+        {
+            _stateMachine.ChangeState(NpcStateName.Checkout);
+        }
         yield return null;
     }
 }

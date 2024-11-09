@@ -14,9 +14,16 @@ public class NpcCheckoutState : NPCBaseState
 
     public override void Enter()
     {
-        Checkout();
-        _stateMachine.ArrivedEvent();
-        _stateMachine.SwipeTask.CheckingOut = true;
+        if (_stateMachine.BeingKickedOut)
+        {
+            _stateMachine.ChangeState(NpcStateName.KickedOut);
+        }
+        else
+        {
+            Checkout();
+            _stateMachine.ArrivedEvent();
+            _stateMachine.SwipeTask.CheckingOut = true;
+        }
     }
 
     public override void FixedUpdate()

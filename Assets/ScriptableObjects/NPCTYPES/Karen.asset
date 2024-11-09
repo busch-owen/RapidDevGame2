@@ -21,13 +21,16 @@ MonoBehaviour:
   <OpeningText>k__BackingField:
   - No I don't need your help
   - Ughh Out of my way
-  <Items>k__BackingField:
+  <PossibleItems>k__BackingField:
+  - {fileID: 11400000, guid: 5ad85445927ebd4479c695ff6fd1ff34, type: 2}
   - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
+  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
+  <OddsToSpawn>k__BackingField: 50
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 25
-  <ShelvesTillExit>k__BackingField: 6
+  <ShelvesTillExit>k__BackingField: 3
   <ShopLifter>k__BackingField: 0
-  <NpcSprite>k__BackingField: {fileID: 21300000, guid: 1fee544c34983004bb91e4c76d140b55, type: 3}
+  <NpcSprite>k__BackingField: {fileID: 1665622022, guid: a78afe9a7acc1e546abd19e4ea5627e9, type: 3}
   <Bad>k__BackingField:
   - {fileID: 0}
   - {fileID: 0}
@@ -39,6 +42,4 @@ MonoBehaviour:
   <PossibleGood>k__BackingField:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
-  <PossibleOpening>k__BackingField:
-  - {fileID: 21300000, guid: 97b723677637c2d428f952a5b63d4673, type: 3}
-  - {fileID: -1769178436, guid: f8ff27f399680c140801c710202431a0, type: 3}
+  <PossibleOpening>k__BackingField: {fileID: 0}

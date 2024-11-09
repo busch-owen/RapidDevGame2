@@ -14,8 +14,8 @@ public class NpcTypeSo : ScriptableObject
     
     [field:SerializeField]public List<String> OpeningText{ get; private set; }
     
-    [field:SerializeField]public List<ItemTypeSo> Items{ get; private set; }
-    
+    [field:SerializeField]public List<ItemTypeSo> PossibleItems{ get; private set; }
+    [field: SerializeField] public float OddsToSpawn { get; private set; }
     [field:SerializeField]public int Speed{ get; private set; }
     
     [field:SerializeField]public int Budget{ get; private set; }
@@ -37,7 +37,8 @@ public class NpcTypeSo : ScriptableObject
     [field:SerializeField]public List<Sprite> PossibleGood{ get;  private set; }
     
     
-    [field:SerializeField]public List<Sprite> PossibleOpening{ get; private set; }
+    [field:SerializeField]public Sprite PossibleOpening{ get; private set; }
+    
     
     
     

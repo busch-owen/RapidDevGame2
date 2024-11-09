@@ -26,7 +26,7 @@ public class Shelf : StoreObject
     [field: SerializeField] public NpcStateMachine StateMachine { get; private set; }
     [field: SerializeField] public EmployeeStateMachine EmpStateMachine { get; private set; }
     public bool IsFlashing;
-    private ShelfClick _shelfClick;
+    [field: SerializeField] public ShelfClick ShelfClick { get; private set; }
     private EventManager _eventManager;
     private Coroutine _flashRoutine;
     public int ShelfSelected = 0;
@@ -48,8 +48,7 @@ public class Shelf : StoreObject
 
     public override void Start()
     {
-        _shelfClick = GetComponentInChildren<ShelfClick>();
-        _shelfClick.image.enabled = false;
+        ShelfClick = GetComponentInChildren<ShelfClick>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
         _eventManager = FindFirstObjectByType<EventManager>();
         _eventManager._clicked += DisableClick;
@@ -59,6 +58,12 @@ public class Shelf : StoreObject
         stockOrderer = FindFirstObjectByType<StockOrderer>();
         grid = FindFirstObjectByType<InvGrid>();
         InstantiateRows();
+
+        if (this.ObjectPlaced)
+        {
+            EmpStateMachine.AssignShelves();
+            ShelfClick.image.enabled = true;
+        }
     }
 
     public void StockShelf(ItemTypeSo item)
@@ -133,7 +138,7 @@ public class Shelf : StoreObject
 
     public void EnableClick()
     {
-        _shelfClick.image.enabled = true;
+        ShelfClick.image.enabled = true;
     }
 
     public void DisableClick()

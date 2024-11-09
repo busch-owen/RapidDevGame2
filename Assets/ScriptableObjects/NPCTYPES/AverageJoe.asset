@@ -15,6 +15,16 @@ MonoBehaviour:
   <PositiveText>k__BackingField: []
   <NegativeText>k__BackingField: []
   <OpeningText>k__BackingField: []
-  <Items>k__BackingField: []
-  <Speed>k__BackingField: 0
+  <PossibleItems>k__BackingField: []
+  <OddsToSpawn>k__BackingField: 65
+  <Speed>k__BackingField: 2
   <Budget>k__BackingField: 0
+  <ShelvesTillExit>k__BackingField: 4
+  <ShopLifter>k__BackingField: 0
+  <NpcSprite>k__BackingField: {fileID: 497595915, guid: 9d4e5d35d7fc63445b1b526f586518c7, type: 3}
+  <Bad>k__BackingField: []
+  <Good>k__BackingField: []
+  <Opening>k__BackingField: []
+  <PossibleBad>k__BackingField: []
+  <PossibleGood>k__BackingField: []
+  <PossibleOpening>k__BackingField: {fileID: 0}

@@ -10,12 +10,12 @@ public class StockItemButton : MonoBehaviour
 {
     private GameContainer _assignedContainer;
     
-    [SerializeField] private Image buttonImage;
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemCount;
     [SerializeField] public ItemTypeSo Item;
     private Shelf _shelf;
     private EventManager _eventManager;
+    private Button _button;
 
     private ItemSelector _itemSelector;
     
@@ -23,7 +23,8 @@ public class StockItemButton : MonoBehaviour
     public void AssignInventoryContainer(GameContainer container)
     {
         _assignedContainer = container;
-        buttonImage.sprite = _assignedContainer.ItemType.BigIcon;
+        _button = GetComponentInChildren<Button>();
+        _button.image.sprite = _assignedContainer.ItemType.BigIcon;
         itemName.text = _assignedContainer.ItemType.ItemName;
         Item = _assignedContainer.ItemType;
     }

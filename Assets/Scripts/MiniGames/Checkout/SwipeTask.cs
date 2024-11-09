@@ -17,7 +17,7 @@ public class SwipeTask : MonoBehaviour
     public MoneyManager Money;
     private NpcStateMachine Npc;
     private int _itemIndex = 0;
-    [SerializeField] public List<ItemTypeSo> items = new();
+    [SerializeField] public ItemTypeSo ItemToSwipe;
     [SerializeField] private GameObject _canvas;
     [SerializeField] private ItemToSwipe _toSwipe;
     private bool _alreadySpawned;
@@ -30,7 +30,8 @@ public class SwipeTask : MonoBehaviour
     private ItemToSwipe _itemToSwipe;
     public bool Done;
 
-    public Transform ItemSpawn;
+    public GameObject ItemSpawn;
+    private LevelManager _levelManager;
     // Update is called once per frame
     
     void Update()
@@ -44,9 +45,9 @@ public class SwipeTask : MonoBehaviour
         }
     }
 
-    private void AssignItems(List<ItemTypeSo> Items)
+    private void AssignItems(ItemTypeSo Item)
     {
-        items = Items;
+        ItemToSwipe = Item;
         Debug.Log("assigned");
         Invoke("EnableCheckout",2.0f);
     }
@@ -61,23 +62,10 @@ public class SwipeTask : MonoBehaviour
         _canvas.SetActive(true);
         Done = false;
 
-        foreach (var item in items)
-        {
-            var Scan = _toSwipe;
-            if (!_alreadySpawned)
-            {
-                _toSwipe.Item = item;
-                
-                Scan = Instantiate(_toSwipe, ItemSpawn);
-                Scan.transform.SetParent(ItemSpawn);
-                _alreadySpawned = true;
-            }
-            else
-            {
-                Scan.Item = item;
-            }
-        }
-
+        _toSwipe.Item = ItemToSwipe;
+        var Scan = Instantiate(_toSwipe, ItemSpawn.transform);
+        Scan.transform.position = ItemSpawn.transform.position;
+        //Scan.transform.SetParent(ItemSpawn.transform);
     }
 
     private void Start()
@@ -88,6 +76,7 @@ public class SwipeTask : MonoBehaviour
         _canvas.SetActive(false);
         _source = FindFirstObjectByType<AudioSource>();
         _eventManager = FindFirstObjectByType<EventManager>();
+        _levelManager = FindFirstObjectByType<LevelManager>();
         
         _eventManager.Arrived += AssignItems;
         _eventManager.Npc += AssignNpc;
@@ -125,20 +114,18 @@ public class SwipeTask : MonoBehaviour
         {
             _currentSwipePointIndex = 0;
             StartCoroutine(FinishTask(true));
-            Money.IncrementProfit(_toSwipe.Item.Cost);
+            Money.IncrementProfit(_toSwipe.Item.Cost * 2f);
+            _levelManager.IncreaseLevelProgression(0.05f);
             _itemIndex++;
             Green.SetActive(true);
             Debug.Log("Yipee");
-            if (_itemIndex >= items.Count)
-            {
-                Invoke("Disable", 1.0f);
-            }
+            Done = true;
+            Invoke("Disable", 1.0f);
         }
     }
 
     private void Disable()
     {
-        Done = true;
         Red.SetActive(false);
         Green.SetActive(false);
         Npc.ChangeState(NpcStateName.Exit);

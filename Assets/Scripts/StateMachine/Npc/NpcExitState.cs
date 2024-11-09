@@ -12,10 +12,13 @@ public class NpcExitState : NPCBaseState
     public override void Enter()
     {
         _stateMachine.Invoke("Leave", 2.0f);
-        _stateMachine.SwipeTask.CheckingOut = false;
+        if (!_stateMachine.Shoplifter)
+        {
+            _stateMachine.SwipeTask.CheckingOut = false;
+        }
     }
 
-    private void despawn()
+    void Despawn()
     {
         if (ArrivedAtExit())
         {
@@ -39,6 +42,6 @@ public class NpcExitState : NPCBaseState
 
     public override void FixedUpdate()
     {
-        despawn();
+        Despawn();
     }
 }
