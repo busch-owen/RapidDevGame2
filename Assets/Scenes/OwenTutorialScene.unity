@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35db5e7e86785447a010763e9bfcf91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  Item: {fileID: 0}
 --- !u!4 &236465186
 Transform:
   m_ObjectHideFlags: 0
@@ -2603,6 +2603,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2360797408137975588, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 60a96e911f4ae0b47a90dd2c2cd5f686, type: 2}
     - target: {fileID: 2691004047821394146, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2889,7 +2893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -526.88
+      value: -525.54
       objectReference: {fileID: 0}
     - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3525,11 +3529,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.23
+      value: 3.98
       objectReference: {fileID: 0}
     - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: m_LocalPosition.z

@@ -4489,6 +4489,26 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[1].second.m_TileSpriteIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7779299108938176002, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -521.4651
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779299108938176002, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -334.60684
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779299108938176002, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70722574
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779299108938176002, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.70698786
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779299108938176002, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -89.981
+      objectReference: {fileID: 0}
     - target: {fileID: 7983391047692252562, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 525.51154
