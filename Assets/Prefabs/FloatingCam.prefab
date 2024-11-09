@@ -144,9 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camTransform: {fileID: 1456375328792652960}
   camRange: 20
-  horizontal: 0
-  vertical: 0
-  canMove: 0
+  Horizontal: 0
+  Vertical: 0
+  CanMove: 0
   speed: 4
   rB: {fileID: 7894736606071602464}
 --- !u!1 &8817185958017578190
@@ -218,7 +218,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
