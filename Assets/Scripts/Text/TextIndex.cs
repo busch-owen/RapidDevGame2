@@ -32,12 +32,15 @@ public class TextIndex : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     private Image _currentImage;
 
     private NpcStateMachine _stateMachine;
+
+    private EmployeeStateMachine _employeeStateMachine;
     
     
     void Start()
     {
         _waitBetweenCharacters = new WaitForSeconds(timeBetweenChar);
         _stateMachine = GetComponentInParent<NpcStateMachine>();
+        _employeeStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
     }
     
 
@@ -78,6 +81,7 @@ public class TextIndex : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public void OnPointerClick(PointerEventData eventData)
     {
         _stateMachine.OpenWindow();
+        _employeeStateMachine.ChangeState(EmployeeStates.Helping);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

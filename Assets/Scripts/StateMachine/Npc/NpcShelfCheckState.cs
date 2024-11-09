@@ -14,6 +14,11 @@ public class NpcShelfCheckState : NPCBaseState
     public override void Enter()
     {
         CheckShelf();
+        if (_stateMachine.EmployeeStateMachine == null)
+        {
+            _stateMachine.AssignEmployee();
+        }
+        _stateMachine.EmployeeStateMachine.ChangeState(EmployeeStates.Stocking);
     }
 
     private void CheckShelf()

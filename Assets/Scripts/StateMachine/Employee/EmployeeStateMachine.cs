@@ -25,7 +25,7 @@ public class EmployeeStateMachine : BaseStateMachine
     public EmployeeKickingOutState _employeeKickingOutState;
     [field:SerializeField] public Transform Target{ get; set; }
     [field:SerializeField] public NavMeshAgent Agent{ get; set; }
-    [field:SerializeField] public Shelf CurrentShelf{ get; set; }
+    [field:SerializeField] public Shelf[] CurrentShelfs{ get; set; }
     [field:SerializeField] public ItemTypeSo CurrentItem{ get; set; }
     [field:SerializeField] public int AmountOfItems{ get; set; }
     [field:SerializeField] public bool IsWalking { get; set; }
@@ -116,14 +116,19 @@ public class EmployeeStateMachine : BaseStateMachine
         this.stateName = currentState.ToString();
     }
 
+    public void AssignShelves()
+    {
+        CurrentShelfs = FindObjectsByType<Shelf>(FindObjectsSortMode.None);
+    }
+
     public bool DistanceCheck()
     {
         if (!Target) return false;
         
         if (Vector2.Distance(transform.position, Target.position) <= 0.25f)
         {
-            destinationReached?.Invoke();
-            destinationReached -= _tutorial.ChangeSequenceIndex;
+            //destinationReached?.Invoke();
+            //destinationReached -= _tutorial.ChangeSequenceIndex;
             return true;
         }
         return false;

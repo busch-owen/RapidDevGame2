@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35db5e7e86785447a010763e9bfcf91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  Item: {fileID: 0}
 --- !u!4 &236465186
 Transform:
   m_ObjectHideFlags: 0
@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2360797408137975588, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: d5b0b8ef2728aed40988c61a96b190db, type: 2}
     - target: {fileID: 3178740524544053437, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -947,6 +951,34 @@ PrefabInstance:
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -260
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70723015
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484462180123131025, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4605871765210599680, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y

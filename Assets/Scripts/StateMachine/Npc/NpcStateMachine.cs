@@ -475,6 +475,11 @@ public class NpcStateMachine : BaseStateMachine
         ChangeState(NpcStateName.Wander);
     }
 
+    public void AssignEmployee()
+    {
+        EmployeeStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
+    }
+
     public void Struggle()
     {
         Agent.enabled = false;
