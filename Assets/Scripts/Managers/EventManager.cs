@@ -20,7 +20,7 @@ public class EventManager : MonoBehaviour
         
     }
 
-    public event Action<List<ItemTypeSo>> Arrived;
+    public event Action<ItemTypeSo> Arrived;
 
     public event Action<NpcStateMachine> Npc;
 
@@ -30,12 +30,12 @@ public class EventManager : MonoBehaviour
 
     public event DayEnd _Ended;
 
-    public List<ItemTypeSo> items;
+    public ItemTypeSo Item;
 
-    public void InvokeArrived(List<ItemTypeSo> ItemList)
+    public void InvokeArrived(ItemTypeSo item)
     {
-        Arrived?.Invoke(ItemList);
-        items = ItemList;
+        Arrived?.Invoke(item);
+        Item = item;
     }
     
     

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Code.Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
@@ -32,6 +33,7 @@ public class NpcStateMachine : BaseStateMachine
     private NpcTalkingState _npcTalkingState;
     private NpcKickedOutState _npcKickedOutState;
     private Shelf _shelfToCheck;
+    private ItemSelector _itemSelector;
 
     public event Selected SelectedEvent;
     
@@ -46,9 +48,9 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public String NotFoundText{ get; private set; }
     
-    [field:SerializeField]public ItemTypeSo Items{ get; private set; }
+    [field:SerializeField]public ItemTypeSo ItemWanted{ get; private set; }
 
-    [field: SerializeField] public List<ItemTypeSo> ItemsCollected{ get; private set; } = new();
+    [field: SerializeField] public ItemTypeSo ItemCollected{ get; private set; }
 
     public event Action<List<ItemTypeSo>> ArrivedAtCheckout;
     
@@ -160,9 +162,10 @@ public class NpcStateMachine : BaseStateMachine
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
         SwipeTask = FindFirstObjectByType<SwipeTask>();
+        _itemSelector = FindFirstObjectByType<ItemSelector>();
         
         var rand = Random.Range(0, NpcType.PossibleItems.Count);
-        Items = NpcType.PossibleItems[rand];
+        ItemWanted = NpcType.PossibleItems[rand];
         _randomSprite = NpcType.PossibleItems[rand].GameEmoji;
         Opening = _randomSprite;
     }
@@ -192,7 +195,7 @@ public class NpcStateMachine : BaseStateMachine
     public void ArrivedEvent()
     {
         if(SwipeTask.CheckingOut)return;
-        _eventManager.InvokeArrived(ItemsCollected);
+        _eventManager.InvokeArrived(ItemCollected);
         _eventManager.AssignNpc(this);
     }
 
@@ -211,11 +214,11 @@ public class NpcStateMachine : BaseStateMachine
     {
         if (ShelvesBeforeLeave >= 0)return;
 
-        if (ItemsCollected.Count >= 1)
+        if (ItemCollected == ItemWanted)
         {
             ChangeState(NpcStateName.Checkout);
         }
-        else if (ItemsCollected.Count <= 0)
+        else if (ItemCollected == ItemWanted)
         {
             ChangeState(NpcStateName.Exit);
         }
@@ -324,10 +327,10 @@ public class NpcStateMachine : BaseStateMachine
             if(_shelfToCheck.AssignedRow == null) return;
             if(_shelfToCheck.AssignedRow.Container.ItemCount <= 0) continue;
 
-            if (Items == _shelfToCheck.AssignedRow.Container.ItemType)
+            if (ItemWanted == _shelfToCheck.AssignedRow.Container.ItemType)
             {
-                ItemsCollected.Add(Items);
-                MoneySpent += Items.Cost;
+                ItemCollected =ItemWanted;
+                MoneySpent += ItemWanted.Cost;
 
                 foreach (var rows in _shelfToCheck.Rows)
                 {
@@ -355,7 +358,7 @@ public class NpcStateMachine : BaseStateMachine
         }
         Shelves.Remove(shelf);
 
-        if (ItemsCollected.Count >= 1)
+        if (ItemCollected == ItemWanted)
         {
             if (Shoplifter)
             {
@@ -501,11 +504,12 @@ public class NpcStateMachine : BaseStateMachine
 
     public void Die()
     {
-        if (ItemsCollected.Count >= 1 && Shoplifter)
+        if (ItemCollected == ItemWanted && Shoplifter)
         {
-            _shelfToCheck.StockShelf(ItemsCollected[0]);
-            Debug.Log(_shelfToCheck.AssignedRow.Container.ItemCount);
-
+            foreach (var inventoryItems in _itemSelector.AllItems.Where(inventoryItems => inventoryItems.ItemType == ItemCollected))
+            {
+                inventoryItems.ChangeCount(1);
+            }
         }
         Destroy(this.gameObject);
     }

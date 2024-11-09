@@ -28,7 +28,7 @@ public class ItemToSwipe : MonoBehaviour, IDragHandler
     {
         if (_swipeTask.Done)
         {
-            Invoke("Destory",1.0f);
+            Invoke("Destory",0.25f);
         }
     }
 
@@ -37,11 +37,16 @@ public class ItemToSwipe : MonoBehaviour, IDragHandler
         Destroy(this.gameObject);
     }
 
+    public void SetSprite(Sprite sprite)
+    {
+        Image.sprite = Item.BigIcon;
+    }
+
     private void Start()
     {
         Image = GetComponent<Image>();
         _canvas = GetComponentInParent<Canvas>();
-        Image.sprite = Item.SmallIcon;
+        Image.sprite = Item.BigIcon;
         _swipeTask = FindFirstObjectByType<SwipeTask>();
     }
 }
