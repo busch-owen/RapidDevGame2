@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   end: {fileID: 0}
+  DaysTillRent: 7
+  quota: 1500
+  <DaysPassed>k__BackingField: 0
 --- !u!4 &165996002
 Transform:
   m_ObjectHideFlags: 0
@@ -613,6 +616,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   end: {fileID: 0}
+  DaysTillRent: 7
+  quota: 1500
+  <DaysPassed>k__BackingField: 0
 --- !u!1 &752203941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 197318177463164409, guid: e19c880108e992043b1d50959c77043b, type: 3}
