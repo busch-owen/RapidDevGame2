@@ -603,22 +603,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650792318}
   m_CullTransparentMesh: 1
---- !u!114 &739927067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7086781999397854953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8adc8644394d74387419b326535371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  end: {fileID: 0}
-  DaysTillRent: 7
-  quota: 1500
-  <DaysPassed>k__BackingField: 0
 --- !u!1 &752203941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 197318177463164409, guid: e19c880108e992043b1d50959c77043b, type: 3}
@@ -1241,6 +1225,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1708665427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8583935092590027650, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1720525194 stripped
@@ -2961,6 +2956,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943292364249998658, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: rentText
+      value: 
+      objectReference: {fileID: 1708665427}
     - target: {fileID: 5048086842117081442, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_ScreenMatchMode
       value: 1
@@ -3036,6 +3035,22 @@ PrefabInstance:
     - target: {fileID: 5262868613650755428, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5640987773965710429, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3401,9 +3416,6 @@ PrefabInstance:
     - {fileID: 5217267159549272416, guid: e19c880108e992043b1d50959c77043b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6498105488058926999, guid: e19c880108e992043b1d50959c77043b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739927067}
     - targetCorrespondingSourceObject: {fileID: 1975218915808975117, guid: e19c880108e992043b1d50959c77043b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4068059075801848195}
@@ -3645,11 +3657,6 @@ GameObject:
 --- !u!1 &7013747670898310036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6422538194346369770, guid: e19c880108e992043b1d50959c77043b, type: 3}
-  m_PrefabInstance: {fileID: 4068059075801848190}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7086781999397854953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6498105488058926999, guid: e19c880108e992043b1d50959c77043b, type: 3}
   m_PrefabInstance: {fileID: 4068059075801848190}
   m_PrefabAsset: {fileID: 0}
 --- !u!222 &7382715659200926493
