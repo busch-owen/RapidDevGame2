@@ -1500,7 +1500,7 @@ MonoBehaviour:
     dialogueInSequence:
     - STOP!!!
     - WHY WOULD YOU DO THAT!?
-    - That might have been the worst possible place to put that shelf...
+    - That might have been the worst possible place to put that object...
     - You're completely throwing off the feng shui of my store!
     - Get out of build mode.
     SequenceEnded:
@@ -1561,8 +1561,8 @@ MonoBehaviour:
         m_Calls: []
   - sequenceName: Quit out of furniture move
     dialogueInSequence:
-    - How could you have possibly picked a worst spot than the last one!?
-    - Like are you genuinely design illiterate?
+    - How could you have possibly picked a worse spot than the last one!?
+    - Like, are you genuinely design illiterate?
     - You've lost building priveliges. Quit out of move mode.
     SequenceEnded:
       m_PersistentCalls:
@@ -1920,7 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b6b2f6b972f0f49a7d90120946f5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenCharacters: 0.03
+  timeBetweenCharacters: 0.01
 --- !u!1 &1767776964
 GameObject:
   m_ObjectHideFlags: 0
