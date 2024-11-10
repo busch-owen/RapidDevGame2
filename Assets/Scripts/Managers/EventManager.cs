@@ -6,6 +6,8 @@ using UnityEngine;
 public delegate void Clicked();
 public delegate void DayEnd();
 
+public delegate void Day();
+
 public class EventManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -30,6 +32,8 @@ public class EventManager : MonoBehaviour
 
     public event DayEnd _Ended;
 
+    public event Day _NextDay;
+
     public ItemTypeSo Item;
 
     public void InvokeArrived(ItemTypeSo item)
@@ -37,8 +41,11 @@ public class EventManager : MonoBehaviour
         Arrived?.Invoke(item);
         Item = item;
     }
-    
-    
+
+    public void InvokeNextDay()
+    {
+        _NextDay?.Invoke();
+    }
     
 
     public void AssignNpc(NpcStateMachine npc)

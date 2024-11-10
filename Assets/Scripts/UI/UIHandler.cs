@@ -8,6 +8,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private TMP_Text dayText;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text rentText;
     [SerializeField] private Image levelFill;
     [SerializeField] private Image ratingFill;
 
@@ -17,14 +18,21 @@ public class UIHandler : MonoBehaviour
     private MoneyManager _moneyManager;
     private LevelManager _levelManager;
     private ObjectPicker _picker;
+    private GameEnd _gameEnd;
+    private EventManager _eventManager;
 
     private void Start()
     {
         _moneyManager = FindFirstObjectByType<MoneyManager>();
         _levelManager = FindFirstObjectByType<LevelManager>();
+        _eventManager = FindFirstObjectByType<EventManager>();
         _picker = FindFirstObjectByType<ObjectPicker>();
+        _gameEnd = FindFirstObjectByType<GameEnd>();
+        rentText.text = $"Rent : ${_gameEnd.quota}";
         _moneyManager.MoneyChanged += UpdateMoneyCount;
         _levelManager.LevelChanged += UpdateLevelDisplay;
+        _eventManager._NextDay += UpdateDay;
+        
         UpdateMoneyCount();
         UpdateLevelDisplay();
         OccupyBuildMenu();
@@ -34,6 +42,11 @@ public class UIHandler : MonoBehaviour
     private void UpdateMoneyCount()
     {
         moneyText.text = $"${_moneyManager.Profit:N}";
+    }
+
+    private void UpdateDay()
+    {
+        dayText.text = $"Day : {_gameEnd.DaysPassed}";
     }
 
     private void UpdateLevelDisplay()

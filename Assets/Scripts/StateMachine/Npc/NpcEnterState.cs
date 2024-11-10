@@ -12,7 +12,7 @@ public class NpcEnterState : NPCBaseState
     {
         _stateMachine.CurrentSprite = _stateMachine.Opening;
         _stateMachine.RandomizeImage(_stateMachine.CurrentSprite);
-
+        _stateMachine.anim.clip = _stateMachine._animationClip;
         _stateMachine.Invoke(nameof(_stateMachine.ShowOpening), 0.1f);
         // wait for player or npc to interact for set amount of time
         // if no interaction after certain amount of time, exclaim about it and move to wander state

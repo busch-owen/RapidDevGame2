@@ -25,8 +25,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   - {fileID: 11400000, guid: 6afd8151eda1c1e429ea871614630346, type: 2}
   <OddsToSpawn>k__BackingField: 20
-  - {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
-  - {fileID: 11400000, guid: eb389bfb0614bf441b599291b03c575b, type: 2}
   <Speed>k__BackingField: 3
   <Budget>k__BackingField: 0
   <ShelvesTillExit>k__BackingField: 3
@@ -42,3 +40,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
   <PossibleOpening>k__BackingField: {fileID: 0}
+  <AnimationClip>k__BackingField: {fileID: 7400000, guid: 8ae1348a35ccc464fba5f39bba5f8fed, type: 2}
+  <AnimationController>k__BackingField: {fileID: 9100000, guid: 30ba3027cfd304043af1c48466a20771, type: 2}

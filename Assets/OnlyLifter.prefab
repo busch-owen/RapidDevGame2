@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 145187555536971132}
   - component: {fileID: -4191481315797229124}
   - component: {fileID: 4934430403219305814}
+  - component: {fileID: 4626280002289287437}
   m_Layer: 9
   m_Name: OnlyLifter
   m_TagString: Untagged
@@ -395,6 +396,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _animationClip: {fileID: 0}
+  anim: {fileID: 0}
+  AnimatorController: {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4
@@ -422,3 +427,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &4626280002289287437
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502881207188248044}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

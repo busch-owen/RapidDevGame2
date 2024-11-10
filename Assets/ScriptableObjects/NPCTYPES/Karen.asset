@@ -43,3 +43,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
   <PossibleOpening>k__BackingField: {fileID: 0}
+  <AnimationClip>k__BackingField: {fileID: 7400000, guid: c2085f6d0a111114bacd120ffc28f4c3, type: 2}
+  <AnimationController>k__BackingField: {fileID: 9100000, guid: 1d8acc3b892e73742ae7aa83b4e4a592, type: 2}

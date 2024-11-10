@@ -33,6 +33,8 @@ public class NpcSpawner : MonoBehaviour
 
     private EventManager _eventManager;
 
+    private GameEnd _gameEnd;
+
     private int TotalWaves = 0;
 
 
@@ -55,13 +57,18 @@ public class NpcSpawner : MonoBehaviour
         
     }
 
+    public void NextDay()
+    {
+        time--;
+        MaxTimeBetweenNpcs-= 2;
+    }
+
     public IEnumerator NpcWaveSpawn()
     {
         time = Random.Range(MinTimeBetweenNpcs, MaxTimeBetweenNpcs);
         _timeToNextWave = new WaitForSeconds(time);
-        foreach (int amtofWaves in Waves)// for each wave of npcs spawn the amount of npcs specified then wait until it is time for the next wave to do it again
+        while (_gameEnd.DaysPassed < _gameEnd.DaysTillRent)// for each wave of npcs spawn the amount of npcs specified then wait until it is time for the next wave to do it again
         {
-            
             foreach (int amtofNpcs in AmountOfNpcs)
             {
                 SpawnNpc();
@@ -73,7 +80,6 @@ public class NpcSpawner : MonoBehaviour
 
         if (TotalWaves >= Waves.Count)
         {
-            _eventManager.InvokeEndDay();
         }
         
     }
@@ -106,5 +112,7 @@ public class NpcSpawner : MonoBehaviour
     {
         _timeToNextWave = new WaitForSeconds(time);
         _eventManager = FindFirstObjectByType<EventManager>();
+        _gameEnd = FindFirstObjectByType<GameEnd>();
+        _eventManager._Ended += NextDay;
     }
 }
