@@ -32,6 +32,8 @@ public class SwipeTask : MonoBehaviour
 
     public GameObject ItemSpawn;
     private LevelManager _levelManager;
+
+    [SerializeField] private AudioClip saleClip;
     // Update is called once per frame
     
     void Update()
@@ -115,6 +117,7 @@ public class SwipeTask : MonoBehaviour
             _currentSwipePointIndex = 0;
             StartCoroutine(FinishTask(true));
             Money.IncrementProfit(_toSwipe.Item.Cost * 2f);
+            SoundManager.PlayClip(saleClip);
             _levelManager.IncreaseLevelProgression(0.05f);
             _itemIndex++;
             Green.SetActive(true);

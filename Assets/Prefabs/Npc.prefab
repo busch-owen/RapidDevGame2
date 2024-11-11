@@ -397,6 +397,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Animator: {fileID: 0}
+  positiveClip: {fileID: 8300000, guid: 62707286db1e39547823566ad0abfd02, type: 3}
+  negativeClip: {fileID: 8300000, guid: 8f373384db3e38a4fa37708d10f4e408, type: 3}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4

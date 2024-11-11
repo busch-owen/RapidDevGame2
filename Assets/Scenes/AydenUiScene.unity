@@ -17142,6 +17142,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2027961224, guid: f8ff27f399680c140801c710202431a0, type: 3}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493827932815095749, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5640987773965710429, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

@@ -27,6 +27,8 @@ public class ObjectPlacer : MonoBehaviour
 
     private TutorialHandler _tutorial;
 
+    [SerializeField] private AudioClip placeClip;
+
     private void Start()
     {
         _picker = FindFirstObjectByType<ObjectPicker>();
@@ -90,9 +92,10 @@ public class ObjectPlacer : MonoBehaviour
         {
             _picker.CancelSelection();
         }
-
-        if (!_tutorial) return;
+        
         ObjectPlaced?.Invoke();
+        SoundManager.PlayClip(placeClip);
+        if (!_tutorial) return;
         ObjectPlaced -= _tutorial.ChangeSequenceIndex;
     }
 }

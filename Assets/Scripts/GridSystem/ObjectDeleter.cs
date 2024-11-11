@@ -20,6 +20,8 @@ public class ObjectDeleter : MonoBehaviour
 
     public event Action ObjectDeleted;
 
+    [SerializeField] private AudioClip destroyClip;
+    
     private void Start()
     {
         _positionHandler = GetComponent<MousePositionHandler>();
@@ -41,6 +43,7 @@ public class ObjectDeleter : MonoBehaviour
         
         Destroy(tempObject.gameObject);
         ObjectDeleted?.Invoke();
+        SoundManager.PlayClip(destroyClip);
         if (!_tutorial) return;
         ObjectDeleted -= _tutorial.ChangeSequenceIndex;
     }

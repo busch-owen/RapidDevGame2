@@ -1,2 +1,22 @@
 fileFormatVersion: 2
 guid: 4c36d856a1065924c94c6d17be09e185
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Green: {instanceID: 0}
+  - Red: {instanceID: 0}
+  - Money: {instanceID: 0}
+  - ItemToSwipe: {instanceID: 0}
+  - _canvas: {instanceID: 0}
+  - _toSwipe: {instanceID: 0}
+  - _goodClip: {instanceID: 0}
+  - _badClip: {instanceID: 0}
+  - _source: {instanceID: 0}
+  - ItemSpawn: {instanceID: 0}
+  - saleClip: {fileID: 8300000, guid: b6f1c416827bfc34d9e835b0d82b33af, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

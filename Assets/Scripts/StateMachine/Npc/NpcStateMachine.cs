@@ -145,6 +145,8 @@ public class NpcStateMachine : BaseStateMachine
 
     public Animator Animator;
 
+    [SerializeField] private AudioClip positiveClip, negativeClip;
+
     
     
     // Start is called before the first frame update
@@ -390,6 +392,7 @@ public class NpcStateMachine : BaseStateMachine
                 i = 0;
                 ReputationManager.ChangeReputation(0.005f);
                 ChangeState(_npcPositiveDialogState);
+                SoundManager.PlayClip(positiveClip);
                 return;
             }
 
@@ -401,6 +404,7 @@ public class NpcStateMachine : BaseStateMachine
             ShelvesBeforeLeave--;
             ChangeState(_npcNegativeDialogState);
             ReputationManager.ChangeReputation(-0.01f);
+            SoundManager.PlayClip(negativeClip);
             return;
         }
         
