@@ -28,3 +28,4 @@ MonoBehaviour:
   <PossibleBad>k__BackingField: []
   <PossibleGood>k__BackingField: []
   <PossibleOpening>k__BackingField: {fileID: 0}
+  <Animator>k__BackingField: {fileID: 9100000, guid: 30ba3027cfd304043af1c48466a20771, type: 2}

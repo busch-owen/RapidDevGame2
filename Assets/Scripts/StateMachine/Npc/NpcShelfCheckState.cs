@@ -24,6 +24,7 @@ public class NpcShelfCheckState : NPCBaseState
     private void CheckShelf()
     {
         _stateMachine.ShelfCheck();
+        _stateMachine.Animator.SetTrigger("Searching");
         // check to see if item on shelf matches with budget
         // if the item is out of budget check for next item on list
         // if no items on list on shelf in budget move back to wander state
@@ -43,6 +44,9 @@ public class NpcShelfCheckState : NPCBaseState
             _stateMachine.ChangeState(NpcStateName.PositiveDialog);
         }
     }
-    
-    
+
+    public override void Exit()
+    {
+        _stateMachine.Animator.SetTrigger("Walking");
+    }
 }

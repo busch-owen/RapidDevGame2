@@ -39,12 +39,5 @@ public class NpcTypeSo : ScriptableObject
     
     [field:SerializeField]public Sprite PossibleOpening{ get; private set; }
     
-    [field:SerializeField]public AnimationClip AnimationClip{ get; private set; }
-    
-    [field:SerializeField]public RuntimeAnimatorController AnimationController{ get; private set; }
-    
-    
-    
-    
-    
+    [field:SerializeField]public RuntimeAnimatorController Animator{ get; private set; }
 }

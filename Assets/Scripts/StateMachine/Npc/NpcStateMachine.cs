@@ -142,13 +142,6 @@ public class NpcStateMachine : BaseStateMachine
     private List<GameObject> instantiated;
 
     private string stateName;
-    
-
-    public AnimationClip _animationClip;
-
-    public Animation anim;
-
-    public RuntimeAnimatorController AnimatorController;
 
     public Animator Animator;
 
@@ -165,10 +158,8 @@ public class NpcStateMachine : BaseStateMachine
         Shoplifter = NpcType.ShopLifter;
         Renderer = GetComponentInChildren<SpriteRenderer>();
         Renderer.sprite = NpcType.NpcSprite;
-        _animationClip = NpcType.AnimationClip;
-        AnimatorController = NpcType.AnimationController;
         Animator = gameObject.AddComponent<Animator>();
-        anim = GetComponent<Animation>();
+        Animator.runtimeAnimatorController = NpcType.Animator;
         Renderer.color = Color.white;
         Renderer.transform.rotation = Quaternion.Euler(90,0,0);
         _eventManager = FindFirstObjectByType<EventManager>();

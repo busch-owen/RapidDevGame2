@@ -11,9 +11,14 @@ public class NpcWanderState : NPCBaseState
 
     public override void Enter()
     {
-        _stateMachine.anim.clip = _stateMachine._animationClip;
+        _stateMachine.Animator.SetTrigger("Walking");
         _stateMachine.ChooseTarget();
         // wander until found shelf with desired item on it
+    }
+
+    public override void Exit()
+    {
+        
     }
 
     public override void FixedUpdate()
