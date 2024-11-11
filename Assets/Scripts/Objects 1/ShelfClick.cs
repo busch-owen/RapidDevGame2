@@ -23,6 +23,8 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     private PlayerInputActions _inputActions;
     public InvGrid grid;
     [SerializeField] private ShelfUi _ui;
+    [SerializeField] private AudioClip clip;
+    
     private void Start()
     {
         _shelf = GetComponentInParent<Shelf>();
@@ -66,8 +68,10 @@ public class ShelfClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerClick(PointerEventData eventData)
     {
         if(!_shelf.ObjectPlaced) return;
+        SoundManager.PlayClip(clip);
         if (stockable)
         {
+            
             if (_shelf.DistanceCheck())
             {
                 _shelf.SelectShelf();

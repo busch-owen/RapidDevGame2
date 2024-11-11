@@ -209,6 +209,7 @@ MonoBehaviour:
   <Emotes>k__BackingField: []
   <CurentEmotes>k__BackingField: []
   <ImageContainer>k__BackingField: {fileID: 6160348601279063132}
+  Click: {fileID: 8300000, guid: 9e20e9902f06c7d41b475dd245d4fad9, type: 3}
 --- !u!114 &2896675185182231722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +405,7 @@ MonoBehaviour:
   - {fileID: 0}
   Animator: {fileID: 0}
   positiveClip: {fileID: 8300000, guid: 62707286db1e39547823566ad0abfd02, type: 3}
-  negativeClip: {fileID: 8300000, guid: 8f373384db3e38a4fa37708d10f4e408, type: 3}
+  negativeClip: {fileID: 8300000, guid: ef93d5fd2f9808340ba9c1f4bb67c2f0, type: 3}
 --- !u!50 &4934430403219305814
 Rigidbody2D:
   serializedVersion: 4

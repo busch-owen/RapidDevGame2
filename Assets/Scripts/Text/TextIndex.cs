@@ -81,6 +81,7 @@ public class TextIndex : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public void OnPointerClick(PointerEventData eventData)
     {
         _stateMachine.OpenWindow();
+        
         _employeeStateMachine.ChangeState(EmployeeStates.Helping);
     }
 

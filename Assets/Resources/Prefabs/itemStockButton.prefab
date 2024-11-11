@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c5abcc178010e4697a054c94ccce55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 7990074534291220320}
   itemName: {fileID: 5376945368983310063}
   itemCount: {fileID: 8675726653651369829}
   Item: {fileID: 0}
+  _clip: {fileID: 8300000, guid: c797f5846e8dcc84dbd401958c40cbd9, type: 3}
 --- !u!1 &5702160058647795963
 GameObject:
   m_ObjectHideFlags: 0

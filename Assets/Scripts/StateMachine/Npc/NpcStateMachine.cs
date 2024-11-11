@@ -315,12 +315,14 @@ public class NpcStateMachine : BaseStateMachine
     public void ChangeToNegative()
     {
         ShowImages();
+        SoundManager.PlayClip(negativeClip);
         TextIndex.StartCoroutine("ImageVisible");
     }
 
     public void ChangeToPositive()
     {
         ShowImages();
+        SoundManager.PlayClip(positiveClip);
         TextIndex.StartCoroutine("ImageVisible");
     }
 
@@ -401,7 +403,6 @@ public class NpcStateMachine : BaseStateMachine
                 i = 0;
                 ReputationManager.ChangeReputation(0.005f);
                 ChangeState(_npcPositiveDialogState);
-                SoundManager.PlayClip(positiveClip);
                 return;
             }
 
@@ -412,7 +413,6 @@ public class NpcStateMachine : BaseStateMachine
             i = 0;
             ChangeState(_npcNegativeDialogState);
             ReputationManager.ChangeReputation(-0.01f);
-            SoundManager.PlayClip(negativeClip);
             return;
         }
         

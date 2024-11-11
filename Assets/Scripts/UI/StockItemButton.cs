@@ -16,8 +16,10 @@ public class StockItemButton : MonoBehaviour
     private Shelf _shelf;
     private EventManager _eventManager;
     private Button _button;
+    private AudioSource _source;
 
     private ItemSelector _itemSelector;
+    [SerializeField] private AudioClip _clip;
     
 
     public void AssignInventoryContainer(GameContainer container)
@@ -43,6 +45,7 @@ public class StockItemButton : MonoBehaviour
         {
             Debug.Log(_shelf.AssignedRow.Container.ItemCount);
             if( _shelf.AssignedRow.Container.ItemCount >= _assignedContainer.ItemType.MaxCount) return;
+            _source.PlayOneShot(_clip);
             _shelf.AssignedRow.Container.ChangeCount(1);
             _assignedContainer.ChangeCount(-1);
             _shelf.StockShelf(Item);
@@ -62,8 +65,8 @@ public class StockItemButton : MonoBehaviour
 
     private void Start()
     {
+        _source = FindFirstObjectByType<AudioSource>();
         _eventManager = FindFirstObjectByType<EventManager>();
         _itemSelector = FindFirstObjectByType<ItemSelector>();
-        
     }
 }

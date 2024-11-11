@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource _source;
+    [SerializeField] private AudioClip Enter;
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.GetComponent<NpcStateMachine>()) _source.PlayOneShot(Enter);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+         _source = FindFirstObjectByType<AudioSource>();
     }
 }

@@ -796,6 +796,7 @@ MonoBehaviour:
   EmpStateMachine: {fileID: 0}
   grid: {fileID: 0}
   _ui: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9e20e9902f06c7d41b475dd245d4fad9, type: 3}
 --- !u!1001 &1183764672586232649
 PrefabInstance:
   m_ObjectHideFlags: 0
