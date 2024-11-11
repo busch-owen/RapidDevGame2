@@ -14830,6 +14830,10 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: d5b0b8ef2728aed40988c61a96b190db, type: 2}
+    - target: {fileID: 2360797408137975588, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_UseGeometry
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2686009133997916564, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -17429,6 +17433,14 @@ PrefabInstance:
     - target: {fileID: 7779299108938176002, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964560612626290821, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964560612626290821, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7983391047692252562, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26825,7 +26837,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4201957300655219776, guid: e19c880108e992043b1d50959c77043b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 228650632}
+    - targetCorrespondingSourceObject: {fileID: 7964560612626290821, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4068059075801848192}
   m_SourcePrefab: {fileID: 100100000, guid: e19c880108e992043b1d50959c77043b, type: 3}
+--- !u!1 &4068059075801848191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7964560612626290821, guid: e19c880108e992043b1d50959c77043b, type: 3}
+  m_PrefabInstance: {fileID: 4068059075801848190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4068059075801848192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068059075801848191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!114 &4068059075801848195
 MonoBehaviour:
   m_ObjectHideFlags: 0
