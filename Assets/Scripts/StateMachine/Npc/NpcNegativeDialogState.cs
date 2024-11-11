@@ -10,7 +10,6 @@ public class NpcNegativeDialogState : NPCBaseState
 
     public override void Enter()
     {
-        
         foreach (var sprite in _stateMachine.PossibleBad)
         {
             var random = Random.Range(0, _stateMachine.PossibleBad.Count);

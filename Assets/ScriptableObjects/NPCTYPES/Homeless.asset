@@ -28,7 +28,7 @@ MonoBehaviour:
   <OddsToSpawn>k__BackingField: 40
   <Speed>k__BackingField: 2
   <Budget>k__BackingField: 30
-  <ShelvesTillExit>k__BackingField: 4
+  <ShelvesTillExit>k__BackingField: 3
   <ShopLifter>k__BackingField: 0
   <NpcSprite>k__BackingField: {fileID: -1377502086, guid: 71d645d00f431434ba502b71503fd284, type: 3}
   <Bad>k__BackingField: []
@@ -41,5 +41,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a45dd2dc675b4c1408fa25157fe9c47e, type: 3}
   - {fileID: 21300000, guid: ef98802b28b16804e9ce1fe6629c6f9f, type: 3}
   <PossibleOpening>k__BackingField: {fileID: 0}
-  <AnimationClip>k__BackingField: {fileID: 7400000, guid: c1a2cb64fb08c934b8afe2d776b390a6, type: 2}
-  <AnimationController>k__BackingField: {fileID: 9100000, guid: 631b98b14e7d7a545a974e39a97bdb3d, type: 2}
+  <Animator>k__BackingField: {fileID: 0}

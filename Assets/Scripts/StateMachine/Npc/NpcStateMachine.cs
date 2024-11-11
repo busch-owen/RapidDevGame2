@@ -76,7 +76,7 @@ public class NpcStateMachine : BaseStateMachine
     
     [field:SerializeField]public SpriteRenderer SpriteRenderer { get; private set; }
     
-    [field:SerializeField]public int ShelvesBeforeLeave { get; private set; }
+    [field:SerializeField]public int ShelvesBeforeLeave { get;  set; }
     
     [field:SerializeField]public float Reputation { get; set; }
 
@@ -155,7 +155,6 @@ public class NpcStateMachine : BaseStateMachine
         Agent.updateRotation = false;
         Agent.speed = NpcType.Speed;
         Budget = NpcType.Budget;
-        ShelvesBeforeLeave = Shelves.Count;
         MoneyManager = FindFirstObjectByType<MoneyManager>();
         Shoplifter = NpcType.ShopLifter;
         Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -174,6 +173,15 @@ public class NpcStateMachine : BaseStateMachine
         ItemWanted = NpcType.PossibleItems[rand];
         _randomSprite = NpcType.PossibleItems[rand].GameEmoji;
         Opening = _randomSprite;
+
+        if (ShelvesBeforeLeave > Shelves.Count)
+        {
+            ShelvesBeforeLeave = Shelves.Count;
+        }
+        else
+        {
+            ShelvesBeforeLeave = NpcType.ShelvesTillExit;
+        }
     }
 
     private void Awake()
@@ -339,6 +347,7 @@ public class NpcStateMachine : BaseStateMachine
         var shelf = Target.GetComponent<Shelf>();
 
         _shelfToCheck = shelf;
+        ShelvesBeforeLeave--;
         i = -1;
 
         foreach (var row in _shelfToCheck.Rows)
@@ -401,7 +410,6 @@ public class NpcStateMachine : BaseStateMachine
         {
             FoundItems = false;
             i = 0;
-            ShelvesBeforeLeave--;
             ChangeState(_npcNegativeDialogState);
             ReputationManager.ChangeReputation(-0.01f);
             SoundManager.PlayClip(negativeClip);

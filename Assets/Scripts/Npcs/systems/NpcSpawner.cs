@@ -37,6 +37,8 @@ public class NpcSpawner : MonoBehaviour
 
     private int TotalWaves = 0;
 
+    private DayNightSystem2D _dayNightSystem2D;
+
 
     public void SpawnNpc()
     {
@@ -48,6 +50,7 @@ public class NpcSpawner : MonoBehaviour
 
     public void StartDay()
     {
+        _dayNightSystem2D.Started = true;
         StartCoroutine("RandomizeNpcs");// randomize the number of npcs which when finished will spawn the first wave
     }
 
@@ -113,6 +116,7 @@ public class NpcSpawner : MonoBehaviour
         _timeToNextWave = new WaitForSeconds(time);
         _eventManager = FindFirstObjectByType<EventManager>();
         _gameEnd = FindFirstObjectByType<GameEnd>();
+        _dayNightSystem2D = FindFirstObjectByType<DayNightSystem2D>();
         _eventManager._Ended += NextDay;
     }
 }

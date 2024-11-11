@@ -58,6 +58,7 @@ public class DayNightSystem2D : MonoBehaviour
     public UnityEngine.Rendering.Universal.Light2D[] mapLights; // enable/disable in day/night states
 
     public EventManager EventManager;
+    public bool Started;
 
     void Start()
     {
@@ -68,6 +69,8 @@ public class DayNightSystem2D : MonoBehaviour
 
      void Update()
      {
+         
+         if(!Started) return;
         // Update cycle time
         cycleCurrentTime += Time.deltaTime;
 
