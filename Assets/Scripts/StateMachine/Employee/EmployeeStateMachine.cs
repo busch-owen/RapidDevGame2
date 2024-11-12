@@ -141,6 +141,16 @@ public class EmployeeStateMachine : BaseStateMachine
         ChangeState(EmployeeStates.Stocking);
     }
 
+    public void DisableAgent()
+    {
+        Agent.enabled = false;
+    }
+
+    public void EnableAgent()
+    {
+        Agent.enabled = true;
+    }
+
     public void DisableStocking()
     {
         Debug.Log("not");

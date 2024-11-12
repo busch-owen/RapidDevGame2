@@ -15,10 +15,13 @@ public class InvGrid : MonoBehaviour
     private ItemSelector _itemSelector;
 
     private GameContainer _container;
+
+    private EmployeeStateMachine _employeeStateMachine;
     
     private void Start()
     {
         gridLayout = GetComponentInChildren<GridLayoutGroup>().transform;
+        _employeeStateMachine = FindFirstObjectByType<EmployeeStateMachine>();
         
         transform.localScale = new Vector3(0, 0, 0);
         InstantiateButtons();
@@ -27,6 +30,7 @@ public class InvGrid : MonoBehaviour
     public void EnableImage(Shelf shelf)
     {
         transform.localScale = new Vector3(5.495245f,10.74701f,1);
+        _employeeStateMachine.DisableAgent();
         var newButtons = GetComponentsInChildren<StockItemButton>();
         foreach (var button in newButtons)
         {

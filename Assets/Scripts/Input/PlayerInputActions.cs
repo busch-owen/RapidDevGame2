@@ -29,6 +29,7 @@ public class PlayerInputActions : MonoBehaviour
             
             playerInput.Actions.Esc.performed += i => _shelfUi.Show();
             playerInput.Actions.Esc.performed += i => _invGrid.DisableImage();
+            playerInput.Actions.Esc.performed += i => employeeStateMachine.EnableAgent();
         }
 
         playerInput.Enable();
