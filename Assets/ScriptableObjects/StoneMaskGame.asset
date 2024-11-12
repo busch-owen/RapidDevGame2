@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: StoneMaskGame
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 0
+  <Cost>k__BackingField: 10
   <ItemName>k__BackingField: StoneMask
   <ItemDescription>k__BackingField: Spooky Scary OOOOHH
   <ItemCategory>k__BackingField: Horror

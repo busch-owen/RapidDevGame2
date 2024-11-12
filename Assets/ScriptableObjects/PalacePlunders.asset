@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: PalacePlunders
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 15
+  <Cost>k__BackingField: 10
   <ItemName>k__BackingField: Palace Plunderers
   <ItemDescription>k__BackingField: Why are they plundering? who knows
   <ItemCategory>k__BackingField: Indie

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: RoadFighter
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 30
+  <Cost>k__BackingField: 15
   <ItemName>k__BackingField: Road Fighter
   <ItemDescription>k__BackingField: That's the thing about street races...
   <ItemCategory>k__BackingField: Fighting

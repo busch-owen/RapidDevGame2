@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: CallOfDan
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 15
+  <Cost>k__BackingField: 20
   <ItemName>k__BackingField: Call Of Dan
   <ItemDescription>k__BackingField: Who is Dan? play this and find out
   <ItemCategory>k__BackingField: Shooter

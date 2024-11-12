@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: Benson
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 40
+  <Cost>k__BackingField: 20
   <ItemName>k__BackingField: The Binding of Benson
   <ItemDescription>k__BackingField: why is he bound?
   <ItemCategory>k__BackingField: Rpg

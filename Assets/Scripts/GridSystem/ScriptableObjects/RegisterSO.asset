@@ -19,4 +19,4 @@ MonoBehaviour:
   <ProductStorage>k__BackingField: 0
   <CompatibleProducts>k__BackingField: 
   <MenuSprite>k__BackingField: {fileID: 6798839919343640916, guid: 8cf9c148cf351714eb91ad1c382cb82c, type: 3}
-  <ObjectPrice>k__BackingField: 250
+  <ObjectPrice>k__BackingField: 100
