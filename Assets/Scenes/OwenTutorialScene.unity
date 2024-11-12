@@ -1867,7 +1867,10 @@ MonoBehaviour:
   - sequenceName: Closing remarks
     dialogueInSequence:
     - Well, I think that's the rundown...
-    - I won't forget what you did to my store...
+    - 'Oh I almost forgot, watch out for shoplifters unlike other people they normally
+      aren''t the talketive type '
+    - So keep an eye on what people are saying, or not saying
+    - Something I won't forget however... is what you did to my store...
     - I digress, let's get you situated in your own store and have you making some
       big bucks.
     - I won't be there obviously, after your little stunt earlier I don't wanna know

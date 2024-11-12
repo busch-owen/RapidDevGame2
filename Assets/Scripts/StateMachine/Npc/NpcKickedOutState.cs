@@ -10,19 +10,10 @@ public class NpcKickedOutState : NPCBaseState
 
     public override void Enter()
     {
-
-        int rand = Random.Range(1, 2);
-        if (rand == 1)
-        {
-            _stateMachine.BeingKickedOut = true;
-            _stateMachine.Agent.speed = 0.5f;
-            _stateMachine.Agent.updatePosition = false;
-            _stateMachine.Invoke("Struggle", 2.0f);
-        }
-        else
-        {
-            _stateMachine.ChangeState(NpcStateName.Wander);
-        }
+        _stateMachine.BeingKickedOut = true;
+        _stateMachine.Agent.speed = 0.5f;
+        _stateMachine.Agent.updatePosition = false;
+        _stateMachine.Invoke("Struggle", 2.0f);
     }
 
     public override void FixedUpdate()

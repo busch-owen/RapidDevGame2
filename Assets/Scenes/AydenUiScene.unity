@@ -25597,6 +25597,25 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -98268100, guid: 935d620e9a7e8af4a864674f2f28c9fe, type: 3}
+    - target: {fileID: 4149412363558186858, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_text
+      value: 'You are now in employee control mode
+
+
+        Employees will now move
+        to where you click!
+
+
+        When Nearby:
+
+        - Click on shelves to
+        stock them
+
+        - Click on customers to guide them
+
+        - Press F
+        to enable Forcible removal of customers, and G to disable it'
+      objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
