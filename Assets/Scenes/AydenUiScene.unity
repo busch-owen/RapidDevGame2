@@ -23417,6 +23417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2989300243179431053, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 288
+      objectReference: {fileID: 0}
     - target: {fileID: 3178740524544053437, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -26920,6 +26924,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[71].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 7291120385158019511, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7327070399051224720, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -26947,6 +26955,10 @@ PrefabInstance:
     - target: {fileID: 7327070399051224720, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468238788555138070, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 296
       objectReference: {fileID: 0}
     - target: {fileID: 7734939719229989742, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_LocalScale.x
