@@ -1921,6 +1921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenCharacters: 0.01
+  blip: {fileID: 8300000, guid: b4add4e9688a8704c8640aebc1107ccc, type: 3}
 --- !u!1 &1767776964
 GameObject:
   m_ObjectHideFlags: 0
