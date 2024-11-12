@@ -292,6 +292,7 @@ public class NpcStateMachine : BaseStateMachine
             foreach (var image in PossibleImages)
             {
                 TextIndex.AddEmotes(image);
+                PreviousImages.Add(image);
             }
 
             _ranBefore = true;
