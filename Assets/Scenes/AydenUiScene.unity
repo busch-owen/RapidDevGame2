@@ -1559,6 +1559,7 @@ GameObject:
   - component: {fileID: 905108852}
   - component: {fileID: 905108851}
   - component: {fileID: 905108853}
+  - component: {fileID: 905108854}
   m_Layer: 0
   m_Name: Sidewalk
   m_TagString: Untagged
@@ -1656,7 +1657,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 0
       m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 1
+      m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -1679,7 +1680,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: 1345772916, guid: 935d620e9a7e8af4a864674f2f28c9fe, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data:
       e00: 0
       e01: 1
@@ -1697,7 +1698,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data:
       e00: 1
       e01: 0
@@ -1758,6 +1759,44 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!19719996 &905108854
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905108849}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!114 &905764204 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5609974630139507954, guid: e19c880108e992043b1d50959c77043b, type: 3}
@@ -2226,16 +2265,16 @@ CompositeCollider2D:
       - X: 58750000
         Y: 50000000
       - X: 58750000
-        Y: -50000000
+        Y: -60000000
       - X: 60000000
-        Y: -50000000
-    - - X: 60000000
+        Y: -60000000
+    - - X: 50000000
         Y: -58750000
       - X: -50000000
         Y: -58750000
       - X: -50000000
         Y: -60000000
-      - X: 60000000
+      - X: 50000000
         Y: -60000000
   m_CompositePaths:
     m_Paths:
@@ -2249,12 +2288,12 @@ CompositeCollider2D:
       - {x: 2.999971, y: 6}
       - {x: -6, y: 5.999971}
       - {x: -5.999971, y: -6}
-    - - {x: 5.999971, y: -5}
+    - - {x: 5.999971, y: -6}
       - {x: 5.999971, y: 5}
       - {x: 5.875, y: 4.999971}
-      - {x: 5.875029, y: -5}
-    - - {x: 5.999971, y: -6}
-      - {x: 5.999971, y: -5.875}
+      - {x: 5.875029, y: -6}
+    - - {x: 4.999971, y: -6}
+      - {x: 4.999971, y: -5.875}
       - {x: -5, y: -5.875029}
       - {x: -4.999971, y: -6}
   m_VertexDistance: 0.0005
@@ -2517,7 +2556,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 3
       m_TileSpriteIndex: 3
-      m_TileMatrixIndex: 1
+      m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -2850,7 +2889,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1149766480, guid: 935d620e9a7e8af4a864674f2f28c9fe, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 30
+  - m_RefCount: 31
     m_Data:
       e00: 1
       e01: 0
@@ -2868,7 +2907,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 11
+  - m_RefCount: 10
     m_Data:
       e00: 0
       e01: 1
