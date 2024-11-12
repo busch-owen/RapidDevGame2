@@ -2073,6 +2073,38 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2057753137635608530, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057753137635608530, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057753137635608530, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057753137635608530, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493656467777071048, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493656467777071048, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493656467777071048, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493656467777071048, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3065098467737101307, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -2088,6 +2120,22 @@ PrefabInstance:
     - target: {fileID: 3538761169540656721, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594774248189338038, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594774248189338038, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594774248189338038, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594774248189338038, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6642968477150537815, guid: 4fa781a58a0af054db3530f1b8e0fb06, type: 3}
       propertyPath: m_Layer
@@ -25541,6 +25589,25 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -98268100, guid: 935d620e9a7e8af4a864674f2f28c9fe, type: 3}
+    - target: {fileID: 4149412363558186858, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: m_text
+      value: 'You are now in employee control mode
+
+
+        Employees will now move
+        to where you click!
+
+
+        When Nearby:
+
+        - Click on shelves to
+        stock them
+
+        - Click on customers to guide them
+
+        - Press F
+        to enable Forcible removal of customers, and G to disable it'
+      objectReference: {fileID: 0}
     - target: {fileID: 4196467985210906588, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
