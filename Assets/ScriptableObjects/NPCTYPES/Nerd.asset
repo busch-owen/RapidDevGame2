@@ -30,7 +30,7 @@ MonoBehaviour:
   <Speed>k__BackingField: 1
   <Budget>k__BackingField: 50
   <ShelvesTillExit>k__BackingField: 3
-  <ShopLifter>k__BackingField: 1
+  <ShopLifter>k__BackingField: 0
   <NpcSprite>k__BackingField: {fileID: -2121164680, guid: 21bdbc07d6bff094f9ce74bcfbb4ac23, type: 3}
   <Bad>k__BackingField: []
   <Good>k__BackingField: []

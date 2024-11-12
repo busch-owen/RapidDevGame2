@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ad1c2a798cc8844c91222f2b91a6460, type: 2}
   - {fileID: 11400000, guid: 604a825e0cff18944b03be9dd7a2d45a, type: 2}
   - {fileID: 11400000, guid: 2db0e09eaea432c41aaae80764a8bec2, type: 2}
-  <OddsToSpawn>k__BackingField: 15
+  <OddsToSpawn>k__BackingField: 20
   <Speed>k__BackingField: 2
   <Budget>k__BackingField: 200
   <ShelvesTillExit>k__BackingField: 4
