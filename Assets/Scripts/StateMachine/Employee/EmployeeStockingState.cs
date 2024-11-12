@@ -10,6 +10,7 @@ public class EmployeeStockingState : EmployeeBaseState
     
     public override void FixedUpdate()
     {
+        base.FixedUpdate();
         _stateMachine.DistanceCheck();
     }
 

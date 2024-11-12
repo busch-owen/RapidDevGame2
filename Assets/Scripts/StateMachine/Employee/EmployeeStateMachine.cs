@@ -85,6 +85,7 @@ public class EmployeeStateMachine : BaseStateMachine
 
     public override void FixedUpdate()
     {
+        base.FixedUpdate();
         lastPosition = this.transform.position;
         if (lastPosition != firstPosition)
         {
@@ -152,7 +153,7 @@ public class EmployeeStateMachine : BaseStateMachine
     {
         if (!Target) return false;
         
-        if (Vector2.Distance(transform.position, Target.position) <= 0.25f)
+        if (Vector2.Distance(transform.position, Target.position) <= 0.5f)
         {
             destinationReached?.Invoke();
             if (!_tutorial) return true;

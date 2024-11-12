@@ -11,6 +11,7 @@ public class NpcExitState : NPCBaseState
 
     public override void Enter()
     {
+        _stateMachine.Animator.SetTrigger("Searching");
         _stateMachine.Invoke("Leave", 2.0f);
         if (!_stateMachine.Shoplifter)
         {

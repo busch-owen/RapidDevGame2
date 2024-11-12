@@ -10,6 +10,7 @@ public class NpcKickedOutState : NPCBaseState
 
     public override void Enter()
     {
+        _stateMachine.Animator.SetTrigger("Searching");
         _stateMachine.BeingKickedOut = true;
         _stateMachine.Agent.speed = 0.5f;
         _stateMachine.Agent.updatePosition = false;

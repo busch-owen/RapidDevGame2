@@ -9228,6 +9228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Employee
       objectReference: {fileID: 0}
+    - target: {fileID: 2458530725535668327, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ae0353b5f5fcdd04ab1a9d6f9bfefdb5, type: 2}
     - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.98
@@ -9300,9 +9304,7 @@ PrefabInstance:
       propertyPath: destinationReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -6990099020280784954, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
-    - {fileID: -6799537194589448719, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -35,6 +35,7 @@ public class NpcCheckoutState : NPCBaseState
     {
         if (Vector2.Distance(_stateMachine.transform.position, _stateMachine.Agent.destination) <= 0.25f)
         {
+            _stateMachine.Animator.SetTrigger("Searching");
             return true;
         }
 
