@@ -16,6 +16,8 @@ public class Rows : MonoBehaviour
     public Button button;
 
     public Shelf shelf;
+
+    [SerializeField]private AudioClip _clip;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class Rows : MonoBehaviour
         shelf = GetComponentInParent<Shelf>();
         button = GetComponentInParent<Button>();
         button.onClick.AddListener(SetReference);
+        button.onClick.AddListener(delegate{SoundManager.PlayClip(_clip);});
     }
 
     public void SetReference()

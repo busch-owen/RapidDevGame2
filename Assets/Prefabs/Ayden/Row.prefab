@@ -54,3 +54,4 @@ MonoBehaviour:
     <ItemCount>k__BackingField: 0
   button: {fileID: 0}
   shelf: {fileID: 0}
+  _clip: {fileID: 8300000, guid: e9d4ebb952f79a64a885ef0d7961faaa, type: 3}
