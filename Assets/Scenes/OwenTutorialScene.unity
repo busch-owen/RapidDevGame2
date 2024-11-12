@@ -8997,6 +8997,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[0].<ItemCount>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[1].<ItemCount>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[2].<ItemCount>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[3].<ItemCount>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537887381764778480, guid: e19c880108e992043b1d50959c77043b, type: 3}
+      propertyPath: <AllItems>k__BackingField.Array.data[4].<ItemCount>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8615382804491686595, guid: e19c880108e992043b1d50959c77043b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

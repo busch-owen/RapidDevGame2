@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: TheTeseract
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 100
+  <Cost>k__BackingField: 50
   <ItemName>k__BackingField: Teseract
   <ItemDescription>k__BackingField: Why is this here?
   <ItemCategory>k__BackingField: ??

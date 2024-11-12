@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: WhiteHouse
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 80
+  <Cost>k__BackingField: 40
   <ItemName>k__BackingField: Defend The White House
   <ItemDescription>k__BackingField: Obama Prism
   <ItemCategory>k__BackingField: Fighting

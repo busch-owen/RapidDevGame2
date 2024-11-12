@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf3442536a8144c925c9df435f59a1, type: 3}
   m_Name: GameConsole
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 10
+  <Cost>k__BackingField: 100
   <ItemName>k__BackingField: Game Console
   <ItemDescription>k__BackingField: A game console
   <ItemCategory>k__BackingField: Console
