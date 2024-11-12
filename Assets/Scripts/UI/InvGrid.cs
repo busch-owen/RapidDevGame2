@@ -41,7 +41,6 @@ public class InvGrid : MonoBehaviour
 
         foreach (var container in _itemSelector.AllItems)
         {
-            if(container.ItemCount <= 0) continue;
             var newObj = Instantiate(_itemButton, gridLayout);
             newObj.GetComponent<StockItemButton>().AssignInventoryContainer(container);
         }
