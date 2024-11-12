@@ -43,6 +43,12 @@ public class EmployeeStateMachine : BaseStateMachine
     public event Action destinationReached;
     private TutorialHandler _tutorial;
 
+    [SerializeField] private Animator _animator;
+    private Rigidbody2D rb;
+    
+    Vector3 firstPosition;
+    Vector3 lastPosition;
+
 
     public void Awake()
     {
@@ -56,19 +62,40 @@ public class EmployeeStateMachine : BaseStateMachine
         _employeeWalkingState = new EmployeeWalkingState(this);
         _employeeKickingOutState = new EmployeeKickingOutState(this);
         _renderer = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
         _renderer.transform.rotation = Quaternion.Euler(90,0,0);
+        rb = GetComponentInChildren<Rigidbody2D>();
         Agent.updateRotation = false;
         _controlButton = FindFirstObjectByType<ControlButton>();
         _tutorial = FindFirstObjectByType<TutorialHandler>();
         _controlButton.GetComponent<Button>().onClick.AddListener(delegate { ManualOverrideOn(); EnableStocking(); });
         _controlButton?.ControlPanelCancelButton.onClick.AddListener(ManualOverrideOff);
         _controlButton?.ControlPanelCancelButton.onClick.AddListener(DisableStocking);
-
         
         ChangeState(EmployeeStates.Idle);
         
         if(!_tutorial) return;
         destinationReached += _tutorial.ChangeSequenceIndex;
+    }
+
+    private void Start()
+    {
+        firstPosition = this.transform.position;
+    }
+
+    public override void FixedUpdate()
+    {
+        lastPosition = this.transform.position;
+        if (lastPosition != firstPosition)
+        {
+            _animator.enabled = true;
+        }
+        else
+        {
+            _animator.enabled = false;
+        }
+
+        firstPosition = lastPosition;
     }
     
     public void ChangeState(EmployeeStates stateName)

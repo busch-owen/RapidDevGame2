@@ -4151,7 +4151,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0, y: 0.35566667}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4161,8 +4161,30 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.71133333}
   m_EdgeRadius: 0
+--- !u!95 &1884722558
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884722551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae0353b5f5fcdd04ab1a9d6f9bfefdb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1929242339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37718,6 +37740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Employee
       objectReference: {fileID: 0}
+    - target: {fileID: 2458530725535668327, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ae0353b5f5fcdd04ab1a9d6f9bfefdb5, type: 2}
     - target: {fileID: 5563099724991592836, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.59
@@ -37765,6 +37791,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -6990099020280784954, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
     - {fileID: -6799537194589448719, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+    - {fileID: 2458530725535668327, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -37774,6 +37801,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 877730326113274385, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1884722554}
+    - targetCorrespondingSourceObject: {fileID: 877730326113274385, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1884722558}
   m_SourcePrefab: {fileID: 100100000, guid: 440b3780037f73b40befdd299e21d73b, type: 3}
 --- !u!195 &5528701828994245769 stripped
 NavMeshAgent:
