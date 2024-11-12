@@ -159,16 +159,15 @@ public class NpcStateMachine : BaseStateMachine
         Shoplifter = NpcType.ShopLifter;
         Renderer = GetComponentInChildren<SpriteRenderer>();
         Renderer.sprite = NpcType.NpcSprite;
-        Animator = gameObject.AddComponent<Animator>();
-        Animator.runtimeAnimatorController = NpcType.Animator;
         Renderer.color = Color.white;
         Renderer.transform.rotation = Quaternion.Euler(90,0,0);
+        Animator = GetComponentInChildren<Animator>();
+        Animator.runtimeAnimatorController = NpcType.Animator;
         _eventManager = FindFirstObjectByType<EventManager>();
         PossibleBad = NpcType.PossibleBad;
         PossibleGood = NpcType.PossibleGood;
         SwipeTask = FindFirstObjectByType<SwipeTask>();
         _itemSelector = FindFirstObjectByType<ItemSelector>();
-        
         var rand = Random.Range(0, NpcType.PossibleItems.Count);
         ItemWanted = NpcType.PossibleItems[rand];
         _randomSprite = NpcType.PossibleItems[rand].GameEmoji;

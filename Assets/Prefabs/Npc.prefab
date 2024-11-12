@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3194262986665606623}
   - component: {fileID: 2541532605297038342}
+  - component: {fileID: 952458477050135207}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -87,6 +88,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &952458477050135207
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753469495264241336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6160348601279063132
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +232,6 @@ MonoBehaviour:
   <Emotes>k__BackingField: []
   <CurentEmotes>k__BackingField: []
   <ImageContainer>k__BackingField: {fileID: 6160348601279063132}
-  Click: {fileID: 8300000, guid: 9e20e9902f06c7d41b475dd245d4fad9, type: 3}
 --- !u!114 &2896675185182231722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +271,6 @@ GameObject:
   - component: {fileID: 145187555536971132}
   - component: {fileID: -4191481315797229124}
   - component: {fileID: 4934430403219305814}
-  - component: {fileID: 923698652991501506}
   m_Layer: 9
   m_Name: Npc
   m_TagString: Untagged
@@ -433,19 +454,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!111 &923698652991501506
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6502881207188248044}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
